@@ -5,9 +5,9 @@ import Home from "./screens/Index"
 
 function App() {
   return (
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
+    <Routes>
+      <Route path="/" element={<Home />} />
+    </Routes>
   );
 }
 
