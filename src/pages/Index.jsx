@@ -1,5 +1,4 @@
-const index = () => {
-	return <div>index</div>;
-};
+import LandingPage from "./LandingPage";
+import LoanCalculator from "./LoanCalculator";
 
-export default index;
+export { LandingPage, LoanCalculator };
