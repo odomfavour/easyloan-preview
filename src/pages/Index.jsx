@@ -1,4 +1,4 @@
 import LandingPage from "./LandingPage";
-import LoanCalculator from "./LoanCalculator";
+import LoanCalculatorPage from "./LoanCalculatorPage";
 
-export { LandingPage, LoanCalculator };
+export { LandingPage, LoanCalculatorPage };
