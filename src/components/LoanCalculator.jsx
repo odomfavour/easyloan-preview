@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Buttons } from "../components/index";
 import { Container, Row, Col, Form, Stack } from "react-bootstrap";
-import PageWrapper from "../layouts/page_wrapper/PageWrapper";
 
-const LoanCalculator = () => {
+const LoanCalculator = ({ bgColor }) => {
 	const [form, setForm] = useState({
 		productName: "",
 		productQty: "",
@@ -77,26 +76,10 @@ const LoanCalculator = () => {
 	}
 
 	return (
-		<Container className="pb-5 pt-4 ">
-			<Row>
-				<Col xs={4}>
-					<h1 className="heading-font " style={{ lineHeight: "3rem" }}>
-						Loan Calculator
-					</h1>
-					<hr
-						style={{
-							color: "var(--purple)",
-							backgroundColor: "var(--purple)",
-							height: "2px",
-							width: "12em",
-							marginTop: "0",
-						}}
-					/>
-				</Col>
-			</Row>
+		<Container className="pb-5 pt-4 px-0">
 			<Row className="d-flex align-items-center justify-content-center px-5">
 				{/* <Col> */}
-				<Form className="border rounded col col-lg-4 px-lg-5 py-lg-4 bg-gray">
+				<Form className={`border rounded col col-lg-4 px-lg-5 py-lg-4 ${bgColor}`}>
 					<Stack gap={3}>
 						<Form.Group controlId="productName">
 							<Form.Label>Product Name</Form.Label>

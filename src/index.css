@@ -3,6 +3,7 @@
 :root{
   --purple: #AE2BFF;
   --gray: rgba(145, 36, 212, 0.03);
+  --gray-light: #FDFDFD;
 }
 
 @font-face {
@@ -20,6 +21,7 @@
 body {
   margin: 0;
   font-family: 'GilmerRegular', sans-serif !important;
+  background-color: var(--gray-light) !important;
 }
 
 code {
@@ -37,4 +39,7 @@ code {
 /* gray background color */
 .bg-gray{
   background-color: var(--gray);
+}
+.bg-light-gray{
+  background-color: var(--gray-light);
 }

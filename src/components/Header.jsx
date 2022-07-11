@@ -4,7 +4,7 @@ import { Container, Row, Col, Stack } from "react-bootstrap";
 import logo from "../assets/EAZYLOAN.svg";
 const Header = () => {
 	return (
-		<Container className="py-5  ">
+		<Container className="py-5 heading-font ">
 			<Row className="d-flex align-items-center">
 				<Col>
 					<img src={logo} alt="" />
@@ -22,7 +22,7 @@ const Header = () => {
 				<Col>
 					<Stack direction="horizontal" gap={3}>
 						<Buttons style="purple" className="w-75">
-							register
+							Register
 						</Buttons>
 						<Buttons style="outline-secondary" className="w-75">
 							Login
