@@ -97,7 +97,7 @@ const LoanCalculator = () => {
 				</Row>
 				<Row className="d-flex align-items-center justify-content-center px-5">
 					{/* <Col> */}
-					<Form className="border bg-light rounded col col-lg-4 px-lg-5 py-lg-4">
+					<Form className="border rounded col col-lg-4 px-lg-5 py-lg-4 bg-gray">
 						<Stack gap={3}>
 							<Form.Group controlId="productName">
 								<Form.Label>Product Name</Form.Label>
