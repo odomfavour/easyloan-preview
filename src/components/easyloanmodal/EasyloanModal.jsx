@@ -17,11 +17,21 @@ import * as AiIcons from 'react-icons/ai'
 const EasyloanModal = () => {
     const [centredModal, setCentredModal] = useState(false);
 
-    const toggleShow = () => setCentredModal(!centredModal)
+    const toggleShow = (e) => {
+      e.preventDefault()
+      setCentredModal(!centredModal)
+    }
 
     return (
       <>
-        <Buttons  style="purple" className="w-15" onClick={toggleShow}>modal</Buttons>
+        <Buttons
+							style="purple"
+							size="md"
+							className="w-100 mb-3"
+							onClick={toggleShow}
+							type="submit">
+							Calculate
+					</Buttons>
 
         <MDBModal tabIndex='-1' show={centredModal} setShow={setCentredModal}>
           <MDBModalDialog centered className='d-flex flex-column justify-content-center'>

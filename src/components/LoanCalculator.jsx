@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Buttons } from "../components/index";
 import { Container, Row, Col, Form, Stack } from "react-bootstrap";
+import EasyloanModal from "./easyloanmodal/EasyloanModal";
 
 const LoanCalculator = ({ bgColor }) => {
 	const [form, setForm] = useState({
@@ -171,14 +172,7 @@ const LoanCalculator = ({ bgColor }) => {
 							</Form.Select>
 						</Form.Group>
 
-						<Buttons
-							style="purple"
-							size="md"
-							className="w-100 mb-3"
-							onClick={handleBtnClick}
-							type="submit">
-							Calculate
-						</Buttons>
+						<EasyloanModal/>
 					</Stack>
 				</Form>
 			</Row>

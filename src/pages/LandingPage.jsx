@@ -3,20 +3,6 @@ import { Link } from "react-router-dom";
 import { Container, Row, Col, Stack, Image, Card, Accordion } from "react-bootstrap";
 
 import PageWrapper from "../layouts/page_wrapper/PageWrapper";
-<<<<<<< HEAD
-import EasyloanModal from "../components/easyloanmodal/EasyloanModal"
-
-import { Container, Row, Col, Button } from "react-bootstrap";
-const LandingPage = () => {
-	const [modalShow, setModalShow] = React.useState(false);
-	return (
-		<PageWrapper>
-			<Container>
-				landing
-
-				<EasyloanModal/>
-
-=======
 import { LoanCalculator, Buttons } from "../components/index";
 
 import heroImg from "../assets/hero_img.svg";
@@ -32,6 +18,8 @@ import apply from "../assets/apply.svg";
 import getOffers from "../assets/get_offers.svg";
 import getProduct from "../assets/get_product.svg";
 import uploadIcon from "../assets/upload.svg";
+
+
 
 const LandingPage = () => {
 	const handleBtnClick = () => {};
@@ -268,7 +256,6 @@ const LandingPage = () => {
 						</Stack>
 					</Col>
 				</Row>
->>>>>>> 331ee70955e0988e7237a914d09bf4deced2f237
 			</Container>
 		</PageWrapper>
 	);
