@@ -2,15 +2,26 @@
 
 :root{
   --purple: #AE2BFF;
+  --gray: rgba(145, 36, 212, 0.03);
+  --gray-light: #FDFDFD;
+}
+
+@font-face {
+  font-family: 'GilmerRegular';
+  src: url('./fonts/Gilmer_Font/GilmerRegular.eot');
+  src: url('./fonts/Gilmer_Font/GilmerRegular.eot?#iefix') format('embedded-opentype'),
+       url('./fonts/Gilmer_Font/GilmerRegular.svg#GilmerRegular') format('svg'),
+       url('./fonts/Gilmer_Font/GilmerRegular.ttf') format('truetype'),
+       url('./fonts/Gilmer_Font/GilmerRegular.woff') format('woff'),
+       url('./fonts/Gilmer_Font/GilmerRegular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'GilmerRegular', sans-serif !important;
+  background-color: var(--gray-light) !important;
 }
 
 code {
@@ -18,7 +29,17 @@ code {
     monospace;
 }
 
+
+/* Acme font for headings, etc */
 .heading-font{
   font-family: 'Acme', sans-serif;
   color: #3A0E55;
+}
+
+/* gray background color */
+.bg-gray{
+  background-color: var(--gray);
+}
+.bg-light-gray{
+  background-color: var(--gray-light);
 }
