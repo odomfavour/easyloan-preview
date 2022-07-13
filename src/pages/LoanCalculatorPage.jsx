@@ -17,7 +17,7 @@ const LoanCalculatorPage = () => {
 								color: "var(--purple)",
 								backgroundColor: "var(--purple)",
 								height: "2px",
-								width: "12em",
+								width: "9em",
 								marginTop: "0",
 							}}
 						/>

@@ -4,10 +4,10 @@ import { Container, Row, Col, Form, Stack } from "react-bootstrap";
 
 const LoanCalculator = ({ bgColor }) => {
 	const [form, setForm] = useState({
-		productName: "",
+		lpoAmount: "",
 		productQty: "",
 		productValue: "",
-		interestRate: 21,
+		interestRate: 10.5,
 		downPayment: "30%",
 		repaymentPlan: "",
 		loanTenure: "",
@@ -31,19 +31,19 @@ const LoanCalculator = ({ bgColor }) => {
 
 	function calculateLoan() {
 		let {
-			productValue: productPrice,
+			lpoAmount: productAmount,
 			interestRate: interest,
 			downPayment,
 			repaymentPlan,
 			loanTenure,
 		} = form;
 
-		let totalLoanAmount, downPaymentRate, repaymentAmount, monthlyPayment, weeklyPayment;
+		let totalLoanAmount, downPaymentRate, repaymentAmount, monthlyPayment, weeklyPayment, oneOffPayment;
 
-		totalLoanAmount = (Number(interest) / 100) * Number(productPrice) + Number(productPrice);
+		totalLoanAmount = (Number(interest) / 100) * Number(productAmount) + Number(productAmount);
 
 		downPaymentRate = Number(downPayment.replace("%", ""));
-		downPayment = (downPaymentRate / 100) * Number(productPrice);
+		downPayment = (downPaymentRate / 100) * Number(productAmount);
 
 		monthlyPayment = (totalLoanAmount - downPayment) / Number(loanTenure.split(" ")[0]);
 		weeklyPayment = monthlyPayment / 4;
@@ -57,13 +57,17 @@ const LoanCalculator = ({ bgColor }) => {
 				repaymentAmount = Math.round(weeklyPayment);
 				break;
 
+			case "One-off":
+				repaymentAmount = oneOffPayment;
+				break;
+
 			default:
 				break;
 		}
 
 		setLoanOffer({
 			...loanOffer,
-			productPrice: productPrice,
+			productPrice: productAmount,
 			interest: interest,
 			downPayment: downPayment,
 			repaymentPlan: repaymentPlan,
@@ -72,103 +76,61 @@ const LoanCalculator = ({ bgColor }) => {
 			repaymentAmount: repaymentAmount,
 		});
 
-		console.log(loanOffer);
+		// console.log(loanOffer);
 	}
 
 	return (
 		<Container className="pb-5 pt-4 px-0">
 			<Row className="d-flex align-items-center justify-content-center px-5">
-				{/* <Col> */}
 				<Form className={`border rounded col col-lg-4 px-lg-5 py-lg-4 ${bgColor}`}>
 					<Stack gap={3}>
-						<Form.Group controlId="productName">
-							<Form.Label>Product Name</Form.Label>
+						<Form.Group controlId="lpoAmount">
+							<Form.Label>Total LPO Amount</Form.Label>
 							<Form.Control
 								type="text"
-								name="productName"
-								value={form.productName}
+								name="lpoAmount"
+								value={form.lpoAmount}
 								onChange={handleChange}
-								placeholder="Type in product name"
+								placeholder="N100,000"
 							/>
-						</Form.Group>
-
-						<Form.Group controlId="productQty">
-							<Form.Label>Product Qty</Form.Label>
-							<Form.Control
-								type="text"
-								name="productQty"
-								value={form.productQty}
-								onChange={handleChange}
-								placeholder="Type in product quantity"
-							/>
-						</Form.Group>
-
-						<Form.Group controlId="productValue">
-							<Form.Label>Product Value (N)</Form.Label>
-							<Form.Control
-								type="text"
-								name="productValue"
-								value={form.productValue}
-								onChange={handleChange}
-								placeholder="Type in product price"
-							/>
-						</Form.Group>
-
-						<Form.Group controlId="interestRate">
-							<Form.Label>Interest Rate</Form.Label>
-							<Form.Range name="interestRate" value={form.interestRate} onChange={handleChange} />
-						</Form.Group>
-
-						<Form.Group controlId="downPayment">
-							<Form.Label>Down Payment</Form.Label>
-							<Form.Control
-								type="text"
-								name="downPayment"
-								value={form.downPayment}
-								onChange={handleChange}
-								placeholder="30%"
-							/>
-							<Form.Text className="text-muted">
-								*Down payment is a minimum of 30% of the product price
-							</Form.Text>
 						</Form.Group>
 
 						<Form.Group controlId="repaymentPlan">
-							<Form.Label>Repayment Option</Form.Label>
+							<Form.Label>Repayment Plan</Form.Label>
 							<Form.Select
 								defaultValue="Select your repayment plan"
 								name="repaymentPlan"
 								value={form.repaymentPlan}
 								onChange={handleChange}
 								aria-label="Repayment Option">
-								<option value="Select your repayment plan">Select your repayment plan</option>
+								<option value="Select your repayment plan" className="d-none">Select your repayment plan</option>
+								<option value="One-off">One-off</option>
 								<option value="Weekly">Weekly</option>
 								<option value="Monthly">Monthly</option>
 							</Form.Select>
 						</Form.Group>
 
 						<Form.Group controlId="loanTenure">
-							<Form.Label>Loan Tenure</Form.Label>
+							<Form.Label>Duration/Tenure (Loan)</Form.Label>
 							<Form.Select
 								aria-label="Repayment Option"
-								defaultValue="Select your loan tenure"
+								defaultValue="Select your repayment duration"
 								name="loanTenure"
 								value={form.loanTenure}
 								onChange={handleChange}>
-								<option value="Select your loan tenure">Select your loan tenure</option>
+								<option value="Select your repayment duration" className="d-none">
+									Select your repayment duration
+								</option>
 								<option value="1">1 Month</option>
 								<option value="2">2 Months</option>
 								<option value="3">3 Months</option>
-								<option value="4">4 Months</option>
-								<option value="5">5 Months</option>
 								<option value="6">6 Months</option>
-								<option value="7">7 Months</option>
-								<option value="8">8 Months</option>
-								<option value="9">9 Months</option>
-								<option value="10">10 Months</option>
-								<option value="11">11 Months</option>
-								<option value="12">12 Months</option>
 							</Form.Select>
+						</Form.Group>
+
+						<Form.Group controlId="interestRate">
+							<Form.Label>Interest Rate</Form.Label>
+							<Form.Range name="interestRate" value={form.interestRate} onChange={handleChange} />
 						</Form.Group>
 
 						<Buttons
