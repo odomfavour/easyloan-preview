@@ -6,11 +6,17 @@ import PageWrapperV2 from "../layouts/no_footer_layout/PageWrapperV2";
 import { Buttons } from "../components/index";
 
 import googleIcon from "../assets/icons_google.svg";
+import reg from "../assets/Illust/illust_Register.svg";
 
 const Register = () => {
 	const [form, setForm] = useState({
-		userEmail: "",
-		userPassword: "",
+		name: "",
+		phoneNo: "",
+		email: "",
+		password: "",
+		confirmPassword: "",
+		rememberMe: false,
+		refCode: "",
 	});
 
 	const handleChange = (e) => {
@@ -30,34 +36,58 @@ const Register = () => {
 	return (
 		<PageWrapperV2>
 			<Container>
-				<Row>
+				<Row className="align-items-center justify-content-between">
 					<Col>
-						<Image src="" alt="woman using an app"></Image>
+						<Image src={reg} alt="lady registering"></Image>
 					</Col>
 					<Col>
-						<Stack>
-							<h1 className="heading-font ">Register</h1>
-							<p>Create an account to get started</p>
-							<Form className="border rounded px-4 py-4">
+						<Stack gap={4}>
+							<div>
+								<h1 className="heading-font ">Register</h1>
+								<p className="m-0">Create an account to get started</p>
+							</div>
+							<Form className="border rounded px-4 pt-3 pb-4 bg-gray">
 								<Stack gap={5}>
 									<Stack gap={3}>
-										<Form.Group controlId="userEmail">
+										<Form.Group controlId="name">
+											<Form.Label>Full Name</Form.Label>
+											<Form.Control
+												type="text"
+												name="name"
+												value={form.name}
+												onChange={handleChange}
+												placeholder="Enter your fullname"
+											/>
+										</Form.Group>
+
+										<Form.Group controlId="phoneNo">
+											<Form.Label>Phone Number</Form.Label>
+											<Form.Control
+												type="tel"
+												name="phoneNo"
+												value={form.phoneN}
+												onChange={handleChange}
+												placeholder="+234"
+											/>
+										</Form.Group>
+
+										<Form.Group controlId="email">
 											<Form.Label>Email</Form.Label>
 											<Form.Control
 												type="email"
-												name="userEmail"
-												value={form.userEmail}
+												name="email"
+												value={form.email}
 												onChange={handleChange}
 												placeholder="Enter email address"
 											/>
 										</Form.Group>
 
-										<Form.Group controlId="userPassword">
+										<Form.Group controlId="password">
 											<Form.Label>Password</Form.Label>
 											<Form.Control
 												type="password"
-												name="userPassword"
-												value={form.userPassword}
+												name="password"
+												value={form.password}
 												onChange={handleChange}
 												placeholder="Enter password"
 											/>
@@ -75,24 +105,41 @@ const Register = () => {
 													placeholder="Confirm password"
 												/>
 											</Form.Group>
-											<Form.Check type="checkbox" id="default-checkbox" label="Remember me" />
+											<Form.Check
+												type="checkbox"
+												id="rememberMe"
+												name="rememberMe"
+												checked={form.rememberMe}
+												label="Remember me"
+											/>
 										</Stack>
+
+										<Form.Group controlId="refCode">
+											<Form.Label>Referral Code (Optional)</Form.Label>
+											<Form.Control
+												type="text"
+												name="refCode"
+												value={form.refCode}
+												onChange={handleChange}
+												placeholder="Enter referral code"
+											/>
+										</Form.Group>
 									</Stack>
 
-									<Stack className="heading-font">
+									<Stack className="heading-font " gap={2}>
 										<Buttons
 											style="purple"
 											size="md"
-											className="w-100 mb-3"
+											className="w-100"
 											onClick={handleBtnClick}
 											type="submit">
 											Register
 										</Buttons>
-										<p className="text-center">Or</p>
+										<p className="text-center m-0">Or</p>
 										<Buttons
 											style="secondary"
 											size="md"
-											className="w-100 mb-3 d-flex align-items-center justify-content-center "
+											className="w-100 d-flex align-items-center justify-content-center "
 											onClick={handleBtnClick}
 											type="submit">
 											<img src={googleIcon} alt="Google icon" />
