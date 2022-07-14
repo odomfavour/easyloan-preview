@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import "./index.css";
 
-import { LandingPage, LoanCalculatorPage, Faqs, Register } from "./pages/Index";
+import { LandingPage, LoanCalculatorPage, Faqs, Register, PersonalDetails } from "./pages/Index";
 
 function App() {
 	return (
@@ -11,6 +11,8 @@ function App() {
 			<Route path="/loancalc" element={<LoanCalculatorPage />} />
 			<Route path="/faqs" element={<Faqs />} />
 			<Route path="/register" element={<Register />} />
+			<Route path="/register" element={<Register />} />
+			<Route path="/personal" element={<PersonalDetails />} />
 		</Routes>
 	);
 }
