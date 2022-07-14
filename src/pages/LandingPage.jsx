@@ -19,6 +19,8 @@ import getOffers from "../assets/get_offers.svg";
 import getProduct from "../assets/get_product.svg";
 import uploadIcon from "../assets/upload.svg";
 
+
+
 const LandingPage = () => {
 	const handleBtnClick = () => {};
 
