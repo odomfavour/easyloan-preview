@@ -41,14 +41,11 @@ const LandingPage = () => {
 								Request for product loans, get approved and receive offers with flexible repayment
 								options to get your business to the next level.
 							</p>
-							<Buttons
-								style="purple"
-								size="md"
-								className="w-25 mb-3 heading-font"
-								onClick={handleBtnClick}
-								type="button">
-								Apply for Loan
-							</Buttons>
+							<Link to="/register">
+								<Buttons style="purple" size="md" className="w-25 mb-3 heading-font" type="button">
+									Apply for Loan
+								</Buttons>
+							</Link>
 						</Stack>
 					</Col>
 					<Col>
@@ -56,12 +53,14 @@ const LandingPage = () => {
 					</Col>
 				</Row>
 			</Container>
+
 			<Stack className="bg-gray pt-5">
 				<h1 className="heading-font text-center" style={{ lineHeight: "3rem" }}>
 					Loan Calculator
 				</h1>
 				<LoanCalculator bgColor="bg-light-gray" />
 			</Stack>
+
 			<Container>
 				<Row className="py-5">
 					<Col className="text-center">
@@ -196,7 +195,7 @@ const LandingPage = () => {
 					<Col>
 						<Stack gap={3}>
 							<h2 className="heading-font">
-								Download the EazyLoan App,See more interesting features
+								Download the EazyLoan App, See more interesting features
 							</h2>
 							<p>
 								Join over 300 thousand business owners who are using the EazyLoan app to get
