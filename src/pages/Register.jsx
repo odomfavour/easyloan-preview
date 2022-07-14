@@ -36,17 +36,19 @@ const Register = () => {
 	return (
 		<PageWrapperV2>
 			<Container>
-				<Row className="align-items-center justify-content-between">
-					<Col>
-						<Image src={reg} alt="lady registering"></Image>
+				<Row className="align-items-center justify-content-between px-md-5 flex-column flex-lg-row ">
+					<Col xs={9} lg={4}>
+						<Image src={reg} alt="lady registering" className="w-100"></Image>
 					</Col>
 					<Col>
-						<Stack gap={4}>
+						<Stack gap={4} className="col-lg-5 ">
 							<div>
 								<h1 className="heading-font ">Register</h1>
-								<p className="m-0">Create an account to get started</p>
+								<p className="m-0" style={{ color: "#B1B0B0" }}>
+									Create an account to get started
+								</p>
 							</div>
-							<Form className="border rounded px-4 pt-3 pb-4 bg-gray">
+							<Form className=" px-4 pt-3 pb-4 bg-gray">
 								<Stack gap={5}>
 									<Stack gap={3}>
 										<Form.Group controlId="name">
@@ -91,7 +93,9 @@ const Register = () => {
 												onChange={handleChange}
 												placeholder="Enter password"
 											/>
-											<Form.Text>Password must contain atleast 8 characters</Form.Text>
+											<Form.Text style={{ color: "#636262" }}>
+												Password must contain atleast 8 characters
+											</Form.Text>
 										</Form.Group>
 
 										<Stack gap={2}>
