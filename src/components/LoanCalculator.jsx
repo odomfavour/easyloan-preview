@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { Buttons } from "../components/index";
-import { Container, Row, Form, Stack } from "react-bootstrap";
+import { Container, Row, Col, Form, Stack } from "react-bootstrap";
+import EasyloanModal from "./easyloanmodal/EasyloanModal";
 
 const LoanCalculator = ({ bgColor }) => {
+	const[toggleModal, setToggleModal] = useState(false)
+	const[iterator, setIterator] = useState(false)
+
 	const [form, setForm] = useState({
 		lpoAmount: "",
 		productQty: "",
@@ -27,6 +31,8 @@ const LoanCalculator = ({ bgColor }) => {
 	const handleBtnClick = (e) => {
 		e.preventDefault();
 		calculateLoan();
+		setToggleModal(true)
+		setIterator(!iterator)
 	};
 
 	function calculateLoan() {
@@ -141,6 +147,7 @@ const LoanCalculator = ({ bgColor }) => {
 							type="submit">
 							Calculate
 						</Buttons>
+						<EasyloanModal btnsetter={toggleModal} iterateBtn={iterator}/>
 					</Stack>
 				</Form>
 			</Row>
