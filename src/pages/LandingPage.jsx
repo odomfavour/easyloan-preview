@@ -56,7 +56,7 @@ const LandingPage = () => {
 				<h1 className="heading-font text-center" style={{ lineHeight: "3rem" }}>
 					Loan Calculator
 				</h1>
-				<LoanCalculator bgColor="bg-light-gray" />
+				<LoanCalculator styles="bg-light-gray" />
 			</Stack>
 
 			<Container>

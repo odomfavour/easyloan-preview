@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Buttons } from "../components/index";
 import { Container, Row, Form, Stack } from "react-bootstrap";
 
-const LoanCalculator = ({ bgColor }) => {
+const LoanCalculator = ({ styles }) => {
 	const [form, setForm] = useState({
 		lpoAmount: "",
 		productQty: "",
@@ -38,7 +38,12 @@ const LoanCalculator = ({ bgColor }) => {
 			loanTenure,
 		} = form;
 
-		let totalLoanAmount, downPaymentRate, repaymentAmount, monthlyPayment, weeklyPayment, oneOffPayment;
+		let totalLoanAmount,
+			downPaymentRate,
+			repaymentAmount,
+			monthlyPayment,
+			weeklyPayment,
+			oneOffPayment;
 
 		totalLoanAmount = (Number(interest) / 100) * Number(productAmount) + Number(productAmount);
 
@@ -79,72 +84,101 @@ const LoanCalculator = ({ bgColor }) => {
 		// console.log(loanOffer);
 	}
 
+	// style={{ boxShadow: "" }}
 	return (
-		<Container className="pb-5 pt-4 px-0">
-			<Row className="d-flex align-items-center justify-content-center px-5">
-				<Form className={`border rounded col col-lg-4 px-lg-5 py-lg-4 ${bgColor}`}>
-					<Stack gap={3}>
-						<Form.Group controlId="lpoAmount">
-							<Form.Label>Total LPO Amount</Form.Label>
-							<Form.Control
-								type="text"
-								name="lpoAmount"
-								value={form.lpoAmount}
-								onChange={handleChange}
-								placeholder="N100,000"
-							/>
-						</Form.Group>
+		<>
+			<style type="text/css">
+				{`
+          .box-shadow{
+            box-shadow: 0px 4px 5px rgba(145, 36, 212, 0.03) !important;
+          }
 
-						<Form.Group controlId="repaymentPlan">
-							<Form.Label>Repayment Plan</Form.Label>
-							<Form.Select
-								defaultValue="Select your repayment plan"
-								name="repaymentPlan"
-								value={form.repaymentPlan}
-								onChange={handleChange}
-								aria-label="Repayment Option">
-								<option value="Select your repayment plan" className="d-none">Select your repayment plan</option>
-								<option value="One-off">One-off</option>
-								<option value="Weekly">Weekly</option>
-								<option value="Monthly">Monthly</option>
-							</Form.Select>
-						</Form.Group>
+          @media (max-width: 575.98px) {
+            .vstack .gap-3{
+              gap: 2rem !important;
+            }
 
-						<Form.Group controlId="loanTenure">
-							<Form.Label>Duration/Tenure (Loan)</Form.Label>
-							<Form.Select
-								aria-label="Repayment Option"
-								defaultValue="Select your repayment duration"
-								name="loanTenure"
-								value={form.loanTenure}
-								onChange={handleChange}>
-								<option value="Select your repayment duration" className="d-none">
-									Select your repayment duration
-								</option>
-								<option value="1">1 Month</option>
-								<option value="2">2 Months</option>
-								<option value="3">3 Months</option>
-								<option value="6">6 Months</option>
-							</Form.Select>
-						</Form.Group>
+            .form-label{
+              margin-bottom: 0.8rem;
+            }
 
-						<Form.Group controlId="interestRate">
-							<Form.Label>Interest Rate</Form.Label>
-							<Form.Range name="interestRate" value={form.interestRate} onChange={handleChange} />
-						</Form.Group>
+            .box-shadow{
+              box-shadow: none !important;
+            }
+          }
 
-						<Buttons
-							variant="purple"
-							size="md"
-							className="w-100 mb-3"
-							onClick={handleBtnClick}
-							type="submit">
-							Calculate
-						</Buttons>
-					</Stack>
-				</Form>
-			</Row>
-		</Container>
+        `}
+			</style>
+
+			<Container className="pb-5 pt-md-4 px-0">
+				<Row className="d-flex align-items-center justify-content-center px-4 px-md-5">
+					<Form className={`rounded col col-lg-4 px-md-5 pt-4 pb-3 ${styles} box-shadow`}>
+						<Stack gap={3}>
+							<Form.Group controlId="lpoAmount">
+								<Form.Label>Total LPO Amount</Form.Label>
+								<Form.Control
+									type="text"
+									name="lpoAmount"
+									value={form.lpoAmount}
+									onChange={handleChange}
+									placeholder="N100,000"
+								/>
+							</Form.Group>
+
+							<Form.Group controlId="repaymentPlan">
+								<Form.Label>Repayment Plan</Form.Label>
+								<Form.Select
+									defaultValue="Select your repayment plan"
+									name="repaymentPlan"
+									value={form.repaymentPlan}
+									onChange={handleChange}
+									aria-label="Repayment Option"
+									className="">
+									<option value="Select your repayment plan" className="d-none">
+										Select your repayment plan
+									</option>
+									<option value="One-off">One-off</option>
+									<option value="Weekly">Weekly</option>
+									<option value="Monthly">Monthly</option>
+								</Form.Select>
+							</Form.Group>
+
+							<Form.Group controlId="loanTenure">
+								<Form.Label>Duration/Tenure (Loan)</Form.Label>
+								<Form.Select
+									aria-label="Repayment Option"
+									defaultValue="Select your repayment duration"
+									name="loanTenure"
+									value={form.loanTenure}
+									onChange={handleChange}>
+									<option value="Select your repayment duration" className="d-none">
+										Select your repayment duration
+									</option>
+									<option value="1">1 Month</option>
+									<option value="2">2 Months</option>
+									<option value="3">3 Months</option>
+									<option value="6">6 Months</option>
+								</Form.Select>
+							</Form.Group>
+
+							<Form.Group controlId="interestRate">
+								<Form.Label>Interest Rate</Form.Label>
+								<Form.Range name="interestRate" value={form.interestRate} onChange={handleChange} />
+							</Form.Group>
+
+							<Buttons
+								variant="purple"
+								size="md"
+								className="w-100 mb-3"
+								onClick={handleBtnClick}
+								type="submit">
+								Calculate
+							</Buttons>
+						</Stack>
+					</Form>
+				</Row>
+			</Container>
+		</>
 	);
 };
 
