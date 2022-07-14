@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Buttons } from "../components/index";
-import { Container, Row, Col, Form, Stack } from "react-bootstrap";
+import { Container, Row, Form, Stack } from "react-bootstrap";
 
 const LoanCalculator = ({ bgColor }) => {
 	const [form, setForm] = useState({
@@ -134,7 +134,7 @@ const LoanCalculator = ({ bgColor }) => {
 						</Form.Group>
 
 						<Buttons
-							style="purple"
+							variant="purple"
 							size="md"
 							className="w-100 mb-3"
 							onClick={handleBtnClick}

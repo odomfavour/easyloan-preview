@@ -21,10 +21,10 @@ const Header = () => {
 
 				<Col>
 					<Stack direction="horizontal" gap={3}>
-						<Buttons style="purple" className="w-75">
+						<Buttons variant="purple" className="w-75">
 							Register
 						</Buttons>
-						<Buttons style="outline-secondary" className="w-75">
+						<Buttons variant="outline-secondary" className="w-75">
 							Login
 						</Buttons>
 					</Stack>

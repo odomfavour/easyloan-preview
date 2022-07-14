@@ -62,6 +62,23 @@ code {
 .form-control::-ms-input-placeholder {
   color: #D0D0D0 !important;
 }
+.phone-input .input-group-text {
+  background-color: #fff !important;
+}
+.phone-input .form-control {
+  border-left: none !important;
+  padding-left: 0;
+}
+.pwd-toggle .input-group-text {
+  border-left: none !important;
+  background-color: #fff !important;
+  cursor: pointer;
+}
+
+/* Links */
+a:link{
+  text-decoration: none;
+}
 
 
 /* GLOBAL CSS RULES ENDS HERE  */
