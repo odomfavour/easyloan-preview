@@ -96,7 +96,7 @@ a:link {
 
 /* Mobile view (sm)*/
 @media (max-width: 575.98px) {
-	body, .form-control, .form-select, button{
+	.form-control, .form-select, button{
 		font-size: 0.8rem !important;
 	}
 }

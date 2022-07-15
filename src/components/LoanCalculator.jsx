@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Buttons } from "../components/index";
-import { Container, Row, Col, Form, Stack } from "react-bootstrap";
+import { Container, Row, Form, Stack } from "react-bootstrap";
 import EasyloanModal from "./easyloanmodal/EasyloanModal";
 
 const LoanCalculator = ({ styles }) => {
@@ -129,7 +129,7 @@ const LoanCalculator = ({ styles }) => {
 			repaymentPlan: repaymentPlan,
 		});
 
-    alert(Object.entries(loanOffer));
+    // alert(Object.entries(loanOffer));
 	}
 
 	return (
@@ -139,12 +139,11 @@ const LoanCalculator = ({ styles }) => {
           .box-shadow{
             box-shadow: 0px 4px 5px rgba(145, 36, 212, 0.03) !important;
           }
+          .fs-0{
+            font-size: 0.5rem;
+          }
 
           @media (max-width: 575.98px) {
-            .vstack .gap-3{
-              gap: 2rem !important;
-            }
-
             .form-label{
               margin-bottom: 0.8rem;
             }
@@ -160,7 +159,7 @@ const LoanCalculator = ({ styles }) => {
 			<Container className="pb-5 pt-md-4 px-0">
 				<Row className="d-flex align-items-center justify-content-center px-4 px-md-5">
 					<Form className={`rounded col col-lg-4 px-md-5 pt-4 pb-3 ${styles} box-shadow`}>
-						<Stack gap={3}>
+						<Stack>
 							<Form.Group controlId="totalLPO">
 								<Form.Label>Total LPO Amount</Form.Label>
 								<Form.Control
@@ -211,14 +210,14 @@ const LoanCalculator = ({ styles }) => {
 								<Form.Range name="interestRate" value={form.interestRate} onChange={handleChange} />
 							</Form.Group>
 
-							<p className="text-center">
+							<p className="text-center fs-0">
 								Please note that your terms are subjected to change after review by our Financiers
 							</p>
 
 							<Buttons
 								variant="purple"
 								size="md"
-								className="w-100 mb-3"
+								className="w-100 mb-3 py-2"
 								onClick={handleBtnClick}
 								type="submit">
 								Calculate

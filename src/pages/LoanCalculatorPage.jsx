@@ -24,6 +24,10 @@ const LoanCalculatorPage = () => {
             margin-top: 0;
           }
 
+          .form-spacing .vstack{
+            gap: 1rem;
+          }
+
           @media (max-width: 575.98px) {
             .title{
               font-size: 1.5rem;
@@ -32,6 +36,10 @@ const LoanCalculatorPage = () => {
 
             hr{
               width: 10em;
+            }
+
+            .form-spacing .vstack{
+              gap: 2rem;
             }
           }
         `}
@@ -46,7 +54,7 @@ const LoanCalculatorPage = () => {
 							</Col>
 						</Row>
 					</Container>
-					<LoanCalculator styles="bg-light-gray px-0" />
+					<LoanCalculator styles="bg-light-gray px-0 form-spacing" />
 				</Stack>
 			</PageWrapper>
 		</>
