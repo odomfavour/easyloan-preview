@@ -1,3 +1,4 @@
+/* GLOBAL CSS RULES STARTS HERE */
 @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
 :root{
@@ -22,13 +23,13 @@ body {
   margin: 0;
   font-family: 'GilmerRegular', sans-serif !important;
   background-color: var(--gray-light) !important;
+  color: #636262;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
 
 /* Acme font for headings, etc */
 .heading-font{
@@ -43,6 +44,44 @@ code {
 .bg-light-gray{
   background-color: var(--gray-light);
 }
+
+/* Forms */
+.form-label {
+  color: #121010;
+}
+*:focus {
+  box-shadow: none !important;
+  border-color: #ced4da !important;
+}
+.form-control::placeholder {
+  color: #D0D0D0 !important;
+}
+.form-control:-ms-input-placeholder {
+  color: #D0D0D0 !important;
+}
+.form-control::-ms-input-placeholder {
+  color: #D0D0D0 !important;
+}
+.phone-input .input-group-text {
+  background-color: #fff !important;
+}
+.phone-input .form-control {
+  border-left: none !important;
+  padding-left: 0;
+}
+.pwd-toggle .input-group-text {
+  border-left: none !important;
+  background-color: #fff !important;
+  cursor: pointer;
+}
+
+/* Links */
+a:link{
+  text-decoration: none;
+}
+
+
+/* GLOBAL CSS RULES ENDS HERE  */
 
 
 /* Footer Section Starts Here */

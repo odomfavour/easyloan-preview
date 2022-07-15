@@ -14,38 +14,16 @@ const Header = ({ other = "other" }) => {
 					<img src={logo} alt="" />
 				</Col>
 
-				{other && (
-					<>
-						<Col md={6}>
-							<Stack direction="horizontal" gap={4}>
-								<span>Home</span>
-								<span>About Us</span>
-								<span>How it works</span>
-								<span>Loan Calculator</span>
-								<span>Help</span>
-							</Stack>
-						</Col>
-
-						<Col>
-							<Stack direction="horizontal" gap={3}>
-								<Buttons style="purple" className="w-75">
-									Register
-								</Buttons>
-								<Buttons style="outline-secondary" className="w-75">
-									Login
-								</Buttons>
-							</Stack>
-						</Col>
-					</>
-				)}
-				{location.pathname === "/personal" && (
-					<Col md={2}>
-						<span>
-							{" "}
-							<img src={icon} alt="" />{" "}
-						</span>
-					</Col>
-				)}
+				<Col>
+					<Stack direction="horizontal" gap={3}>
+						<Buttons variant="purple" className="w-75">
+							Register
+						</Buttons>
+						<Buttons variant="outline-secondary" className="w-75">
+							Login
+						</Buttons>
+					</Stack>
+				</Col>
 			</Row>
 		</Container>
 	);

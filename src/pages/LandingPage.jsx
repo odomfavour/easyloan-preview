@@ -19,6 +19,8 @@ import getOffers from "../assets/get_offers.svg";
 import getProduct from "../assets/get_product.svg";
 import uploadIcon from "../assets/upload.svg";
 
+
+
 const LandingPage = () => {
 	const handleBtnClick = () => {};
 
@@ -40,7 +42,7 @@ const LandingPage = () => {
 								options to get your business to the next level.
 							</p>
 							<Link to="/register">
-								<Buttons style="purple" size="md" className="w-25 mb-3 heading-font" type="button">
+								<Buttons variant="purple" size="md" className="w-25 mb-3 heading-font" type="button">
 									Apply for Loan
 								</Buttons>
 							</Link>
@@ -173,7 +175,7 @@ const LandingPage = () => {
 								</Col>
 							</Row>
 							<Buttons
-								style="outline-purple"
+								variant="outline-purple"
 								size="md"
 								className="w-25 mb-3 heading-font"
 								onClick={handleBtnClick}
@@ -246,7 +248,7 @@ const LandingPage = () => {
 								</Accordion.Item>
 							</Accordion>
 							<Link to="/faqs" className="align-self-center">
-								<Buttons type="button" style="outline-purple">
+								<Buttons type="button" variant="outline-purple">
 									View more
 								</Buttons>
 							</Link>
