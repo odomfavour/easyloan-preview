@@ -140,7 +140,7 @@ const LoanCalculator = ({ bgColor }) => {
 						</Form.Group>
 
 						<Buttons
-							style="purple"
+							variant="purple"
 							size="md"
 							className="w-100 mb-3"
 							onClick={handleBtnClick}
