@@ -2,10 +2,10 @@ import React from "react";
 import { Header } from "../../components/index";
 import Footer from "../../components/Footer";
 
-const PageWrapper = ({ children }) => {
+const PageWrapper = ({ children, other }) => {
 	return (
 		<>
-			<Header />
+			<Header other={other} />
 			<section>{children}</section>
 			<Footer />
 		</>

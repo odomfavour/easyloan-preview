@@ -1,22 +1,17 @@
 import React from "react";
 import { Buttons } from "./index";
 import { Container, Row, Col, Stack } from "react-bootstrap";
-import logo from "../assets/EAZYLOAN.svg";
-const Header = () => {
+import logo from "../assets/Logo.svg";
+import icon from "../assets/icons.png";
+import { useLocation } from "react-router-dom";
+const Header = ({ other = "other" }) => {
+	let location = useLocation();
 	return (
-		<Container className="py-5 heading-font ">
+		<Container
+			className={`${location.pathname === "/" ? "py-5 heading-font" : "py-2 heading-font"}`}>
 			<Row className="d-flex align-items-center">
 				<Col>
 					<img src={logo} alt="" />
-				</Col>
-				<Col md={6}>
-					<Stack direction="horizontal" gap={4}>
-						<span>Home</span>
-						<span>About Us</span>
-						<span>How it works</span>
-						<span>Loan Calculator</span>
-						<span>Help</span>
-					</Stack>
 				</Col>
 
 				<Col>
