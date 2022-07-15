@@ -4,13 +4,10 @@ import { Container, Row, Form, Stack } from "react-bootstrap";
 
 const LoanCalculator = ({ styles }) => {
 	const [form, setForm] = useState({
-		lpoAmount: "",
-		productQty: "",
-		productValue: "",
-		interestRate: 10.5,
-		downPayment: "30%",
+		totalLPO: "",
 		repaymentPlan: "",
 		loanTenure: "",
+		interestRate: 10.5,
 	});
 
 	const [loanOffer, setLoanOffer] = useState({}); // result of the calculation to be displayed on the loan offer popup
@@ -30,27 +27,70 @@ const LoanCalculator = ({ styles }) => {
 	};
 
 	function calculateLoan() {
-		let {
-			lpoAmount: productAmount,
-			interestRate: interest,
-			downPayment,
-			repaymentPlan,
-			loanTenure,
-		} = form;
+		let { totalLPO, repaymentPlan, loanTenure, interestRate } = form;
+		totalLPO = Number(totalLPO);
+		loanTenure = Number(loanTenure.split(" ")[0]);
 
-		let totalLoanAmount,
-			downPaymentRate,
-			repaymentAmount,
+		let mgtFee,
+			totalLoanAmt,
+			loanApproved,
+			downPayment,
+			monthlyInterestRate,
+			monthlyInterestValue,
 			monthlyPayment,
 			weeklyPayment,
-			oneOffPayment;
+			repaymentAmount;
 
-		totalLoanAmount = (Number(interest) / 100) * Number(productAmount) + Number(productAmount);
+		// MANAGEMENT FEE
+		// if LPO amount is less than 1,000,000, MF = 10% of LPO
+		// if LPO amount is >= 1,000,000 and < 10,000,000, MF = 5%
+		// if LPO amount is >= 10,000,000 MF = 500,000
+		if (totalLPO < 1000000) {
+			mgtFee = (10 / 100) * totalLPO;
+		} else if (totalLPO >= 1000000 && totalLPO < 10000000) {
+			mgtFee = (5 / 100) * totalLPO;
+		} else if (totalLPO >= 10000000) {
+			mgtFee = 500000;
+		}
 
-		downPaymentRate = Number(downPayment.replace("%", ""));
-		downPayment = (downPaymentRate / 100) * Number(productAmount);
+		// Total loan amount (TLA) = LPO Amount + Mgt Fee
+		totalLoanAmt = totalLPO + mgtFee;
 
-		monthlyPayment = (totalLoanAmount - downPayment) / Number(loanTenure.split(" ")[0]);
+		// Loan approved (LA) = 70% TLA
+		loanApproved = (70 / 100) * totalLoanAmt;
+
+		// Down payment = TLA - LA
+		downPayment = totalLoanAmt - loanApproved;
+
+		// Interest rate per month %
+		// 10.5% = 1.75% per month
+		// 12% = 2% per month
+		// 18% = 3% per month
+		switch (interestRate) {
+			case 10.5:
+				monthlyInterestRate = 1.75;
+				break;
+			case 12:
+				monthlyInterestRate = 2;
+				break;
+			case 18:
+				monthlyInterestRate = 3;
+				break;
+
+			default:
+				break;
+		}
+
+		// Interest per month in Naira
+		// (Interest rate/100) * Loan Approved
+		monthlyInterestValue = (monthlyInterestRate / 100) * loanApproved;
+
+		// Monthly repayment
+		// = (LA/Loan tenure) + Interest per month in Naira
+		monthlyPayment = loanApproved / loanTenure + monthlyInterestValue;
+
+		// Weekly repayment
+		// = Monthly repayment / 2
 		weeklyPayment = monthlyPayment / 4;
 
 		switch (repaymentPlan) {
@@ -63,7 +103,7 @@ const LoanCalculator = ({ styles }) => {
 				break;
 
 			case "One-off":
-				repaymentAmount = oneOffPayment;
+				repaymentAmount = loanApproved;
 				break;
 
 			default:
@@ -72,19 +112,18 @@ const LoanCalculator = ({ styles }) => {
 
 		setLoanOffer({
 			...loanOffer,
-			productPrice: productAmount,
-			interest: interest,
-			downPayment: downPayment,
-			repaymentPlan: repaymentPlan,
+			totalLPO: totalLPO,
+			mgtFee: mgtFee,
+			totalLoanAmt: totalLoanAmt,
 			loanTenure: loanTenure,
-			totalLoanAmount: totalLoanAmount,
-			repaymentAmount: repaymentAmount,
+			interest: monthlyInterestRate,
+			loanApproved: loanApproved,
+			downPayment: downPayment,
+			monthlyPayment: repaymentAmount,
+			repaymentPlan: repaymentPlan,
 		});
-
-		// console.log(loanOffer);
 	}
 
-	// style={{ boxShadow: "" }}
 	return (
 		<>
 			<style type="text/css">
@@ -114,12 +153,12 @@ const LoanCalculator = ({ styles }) => {
 				<Row className="d-flex align-items-center justify-content-center px-4 px-md-5">
 					<Form className={`rounded col col-lg-4 px-md-5 pt-4 pb-3 ${styles} box-shadow`}>
 						<Stack gap={3}>
-							<Form.Group controlId="lpoAmount">
+							<Form.Group controlId="totalLPO">
 								<Form.Label>Total LPO Amount</Form.Label>
 								<Form.Control
 									type="text"
-									name="lpoAmount"
-									value={form.lpoAmount}
+									name="totalLPO"
+									value={form.totalLPO}
 									onChange={handleChange}
 									placeholder="N100,000"
 								/>
@@ -128,7 +167,6 @@ const LoanCalculator = ({ styles }) => {
 							<Form.Group controlId="repaymentPlan">
 								<Form.Label>Repayment Plan</Form.Label>
 								<Form.Select
-									defaultValue="Select your repayment plan"
 									name="repaymentPlan"
 									value={form.repaymentPlan}
 									onChange={handleChange}
@@ -147,7 +185,6 @@ const LoanCalculator = ({ styles }) => {
 								<Form.Label>Duration/Tenure (Loan)</Form.Label>
 								<Form.Select
 									aria-label="Repayment Option"
-									defaultValue="Select your repayment duration"
 									name="loanTenure"
 									value={form.loanTenure}
 									onChange={handleChange}>
@@ -165,6 +202,10 @@ const LoanCalculator = ({ styles }) => {
 								<Form.Label>Interest Rate</Form.Label>
 								<Form.Range name="interestRate" value={form.interestRate} onChange={handleChange} />
 							</Form.Group>
+
+							<p className="text-center">
+								Please note that your terms are subjected to change after review by our Financiers
+							</p>
 
 							<Buttons
 								variant="purple"
