@@ -1,5 +1,6 @@
 /* GLOBAL CSS RULES STARTS HERE */
 @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
 
 :root{
   --purple: #AE2BFF;
@@ -31,12 +32,26 @@ code {
     monospace;
 }
 
+/* Fonts */
 /* Acme font for headings, etc */
 .heading-font{
   font-family: 'Acme', sans-serif;
   color: #3A0E55;
 }
+.heading{
+  color: #3A0E55;
+}
+/* Inter font */
+.inter-font{
+  font-family: 'Inter', sans-serif;
+}
 
+/* Text */
+.text-justify {
+  text-align: justify;
+}
+
+/* Colors */
 /* gray background color */
 .bg-gray{
   background-color: var(--gray);
