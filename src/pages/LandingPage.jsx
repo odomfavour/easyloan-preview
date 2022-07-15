@@ -48,17 +48,24 @@ const LandingPage = () => {
             width: 2.5rem;
           }
           .btn-md{
-            width: 224px;
+            width: 224px !important;
           }
-          .apply-btn{
+          .btn{
             font-family: 'Acme', sans-serif;
           }
           .apply-btn a{
             color: #fdfdfd;
           }
+          .hiw-btn a{
+            color: var(--purple);
+          }
           .heading{
             font-size: 3rem;
             line-height: 4.5rem;
+          }
+          .heading-2{
+            font-size: 2.5rem;
+            line-height: 3.75rem;
           }
           .hero-txt{
             font-size: 1.25rem;
@@ -102,11 +109,11 @@ const LandingPage = () => {
             body {
               background-color: #fff !important;
             }
-            .heading{
+            .heading, .heading-2{
               font-size: 1.7rem;
               line-height: 2.6rem;
             }
-            .apply-btn{
+            .btn{
               font-family: 'Gilmer', sans-serif;
               font-weight: 700;
             }
@@ -120,7 +127,7 @@ const LandingPage = () => {
 				<Container>
 					<Row className="pt-md-5 pb-5 px-4 px-md-0 flex-column-reverse flex-md-row gap-md-5">
 						<Col>
-							<Stack gap={2}>
+							<Stack gap={3}>
 								<p className="mb-3 mb-md-0">
 									Let’s unlock unlimited business opportunities{" "}
 									<i className="inter-font txt-purple">with</i> you
@@ -152,7 +159,7 @@ const LandingPage = () => {
 				<Container>
 					<Row className="py-5 px-3 px-md-0">
 						<Col className="text-center">
-							<Stack gap={4}>
+							<Stack className=" gap-4 gap-md-5">
 								<div>
 									<p className="txt-hiw mb-0">Taking a business loan can be easy and quick!</p>
 									<h2 className="fw-bold heading">How It Works</h2>
@@ -211,11 +218,12 @@ const LandingPage = () => {
 										</Col>
 									</Row>
 								</Container>
-								<Link to="/" className="align-self-center w-100">
-									<Buttons type="button" variant="outline-purple" className="fw-bold px-4 py-2">
-										Read more
-									</Buttons>
-								</Link>
+								<Buttons
+									type="button"
+									variant="outline-purple"
+									className="fw-bold px-4 py-2 hiw-btn align-self-center">
+									<Link to="/">Read more</Link>
+								</Buttons>
 							</Stack>
 						</Col>
 					</Row>
@@ -260,7 +268,7 @@ const LandingPage = () => {
 				</Stack>
 
 				<Container>
-					<Row className="flex-column-reverse flex-md-row align-items-center justify-content-center py-5 px-3 px-md-0 gap-5">
+					<Row className="flex-column-reverse flex-md-row align-items-center justify-content-center py-5 px-3 gap-5">
 						<Stack direction="horizontal" gap={4} className="d-md-none justify-content-center">
 							<a href="">
 								<Image src={googlePlay} alt="Download From Google Play"></Image>
@@ -269,12 +277,12 @@ const LandingPage = () => {
 								<Image src={appStore} alt="Download From App Store"></Image>
 							</a>
 						</Stack>
-						<Col className="d-flex justify-content-center w-50 w-md-100 pt-3 pb-4 pt-md-0">
+						<Col xs={6} md={4} className="d-flex justify-content-center pt-3 pb-4 pt-md-0">
 							<Image src={phone} alt="hero image" className="img-fluid" />
 						</Col>
-						<Col>
+						<Col md={6}>
 							<Stack gap={3}>
-								<h2 className="fw-bold heading">
+								<h2 className="fw-bold heading-2">
 									Download the EazyLoan App, See more interesting features
 								</h2>
 								<p>
@@ -311,27 +319,23 @@ const LandingPage = () => {
 									</Accordion.Item>
 									<Accordion.Item eventKey="1">
 										<Accordion.Header>Can I get multiple loans?</Accordion.Header>
-										<Accordion.Body>Yes, you can apply for multiple loans.</Accordion.Body>
+										<Accordion.Body></Accordion.Body>
 									</Accordion.Item>
 									<Accordion.Item eventKey="2">
 										<Accordion.Header>
 											Will I be able to get a loan on behalf of someone?
 										</Accordion.Header>
-										<Accordion.Body>
-											No, you cannot apply for a loan on behalf of someone.
-										</Accordion.Body>
+										<Accordion.Body></Accordion.Body>
 									</Accordion.Item>
 									<Accordion.Item eventKey="3">
 										<Accordion.Header>
 											What are the minimum requirements to be eligible for a loan?
 										</Accordion.Header>
-										<Accordion.Body>
-											You must be at least 18 years old and have a valid ID.
-										</Accordion.Body>
+										<Accordion.Body></Accordion.Body>
 									</Accordion.Item>
 								</Accordion>
 								<Link to="/faqs" className="align-self-center">
-									<Buttons type="button" variant="purple">
+									<Buttons type="button" variant="outline-purple">
 										View more
 									</Buttons>
 								</Link>
