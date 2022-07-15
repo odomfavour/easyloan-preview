@@ -4,7 +4,7 @@ import { Container, Row, Col, Stack } from "react-bootstrap";
 import logo from "../assets/EAZYLOAN.svg";
 const Header = () => {
 	return (
-		<Container className="py-5 heading-font ">
+		<Container className="py-5 ">
 			<Row className="d-flex align-items-center">
 				<Col>
 					<img src={logo} alt="" />

@@ -2,41 +2,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
 
-:root{
-  --purple: #AE2BFF;
-  --gray: rgba(145, 36, 212, 0.03);
-  --gray-light: #FDFDFD;
+:root {
+	--purple: #ae2bff;
+	--gray: rgba(145, 36, 212, 0.03);
+	--gray-light: #fdfdfd;
 }
 
 @font-face {
-  font-family: 'GilmerRegular';
-  src: url('./fonts/Gilmer_Font/GilmerRegular.eot');
-  src: url('./fonts/Gilmer_Font/GilmerRegular.eot?#iefix') format('embedded-opentype'),
-       url('./fonts/Gilmer_Font/GilmerRegular.svg#GilmerRegular') format('svg'),
-       url('./fonts/Gilmer_Font/GilmerRegular.ttf') format('truetype'),
-       url('./fonts/Gilmer_Font/GilmerRegular.woff') format('woff'),
-       url('./fonts/Gilmer_Font/GilmerRegular.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
+	font-family: "GilmerRegular";
+	src: url("./fonts/Gilmer_Font/GilmerRegular.eot");
+	src: url("./fonts/Gilmer_Font/GilmerRegular.eot?#iefix") format("embedded-opentype"),
+		url("./fonts/Gilmer_Font/GilmerRegular.svg#GilmerRegular") format("svg"),
+		url("./fonts/Gilmer_Font/GilmerRegular.ttf") format("truetype"),
+		url("./fonts/Gilmer_Font/GilmerRegular.woff") format("woff"),
+		url("./fonts/Gilmer_Font/GilmerRegular.woff2") format("woff2");
+	font-weight: normal;
+	font-style: normal;
 }
 
 body {
-  margin: 0;
-  font-family: 'GilmerRegular', sans-serif !important;
-  background-color: var(--gray-light) !important;
-  color: #636262;
+	margin: 0;
+	font-family: "GilmerRegular", sans-serif !important;
+	/* background-color: var(--gray-light) !important; */
+	color: #636262;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 /* Fonts */
 /* Acme font for headings, etc */
-.heading-font{
-  font-family: 'Acme', sans-serif;
-  color: #3A0E55;
+.heading-font {
+	/* font-family: "Acme", sans-serif; */
+	color: #3a0e55;
 }
 .heading{
   color: #3A0E55;
@@ -53,148 +52,153 @@ code {
 
 /* Colors */
 /* gray background color */
-.bg-gray{
-  background-color: var(--gray);
+.bg-gray {
+	background-color: var(--gray);
 }
-.bg-light-gray{
-  background-color: var(--gray-light);
+.bg-light-gray {
+	background-color: var(--gray-light);
 }
 
 /* Forms */
 .form-label {
-  color: #121010;
+	color: #121010;
 }
 *:focus {
-  box-shadow: none !important;
-  border-color: #ced4da !important;
+	box-shadow: none !important;
+	border-color: #ced4da !important;
 }
 .form-control::placeholder {
-  color: #D0D0D0 !important;
+	color: #d0d0d0 !important;
 }
 .form-control:-ms-input-placeholder {
-  color: #D0D0D0 !important;
+	color: #d0d0d0 !important;
 }
 .form-control::-ms-input-placeholder {
-  color: #D0D0D0 !important;
+	color: #d0d0d0 !important;
 }
 .phone-input .input-group-text {
-  background-color: #fff !important;
+	background-color: #fff !important;
 }
 .phone-input .form-control {
-  border-left: none !important;
-  padding-left: 0;
+	border-left: none !important;
+	padding-left: 0;
 }
 .pwd-toggle .input-group-text {
-  border-left: none !important;
-  background-color: #fff !important;
-  cursor: pointer;
+	border-left: none !important;
+	background-color: #fff !important;
+	cursor: pointer;
 }
 
 /* Links */
-a:link{
-  text-decoration: none;
+a:link {
+	text-decoration: none;
 }
 
+/* Mobile view (sm)*/
+@media (max-width: 575.98px) {
+	body, .form-control, .form-select, button{
+		font-size: 0.8rem !important;
+	}
+}
 
 /* GLOBAL CSS RULES ENDS HERE  */
 
 
 /* Footer Section Starts Here */
-.footer-font{
-  font-family: 'Acme', sans-serif;
+.footer-font {
+	font-family: "Acme", sans-serif;
 }
 
 .footer-bg {
-  background-color: #AE2BFF;
-  left: 0;
-  bottom: 0;
-  right: 0;
+	background-color: #ae2bff;
+	left: 0;
+	bottom: 0;
+	right: 0;
 }
 
 .footer-text-color {
-  color:  #FDFDFD;
+	color: #fdfdfd;
 }
 
 .eazy-footer {
-  font-family: 'Gilmer Regular';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 21px;
+	font-family: "Gilmer Regular";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 21px;
 }
 
 .footer-icon-size {
-  height: 25px;
-  width: 25px;
+	height: 25px;
+	width: 25px;
 }
 
 .footer-icon-margin {
-  margin: 0 30px;
+	margin: 0 30px;
 }
 .vertical-padding-icon {
-  padding: 20px 0;
+	padding: 20px 0;
 }
 
 .footer-vertical-padding {
-  padding: 80px 0;
+	padding: 80px 0;
 }
 
 .footer-bottom-padding {
-  padding-bottom: 30px;
+	padding-bottom: 30px;
 }
 
 .footer-cirle {
-  height: 24px;
-  width: 24px;
-  background-color: #FDFDFD;
-  border-radius: 50%;
-  padding-left: 1px;
-  position: relative;
-  left: 3px;
-  top: 3px;
-  cursor: pointer;
+	height: 24px;
+	width: 24px;
+	background-color: #fdfdfd;
+	border-radius: 50%;
+	padding-left: 1px;
+	position: relative;
+	left: 3px;
+	top: 3px;
+	cursor: pointer;
 }
 
 .footer-cirle2 {
-  height: 30px;
-  width: 30px;
-  background-color: #B1B0B0;
-  border-radius: 50%;
-  margin-left: 30px;
-  margin-bottom: 10px;
+	height: 30px;
+	width: 30px;
+	background-color: #b1b0b0;
+	border-radius: 50%;
+	margin-left: 30px;
+	margin-bottom: 10px;
 }
 
 .footer-margin {
-  margin-left: 50px;
+	margin-left: 50px;
 }
-
 
 /* footer media-querry */
-@media (max-width:780px){
-  .footer-margin {
-    margin-left: 20px;
-  }
+@media (max-width: 780px) {
+	.footer-margin {
+		margin-left: 20px;
+	}
 
-  .eazy-footer {
-    font-size: 12px;
-  }
+	.eazy-footer {
+		font-size: 12px;
+	}
 
-  .footer-cirle2 {
-    margin-left: 20px; 
-  }
+	.footer-cirle2 {
+		margin-left: 20px;
+	}
 
-  .footer-icon-margin {
-    margin: 0 20px;
-  }
+	.footer-icon-margin {
+		margin: 0 20px;
+	}
 
-  .footer-icon-size {
-    height: 20px;
-    width: 20px;
-  }
+	.footer-icon-size {
+		height: 20px;
+		width: 20px;
+	}
 }
 
-@media (max-width:450px){
-  .footer-margin {
-    margin-left: 10;
-  }
+@media (max-width: 450px) {
+	.footer-margin {
+		margin-left: 10;
+	}
 }
