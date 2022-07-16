@@ -9,17 +9,20 @@ const Buttons = ({ children, variant, className, onClick, type }) => {
         .btn-purple {
           background-color: var(--purple);
           color: #fdfdfd;
+          border-radius: 8px;
         }
         .btn-outline-purple {
           border: 1px solid var(--purple);
           color: var(--purple);
+          border-radius: 8px;
         }
         .btn-gray{
           background-color: #E5E5E5;
+          border-radius: 8px;
         }
       `}
 			</style>
-			<Button variant={variant} size="md" className={className} onClick={onClick} type={type}>
+			<Button variant={variant} className={className} onClick={onClick} type={type}>
 				{children}
 			</Button>
 		</>
