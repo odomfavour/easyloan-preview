@@ -19,7 +19,6 @@ const LoanCalculator = ({ styles }) => {
 	let rangeValues = [null, null, 10.5, 12, 18];
 	const handleInterestChange = (e) => {
 		setInterestRate(rangeValues[e.target.value]);
-		console.log(interestRate);
 	};
 
 	const handleChange = (e) => {
@@ -29,8 +28,6 @@ const LoanCalculator = ({ styles }) => {
 			...form,
 			[e.target.name]: value,
 		});
-
-		console.log(Object.entries(form));
 	};
 
 	const handleBtnClick = (e) => {
@@ -267,7 +264,7 @@ const LoanCalculator = ({ styles }) => {
 								type="submit">
 								Calculate
 							</Buttons>
-							<EasyloanModal btnsetter={toggleModal} iterateBtn={iterator} />
+							<EasyloanModal btnsetter={toggleModal} iterateBtn={iterator} loanOffer={loanOffer} />
 						</Stack>
 					</Form>
 				</Row>
