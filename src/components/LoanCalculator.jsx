@@ -1,20 +1,26 @@
 import React, { useState } from "react";
 import { Buttons } from "../components/index";
-import { Container, Row, Form, Stack } from "react-bootstrap";
+import { Container, Col, Row, Form, Stack } from "react-bootstrap";
 import EasyloanModal from "./easyloanmodal/EasyloanModal";
 
 const LoanCalculator = ({ styles }) => {
-	const[toggleModal, setToggleModal] = useState(false)
-	const[iterator, setIterator] = useState(false)
+	const [toggleModal, setToggleModal] = useState(false);
+	const [iterator, setIterator] = useState(false);
 
 	const [form, setForm] = useState({
 		totalLPO: "",
 		repaymentPlan: "",
 		loanTenure: "",
-		interestRate: 10.5,
 	});
+	const [interestRate, setInterestRate] = useState(10.5);
 
 	const [loanOffer, setLoanOffer] = useState({}); // result of the calculation to be displayed on the loan offer popup
+
+	let rangeValues = [null, null, 10.5, 12, 18];
+	const handleInterestChange = (e) => {
+		setInterestRate(rangeValues[e.target.value]);
+		console.log(interestRate);
+	};
 
 	const handleChange = (e) => {
 		let value = e.target.value;
@@ -23,17 +29,19 @@ const LoanCalculator = ({ styles }) => {
 			...form,
 			[e.target.name]: value,
 		});
+
+		console.log(Object.entries(form));
 	};
 
 	const handleBtnClick = (e) => {
 		e.preventDefault();
 		calculateLoan();
-		setToggleModal(true)
-		setIterator(!iterator)
+		setToggleModal(true);
+		setIterator(!iterator);
 	};
 
 	function calculateLoan() {
-		let { totalLPO, repaymentPlan, loanTenure, interestRate } = form;
+		let { totalLPO, repaymentPlan, loanTenure } = form;
 		totalLPO = Number(totalLPO);
 		loanTenure = Number(loanTenure.split(" ")[0]);
 
@@ -50,7 +58,7 @@ const LoanCalculator = ({ styles }) => {
 		// MANAGEMENT FEE
 		// if LPO amount is less than 1,000,000, MF = 10% of LPO
 		// if LPO amount is >= 1,000,000 and < 10,000,000, MF = 5%
-		// if LPO amount is >= 10,000,000 MF = 500,000
+		// if LPO amount is >= 10,000,000, MF = 500,000
 		if (totalLPO < 1000000) {
 			mgtFee = (10 / 100) * totalLPO;
 		} else if (totalLPO >= 1000000 && totalLPO < 10000000) {
@@ -116,6 +124,10 @@ const LoanCalculator = ({ styles }) => {
 				break;
 		}
 
+		if (repaymentPlan === "Monthly" && loanTenure === 1) {
+			repaymentPlan = "One-off";
+		}
+
 		setLoanOffer({
 			...loanOffer,
 			totalLPO: totalLPO,
@@ -128,8 +140,6 @@ const LoanCalculator = ({ styles }) => {
 			monthlyPayment: repaymentAmount,
 			repaymentPlan: repaymentPlan,
 		});
-
-    // alert(Object.entries(loanOffer));
 	}
 
 	return (
@@ -143,6 +153,27 @@ const LoanCalculator = ({ styles }) => {
             font-size: 0.5rem;
           }
 
+          // Input Range
+          .form-range{}
+
+          .form-range::-webkit-slider-thumb, .form-range::-webkit-slider-thumb:active {
+            background-color: var(--purple);
+          }
+
+          .form-range::-webkit-slider-runnable-track {
+            background-color: #D9D9D9;
+          }
+
+          .form-range::-moz-range-thumb {
+            background-color: var(--purple);
+          }
+
+          .form-range::-moz-range-thumb:active {
+            background-color: var(--purple);
+          }
+
+
+          // MOBILE VIEW
           @media (max-width: 575.98px) {
             .form-label{
               margin-bottom: 0.8rem;
@@ -207,7 +238,21 @@ const LoanCalculator = ({ styles }) => {
 
 							<Form.Group controlId="interestRate">
 								<Form.Label>Interest Rate</Form.Label>
-								<Form.Range name="interestRate" value={form.interestRate} onChange={handleChange} />
+								<Form.Range
+									name="interestRate"
+									min={0}
+									max={4}
+									step={1}
+									onChange={handleInterestChange}
+								/>
+								<Container className="d-grid text-end ps-5 pe-3" style={{ fontSize: "8px" }}>
+									<Row>
+										<Col className="p-0"></Col>
+										<Col className="p-0 ">10.5%</Col>
+										<Col className="p-0">12%</Col>
+										<Col className="p-0">18%</Col>
+									</Row>
+								</Container>
 							</Form.Group>
 
 							<p className="text-center fs-0">
@@ -222,7 +267,7 @@ const LoanCalculator = ({ styles }) => {
 								type="submit">
 								Calculate
 							</Buttons>
-              <EasyloanModal btnsetter={toggleModal} iterateBtn={iterator}/>
+							<EasyloanModal btnsetter={toggleModal} iterateBtn={iterator} />
 						</Stack>
 					</Form>
 				</Row>
