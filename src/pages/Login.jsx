@@ -31,7 +31,9 @@ const Login = () => {
 
     // toggle password visibility
     const [passwordType, setPasswordType] = useState("password");
+    // eslint-disable-next-line no-unused-vars
     const [passwordInput, setPasswordInput] = useState("");
+    // eslint-disable-next-line no-unused-vars
     const handlePasswordChange =(evnt)=>{
         setPasswordInput(evnt.target.value);
     }
@@ -113,7 +115,7 @@ const Login = () => {
 
 									<Stack className="heading-font " gap={2}>
 										<Buttons
-											style="purple"
+											variant="purple"
 											size="md"
 											className="w-100"
 											onClick={handleBtnClick}
@@ -122,7 +124,7 @@ const Login = () => {
 										</Buttons>
 										<p className="text-center m-0">Or</p>
 										<Buttons
-											style="secondary"
+											variant="secondary"
 											size="md"
 											className="w-100 d-flex align-items-center justify-content-center "
 											onClick={handleBtnClick}
