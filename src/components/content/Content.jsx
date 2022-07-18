@@ -10,7 +10,7 @@ const Content = ({imgs, title, sub, btnOne, btnTwo, contStart}) => {
      {
         contStart === 'left' && (
             <Row className='py-3'>
-                <Col>
+                <Col className='d-flex justify-content-center justify-content-md-end'>
                     <Image src={imgs}/>
                 </Col>
                 <Col className='d-flex flex-column justify-content-center'>
@@ -32,8 +32,11 @@ const Content = ({imgs, title, sub, btnOne, btnTwo, contStart}) => {
             </Row>)}
             
            { contStart === 'right' && (
-                <Row className='py-3'>
-                    <Col className='d-flex flex-column justify-content-center'>
+                <Row className='py-3 flex-md-row-reverse'>
+                    <Col className='d-flex justify-content-center justify-content-md-end'>
+                        <Image src={imgs}/>
+                    </Col>
+                    <Col className='d-flex  flex-column justify-content-center'>
                         <h1 className="heading-font" style={{ fontSize: "3rem" }}>
                             {title}
                         </h1>
@@ -49,9 +52,7 @@ const Content = ({imgs, title, sub, btnOne, btnTwo, contStart}) => {
                             </Buttons>)}
                         </Stack>
                     </Col>
-                    <Col className='d-flex justify-content-end'>
-                        <Image src={imgs}/>
-                    </Col>
+                    
                 </Row>
 
             )}

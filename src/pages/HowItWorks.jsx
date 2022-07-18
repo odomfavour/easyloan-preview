@@ -15,7 +15,7 @@ import HIWSession4 from '../assets/HIWSession4.svg'
 const HowItWorks = () => {
   return (
     <PageWrapper>
-        <Container>
+        <Container className='px-4 px-md-0'>
             <div className='pt-5'>
                 <h1 className="heading-font" style={{ fontSize: "3rem" }}>
                     How It Works
@@ -23,11 +23,11 @@ const HowItWorks = () => {
                 <hr className='btn-purple' style={{'height': '1px', 'width':'15%',}} />
             </div>
             <div>
-                <Image src={howToUse} alt='how to use' className='pt-3 w-100'/>
+                <Image src={howToUse} alt='how to use' className='  pt-3 w-100'/>
             </div>
-            <Row className='py-5'>
+            <Row className='py-5 w-100 w-md-50'>
                 <Col className='d-flex flex-column justify-content-center align-items-center'>
-                    <h1 className="heading-font w-50 text-center" style={{ fontSize: "3rem" }}>
+                    <h1 className="heading-font px-0  text-center" style={{ fontSize: "3rem" }}>
                         Get your products
                         to your store in 5 easy steps
                     </h1>
