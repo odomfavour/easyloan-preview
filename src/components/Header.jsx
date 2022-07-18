@@ -2,7 +2,7 @@ import React from "react";
 import { Buttons } from "./index";
 import { Container, Row, Col, Stack } from "react-bootstrap";
 import logo from "../assets/Logo.svg";
-import icon from "../assets/icons.png";
+// import icon from "../assets/icons.png";
 import { useLocation } from "react-router-dom";
 const Header = ({ other = "other" }) => {
 	let location = useLocation();
