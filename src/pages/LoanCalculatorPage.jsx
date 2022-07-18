@@ -1,31 +1,63 @@
 import React from "react";
-import { Container, Col, Row } from "react-bootstrap";
+import { Container, Col, Row, Stack } from "react-bootstrap";
 import { LoanCalculator } from "../components/index";
 import PageWrapper from "../layouts/page_wrapper/PageWrapper";
 
 const LoanCalculatorPage = () => {
 	return (
-		<PageWrapper>
-			<Container className="pt-4">
-				<Row className="d-flex ">
-					<Col xs={4}>
-						<h1 className="heading-font " style={{ lineHeight: "3rem" }}>
-							Loan Calculator
-						</h1>
-						<hr
-							style={{
-								color: "var(--purple)",
-								backgroundColor: "var(--purple)",
-								height: "2px",
-								width: "12em",
-								marginTop: "0",
-							}}
-						/>
-					</Col>
-				</Row>
-			</Container>
-			<LoanCalculator bgColor="bg-gray" />
-		</PageWrapper>
+		<>
+			<style type="text/css">
+				{`
+          .content-wrapper{
+            background-color: #fff;
+          }
+
+          .title{
+            line-height: 3rem;
+          }
+
+          hr{
+            color: var(--purple);
+            background-color: var(--purple);
+            height: 2px;
+            width: 9em;
+            margin-top: 0;
+          }
+
+          .form-spacing .vstack{
+            gap: 1rem;
+          }
+
+          @media (max-width: 575.98px) {
+            .title{
+              font-size: 1.5rem;
+              line-height: 2rem;
+            }
+
+            hr{
+              width: 10em;
+            }
+
+            .form-spacing .vstack{
+              gap: 2rem;
+            }
+          }
+        `}
+			</style>
+			<PageWrapper>
+				<Stack className="content-wrapper">
+					<Container className="">
+						<Row className="d-flex ">
+							<Col className="w-5">
+								<h1 className="heading-font title">Loan Calculator</h1>
+								<hr />
+							</Col>
+						</Row>
+					</Container>
+					<LoanCalculator styles="bg-light-gray px-0 form-spacing" />
+				</Stack>
+			</PageWrapper>
+		</>
 	);
 };
 

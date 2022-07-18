@@ -2,9 +2,10 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import "./index.css";
 
-import { LandingPage, LoanCalculatorPage, Faqs } from "./pages/Index";
 import UserDashboard from "./pages/UserDashboard";
 import UserHome from "./components/UserHome";
+import { LandingPage, LoanCalculatorPage, Faqs, Register, Login } from "./pages/Index";
+
 
 function App() {
 	return (
@@ -15,6 +16,8 @@ function App() {
 			<Route path="/dashboard" element={<UserDashboard />} >
 				<Route path="/dashboard/user" element={<UserHome />} />
         	</Route>
+			<Route path="/register" element={<Register />} />
+			<Route path="/login" element={<Login />} />
 		</Routes>
 	);
 }
