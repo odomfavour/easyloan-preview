@@ -2,8 +2,8 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import "./index.css";
 
-import UserDashboard from "./pages/UserDashboard";
-import UserHome from "./components/UserHome";
+import UserDashboard from "./components/UserDashboard";
+import UserHome from "./pages/UserHome";
 import { LandingPage, LoanCalculatorPage, Faqs, Register, Login } from "./pages/Index";
 
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import SearchBar from './SearchBar';
-import UserHomeContent from "./UserHomeContent"
+import SearchBar from '../components/SearchBar';
+import UserHomeContent from "../components/UserHomeContent"
 
 const UserHome = () => {
   return (
