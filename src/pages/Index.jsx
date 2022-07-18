@@ -3,5 +3,5 @@ import LoanCalculatorPage from "./LoanCalculatorPage";
 import Faqs from "./Faqs";
 import Register from "./Register";
 import Login from "./Login";
-
-export { LandingPage, LoanCalculatorPage, Faqs, Register, Login };
+import PersonalDetails from "./PersonalDetails";
+export { LandingPage, LoanCalculatorPage, Faqs, Register, Login, PersonalDetails };
