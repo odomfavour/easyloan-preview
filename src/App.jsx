@@ -17,6 +17,7 @@ function App() {
 				<Route path="/dashboard/user" element={<UserHome />} />
 			</Route>
 			<Route path="/register" element={<Register />} />
+			<Route path="/verify" element={<VerifyEmail />} />
 			<Route path="/login" element={<Login />} />
 			<Route path="/how" element={<HowItWorks />} />
 		</Routes>
