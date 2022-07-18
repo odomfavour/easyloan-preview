@@ -79,7 +79,7 @@ const Faqs = () => {
 			</style>
 			<PageWrapper>
 				<Stack className="m-4 mx-lg-5 px-lg-5 pt-2">
-					<Container className="m-0">
+					<Container className="m-0 mx-lg-5">
 						<Row className="d-flex ">
 							<Col className="w-5 p-0">
 								<h1 className="heading fw-bold title">Frequently Asked Question</h1>
@@ -87,7 +87,7 @@ const Faqs = () => {
 							</Col>
 						</Row>
 					</Container>
-					<Accordion defaultActiveKey="0" flush>
+					<Accordion defaultActiveKey="0" flush className="mx-lg-5">
 						<Accordion.Item eventKey="0">
 							<Accordion.Header>How do I apply for a loan?</Accordion.Header>
 							<Accordion.Body>
