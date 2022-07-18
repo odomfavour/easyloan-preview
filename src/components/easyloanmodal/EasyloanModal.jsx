@@ -1,9 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Buttons from "../Buttons";
-import * as AiIcons from "react-icons/ai";
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 
 const EasyloanModal = ({ btnsetter, iterateBtn, loanOffer }) => {
 	const [show, setShow] = useState(false);
@@ -13,6 +10,7 @@ const EasyloanModal = ({ btnsetter, iterateBtn, loanOffer }) => {
 	}, [iterateBtn]);
 
 	const handleClose = () => setShow(false);
+	// eslint-disable-next-line no-unused-vars
 	const handleShow = () => setShow(true);
 
 	return (

@@ -9,6 +9,7 @@ import {
 	LoanCalculatorPage,
 	Faqs,
 	Register,
+	VerifyEmail,
 	Login,
 	PersonalDetails,
 } from "./pages/Index";
@@ -23,6 +24,7 @@ function App() {
 				<Route path="/dashboard/user" element={<UserHome />} />
 			</Route>
 			<Route path="/register" element={<Register />} />
+			<Route path="/verify" element={<VerifyEmail />} />
 			<Route path="/login" element={<Login />} />
 			<Route path="/personal" element={<PersonalDetails />} />
 		</Routes>
