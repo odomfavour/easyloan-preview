@@ -1,6 +1,6 @@
 import React from "react";
 import { Buttons } from "./index";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import logo from "../assets/Logo.svg";
 import { Link } from "react-router-dom";
 import hamburger from "../assets/hamburger.png";
@@ -12,6 +12,7 @@ import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 const Header = () => {
 	let location = useLocation();
+	// eslint-disable-next-line no-unused-vars
 	let links = ["/register", "/verifyEmail", "/login", "/forgotPassword"];
 	return (
 		<Container
@@ -21,7 +22,7 @@ const Header = () => {
 					<img src={logo} alt="" />
 				</div>
 
-				{(location.pathname == "/" || location.pathname == "/about") && (
+				{(location.pathname === "/" || location.pathname === "/about") && (
 					<>
 						<div className="main-links">
 							<img src={hamburger} alt="" className="hamburger" />
@@ -115,7 +116,7 @@ const Div = styled.div`
 	}
 `;
 export default Header;
-{
+
 	/* <Stack direction="horizontal" gap={3}>
 	<Buttons variant="purple" className="w-75">
 		Register
@@ -124,4 +125,4 @@ export default Header;
 		Login
 	</Buttons>
 </Stack>; */
-}
+
