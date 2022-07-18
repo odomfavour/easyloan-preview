@@ -2,16 +2,10 @@ import React from "react";
 import { Buttons } from "./index";
 import { Container, Row, Col } from "react-bootstrap";
 import logo from "../assets/Logo.svg";
-import icon from "../assets/icons.png";
 
-import hamburger from "../assets/hamburger.png";
-
-import dropdown from "../assets/dropdown.png";
-import search from "../assets/search.png";
-import { useLocation, Link } from "react-router-dom";
-
-import styled from "styled-components";
-const Header = ({ other = "other" }) => {
+// import icon from "../assets/icons.png";
+import { useLocation } from "react-router-dom";
+const Header = () => {
 	let location = useLocation();
 	let links = ["/register", "/verifyEmail", "/login", "/forgotPassword"];
 	return (

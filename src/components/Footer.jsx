@@ -3,7 +3,8 @@ import { Container, Row, Col} from "react-bootstrap";
 import facebook_icon from "../assets/facebook_icon.svg";
 import twitter_icon from "../assets/twitter_icon.svg";
 import linkedin from "../assets/linkedin.svg";
-import arrow from "../assets/arrow.png";
+import arrow from "../assets/arrow_circle.svg";
+import logos from "../assets/eazylogo.svg";
 
 const Footer = () => {
     useEffect(() => {
@@ -13,8 +14,8 @@ const Footer = () => {
      <div className='footer-bg footer-text-color footer-vertical-padding'>
         <Container >
             <Row>
-                <Col >
-                    <h5 className='eazy-footer-head footer-bottom-padding text-white footer-font'>EAZYLOAN</h5>
+                <Col md={3} xs={12}>
+                    <img src={logos} alt="logo" className="pb-3"/>
                     <div className='eazy-footer'>
                         <div>22, Gratitude Street, Lagos</div>
                         <div>info@eazyloan.com</div>
@@ -25,28 +26,27 @@ const Footer = () => {
                         <img className='footer-icon-size footer-icon-margin' src={twitter_icon} alt="twitter_icon" />
                         <img className='footer-icon-size' src={linkedin} alt="linkedin_icon" />
                     </div>
-                    <div className='eazy-footer'>© 2022 Easyloan</div>
                 </Col>
-                <Col className='footer-margin'>
-                    <div className='eazy-footer'>
-                        <p className='footer-bottom-padding'>Get to know us</p>
+                <Col md={2} xs={6} >
+                    <div className='eazy-footer footer-top-margin'>
+                        <p className='footer-bottom-padding fw-bold'>Get to know us</p>
                         <p >Careers</p>
                         <p >Blog</p>
                         <p >About Us</p>
                         <p >Financial Partners</p>
                     </div>
                 </Col>
-                <Col >
+                <Col md={2} xs={6}>
                     <div className='eazy-footer'>
-                        <p className='footer-bottom-padding'>Legal</p>
-                        <p >Terms of service</p>
+                        <p className='footer-bottom-padding fw-bold footer-top-margin'>Legal</p>
+                        <p >Terms of Service</p>
                         <p >Privacy Policy</p>
                         <p >Contact Agreement</p>
                     </div>
                 </Col>
-                <Col >
+                <Col md={2} xs={6}>
                     <div className='eazy-footer'>
-                        <p className='footer-bottom-padding'>Support</p>
+                        <p className='footer-bottom-padding fw-bold footer-top-margin'>Support</p>
                         <p >Your account</p>
                         <p >How it works</p>
                         <p >Your Loans</p>
@@ -54,17 +54,16 @@ const Footer = () => {
                         <p >Contact Us</p>
                     </div>
                 </Col>
-                <Col className='footer-margin'>
-                    <div className='footer-cirle2'>
-                        <div className='footer-cirle' onClick={()=> {
-                            window.scrollTo({top: 0, behavior: 'smooth'})
+                <Col md={3} xs={6} >
+                    <div className='text-center back_to_top' onClick={()=> {
+                        window.scrollTo({top: 0, behavior: 'smooth'})
                         }}>
-                            <img src={arrow} alt="arrow_img" />
-                        </div>
+                        <img className='footer-icon-size2' src={arrow} alt="arrow_img" />
                     </div>
-                    <p className='eazy-footer'>Back to the top</p>
+                    <p className='eazy-footer fw-bold text-center back_to_top2'>Back to the top</p>    
                 </Col>
             </Row>
+            <div className='eazy-footer footer-top-margin'>© 2022 Easyloan</div>
         </Container>
     </div>
   )
