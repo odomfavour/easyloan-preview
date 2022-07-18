@@ -22,7 +22,7 @@ module.exports = {
 			"error",
 			"tab"
 		],
-		"linebreak-style":0 [
+		"linebreak-style": [
 			"error",
 			"unix"
 		],
