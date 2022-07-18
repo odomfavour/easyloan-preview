@@ -56,167 +56,193 @@ const Register = () => {
 	}
 
 	return (
-		<PageWrapperV2>
-			<Container>
-				<Row className="align-items-center justify-content-between px-md-5 pb-4 flex-column flex-lg-row ">
-					<Col xs={9} lg={5}>
-						<Image src={reg} alt="lady registering" className="w-100 mb-5"></Image>
-					</Col>
-					<Col lg={5}>
-						<Stack gap={5}>
-							<div>
-								<h1 className="heading-font my-0">Register</h1>
-								<p className="m-0" style={{ color: "#B1B0B0" }}>
-									Create an account to get started
-								</p>
-							</div>
-							<Form className=" px-4 pt-3 pb-4 bg-gray" onSubmit={handleSubmit}>
-								<Stack gap={5}>
-									<Stack gap={4}>
-										<Form.Group controlId="name">
-											<Form.Label>Full Name</Form.Label>
-											<Form.Control
-												type="text"
-												name="name"
-												value={form.name}
-												onChange={handleChange}
-												placeholder="Enter your fullname"
-											/>
-										</Form.Group>
-
-										<Form.Group controlId="phoneNo">
-											<Form.Label>Phone Number</Form.Label>
-											<InputGroup className="phone-input">
-												<InputGroup.Text>
-													<img src={NG} alt="Nigerian flag" className=""></img>
-												</InputGroup.Text>
+		<>
+			<style type="text/css">
+				{`
+          @media (max-width: 575.98px){
+            body{
+              font-size: 14px;
+            }
+            .heading{
+              font-size: 24px;
+            }
+            .form{
+              background-color: #fdfdfd;
+            }
+          }
+        `}
+			</style>
+			<PageWrapperV2>
+				<Container>
+					<Row className="align-items-center justify-content-between px-md-5 pb-4 flex-column flex-lg-row ">
+						<Row className="d-lg-none py-5">
+							<Col>
+								<div>
+									<h1 className="fw-bold my-0 mb-2">Register</h1>
+									<p className="m-0" style={{ color: "#3A0E55" }}>
+										Create an account to get started
+									</p>
+								</div>
+							</Col>
+						</Row>
+						<Col xs={9} lg={5}>
+							<Image src={reg} alt="lady registering" className="w-100 mb-5"></Image>
+						</Col>
+						<Col lg={5}>
+							<Stack gap={5}>
+								<div className="d-none d-lg-block">
+									<h1 className="heading-font my-0">Register</h1>
+									<p className="m-0" style={{ color: "#B1B0B0" }}>
+										Create an account to get started
+									</p>
+								</div>
+								<Form className=" px-4 pt-3 pb-4 bg-gray form" onSubmit={handleSubmit}>
+									<Stack gap={5}>
+										<Stack gap={4}>
+											<Form.Group controlId="name">
+												<Form.Label>Full Name</Form.Label>
 												<Form.Control
-													type="tel"
-													name="phoneNo"
-													value={form.phoneNo}
+													type="text"
+													name="name"
+													value={form.name}
 													onChange={handleChange}
-													placeholder="+234"
+													placeholder="Enter your fullname"
 												/>
-											</InputGroup>
-										</Form.Group>
+											</Form.Group>
 
-										<Form.Group controlId="email">
-											<Form.Label>Email</Form.Label>
-											<Form.Control
-												type="email"
-												name="email"
-												value={form.email}
-												onChange={handleChange}
-												placeholder="Enter email address"
-											/>
-										</Form.Group>
+											<Form.Group controlId="phoneNo">
+												<Form.Label>Phone Number</Form.Label>
+												<InputGroup className="phone-input">
+													<InputGroup.Text>
+														<img src={NG} alt="Nigerian flag" className=""></img>
+													</InputGroup.Text>
+													<Form.Control
+														type="tel"
+														name="phoneNo"
+														value={form.phoneNo}
+														onChange={handleChange}
+														placeholder="+234"
+													/>
+												</InputGroup>
+											</Form.Group>
 
-										<Form.Group controlId="password">
-											<Form.Label>Password</Form.Label>
-											<InputGroup className="pwd-toggle ">
+											<Form.Group controlId="email">
+												<Form.Label>Email</Form.Label>
 												<Form.Control
-													type={showPassword ? "text" : "password"}
-													name="password"
-													value={form.password}
+													type="email"
+													name="email"
+													value={form.email}
 													onChange={handleChange}
-													placeholder="Enter password"
-													className="border-end-0"
+													placeholder="Enter email address"
 												/>
-												<InputGroup.Text
-													className={`bi ${showPassword ? "bi-eye-slash" : "bi-eye"} `}
-													onClick={handleClickShowPassword}></InputGroup.Text>
-											</InputGroup>
-											<Form.Text style={{ color: "#636262" }}>
-												Password must contain atleast 8 characters
-											</Form.Text>
-										</Form.Group>
+											</Form.Group>
 
-										<Stack gap={2}>
-											<Form.Group controlId="confirmPassword">
-												<Form.Label>Confirm Password</Form.Label>
+											<Form.Group controlId="password">
+												<Form.Label>Password</Form.Label>
 												<InputGroup className="pwd-toggle ">
 													<Form.Control
 														type={showPassword ? "text" : "password"}
-														name="confirmPassword"
-														value={form.confirmPassword}
+														name="password"
+														value={form.password}
 														onChange={handleChange}
-														placeholder="Confirm password"
+														placeholder="Enter password"
 														className="border-end-0"
 													/>
 													<InputGroup.Text
 														className={`bi ${showPassword ? "bi-eye-slash" : "bi-eye"} `}
 														onClick={handleClickShowPassword}></InputGroup.Text>
 												</InputGroup>
+												<Form.Text style={{ color: "#636262" }}>
+													Password must contain atleast 8 characters
+												</Form.Text>
 											</Form.Group>
-											<Form.Check
-												type="checkbox"
-												id="rememberMe"
-												name="rememberMe"
-												onChange={handleCheck}
-												checked={form.rememberMe}
-												label="Remember me"
-											/>
+
+											<Stack gap={2}>
+												<Form.Group controlId="confirmPassword">
+													<Form.Label>Confirm Password</Form.Label>
+													<InputGroup className="pwd-toggle ">
+														<Form.Control
+															type={showPassword ? "text" : "password"}
+															name="confirmPassword"
+															value={form.confirmPassword}
+															onChange={handleChange}
+															placeholder="Confirm password"
+															className="border-end-0"
+														/>
+														<InputGroup.Text
+															className={`bi ${showPassword ? "bi-eye-slash" : "bi-eye"} `}
+															onClick={handleClickShowPassword}></InputGroup.Text>
+													</InputGroup>
+												</Form.Group>
+												<Form.Check
+													type="checkbox"
+													id="rememberMe"
+													name="rememberMe"
+													onChange={handleCheck}
+													checked={form.rememberMe}
+													label="Remember me"
+												/>
+											</Stack>
+
+											<Form.Group controlId="refCode">
+												<Form.Label>Referral Code (Optional)</Form.Label>
+												<Form.Control
+													type="text"
+													name="refCode"
+													value={form.refCode}
+													onChange={handleChange}
+													placeholder="Enter referral code"
+												/>
+											</Form.Group>
 										</Stack>
 
-										<Form.Group controlId="refCode">
-											<Form.Label>Referral Code (Optional)</Form.Label>
-											<Form.Control
-												type="text"
-												name="refCode"
-												value={form.refCode}
-												onChange={handleChange}
-												placeholder="Enter referral code"
-											/>
-										</Form.Group>
+										<Stack className="heading-font " gap={2}>
+											<Buttons variant="purple" size="md" className="w-100" type="submit">
+												Register
+											</Buttons>
+											<p className="text-center m-0" style={{ color: "#121010" }}>
+												Or
+											</p>
+											<Buttons
+												variant="gray"
+												size="md"
+												// onClick={}
+												className="w-100 d-flex align-items-center justify-content-center "
+												type="button">
+												<img src={googleIcon} alt="Google icon" />
+												<span className="ms-2" style={{ color: "#B1B0B0" }}>
+													Register with Google
+												</span>
+											</Buttons>
+										</Stack>
 									</Stack>
-
-									<Stack className="heading-font " gap={2}>
-										<Buttons variant="purple" size="md" className="w-100" type="submit" onClick={setSuccessModal}>
-											Register
-										</Buttons>
-										<p className="text-center m-0" style={{ color: "#121010" }}>
-											Or
-										</p>
-										<Buttons
-											variant="gray"
-											size="md"
-											// onClick={}
-											className="w-100 d-flex align-items-center justify-content-center "
-											type="button">
-											<img src={googleIcon} alt="Google icon" />
-											<span className="ms-2" style={{ color: "#B1B0B0" }}>
-												Register with Google
-											</span>
-										</Buttons>
-									</Stack>
+								</Form>
+								<Stack className="text-center">
+									<p style={{ color: "#8A8989" }}>
+										Already have an account?{" "}
+										<Link to="" style={{ fontWeight: "bold", color: "#121010" }}>
+											Log in
+										</Link>
+									</p>
+									<p style={{ color: "#8A8989" }}>
+										By continuing, you agree to our{" "}
+										<Link to="" style={{ fontWeight: "bold", color: "#8A8989" }}>
+											Terms and Conditions
+										</Link>{" "}
+										of service and{" "}
+										<Link to="" style={{ fontWeight: "bold", color: "#8A8989" }}>
+											Privacy Policy
+										</Link>
+										.
+									</p>
+									<i></i>
 								</Stack>
-							</Form>
-							<SuccessModal imgs={successScreen} btnOne={[true, 'Login in']} btnTwo={[true, 'Go home']} btnsetter={toggleModal} iterateBtn={iterator}/>
-							<Stack className="text-center">
-								<p style={{ color: "#8A8989" }}>
-									Already have an account?{" "}
-									<Link to="" style={{ fontWeight: "bold", color: "#121010" }}>
-										Log in
-									</Link>
-								</p>
-								<p style={{ color: "#8A8989" }}>
-									By continuing, you agree to our{" "}
-									<Link to="" style={{ fontWeight: "bold", color: "#8A8989" }}>
-										Terms and Conditions
-									</Link>{" "}
-									of service and{" "}
-									<Link to="" style={{ fontWeight: "bold", color: "#8A8989" }}>
-										Privacy Policy
-									</Link>
-									.
-								</p>
-								<i></i>
 							</Stack>
-						</Stack>
-					</Col>
-				</Row>
-			</Container>
-		</PageWrapperV2>
+						</Col>
+					</Row>
+				</Container>
+			</PageWrapperV2>
+		</>
 	);
 };
 
