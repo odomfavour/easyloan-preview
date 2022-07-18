@@ -4,8 +4,16 @@ import "./index.css";
 
 import UserDashboard from "./components/UserDashboard";
 import UserHome from "./pages/UserHome";
-import { LandingPage, LoanCalculatorPage, Faqs, Register, Login, HowItWorks } from "./pages/Index";
-
+import {
+	LandingPage,
+	LoanCalculatorPage,
+	Faqs,
+	Register,
+	VerifyEmail,
+	Login,
+	PersonalDetails,
+	HowItWorks
+} from "./pages/Index";
 
 function App() {
 	return (
