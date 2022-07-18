@@ -45,7 +45,7 @@ const LoanCalculatorPage = () => {
         `}
 			</style>
 			<PageWrapper>
-				<Stack className="content-wrapper">
+				<Stack className="content-wrapper pt-4">
 					<Container className="">
 						<Row className="d-flex ">
 							<Col className="w-5">
