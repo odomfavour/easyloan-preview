@@ -50,9 +50,6 @@ const LandingPage = () => {
           .btn-md{
             width: 224px !important;
           }
-          .btn{
-            font-family: 'Acme', sans-serif;
-          }
           .apply-btn a{
             color: #fdfdfd;
           }
@@ -114,7 +111,6 @@ const LandingPage = () => {
               line-height: 2.6rem;
             }
             .btn{
-              font-family: 'Gilmer', sans-serif;
               font-weight: 700;
             }
             .hero-txt{
@@ -222,7 +218,7 @@ const LandingPage = () => {
 									type="button"
 									variant="outline-purple"
 									className="fw-bold px-4 py-2 hiw-btn align-self-center">
-									<Link to="/">Read more</Link>
+									<Link to="/how">Read more</Link>
 								</Buttons>
 							</Stack>
 						</Col>
@@ -270,10 +266,10 @@ const LandingPage = () => {
 				<Container>
 					<Row className="flex-column-reverse flex-md-row align-items-center justify-content-center py-5 px-3 gap-5">
 						<Stack direction="horizontal" gap={4} className="d-md-none justify-content-center">
-							<a href="">
+							<a href="#download">
 								<Image src={googlePlay} alt="Download From Google Play"></Image>
 							</a>
-							<a href="">
+							<a href="#download">
 								<Image src={appStore} alt="Download From App Store"></Image>
 							</a>
 						</Stack>
@@ -290,10 +286,10 @@ const LandingPage = () => {
 									business loans.
 								</p>
 								<Stack direction="horizontal" gap={3} className="d-none d-md-flex">
-									<a href="">
+									<a href="#download">
 										<Image src={googlePlay} alt="Download From Google Play"></Image>
 									</a>
-									<a href="">
+									<a href="#download">
 										<Image src={appStore} alt="Download From App Store"></Image>
 									</a>
 								</Stack>
