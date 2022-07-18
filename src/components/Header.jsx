@@ -2,7 +2,12 @@ import React from "react";
 import { Buttons } from "./index";
 import { Container, Row, Col } from "react-bootstrap";
 import logo from "../assets/Logo.svg";
+import { Link } from "react-router-dom";
+import hamburger from "../assets/hamburger.png";
+import dropdown from "../assets/dropdown.png";
+import search from "../assets/search.png";
 
+import styled from "styled-components";
 // import icon from "../assets/icons.png";
 import { useLocation } from "react-router-dom";
 const Header = () => {
