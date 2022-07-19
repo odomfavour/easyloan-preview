@@ -181,12 +181,22 @@ const LoanCalculator = ({ styles }) => {
             }
           }
 
+          @media (max-width: 420px) {
+            .form-wrap{
+              padding: 0 !important;
+            }
+            .form{
+              padding-left: 1rem !important;
+              padding-right: 1rem !important;
+            }
+          }
+
         `}
 			</style>
 
 			<Container className="pb-5 pt-md-4 px-0">
-				<Row className="d-flex align-items-center justify-content-center px-4 px-md-5">
-					<Form className={`rounded col col-lg-4 px-md-5 pt-4 pb-3 ${styles} box-shadow`}>
+				<Row className="d-flex align-items-center justify-content-center px-4 px-md-5 form-wrap">
+					<Form className={`rounded col col-lg-4 px-md-5 pt-4 pb-3 ${styles} box-shadow form`}>
 						<Stack>
 							<Form.Group controlId="totalLPO">
 								<Form.Label>Total LPO Amount</Form.Label>
