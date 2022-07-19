@@ -51,7 +51,7 @@ const UserHomeContent = () => {
 					<Card
 						className="text-decoration-none text-black user-card align-items-center text-center justify-content-center border-0 card-padding"
                         style={{ width: "12rem", height: "12rem" }}
-                        as={Link} to={"/loancalc"}>
+                        as={Link} to={"/loan-calculator"}>
 						<Card.Img variant="top" src={calc} alt="icon" style={{ width: "2.5rem" }} />
 						<Card.Body>
 						    <Card.Text>Loan Calculator</Card.Text>
