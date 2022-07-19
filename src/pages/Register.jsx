@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Container, Col, Row, Image, Stack, Form, InputGroup } from "react-bootstrap";
-
+import axios from "axios";
 import PageWrapperV2 from "../layouts/no_footer_layout/PageWrapperV2";
 import { Buttons } from "../components/index";
+import { useNavigate } from "react-router-dom";
 // import successScreen from '../assets/successScreen.svg'
 
 import googleIcon from "../assets/icons_google.svg";
 import reg from "../assets/Illust/illust_Register.svg";
 import NG from "../assets/twemoji_flag-nigeria.svg";
-import axios from "../api/axios";
-const REGISTER_URL = "/register";
+const baseURL = "https://eazyloan-backend.herokuapp.com";
+const REGISTER_URL = "/user/register";
 const user = "/user/auth/google";
 // import SuccessModal from "../components/successModal.jsx/SuccessModal";
 
@@ -25,6 +26,7 @@ const Register = () => {
 		refCode: "",
 	});
 
+	const navigate = useNavigate();
 	const [showPassword, setShowPassword] = useState(false);
 
 	const handleClickShowPassword = () => {
@@ -32,14 +34,15 @@ const Register = () => {
 	};
 
 	const loginWithGoogle = async () => {
-		window.location.href = "https://eazyloan-backend.herokuapp.com/user/auth/google";
+		 window.location.href = "https://eazyloan-backend.herokuapp.com/user/auth/google";
 
 		try {
-			const response = await axios(user);
+			const response = await axios("https://eazyloan-backend.herokuapp.com/user/auth/google");
 
 			console.log(response);
 			//clear state and controlled inputs
-			setForm("");
+
+			
 		} catch (err) {
 			console.log(err);
 		}
@@ -63,17 +66,21 @@ const Register = () => {
 		e.preventDefault();
 		// console.log("clicked", form);
 
-		try {
-			const response = await axios.post(REGISTER_URL, JSON.stringify({ form }), {
-				headers: { "Content-Type": "application/json" },
-			});
-			console.log(response);
+		const data = {
+			name: form.name,
+			phoneNo: form.phoneNo,
+			email: form.email,
+			password: form.password,
+			confirmPassword: form.confirmPassword,
+			rememberMe: form.rememberMe,
+			refCode: form.refCode,
+		};
 
-			//clear state and controlled inputs
-			setForm("");
-		} catch (err) {
-			console.log(err);
-		}
+		axios.post(`${baseURL}/${REGISTER_URL}`, data).then((result) => {
+			console.log(result.data);
+			if (result.data.Status == "Invalid") alert("Invalid User");
+			else navigate("/Dashboard");
+		});
 	};
 
 	// const[toggleModal, setToggleModal] = useState(false)
@@ -251,7 +258,7 @@ const Register = () => {
 								<Stack className="text-center">
 									<p style={{ color: "#8A8989" }}>
 										Already have an account?{" "}
-										<Link to="" style={{ fontWeight: "bold", color: "#121010" }}>
+										<Link to="/login" style={{ fontWeight: "bold", color: "#121010" }}>
 											Log in
 										</Link>
 									</p>
