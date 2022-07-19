@@ -17,7 +17,7 @@ const Header = () => {
 	let links = ["/register", "/verifyEmail", "/login", "/forgotPassword"];
 	return (
 		<Container
-			className={`${location.pathname === "/" ? "py-5 heading-font " : "py-2 heading-font"}`}>
+			className={`${location.pathname === "/" ? "py-4 heading-font " : "py-2 heading-font"}`}>
 			<Div>
 				<div className="logo">
 					<img src={logo} alt="" />
