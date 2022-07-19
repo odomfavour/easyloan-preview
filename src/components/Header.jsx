@@ -1,11 +1,12 @@
 import React from "react";
-import { Buttons } from "./index";
+// import { Buttons } from "./index";
 import { Container } from "react-bootstrap";
 import logo from "../assets/Logo.svg";
 import { Link } from "react-router-dom";
 import hamburger from "../assets/hamburger.png";
 import dropdown from "../assets/dropdown.png";
 import search from "../assets/search.png";
+import './Header.css'
 
 import styled from "styled-components";
 // import icon from "../assets/icons.png";
@@ -16,7 +17,7 @@ const Header = () => {
 	let links = ["/register", "/verifyEmail", "/login", "/forgotPassword"];
 	return (
 		<Container
-			className={`${location.pathname === "/" ? "py-5 heading-font " : "py-2 heading-font"}`}>
+			className={`${location.pathname === "/" ? "py-4 heading-font " : "py-2 heading-font"}`}>
 			<Div>
 				<div className="logo">
 					<img src={logo} alt="" />
@@ -28,11 +29,11 @@ const Header = () => {
 							<img src={hamburger} alt="" className="hamburger" />
 
 							<div className="links">
-								<Link to="/">Home </Link>
-								<Link to="/about">About Us </Link>
-								<Link to="/howitworks">How it works </Link>
-								<Link to="/loancalc">Loan Calculator</Link>
-								<Link to="/help" className="drop-down">
+								<Link to="/" className="me-4">Home </Link>
+								<Link to="/about" className="me-4">About Us </Link>
+								<Link to="/how" className="me-4">How it works </Link>
+								<Link to="/loan-calculator" className="me-4">Loan Calculator</Link>
+								<Link to="/help" className="drop-down me-4">
 									Help <img src={dropdown} alt="" />
 								</Link>
 
@@ -43,8 +44,8 @@ const Header = () => {
 						</div>
 
 						<div className="btns">
-							<Buttons className="register">Register</Buttons>
-							<Buttons className="login">Login</Buttons>
+							<Link to="/register" className="register btn btn-primary">Register</Link>
+							<Link to="/login" className="login btn">Login</Link>
 						</div>
 					</>
 				)}
@@ -84,7 +85,7 @@ const Div = styled.div`
 				font-family: "Gilmer Regular";
 				font-style: normal;
 				font-weight: 400;
-				font-size: 14px;
+				font-size: 16px;
 				line-height: 24px;
 				/* identical to box height, or 150% */
 
@@ -101,17 +102,14 @@ const Div = styled.div`
 		.register {
 			background: #ae2bff;
 			padding: 0.4rem 1rem;
+			color: #fff !important;
+			border: 1px solid #ae2bff;
 		}
 		.login {
 			background: #fff;
-			color: #ae2bff;
+			color: #ae2bff !important;
 			border: 1px solid #ae2bff;
 			padding: 0.4rem 1rem;
-		}
-
-		.main-links {
-			width: 60%;
-			/* justify-self: center; */
 		}
 	}
 `;
