@@ -26,10 +26,9 @@ const HowItWorks = () => {
                 <Image src={howToUse} alt='how to use' className='  pt-3 w-100'/>
             </div>
             <Row className='py-5 w-100 w-md-50 justify-content-center'>
-                <Col md={6} className='d-flex flex-column justify-content-center align-items-center'>
+                <Col md={8} className='d-flex flex-column justify-content-center align-items-center'>
                     <h1  className="heading-font  text-center" style={{ fontSize: "3rem" }}>
-                        Get your products
-                        to your store in 5 easy steps
+                        Get your products to your store in 5 easy steps
                     </h1>
                 </Col>
             </Row>
