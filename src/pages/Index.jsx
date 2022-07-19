@@ -5,4 +5,5 @@ import Register from "./Register";
 import VerifyEmail from "./VerifyEmail";
 import Login from "./Login";
 import PersonalDetails from "./PersonalDetails";
-export { LandingPage, LoanCalculatorPage, Faqs, Register, VerifyEmail, Login, PersonalDetails };
+import HowItWorks from "./HowItWorks";
+export { LandingPage, LoanCalculatorPage, Faqs, Register, VerifyEmail, Login, PersonalDetails, HowItWorks };

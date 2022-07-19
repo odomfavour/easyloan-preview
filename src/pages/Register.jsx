@@ -4,10 +4,12 @@ import { Container, Col, Row, Image, Stack, Form, InputGroup } from "react-boots
 
 import PageWrapperV2 from "../layouts/no_footer_layout/PageWrapperV2";
 import { Buttons } from "../components/index";
+import successScreen from '../assets/successScreen.svg'
 
 import googleIcon from "../assets/icons_google.svg";
 import reg from "../assets/Illust/illust_Register.svg";
 import NG from "../assets/twemoji_flag-nigeria.svg";
+import SuccessModal from "../components/successModal.jsx/SuccessModal";
 
 const Register = () => {
 	const [form, setForm] = useState({
@@ -45,6 +47,13 @@ const Register = () => {
 		e.preventDefault();
 		// console.log("clicked", form);
 	};
+
+	const[toggleModal, setToggleModal] = useState(false)
+	const[iterator, setIterator] = useState(false)
+	const setSuccessModal = () => {
+		setToggleModal(true)
+		setIterator(!iterator)
+	}
 
 	return (
 		<>
