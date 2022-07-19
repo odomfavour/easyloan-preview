@@ -117,10 +117,16 @@ const LandingPage = () => {
               font-size: 1rem;
             }
           }
+
+          @media (max-width: 420px) {
+            .page-content{
+              padding: 0;
+            }
+          }
         `}
 			</style>
 			<PageWrapper>
-				<Container>
+				<Container className="page-content">
 					<Row className="pt-md-5 pb-5 px-4 px-md-0 flex-column-reverse flex-md-row gap-md-5">
 						<Col>
 							<Stack gap={3}>
@@ -267,10 +273,10 @@ const LandingPage = () => {
 					<Row className="flex-column-reverse flex-md-row align-items-center justify-content-center py-5 px-3 gap-5">
 						<Stack direction="horizontal" gap={4} className="d-md-none justify-content-center">
 							<a href="#download">
-								<Image src={googlePlay} alt="Download From Google Play"></Image>
+								<Image src={googlePlay} alt="Download From Google Play" className="img-fluid"></Image>
 							</a>
 							<a href="#download">
-								<Image src={appStore} alt="Download From App Store"></Image>
+								<Image src={appStore} alt="Download From App Store" className="img-fluid"></Image>
 							</a>
 						</Stack>
 						<Col xs={6} md={4} className="d-flex justify-content-center pt-3 pb-4 pt-md-0">

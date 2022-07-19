@@ -19,9 +19,9 @@ const Header = () => {
 		<Container
 			className={`${location.pathname === "/" ? "py-4 heading-font " : "py-2 heading-font"}`}>
 			<Div>
-				<div className="logo">
-					<img src={logo} alt="" />
-				</div>
+				<Link to="/" className="logo">
+					<img src={logo} alt="Eazyloan logo" />
+				</Link>
 
 				{(location.pathname === "/" || location.pathname === "/about") && (
 					<>
