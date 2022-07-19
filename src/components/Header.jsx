@@ -31,8 +31,8 @@ const Header = () => {
 							<div className="links">
 								<Link to="/" className="me-4">Home </Link>
 								<Link to="/about" className="me-4">About Us </Link>
-								<Link to="/howitworks" className="me-4">How it works </Link>
-								<Link to="/loancalc" className="me-4">Loan Calculator</Link>
+								<Link to="/how" className="me-4">How it works </Link>
+								<Link to="/loan-calculator" className="me-4">Loan Calculator</Link>
 								<Link to="/help" className="drop-down me-4">
 									Help <img src={dropdown} alt="" />
 								</Link>
