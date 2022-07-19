@@ -9,6 +9,9 @@ import { Buttons } from "../components/index";
 import googleIcon from "../assets/icons_google.svg";
 import reg from "../assets/Illust/illust_Register.svg";
 import NG from "../assets/twemoji_flag-nigeria.svg";
+import axios from "../api/axios";
+const REGISTER_URL = "/register";
+const user = "/user/auth/google";
 // import SuccessModal from "../components/successModal.jsx/SuccessModal";
 
 const Register = () => {
@@ -28,6 +31,19 @@ const Register = () => {
 		setShowPassword(!showPassword);
 	};
 
+	const loginWithGoogle = async () => {
+		window.location.href = "https://eazyloan-backend.herokuapp.com/user/auth/google";
+
+		try {
+			const response = await axios(user);
+
+			console.log(response);
+			//clear state and controlled inputs
+			setForm("");
+		} catch (err) {
+			console.log(err);
+		}
+	};
 	const handleChange = (e) => {
 		let value = e.target.value;
 
@@ -43,9 +59,21 @@ const Register = () => {
 		setForm({ ...form, [e.target.name]: value });
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 		// console.log("clicked", form);
+
+		try {
+			const response = await axios.post(REGISTER_URL, JSON.stringify({ form }), {
+				headers: { "Content-Type": "application/json" },
+			});
+			console.log(response);
+
+			//clear state and controlled inputs
+			setForm("");
+		} catch (err) {
+			console.log(err);
+		}
 	};
 
 	// const[toggleModal, setToggleModal] = useState(false)
@@ -210,7 +238,10 @@ const Register = () => {
 												className="w-100 d-flex align-items-center justify-content-center "
 												type="button">
 												<img src={googleIcon} alt="Google icon" />
-												<span className="ms-2" style={{ color: "#B1B0B0" }}>
+												<span
+													className="ms-2"
+													style={{ color: "#B1B0B0" }}
+													onClick={loginWithGoogle}>
 													Register with Google
 												</span>
 											</Buttons>

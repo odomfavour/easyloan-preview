@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import hamburger from "../assets/hamburger.png";
 import dropdown from "../assets/dropdown.png";
 import search from "../assets/search.png";
-import './Header.css'
+import "./Header.css";
 
 import styled from "styled-components";
 // import icon from "../assets/icons.png";
@@ -14,13 +14,14 @@ import { useLocation } from "react-router-dom";
 const Header = () => {
 	let location = useLocation();
 	// eslint-disable-next-line no-unused-vars
-	let links = ["/register", "/verifyEmail", "/login", "/forgotPassword"];
 	return (
 		<Container
 			className={`${location.pathname === "/" ? "py-4 heading-font " : "py-2 heading-font"}`}>
 			<Div>
 				<div className="logo">
-					<img src={logo} alt="" />
+					<Link to="/">
+						<img src={logo} alt="" />
+					</Link>
 				</div>
 
 				{(location.pathname === "/" || location.pathname === "/about") && (
@@ -29,10 +30,18 @@ const Header = () => {
 							<img src={hamburger} alt="" className="hamburger" />
 
 							<div className="links">
-								<Link to="/" className="me-4">Home </Link>
-								<Link to="/about" className="me-4">About Us </Link>
-								<Link to="/how" className="me-4">How it works </Link>
-								<Link to="/loan-calculator" className="me-4">Loan Calculator</Link>
+								<Link to="/" className="me-4">
+									Home{" "}
+								</Link>
+								<Link to="/about" className="me-4">
+									About Us{" "}
+								</Link>
+								<Link to="/how" className="me-4">
+									How it works{" "}
+								</Link>
+								<Link to="/loan-calculator" className="me-4">
+									Loan Calculator
+								</Link>
 								<Link to="/help" className="drop-down me-4">
 									Help <img src={dropdown} alt="" />
 								</Link>
@@ -44,8 +53,12 @@ const Header = () => {
 						</div>
 
 						<div className="btns">
-							<Link to="/register" className="register btn btn-primary">Register</Link>
-							<Link to="/login" className="login btn">Login</Link>
+							<Link to="/register" className="register btn btn-primary">
+								Register
+							</Link>
+							<Link to="/login" className="login btn">
+								Login
+							</Link>
 						</div>
 					</>
 				)}
@@ -57,8 +70,8 @@ const Header = () => {
 const Div = styled.div`
 	display: flex;
 	justify-content: space-between;
-	padding: 0 0.5rem;
-	gap: 1rem;
+	padding: 0 0.7rem;
+	gap: 1.1rem;
 	align-items: center;
 	.links,
 	.btns {
@@ -97,7 +110,7 @@ const Div = styled.div`
 			}
 		}
 		.logo {
-			width: 10%;
+			width: 12%;
 		}
 		.register {
 			background: #ae2bff;
@@ -115,7 +128,7 @@ const Div = styled.div`
 `;
 export default Header;
 
-	/* <Stack direction="horizontal" gap={3}>
+/* <Stack direction="horizontal" gap={3}>
 	<Buttons variant="purple" className="w-75">
 		Register
 	</Buttons>
@@ -123,4 +136,3 @@ export default Header;
 		Login
 	</Buttons>
 </Stack>; */
-
