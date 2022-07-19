@@ -12,7 +12,8 @@ import {
 	VerifyEmail,
 	Login,
 	PersonalDetails,
-	HowItWorks
+	HowItWorks,
+	AboutUs
 } from "./pages/Index";
 
 function App() {
@@ -21,12 +22,14 @@ function App() {
 			<Route path="/" element={<LandingPage />} />
 			<Route path="/loan-calculator" element={<LoanCalculatorPage />} />
 			<Route path="/faqs" element={<Faqs />} />
-			<Route path="/dashboard" element={<UserDashboard />} />
-			<Route path="/dashboard/user" element={<UserHome />}/>
+			<Route path="/dashboard" element={<UserDashboard />} >
+				<Route path="/dashboard/user" element={<UserHome />} />
+        	</Route>
 			<Route path="/register" element={<Register />} />
 			<Route path="/verify" element={<VerifyEmail />} />
 			<Route path="/login" element={<Login />} />
 			<Route path="/how" element={<HowItWorks />} />
+			<Route path="/About" element={<AboutUs />} />
 			<Route path="/detail" element={<PersonalDetails />} />
 		</Routes>
 	);
