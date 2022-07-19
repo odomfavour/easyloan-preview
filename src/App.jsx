@@ -12,7 +12,8 @@ import {
 	VerifyEmail,
 	Login,
 	PersonalDetails,
-	HowItWorks
+	HowItWorks,
+	AboutUs
 } from "./pages/Index";
 
 function App() {
@@ -27,7 +28,8 @@ function App() {
 			<Route path="/register" element={<Register />} />
 			<Route path="/verify" element={<VerifyEmail />} />
 			<Route path="/login" element={<Login />} />
-			<Route path="/how" element={<HowItWorks />} />
+			<Route path="/howitworks" element={<HowItWorks />} />
+			<Route path="/About" element={<AboutUs />} />
 		</Routes>
 	);
 }
