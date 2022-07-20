@@ -44,6 +44,9 @@ code {
 .text-justify {
   text-align: justify;
 }
+.muted-text {
+  color: #B1B0B0;
+}
 
 /* Colors */
 /* gray background color */

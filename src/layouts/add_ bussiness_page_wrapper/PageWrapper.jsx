@@ -5,20 +5,25 @@ import { Header } from "../../components/index";
 const PageWrapper = ({ children, other, title, desc, page }) => {
 	return (
 		<>
+      <style  type="text/css">
+        {`
+
+        `}
+      </style>
 			<Stack>
 				<Header other={other} />
 				<Container>
 					<Row>
-						<Col>
-							<h1>{title}</h1>
+						<Col className="pt-3">
+							<h1 className="fw-bold heading">{title}</h1>
 						</Col>
 					</Row>
-					<Row>
+					<Row className="fw-bold muted-text">
 						<Col>
-							<p className="text-muted">{desc}</p>
+							<p className="">{desc}</p>
 						</Col>
-						<Col>
-							<p className="text-muted text-end">{`${page} of 2`}</p>
+						<Col className="d-none">
+							<p className="text-end">{`${page} of 2`}</p>
 							<hr />
 						</Col>
 					</Row>

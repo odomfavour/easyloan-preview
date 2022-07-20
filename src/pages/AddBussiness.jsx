@@ -32,19 +32,24 @@ const AddBussiness = () => {
 
 	return (
 		<>
-			<style>
+			<style type="text/css">
 				{`
           .heading-2{
             color: #3A0E55;
+            font-size: 1.25rem;
+          }
+
+          .form{
+            padding-bottom: 7rem;
           }
         `}
 			</style>
 
 			<PageWrapper title="Business Information" desc="Enter your company information" page="1">
-				<Form className=" px-4 pt-3 pb-4 form" onSubmit={handleSubmit}>
-					<Stack gap={5} direction="horizontal">
-						<Stack gap={4} className="w-100">
-							<h2 className="heading-2">Business Details</h2>
+				<Form className=" px-lg-4 pt-3 form" onSubmit={handleSubmit}>
+					<Stack gap={5} className="flex-lg-row form-content">
+						<Stack gap={4} className="px-3 py-4 w-100 rounded bg-gray ">
+							<h2 className="heading-2 fw-bold">Business Details</h2>
 							<Form.Group controlId="businessName">
 								<Form.Label className="fw-bold">Business Name</Form.Label>
 								<Form.Control
@@ -78,7 +83,7 @@ const AddBussiness = () => {
 								/>
 							</Form.Group>
 
-							<Stack gap={3} direction="horizontal">
+							<Stack gap={3} className="flex-lg-row">
 								<Form.Group controlId="bvn" className="w-100">
 									<Form.Label className="fw-bold">Owner’s BVN</Form.Label>
 									<Form.Control
@@ -102,7 +107,7 @@ const AddBussiness = () => {
 								</Form.Group>
 							</Stack>
 
-							<Stack gap={3} direction="horizontal">
+							<Stack gap={3} className="flex-lg-row">
 								<Form.Group controlId="category" className="w-100">
 									<Form.Label className="fw-bold" className="">
 										Business Category
@@ -112,9 +117,7 @@ const AddBussiness = () => {
 										name="category"
 										value={form.category}
 										onChange={handleChange}>
-										<option value="Select your repayment duration" className="d-none">
-											Select the product category
-										</option>
+										<option className="d-none">Select the business category</option>
 										<option value="Food and Agriculture">Food and Agriculture</option>
 										<option value="Automobile">Automobile</option>
 										<option value="Gadget">Gadget</option>
@@ -137,6 +140,7 @@ const AddBussiness = () => {
 										name="size"
 										value={form.size}
 										onChange={handleChange}>
+										<option className="d-none"></option>
 										<option value="Small">Small</option>
 										<option value="Medium">Medium</option>
 										<option value="Large">Large</option>
@@ -145,8 +149,8 @@ const AddBussiness = () => {
 							</Stack>
 						</Stack>
 
-						<Stack gap={4} className="w-100">
-							<h2 className="heading-2">Business Address</h2>
+						<Stack gap={4} className="px-3 py-4 w-100 rounded bg-gray ">
+							<h2 className="heading-2 fw-bold">Business Address</h2>
 							<Form.Group controlId="street">
 								<Form.Label className="fw-bold">Street Address</Form.Label>
 								<Form.Control
@@ -193,9 +197,11 @@ const AddBussiness = () => {
 						</Stack>
 					</Stack>
 
-					<Buttons variant="purple" className="w-100" type="submit">
-						Continue
-					</Buttons>
+					<div className="px-3">
+						<Buttons variant="purple" className="mt-4 w-100" type="submit">
+							Continue
+						</Buttons>
+					</div>
 				</Form>
 			</PageWrapper>
 		</>
