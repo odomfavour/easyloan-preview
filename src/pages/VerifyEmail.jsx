@@ -7,8 +7,11 @@ import SuccessModal from "../components/successModal.jsx/SuccessModal";
 
 import img from "../assets/Illust/illust_verify_email.svg";
 import successScreen from "../assets/successScreen.svg";
+import { useNavigate } from "react-router-dom";
 
 const VerifyEmail = () => {
+	const navigate = useNavigate();
+
 	const [toggleModal, setToggleModal] = useState(false);
 	const [iterator, setIterator] = useState(false);
 
@@ -20,6 +23,13 @@ const VerifyEmail = () => {
 	const handleVerifyEmail = (e) => {
 		e.preventDefault();
 		setSuccessModal();
+	};
+
+	const navigateToLogin = () => {
+		navigate("/login");
+	};
+	const navigateToHome = () => {
+		navigate("/");
 	};
 
 	return (
@@ -114,6 +124,9 @@ const VerifyEmail = () => {
 							imgs={successScreen}
 							btnOne={[true, "Login"]}
 							btnTwo={[true, "Go Home"]}
+							message="Email Successfully verified"
+							btnOneClick={navigateToLogin}
+							btnTwoClick={navigateToHome}
 						/>
 					</Row>
 				</Container>
