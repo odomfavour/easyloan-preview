@@ -7,4 +7,5 @@ import Login from "./Login";
 import PersonalDetails from "./PersonalDetails";
 import HowItWorks from "./HowItWorks";
 import AboutUs from "./AboutUs";
-export { LandingPage, LoanCalculatorPage, Faqs, Register, VerifyEmail, Login, PersonalDetails, HowItWorks, AboutUs };
+import AddBussiness from "./AddBussiness";
+export { LandingPage, LoanCalculatorPage, Faqs, Register, VerifyEmail, Login, PersonalDetails, HowItWorks, AboutUs, AddBussiness };
