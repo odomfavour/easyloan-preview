@@ -1,6 +1,6 @@
 import PageWrapper from '../layouts/page_wrapper/PageWrapper'
 import React from 'react'
-import { Container, Row, Image, Col, Card } from 'react-bootstrap'
+import { Container, Row, Image, Col } from 'react-bootstrap'
 import { Buttons } from '../components'
 
 import AboutImg from "../assets/aboutImg.png"
@@ -72,12 +72,12 @@ const AboutUs = () => {
              
             <Container>
               <Row xs={1} md={3} className="g-5 justify-content-center">
-                <CardComponent imgi={team_member_1} charName='Ajayi Badmus' role='Managing Director'/>
-                <CardComponent imgi={team_member_2} charName='Savannah Nguyen' role='Finance Manager'/>
-                <CardComponent imgi={team_member_3} charName='Ronald Richards' role='Chief Finance Manager'/>
-                <CardComponent imgi={team_member_4} charName='Chinedu  Ogueri' role='Managing Director'/>
-                <CardComponent imgi={team_member_5} charName='Ajayi Badmus' role='Social Media Manager'/>
-                <CardComponent imgi={team_member_6} charName='Ajayi Badmus' role='Loan Manager'/>
+                <CardComponent imgi={team_member_1} charName='Ajayi Badmus' position='Managing Director'/>
+                <CardComponent imgi={team_member_2} charName='Savannah Nguyen' position='Finance Manager'/>
+                <CardComponent imgi={team_member_3} charName='Ronald Richards' position='Chief Finance Manager'/>
+                <CardComponent imgi={team_member_4} charName='Chinedu  Ogueri' position='Managing Director'/>
+                <CardComponent imgi={team_member_5} charName='Ajayi Badmus' position='Social Media Manager'/>
+                <CardComponent imgi={team_member_6} charName='Ajayi Badmus' position='Loan Manager'/>
               </Row>
             </Container>
             <Row className='py-5 mt-5 bg-light w-100 w-md-50 align-items-center justify-content-center'>

@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Image, Modal, Stack } from "react-bootstrap";
+import { Image, Modal } from "react-bootstrap";
 import Buttons from "../../components/Buttons";
 
 const SuccessModal = ({ btnsetter, imgs, iterateBtn, btnOne, btnTwo, message, btnOneClick, btnTwoClick }) => {
