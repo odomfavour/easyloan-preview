@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Col, Container, Row, InputGroup, Form, Stack } from "react-bootstrap";
+import { Col, Container, Row, InputGroup } from "react-bootstrap";
 
 import PageWrapper from "../../layouts/add_ bussiness_page_wrapper/PageWrapper";
 import { Buttons } from "../../components";
@@ -10,7 +10,6 @@ import successScreen from "../../assets/successScreen.svg";
 import icon1 from "../../assets/Vector_info.svg";
 
 const UploadDocs = () => {
-	const [disabled, setDisabled] = useState(true);
 	const navigate = useNavigate();
 
 	const [cacDocuments, setCacDocuments] = useState({
@@ -31,10 +30,7 @@ const UploadDocs = () => {
 		navigate("/dashboard/user");
 	};
 
-	const handleFormFocus = () => {
-		setDisabled(false);
-	};
-
+	// convert images to base64 and store in local storage
 	const getBase64 = (file) => {
 		return new Promise((resolve, reject) => {
 			const reader = new FileReader();
@@ -43,7 +39,6 @@ const UploadDocs = () => {
 			reader.readAsDataURL(file);
 		});
 	};
-
 	const handleImageUpload = (e) => {
 		const file = e.target.files[0];
 		getBase64(file).then((base64) => {
@@ -53,7 +48,6 @@ const UploadDocs = () => {
 			});
 		});
 	};
-
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		localStorage["CacDocumentsBase64"] = JSON.stringify(cacDocuments);
@@ -80,7 +74,7 @@ const UploadDocs = () => {
 				title="Upload your Documents"
 				desc="Upload your business documents to continue"
 				page="2">
-				<form onSubmit={handleSubmit} onFocus={handleFormFocus}>
+				<form onSubmit={handleSubmit}>
 					<Container className="upload-docs">
 						<Row>
 							<Col xs={12} lg={6} className="my-3">
@@ -207,7 +201,7 @@ const UploadDocs = () => {
 							</Col>
 
 							<Col xs={12} lg={6} className="d-flex align-items-end my-5">
-								<Buttons variant="purple" className=" w-100" type="submit" disabled={disabled}>
+								<Buttons variant="purple" className=" w-100" type="submit">
 									Add Business
 								</Buttons>
 							</Col>

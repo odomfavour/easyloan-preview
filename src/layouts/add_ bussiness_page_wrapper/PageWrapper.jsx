@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Stack } from "react-bootstrap";
+import { Row, Col, Stack, Container } from "react-bootstrap";
 import { Header } from "../../components/index";
 
 const PageWrapper = ({ children, other, title, desc, page }) => {
@@ -10,9 +10,9 @@ const PageWrapper = ({ children, other, title, desc, page }) => {
 
         `}
 			</style>
-			<Stack>
+			<Container className="p-0">
 				<Header other={other} />
-				<div className="px-3 px-md-5 mx-md-5">
+				<div className="px-3 px-md-0 mx-md-0">
 					<Row className="px-lg-4">
 						<Col className="pt-3 pt-md-5 pt-lg-2">
 							<h1 className="fw-bold heading text-md-center  text-lg-start">{title}</h1>
@@ -28,7 +28,7 @@ const PageWrapper = ({ children, other, title, desc, page }) => {
 						</Col>
 					</Row>
 				</div>
-			</Stack>
+			</Container>
 			<section>{children}</section>
 		</>
 	);

@@ -78,7 +78,7 @@ const VerifyEmail = () => {
 										<Stack gap={2} className="gap-lg-5">
 											<p className="m-0 d-lg-none fw-bold">Verification Code</p>
 											<Stack gap={3} direction="horizontal" className="px-lg-5 mx-lg-5 ">
-												<Form.Group controlId="inputOne" className="w-100">
+												<Form.Group controlId="inputOne" className="w-100 d-lg-none">
 													<Form.Control
 														type="text"
 														name="inputOne"
@@ -89,13 +89,13 @@ const VerifyEmail = () => {
 												<Form.Group controlId="inputOne" className="d-none d-lg-block">
 													<Form.Control type="text" name="inputOne" autoComplete="new-password" />
 												</Form.Group>
-												<Form.Group controlId="inputOne" className="d-none d-lg-block">
+												<Form.Group controlId="inputTwo" className="d-none d-lg-block">
 													<Form.Control type="text" name="inputTwo" autoComplete="new-password" />
 												</Form.Group>
-												<Form.Group controlId="inputOne" className="d-none d-lg-block">
+												<Form.Group controlId="inputThree" className="d-none d-lg-block">
 													<Form.Control type="text" name="inputThree" autoComplete="new-password" />
 												</Form.Group>
-												<Form.Group controlId="inputOne" className="d-none d-lg-block">
+												<Form.Group controlId="inputFour" className="d-none d-lg-block">
 													<Form.Control type="text" name="inputFour" autoComplete="new-password" />
 												</Form.Group>
 											</Stack>
