@@ -99,6 +99,7 @@ const Register = () => {
 													value={form.name}
 													onChange={handleChange}
 													placeholder="Enter your fullname"
+													required
 												/>
 											</Form.Group>
 
@@ -114,6 +115,7 @@ const Register = () => {
 														value={form.phoneNo}
 														onChange={handleChange}
 														placeholder="+234"
+														required
 													/>
 												</InputGroup>
 											</Form.Group>
@@ -126,6 +128,7 @@ const Register = () => {
 													value={form.email}
 													onChange={handleChange}
 													placeholder="Enter email address"
+													required
 												/>
 											</Form.Group>
 
@@ -139,6 +142,7 @@ const Register = () => {
 														onChange={handleChange}
 														placeholder="Enter password"
 														className="border-end-0"
+														required
 													/>
 													<InputGroup.Text
 														className={`bi ${showPassword ? "bi-eye-slash" : "bi-eye"} `}
@@ -160,6 +164,7 @@ const Register = () => {
 															onChange={handleChange}
 															placeholder="Confirm password"
 															className="border-end-0"
+															required
 														/>
 														<InputGroup.Text
 															className={`bi ${showPassword ? "bi-eye-slash" : "bi-eye"} `}

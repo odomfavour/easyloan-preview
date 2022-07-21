@@ -217,6 +217,7 @@ const LoanCalculator = ({ styles }) => {
 									value={form.totalLPO}
 									onChange={handleChange}
 									placeholder="N100,000"
+									required
 								/>
 							</Form.Group>
 
@@ -227,8 +228,8 @@ const LoanCalculator = ({ styles }) => {
 									value={form.repaymentPlan}
 									onChange={handleChange}
 									aria-label="Repayment Option"
-                  placeholder="Select Repayment Option"
-									className="">
+									placeholder="Select Repayment Option"
+									required>
 									<option value="Select your repayment plan" className="d-none option1">
 										Select your repayment plan
 									</option>
@@ -244,7 +245,8 @@ const LoanCalculator = ({ styles }) => {
 									aria-label="Repayment Option"
 									name="loanTenure"
 									value={form.loanTenure}
-									onChange={handleChange}>
+									onChange={handleChange}
+									required>
 									<option value="Select your repayment duration" className="d-none">
 										Select your repayment duration
 									</option>
@@ -264,7 +266,9 @@ const LoanCalculator = ({ styles }) => {
 									step={1}
 									onChange={handleInterestChange}
 								/>
-								<Container className="d-grid text-end ps-5 pe-3 fw-bold" style={{ color: "#000", fontSize: "1rem" }}>
+								<Container
+									className="d-grid text-end ps-5 pe-3 fw-bold"
+									style={{ color: "#000", fontSize: "1rem" }}>
 									<Row>
 										<Col className="p-0"></Col>
 										<Col className="p-0 ">10.5%</Col>
