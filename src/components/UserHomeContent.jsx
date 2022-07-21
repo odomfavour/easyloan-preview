@@ -38,7 +38,9 @@ const UserHomeContent = () => {
                     <p className='fw-bold user-dash-color user-small-font '>Your Business</p>
                     <p className='py-3'>You have not added any business. 
                         Add a business now to continue.</p>
-                    <Button className='shadow-none user-btn-bg2 '>Add a business</Button>
+                    <Link to="/add-bussiness">
+                        <Button className='shadow-none user-btn-bg2 '>Add a business</Button>
+                    </Link>                
                 </div>
             </Col>
         </Row>

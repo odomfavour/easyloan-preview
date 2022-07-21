@@ -52,7 +52,9 @@ const UserHomeLoan = () => {
                         <button className='shadow-none border-1 rounded my-4 me-3 user-btn-bg7 px-3' >Edit</button>
                     </div>
                     <div>
-                        <Button className='shadow-none user-btn-bg2 '>Add a business</Button>
+                        <Link to="/add-bussiness">
+                            <Button className='shadow-none user-btn-bg2 '>Add a business</Button>
+                        </Link>
                     </div>
                 </div>
             </Col>

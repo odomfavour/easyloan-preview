@@ -14,7 +14,7 @@ const UserProfileContent = () => {
                     <div className='bg-gray p-3 profile-section-one'>
                         <div className="d-flex justify-content-between">
                             <img src={img} alt="img" className="profile-img "/>
-                            <div><Button className=''>Edit Profile</Button></div>
+                            <div className=''><Button >Edit Profile</Button></div>
                         </div>
                         <div>
                             <div className="pt-3 profile-mid-font fw-bold">Lydia Salami</div>
@@ -36,7 +36,7 @@ const UserProfileContent = () => {
                     </div>
                 </Col>
                 <Col  xs={12} md={6} className="">
-                <div className='mb-3 user-name-font user-profile-font fw-bold'>Business Profile</div>
+                <div className='mb-3 user-name-font user-profile-font fw-bold biz-profile-pad'>Business Profile</div>
                     <div className='profile-section-two'>
                         <div className="ps-3 scroll-bar">
                             <Card className='mb-2 border-0 me-3'>
