@@ -74,7 +74,7 @@ code {
 .form-control::-ms-input-placeholder {
 	color: #d0d0d0 !important;
 }
-.phone-input .input-group-text {
+.phone-input .input-group-text, .upload-docs .input-group-text {
 	background-color: #fff !important;
 }
 .phone-input .form-control {
