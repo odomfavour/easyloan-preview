@@ -1,5 +1,4 @@
 /* GLOBAL CSS RULES STARTS HERE */
-@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
 
 :root {
@@ -32,14 +31,10 @@ code {
 }
 
 /* Fonts */
-/* Acme font for headings, etc */
-.heading-font {
-	/* font-family: "Acme", sans-serif; */
+.heading-font, .heading {
 	color: #3a0e55;
 }
-.heading{
-  color: #3A0E55;
-}
+
 /* Inter font */
 .inter-font{
   font-family: 'Inter', sans-serif;
@@ -48,6 +43,9 @@ code {
 /* Text */
 .text-justify {
   text-align: justify;
+}
+.muted-text {
+  color: #B1B0B0;
 }
 
 /* Colors */
@@ -110,7 +108,7 @@ a:link {
 }
 
 .footer-font{
-  font-family: 'Acme', sans-serif;
+  font-family: 'GilmerRegular', sans-serif;
 }
 
 .footer-bg {
@@ -125,7 +123,7 @@ a:link {
 }
 
 .eazy-footer {
-	font-family: "Gilmer Regular";
+	font-family: "GilmerRegular";
 	font-style: normal;
 	font-weight: 400;
 	font-size: 16px;
@@ -350,7 +348,6 @@ a:link {
 }
 .user-dash-color {
   color: #3A0E55;
-  font-family: 'Acme', sans-serif;
 }
 
 .user-dashboard-content .user-btn-bg {

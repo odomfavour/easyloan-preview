@@ -35,23 +35,28 @@ const LandingPage = () => {
           .txt-hiw{
             color: #070606;
           }
+          .txt-hiw-2{
+            padding: 0 17rem;
+          }
           .form-spacing .vstack{
-            gap: 1rem;
+            gap: 1.5rem;
           }
           .card{
             border: 0;
             box-shadow: 0px 4px 5px rgba(145, 36, 212, 0.03);
             width: 18rem;
             border-radius: 8px;
+            padding-right: 1.5rem !important;
+            padding-left: 1.5rem !important;
+          }
+          .card-title{
+            margin-bottom: 1rem;
           }
           .card-img-top{
             width: 2.5rem;
           }
           .btn-md{
             width: 224px !important;
-          }
-          .btn{
-            font-family: 'Acme', sans-serif;
           }
           .apply-btn a{
             color: #fdfdfd;
@@ -61,7 +66,7 @@ const LandingPage = () => {
           }
           .heading{
             font-size: 3rem;
-            line-height: 4.5rem;
+            line-height: 4rem;
           }
           .heading-2{
             font-size: 2.5rem;
@@ -69,6 +74,7 @@ const LandingPage = () => {
           }
           .hero-txt{
             font-size: 1.25rem;
+            width: 75%;
           }
 
           // Accordion
@@ -104,6 +110,10 @@ const LandingPage = () => {
             background-size: 1rem;
           }
 
+          .card-cont{
+            row-gap: 3rem;
+          }
+
           @media (max-width: 575.98px) {
 
             body {
@@ -111,28 +121,47 @@ const LandingPage = () => {
             }
             .heading, .heading-2{
               font-size: 1.7rem;
-              line-height: 2.6rem;
+              line-height: 2.2rem;
             }
             .btn{
-              font-family: 'Gilmer', sans-serif;
               font-weight: 700;
             }
             .hero-txt{
               font-size: 1rem;
+              width: 100%;
+              font-weight: 700;
+              color: #636262 !important;
+            }
+            .txt-hiw-2{
+              margin-bottom: 1rem;
+              margin-top: 0;
+              padding: 0;
+            }
+          }
+
+          @media (max-width: 420px) {
+            .page-content{
+              padding: 0;
             }
           }
         `}
 			</style>
 			<PageWrapper>
-				<Container>
+				<Container className="page-content">
 					<Row className="pt-md-5 pb-5 px-4 px-md-0 flex-column-reverse flex-md-row gap-md-5">
 						<Col>
 							<Stack gap={3}>
-								<p className="mb-3 mb-md-0">
+								<p className="mb-0">
 									Let’s unlock unlimited business opportunities{" "}
 									<i className="inter-font txt-purple">with</i> you
 								</p>
-								<h1 className="fw-bold heading">Fastest Way to Get Access to Business Loans</h1>
+								<div>
+									<h1 className="fw-bold heading">
+										Fastest Way to Get <br />{" "}
+									</h1>{" "}
+									<h1 className="fw-bold heading"> Access to Business Loans</h1>
+								</div>
+
 								<p className="text-justify hero-txt">
 									Request for product loans, get approved and receive offers with flexible repayment
 									options to get your business to the next level.
@@ -151,7 +180,7 @@ const LandingPage = () => {
 					</Row>
 				</Container>
 
-				<Stack className="bg-gray pt-3 pt-md-5 pb-5 px-5 px-md-0">
+				<Stack className="bg-gray pt-3 pt-md-5 pb-5 pb-md-0 px-5 px-md-0">
 					<h1 className="fw-bold heading text-center">Loan Calculator</h1>
 					<LoanCalculator styles="bg-light-gray px-4 rounded mb-5 mt-4 form-spacing" />
 				</Stack>
@@ -164,15 +193,15 @@ const LandingPage = () => {
 									<p className="txt-hiw mb-0">Taking a business loan can be easy and quick!</p>
 									<h2 className="fw-bold heading">How It Works</h2>
 								</div>
-								<p className="px-md-5 mx-md-5">
+								<p className="txt-hiw-2">
 									Need to get your goods for your business but don’t have the capital? Need a quick,
 									flexible and efficient way to get products at affordable rates for resale? In 5
 									easy steps, you can get your products delivered to you.
 								</p>
-								<Container>
-									<Row xs={1} md={3} className="g-5 justify-content-center">
-										<Col className="d-flex justify-content-center ">
-											<Card className="align-items-center text-center justify-content-center pt-3 px-2">
+								<Container className="w-75">
+									<Row xs={1} md={3} className="card-cont justify-content-center">
+										<Col className="d-flex justify-content-center fw-bold">
+											<Card className="align-items-center text-center justify-content-center pt-3 pt-md-4">
 												<Card.Img variant="top" src={reg} alt="icon" />
 												<Card.Body>
 													<Card.Title className="fw-bold">Register</Card.Title>
@@ -180,8 +209,8 @@ const LandingPage = () => {
 												</Card.Body>
 											</Card>
 										</Col>
-										<Col className="d-flex justify-content-center ">
-											<Card className="align-items-center text-center pt-4 px-2 pb-3">
+										<Col className="d-flex justify-content-center fw-bold ">
+											<Card className="align-items-center text-center pt-4 pt-md-4">
 												<Card.Img variant="top" src={apply} alt="icon" />
 												<Card.Body>
 													<Card.Title className="fw-bold">Apply for Loan</Card.Title>
@@ -189,8 +218,8 @@ const LandingPage = () => {
 												</Card.Body>
 											</Card>
 										</Col>
-										<Col className="d-flex justify-content-center ">
-											<Card className="align-items-center text-center pt-3 px-2">
+										<Col className="d-flex justify-content-center fw-bold">
+											<Card className="align-items-center text-center pt-3  pt-md-4">
 												<Card.Img variant="top" src={uploadIcon} alt="icon" />
 												<Card.Body>
 													<Card.Title className="fw-bold">Upload Documents</Card.Title>
@@ -199,18 +228,18 @@ const LandingPage = () => {
 											</Card>
 										</Col>
 										<Col className="d-flex justify-content-center ">
-											<Card className="align-items-center text-center pt-3 px-2">
+											<Card className="align-items-center text-center pt-3  pt-md-4">
 												<Card.Img variant="top" src={getOffers} alt="icon" />
-												<Card.Body>
+												<Card.Body className="fw-bold">
 													<Card.Title className="fw-bold">Get Offers</Card.Title>
 													<Card.Text>Recieve offers to pick from and accept the terms.</Card.Text>
 												</Card.Body>
 											</Card>
 										</Col>
 										<Col className="d-flex justify-content-center ">
-											<Card className="align-items-center justify-content-center text-center pt-3 px-2">
+											<Card className="align-items-center justify-content-center text-center pt-3 pt-md-4">
 												<Card.Img variant="top" src={getProduct} alt="icon" />
-												<Card.Body>
+												<Card.Body className="fw-bold">
 													<Card.Title className="fw-bold">Get Product</Card.Title>
 													<Card.Text>With your loan disbursed, you can get your product</Card.Text>
 												</Card.Body>
@@ -222,7 +251,7 @@ const LandingPage = () => {
 									type="button"
 									variant="outline-purple"
 									className="fw-bold px-4 py-2 hiw-btn align-self-center">
-									<Link to="/">Read more</Link>
+									<Link to="/how">Read more</Link>
 								</Buttons>
 							</Stack>
 						</Col>
@@ -233,10 +262,10 @@ const LandingPage = () => {
 					<Container>
 						<Row className="px-3 px-md-0">
 							<Col className="text-center ">
-								<Row className="fw-bold heading ">
+								<Row className="fw-bold heading mb-md-5">
 									<Col>Our Financial Partners</Col>
 								</Row>
-								<Row className="align-items-center my-4">
+								<Row className="align-items-center my-4 ">
 									<Col xs={6} md={3}>
 										<Image src={UBA} alt="UBA Group logo" className="img-fluid p-x-2 py-3 p-md-0" />
 									</Col>
@@ -257,7 +286,7 @@ const LandingPage = () => {
 								<Buttons
 									variant="outline-purple"
 									size="md"
-									className="w-md-25 mb-3 px-4 py-2 fw-bold"
+									className="w-md-25 mb-3 px-4 py-2 mt-md-4 fw-bold"
 									onClick={handleBtnClick}
 									type="button">
 									See all our Financial Partners
@@ -270,19 +299,22 @@ const LandingPage = () => {
 				<Container>
 					<Row className="flex-column-reverse flex-md-row align-items-center justify-content-center py-5 px-3 gap-5">
 						<Stack direction="horizontal" gap={4} className="d-md-none justify-content-center">
-							<a href="">
-								<Image src={googlePlay} alt="Download From Google Play"></Image>
+							<a href="#download">
+								<Image
+									src={googlePlay}
+									alt="Download From Google Play"
+									className="img-fluid"></Image>
 							</a>
-							<a href="">
-								<Image src={appStore} alt="Download From App Store"></Image>
+							<a href="#download">
+								<Image src={appStore} alt="Download From App Store" className="img-fluid"></Image>
 							</a>
 						</Stack>
 						<Col xs={6} md={4} className="d-flex justify-content-center pt-3 pb-4 pt-md-0">
 							<Image src={phone} alt="hero image" className="img-fluid" />
 						</Col>
-						<Col md={6}>
-							<Stack gap={3}>
-								<h2 className="fw-bold heading-2">
+						<Col md={5}>
+							<Stack gap={3} className="pe-md-3">
+								<h2 className="fw-bold heading-2" style={{ color: "#636262" }}>
 									Download the EazyLoan App, See more interesting features
 								</h2>
 								<p>
@@ -290,10 +322,10 @@ const LandingPage = () => {
 									business loans.
 								</p>
 								<Stack direction="horizontal" gap={3} className="d-none d-md-flex">
-									<a href="">
+									<a href="#download">
 										<Image src={googlePlay} alt="Download From Google Play"></Image>
 									</a>
-									<a href="">
+									<a href="#download">
 										<Image src={appStore} alt="Download From App Store"></Image>
 									</a>
 								</Stack>
