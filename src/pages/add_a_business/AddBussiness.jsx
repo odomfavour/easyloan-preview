@@ -51,7 +51,7 @@ const AddBussiness = () => {
             padding-bottom: 7rem;
           }
 
-          
+
 
           // Tablet
           @media (min-width: 768px) {

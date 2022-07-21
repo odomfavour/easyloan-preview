@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Stack, Container } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 import { Header } from "../../components/index";
 
 const PageWrapper = ({ children, other, title, desc, page }) => {

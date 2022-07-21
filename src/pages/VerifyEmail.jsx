@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 const VerifyEmail = () => {
 	const navigate = useNavigate();
+	const [disabled, setDisabled] = useState(true);
 
 	const [toggleModal, setToggleModal] = useState(false);
 	const [iterator, setIterator] = useState(false);
@@ -18,6 +19,10 @@ const VerifyEmail = () => {
 	const setSuccessModal = () => {
 		setToggleModal(true);
 		setIterator(!iterator);
+	};
+
+	const handleFormFocus = () => {
+		setDisabled(false);
 	};
 
 	const handleVerifyEmail = (e) => {
@@ -74,7 +79,7 @@ const VerifyEmail = () => {
 									<Image src={img} alt="Confirmed" className="img-fluid" />
 								</Col>
 								<Col className="">
-									<Form className="form p-lg-4">
+									<Form className="form p-lg-4" onFocus={handleFormFocus}>
 										<Stack gap={2} className="gap-lg-5">
 											<p className="m-0 d-lg-none fw-bold">Verification Code</p>
 											<Stack gap={3} direction="horizontal" className="px-lg-5 mx-lg-5 ">
@@ -105,7 +110,8 @@ const VerifyEmail = () => {
 													size="md"
 													className="w-100 py-2"
 													type="button"
-													onClick={handleVerifyEmail}>
+													onClick={handleVerifyEmail}
+													disabled={disabled}>
 													Verify Email
 												</Buttons>
 												<Stack direction="horizontal" className="justify-content-between">

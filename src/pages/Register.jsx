@@ -20,8 +20,13 @@ const Register = () => {
 		refCode: "",
 	});
 	const [showPassword, setShowPassword] = useState(false);
+	const [disabled, setDisabled] = useState(true);
 
 	const navigate = useNavigate();
+
+	const handleFormFocus = () => {
+		setDisabled(false);
+	};
 
 	const handleClickShowPassword = () => {
 		setShowPassword(!showPassword);
@@ -88,7 +93,10 @@ const Register = () => {
 										Create an account to get started
 									</p>
 								</div>
-								<Form className=" px-4 pt-3 pb-4 bg-gray form" onSubmit={handleSubmit}>
+								<Form
+									className=" px-4 pt-3 pb-4 bg-gray form"
+									onSubmit={handleSubmit}
+									onFocus={handleFormFocus}>
 									<Stack gap={5}>
 										<Stack gap={4}>
 											<Form.Group controlId="name">
@@ -194,7 +202,12 @@ const Register = () => {
 										</Stack>
 
 										<Stack className="heading-font " gap={2}>
-											<Buttons variant="purple" size="md" className="w-100" type="submit">
+											<Buttons
+												variant="purple"
+												size="md"
+												className="w-100"
+												type="submit"
+												disabled={disabled}>
 												Register
 											</Buttons>
 											<p className="text-center m-0" style={{ color: "#121010" }}>

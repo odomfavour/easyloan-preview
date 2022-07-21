@@ -6,6 +6,7 @@ import EasyloanModal from "./easyloanmodal/EasyloanModal";
 const LoanCalculator = ({ styles }) => {
 	const [toggleModal, setToggleModal] = useState(false);
 	const [iterator, setIterator] = useState(false);
+	const [disabled, setDisabled] = useState(true);
 
 	const [form, setForm] = useState({
 		totalLPO: "",
@@ -15,6 +16,10 @@ const LoanCalculator = ({ styles }) => {
 	const [interestRate, setInterestRate] = useState(10.5);
 
 	const [loanOffer, setLoanOffer] = useState({}); // result of the calculation to be displayed on the loan offer popup
+
+	const handleFormFocus = () => {
+		setDisabled(false);
+	};
 
 	let rangeValues = [null, null, 10.5, 12, 18];
 	const handleInterestChange = (e) => {
@@ -207,7 +212,9 @@ const LoanCalculator = ({ styles }) => {
 
 			<Container className="pb-5 pb-md-0 pt-md-4 px-0">
 				<Row className="d-flex align-items-center justify-content-center px-4 px-md-0 form-wrap">
-					<Form className={` col col-lg-4 px-md-5 pt-4 pb-3 ${styles} box-shadow form`}>
+					<Form
+						onFocus={handleFormFocus}
+						className={` col col-lg-4 px-md-5 pt-4 pb-3 ${styles} box-shadow form`}>
 						<Stack>
 							<Form.Group controlId="totalLPO">
 								<Form.Label className="fw-bold">Total LPO Amount</Form.Label>
@@ -287,7 +294,8 @@ const LoanCalculator = ({ styles }) => {
 								size="md"
 								className="w-100 mb-3 py-2"
 								onClick={handleBtnClick}
-								type="submit">
+								type="submit"
+								disabled={disabled}>
 								Calculate
 							</Buttons>
 							<EasyloanModal btnsetter={toggleModal} iterateBtn={iterator} loanOffer={loanOffer} />
