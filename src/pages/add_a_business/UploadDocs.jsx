@@ -84,63 +84,128 @@ const UploadDocs = () => {
 					<Container className="upload-docs">
 						<Row>
 							<Col xs={12} lg={6} className="my-3">
-								<Form.Group controlId="cacForm2">
-									<InputGroup className="justify-content-between  ">
-										<Form.Label className="fw-bold ">CAC Form 2 / BN 1*</Form.Label>
-										<InputGroup.Text>
-											<img src={icon1} alt="icon" className=""></img>
-										</InputGroup.Text>
-									</InputGroup>
-									<Form.Control
+								<InputGroup className="justify-content-between  ">
+									<InputGroup.Text className="fw-bold px-0">CAC Form 2 / BN 1*</InputGroup.Text>
+									<InputGroup.Text>
+										<img src={icon1} alt="icon" className=""></img>
+									</InputGroup.Text>
+								</InputGroup>
+								<label
+									htmlFor="cacForm2"
+									className="d-flex flex-column justify-content-center w-100 bg-light-gray rounded border py-3"
+									style={{ cursor: "pointer" }}>
+									<div className="d-flex flex-column justify-content-center align-items-center ">
+										<svg
+											width="15"
+											height="17"
+											viewBox="0 0 15 17"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<path
+												d="M4.5 13H10.5V7H14.5L7.5 0L0.5 7H4.5V13ZM0.5 15H14.5V17H0.5V15Z"
+												fill="#AE2BFF"
+											/>
+										</svg>
+										<p className="fw-bold my-2">
+											Click here to upload a clear picture of CAC Form 2 / BN 1
+										</p>
+										<p className="muted-text m-0">PNG/JPEG</p>
+									</div>
+									<input
+										className="d-none"
+										id="cacForm2"
 										name="cacForm2"
 										type="file"
-										id="cacForm2"
 										onChange={handleImageUpload}
 										accept=".jpeg, .png, .jpg"
 										required
 									/>
-									<p className="fw-bold mt-2">File should not be more than 2mb</p>
-								</Form.Group>
+								</label>
+								<p className="fw-bold mt-2">File should not be more than 2mb</p>
 							</Col>
+
 							<Col xs={12} lg={6} className="my-3">
-								<Form.Group controlId="cacCertificate">
-									<InputGroup className="justify-content-between">
-										<Form.Label className=" fw-bold ">CAC Certificate</Form.Label>
-										<InputGroup.Text>
-											<img src={icon1} alt="icon" className=""></img>
-										</InputGroup.Text>
-									</InputGroup>
-									<Form.Control
+								<InputGroup className="justify-content-between  ">
+									<InputGroup.Text className="fw-bold px-0">CAC Certificate</InputGroup.Text>
+									<InputGroup.Text>
+										<img src={icon1} alt="icon"></img>
+									</InputGroup.Text>
+								</InputGroup>
+								<label
+									htmlFor="cacCertificate"
+									className="d-flex flex-column justify-content-center w-100 bg-light-gray rounded border py-3"
+									style={{ cursor: "pointer" }}>
+									<div className="d-flex flex-column justify-content-center align-items-center ">
+										<svg
+											width="15"
+											height="17"
+											viewBox="0 0 15 17"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<path
+												d="M4.5 13H10.5V7H14.5L7.5 0L0.5 7H4.5V13ZM0.5 15H14.5V17H0.5V15Z"
+												fill="#AE2BFF"
+											/>
+										</svg>
+										<p className="fw-bold my-2">
+											Click here to upload a clear picture of CAC Certificate
+										</p>
+										<p className="muted-text m-0">PNG/JPEG</p>
+									</div>
+									<input
+										className="d-none"
+										id="cacCertificate"
 										name="cacCertificate"
 										type="file"
-										id="cacCertificate"
-										accept=".jpeg, .png, .jpg"
 										onChange={handleImageUpload}
-										className="form-control"
+										accept=".jpeg, .png, .jpg"
 										required
 									/>
-									<p className="fw-bold mt-2">File should not be more than 2mb</p>
-								</Form.Group>
+								</label>
+								<p className="fw-bold mt-2">File should not be more than 2mb</p>
 							</Col>
+
 							<Col xs={12} lg={6} className="my-3">
-								<Form.Group controlId="cacForm7">
-									<InputGroup className="justify-content-between">
-										<Form.Label className=" fw-bold ">CAC Form 7 / BN 2*</Form.Label>
-										<InputGroup.Text>
-											<img src={icon1} alt="icon" className=""></img>
-										</InputGroup.Text>
-									</InputGroup>
-									<Form.Control
+								<InputGroup className="justify-content-between  ">
+									<InputGroup.Text className="fw-bold px-0">CAC Form 7 / BN 2*</InputGroup.Text>
+									<InputGroup.Text>
+										<img src={icon1} alt="icon"></img>
+									</InputGroup.Text>
+								</InputGroup>
+								<label
+									htmlFor="cacForm7"
+									className="d-flex flex-column justify-content-center w-100 bg-light-gray rounded border py-3"
+									style={{ cursor: "pointer" }}>
+									<div className="d-flex flex-column justify-content-center align-items-center ">
+										<svg
+											width="15"
+											height="17"
+											viewBox="0 0 15 17"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<path
+												d="M4.5 13H10.5V7H14.5L7.5 0L0.5 7H4.5V13ZM0.5 15H14.5V17H0.5V15Z"
+												fill="#AE2BFF"
+											/>
+										</svg>
+										<p className="fw-bold my-2">
+											Click here to upload a clear picture of CAC Form 7 / BN 2
+										</p>
+										<p className="muted-text m-0">PNG/JPEG</p>
+									</div>
+									<input
+										className="d-none"
+										id="cacForm7"
 										name="cacForm7"
 										type="file"
-										id="cacForm7"
-										accept=".jpeg, .png, .jpg"
 										onChange={handleImageUpload}
+										accept=".jpeg, .png, .jpg"
 										required
 									/>
-									<p className="fw-bold mt-2">File should not be more than 2mb</p>
-								</Form.Group>
+								</label>
+								<p className="fw-bold mt-2">File should not be more than 2mb</p>
 							</Col>
+
 							<Col xs={12} lg={6} className="d-flex align-items-end my-5">
 								<Buttons variant="purple" className=" w-100" type="submit" disabled={disabled}>
 									Add Business
