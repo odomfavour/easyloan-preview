@@ -15,6 +15,7 @@ import {
 	HowItWorks,
 	AboutUs,
 	AddBussiness,
+	UploadDocs,
 } from "./pages/Index";
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
 			<Route path="/About" element={<AboutUs />} />
 			<Route path="/detail" element={<PersonalDetails />} />
 			<Route path="/add-bussiness" element={<AddBussiness />} />
+			<Route path="/upload-documents" element={<UploadDocs />} />
 		</Routes>
 	);
 }

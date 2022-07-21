@@ -178,19 +178,7 @@ const LoanCalculator = ({ styles }) => {
 
           .form-select::-webkit-input-placeholder {
             color: #d0d0d0 !important;
-            }
-
-            .form-select:-moz-placeholder { /* Firefox 18- */
-            color: deeppink !important;  
-            }
-             
-            select::-moz-placeholder {  /* Firefox 19+ */
-            color: deeppink !important;  
-            }
-
-            .form-select:-ms-input-placeholder {
-            color: deeppink !important;
-            }
+          }
 
 
           // MOBILE VIEW

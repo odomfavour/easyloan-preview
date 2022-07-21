@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { Stack, Form } from "react-bootstrap";
 
-import PageWrapper from "../layouts/add_ bussiness_page_wrapper/PageWrapper";
-import { Buttons } from "../components/index";
+import PageWrapper from "../../layouts/add_ bussiness_page_wrapper/PageWrapper";
+import { Buttons } from "../../components/index";
+import { useNavigate } from "react-router-dom";
 
 const AddBussiness = () => {
+	const [disabled, setDisabled] = useState(true);
+	const navigate = useNavigate();
+
 	const [form, setForm] = useState({
 		businessName: "",
 		businessEmail: "",
@@ -14,6 +18,10 @@ const AddBussiness = () => {
 		category: false,
 		size: "",
 	});
+
+	const handleFormFocus = () => {
+		setDisabled(false);
+	};
 
 	const handleChange = (e) => {
 		let value = e.target.value;
@@ -26,8 +34,8 @@ const AddBussiness = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		// navigate("/verify");
-		console.log("submitted");
+		localStorage.setItem(`business ${form.regNumber}`, JSON.stringify(form));
+		navigate("/upload-documents");
 	};
 
 	return (
@@ -42,13 +50,24 @@ const AddBussiness = () => {
           .form{
             padding-bottom: 7rem;
           }
+
+          // Tablet
+          @media (min-width: 768px) {
+            .form .form-content{
+              gap: 0 !important;
+            }
+          }
+
         `}
 			</style>
 
 			<PageWrapper title="Business Information" desc="Enter your company information" page="1">
-				<Form className=" px-lg-4 pt-3 form" onSubmit={handleSubmit}>
-					<Stack gap={5} className="flex-lg-row form-content">
-						<Stack gap={4} className="px-3 py-4 w-100 rounded bg-gray ">
+				<Form
+					className=" px-md-5 mx-md-5 pt-3 form"
+					onSubmit={handleSubmit}
+					onFocus={handleFormFocus}>
+					<Stack gap={5} className="flex-lg-row form-content mb-md-5 px-lg-4">
+						<Stack gap={4} className="px-3 px-md-4 py-4 pb-md-5 w-100 rounded bg-gray ">
 							<h2 className="heading-2 fw-bold">Business Details</h2>
 							<Form.Group controlId="businessName">
 								<Form.Label className="fw-bold">Business Name</Form.Label>
@@ -58,6 +77,7 @@ const AddBussiness = () => {
 									value={form.businessName}
 									onChange={handleChange}
 									placeholder="Enter Business Name"
+									required
 								/>
 							</Form.Group>
 
@@ -69,6 +89,7 @@ const AddBussiness = () => {
 									value={form.businessEmail}
 									onChange={handleChange}
 									placeholder="lydia@lyd&ste.com"
+									required
 								/>
 							</Form.Group>
 
@@ -80,10 +101,11 @@ const AddBussiness = () => {
 									value={form.regNumber}
 									onChange={handleChange}
 									placeholder="RC 2222222"
+									required
 								/>
 							</Form.Group>
 
-							<Stack gap={3} className="flex-lg-row">
+							<Stack gap={3} className="flex-md-row">
 								<Form.Group controlId="bvn" className="w-100">
 									<Form.Label className="fw-bold">Owner’s BVN</Form.Label>
 									<Form.Control
@@ -92,6 +114,7 @@ const AddBussiness = () => {
 										value={form.bvn}
 										onChange={handleChange}
 										placeholder="22222222222222222"
+										required
 									/>
 								</Form.Group>
 
@@ -103,21 +126,21 @@ const AddBussiness = () => {
 										value={form.phone}
 										onChange={handleChange}
 										placeholder="0802222222222"
+										required
 									/>
 								</Form.Group>
 							</Stack>
 
-							<Stack gap={3} className="flex-lg-row">
+							<Stack gap={3} className="flex-md-row">
 								<Form.Group controlId="category" className="w-100">
-									<Form.Label className="fw-bold" className="">
-										Business Category
-									</Form.Label>
+									<Form.Label className="fw-bold">Business Category</Form.Label>
 									<Form.Select
 										aria-label="Business Category"
 										name="category"
 										value={form.category}
-										onChange={handleChange}>
-										<option className="d-none">Select the business category</option>
+										onChange={handleChange}
+										required>
+										<option className="d-none">Select business category</option>
 										<option value="Food and Agriculture">Food and Agriculture</option>
 										<option value="Automobile">Automobile</option>
 										<option value="Gadget">Gadget</option>
@@ -136,6 +159,7 @@ const AddBussiness = () => {
 								<Form.Group controlId="size" className="w-100">
 									<Form.Label className="fw-bold">Business Size</Form.Label>
 									<Form.Select
+										required
 										aria-label="Business Size"
 										name="size"
 										value={form.size}
@@ -149,7 +173,9 @@ const AddBussiness = () => {
 							</Stack>
 						</Stack>
 
-						<Stack gap={4} className="px-3 py-4 w-100 rounded bg-gray ">
+						<Stack
+							gap={4}
+							className="px-3  px-md-4 py-4 w-100 rounded justify-content-lg-between bg-gray biz-address">
 							<h2 className="heading-2 fw-bold">Business Address</h2>
 							<Form.Group controlId="street">
 								<Form.Label className="fw-bold">Street Address</Form.Label>
@@ -159,6 +185,7 @@ const AddBussiness = () => {
 									value={form.street}
 									onChange={handleChange}
 									placeholder="12, Favourite Street"
+									required
 								/>
 							</Form.Group>
 
@@ -181,6 +208,7 @@ const AddBussiness = () => {
 									value={form.lga}
 									onChange={handleChange}
 									placeholder="Eti Osa"
+									required
 								/>
 							</Form.Group>
 
@@ -192,13 +220,20 @@ const AddBussiness = () => {
 									value={form.state}
 									onChange={handleChange}
 									placeholder="Lagos"
+									required
 								/>
 							</Form.Group>
+
+							<div className="d-none d-lg-block mt-5">
+								<Buttons variant="purple" className="w-100  " type="submit" disabled={disabled}>
+									Continue
+								</Buttons>
+							</div>
 						</Stack>
 					</Stack>
 
-					<div className="px-3">
-						<Buttons variant="purple" className="mt-4 w-100" type="submit">
+					<div className="px-3 d-lg-none">
+						<Buttons variant="purple" className="mt-4 w-100" type="submit" disabled={disabled}>
 							Continue
 						</Buttons>
 					</div>

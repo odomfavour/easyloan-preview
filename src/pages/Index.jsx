@@ -7,5 +7,7 @@ import Login from "./Login";
 import PersonalDetails from "./PersonalDetails";
 import HowItWorks from "./HowItWorks";
 import AboutUs from "./AboutUs";
-import AddBussiness from "./AddBussiness";
-export { LandingPage, LoanCalculatorPage, Faqs, Register, VerifyEmail, Login, PersonalDetails, HowItWorks, AboutUs, AddBussiness };
+import AddBussiness from "./add_a_business/AddBussiness";
+import UploadDocs from "./add_a_business/UploadDocs";
+
+export { LandingPage, LoanCalculatorPage, Faqs, Register, VerifyEmail, Login, PersonalDetails, HowItWorks, AboutUs, AddBussiness, UploadDocs };
