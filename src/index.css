@@ -226,8 +226,8 @@ a:link {
   display: flex;
   align-items: center;
   color: rgb(255, 255, 255);
-  font-size: 18px;
-  padding: 20px 0;
+  font-size: 15px;
+  padding: 18px 0;
   margin: 0 35px;
 }
 
@@ -250,13 +250,9 @@ a:link {
 }
 
 .side-height {
-  height: 100vh;
+  height: 1000px;
   background-color: #AE2BFF;
   overflow: hidden;
-}
-
-.dashy-height{
-  height: 100vh;
 }
 
 .user-btn {
@@ -270,7 +266,7 @@ a:link {
 
 @media screen and (min-width: 992px) {
   .main-content, .layout-outlet {
-    margin-left: 303px;
+    margin-left: 290px;
   }
 }
 
@@ -341,6 +337,9 @@ a:link {
 
 
 /* User dasboard Content starts here */
+.user-name-font {
+  font: 'Gilmer Bold';
+}
 .width-100{
   width: 100%;
 }
@@ -364,6 +363,18 @@ a:link {
   background-color: rgba(145, 36, 212, 0.03);
 }
 
+.user-dashboard-content6 .user-btn-bgd2 {
+  background-color: rgba(232, 250, 31, 0.3);
+  color: #8A8989;
+  width: 200px;
+}
+
+.user-dashboard-content6 .btn-primary:hover {
+  color: #8A8989;
+  background-color: rgba(232, 250, 31, 0.3) !important;
+  cursor: default;
+}
+
 .user-dashboard-content2 .user-btn-bg2 ,
 .user-dashboard-content5 .btn-primary {
   background-color: #B1B0B0 !important;
@@ -372,14 +383,27 @@ a:link {
   width: 100px;
 }
 
-.user-dashboard-content3 .btn-primary {
-  color:  #AE2BFF;
+.user-dashboard-content3 .btn-primary{
+  color: #AE2BFF;
   border-color: #AE2BFF;
   background-color: #E5E5E5;
+  /* background-color: var(--gray); */
 }
 
-.user-dashboard-content .btn-primary:hover, 
-.user-dashboard-content2 .btn-primary:hover,
+.user-dashboard-content3 button {
+  background: #FDFDFD;
+  color: #AE2BFF;
+  border-color: #AE2BFF;
+}
+
+.user-dashboard-content2 .btn-primary:hover{
+  background-color: #B1B0B0 !important;
+  color:  #fff;
+  border-color: #E5E5E5;
+  cursor: default;
+}
+
+.user-dashboard-content .btn-primary:hover,
 .user-dashboard-content5 .btn-primary:hover{
   border-color: #AE2BFF !important;
   background-color: #B1B0B0;
@@ -391,6 +415,24 @@ a:link {
   color: #3A0E55;
 }
 
+.user-dashboard-content3 button:hover {
+  background: #FDFDFD;
+  color: #AE2BFF;
+  border-color: #AE2BFF;
+  cursor: default;
+}
+
+.user-dashboard-content8 .user-btn-bgd8 {
+  background-color: rgba(19, 255, 57, 0.3);
+  color: #8A8989;
+}
+
+.user-dashboard-content8 .btn-primary:hover {
+  color: #8A8989;
+  background-color: rgba(19, 255, 57, 0.3) !important;
+  cursor: default;
+}
+
 .user-card {
   background-color: var(--gray) !important;
 }
@@ -399,11 +441,71 @@ a:link {
   padding-top: 32px;
 }
 
+.user-loan-status {
+  font-size: 12px;
+  color: #121010;
+  background: #FDFDFD;
+  box-shadow: 0px 4px 5px rgba(145, 36, 212, 0.03);
+  border-radius: 8px;
+  width: 570px !important;
+}
+
+.user-business {
+  color: #121010;
+  background: #FDFDFD;
+  box-shadow: 0px 4px 5px rgba(145, 36, 212, 0.03);
+  border-radius: 8px;
+  height: 80px;
+  width: 440px;
+}
+
+.user-biz-font {
+  font-size: 12px;
+}
+
+.user-biz-font2 {
+  font-size: 13px;
+}
+
+.user-btn-margin {
+  margin-left: 90px;
+}
+
+.user-current-loan {
+  font-size: 20px;
+  color: #3A0E55;
+  margin-left: 300px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+
 @media (max-width:1030px){
   .user-card {
     width: 9rem !important;
     height: 9rem !important;
     font-size: 14px;
+  }
+
+  .user-dashboard-content6 .row {
+    flex-direction: column;
+  }
+
+  .user-dashboard-content8 .row {
+    flex-direction: column;
+  }
+  .user-business {
+    width: 277px;
+  }
+
+  .user-btn-margin {
+    margin-left:  0px;
+  }
+
+  .user-current-loan {
+    margin-left: 143px;
+    margin-top: 5px;
+    margin-bottom: 0px;
   }
 }
 
@@ -414,6 +516,13 @@ a:link {
     height: 10rem !important;
     font-size: 16px;
   }
+  .user-business {
+    width: 295px;
+  }
+
+  .user-current-loan {
+    margin-left: 155px;
+  }
 }
 
 @media (max-width:450px){
@@ -422,6 +531,13 @@ a:link {
     margin-left: 100px;
   }
 
+  .user-business {
+    width: 320px;
+  }
+  
+  .user-current-loan {
+    margin-left: 180px;
+  }
 }
 
 
@@ -429,11 +545,171 @@ a:link {
   .user-card {
     margin-left: 80px;
   }
+
+  .user-business {
+    width: 270px;
+  }
+
+  .user-current-loan {
+    margin-left: 135px;
+  }
 }
 
 @media (max-width:330px){
   .user-card {
     margin-left: 50px;
   }
+
+  .user-business {
+    width: 220px;
+  }
+
+  .user-dashboard-content6 .user-btn-bgd2 {
+    width: 150px;
+  }
+
+  .user-loan-status {
+    font-size: 10px;
+  }
+
+  .user-dashboard-content8 .user-current-loan {
+    font-size: 15px;
+    margin-left: 105px;
+  }
 }
 /* User dasboard Content Ends here */
+
+/* User dasboard Profile Starts here */
+.user-profile-font {
+  color: #3A0E55;
+  font-size: 15px;
+}
+
+.profile-flex {
+  display: flex;
+}
+
+.profile-pading {
+  padding-left: 12px !important;
+}
+
+.profile-img {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: none;
+}
+
+.profile-section-one .btn-primary,
+.profile-section-two .btn-primary{
+  color: #AE2BFF;
+  border-color: #AE2BFF;
+}
+
+.profile-section-one .btn-primary{
+  background-color: rgba(145, 36, 212, 0.03);;
+}
+
+.profile-section-two .btn-primary{
+  background-color:  #FDFDFD;
+}
+
+.profile-completion-bg {
+  background-color: #D9D9D9;;
+}
+
+.profile-completion {
+  margin-left: 380px;
+}
+
+.profile-small-font {
+  font-size: 14px;
+  color: #121010;
+}
+
+.profile-mid-font {
+  font-size: 18px;
+  color: #121010;
+}
+
+.profile-section-two .card {
+  background: rgba(145, 36, 212, 0.03);
+  border-radius: 8px;
+}
+
+.scroll-bar {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 600px;
+}
+
+@media (max-width:1030px){
+  .profile-img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .profile-completion {
+    margin-left: 180px;
+  }
+
+  .profile-mid-font {
+    font-size: 15px;
+  }
+}
+
+@media (max-width:780px){
+  .profile-img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .profile-completion {
+    margin-left: 190px;
+  }
+
+  .profile-mid-font {
+    font-size: 12px;
+  }
+
+  .profile-small-font {
+    font-size: 10px;
+  }
+}
+
+@media (max-width:450px){
+  .profile-completion {
+    margin-left: 240px;
+  }
+
+  .biz-profile-pad {
+    margin-top: 25px;
+  }
+
+  .profile-mid-font {
+    font-size: 15px;
+  }
+
+  .profile-small-font {
+    font-size: 12px;
+  }
+}
+
+@media (max-width:380px){
+  .profile-completion {
+    margin-left: 190px;
+  }
+}
+
+@media (max-width:325px){
+
+  .profile-img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .profile-completion {
+    margin-left: 140px;
+  }
+}
+/* User dasboard Profile Ends here */

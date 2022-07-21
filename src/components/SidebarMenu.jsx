@@ -43,8 +43,8 @@ import {
           <Nav.Link as={Link} to="">
             <ShieldLock className="mx-4" /> Privacy Policy
           </Nav.Link>
-          <div className="py-3"></div>
-          <Nav.Link as={Link} to="">
+          <div className="pt-2"></div>
+          <Nav.Link as={Link} to="" className="" >
             <BoxArrowRight className="mx-4" />
             Logout
           </Nav.Link>
