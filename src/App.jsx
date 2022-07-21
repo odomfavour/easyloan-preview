@@ -16,6 +16,7 @@ import {
 	AboutUs,
 	AddBussiness,
 	UploadDocs,
+	ReviewApplication,
 } from "./pages/Index";
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
 			<Route path="/detail" element={<PersonalDetails />} />
 			<Route path="/add-bussiness" element={<AddBussiness />} />
 			<Route path="/upload-documents" element={<UploadDocs />} />
+			<Route path="/review-application" element={<ReviewApplication />} />
 		</Routes>
 	);
 }

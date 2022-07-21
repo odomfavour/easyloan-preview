@@ -59,6 +59,8 @@ const UploadDocs = () => {
 		setSuccessModal();
 	};
 
+	const message = ["Great Job!", <br />, "Your business has been successfully added"];
+
 	return (
 		<>
 			<PageWrapper
@@ -128,8 +130,7 @@ const UploadDocs = () => {
 							imgs={successScreen}
 							btnOne={[true, "Go to Dashboard"]}
 							btnTwo={[false, ""]}
-							message="Great Job!
-                Your business has been successfully added"
+							message={message}
 							btnOneClick={navigateToDashboard}
 						/>
 					</Container>
