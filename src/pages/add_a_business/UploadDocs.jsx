@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row, InputGroup, Form, Stack } from "react-bootstrap";
 
 import PageWrapper from "../../layouts/add_ bussiness_page_wrapper/PageWrapper";
 import { Buttons } from "../../components";
 import SuccessModal from "../../components/successModal.jsx/SuccessModal";
 
 import successScreen from "../../assets/successScreen.svg";
+import icon1 from "../../assets/Vector_info.svg";
 
 const UploadDocs = () => {
 	const [disabled, setDisabled] = useState(true);
@@ -63,51 +64,53 @@ const UploadDocs = () => {
 
 	return (
 		<>
+			<style type="text/css">
+				{`
+          .upload-docs .input-group-text{
+            border: 0;
+          }
+          .upload-docs .form-control{
+            background-color: var(--gray-light);
+            padding: 2rem;
+          }
+
+        `}
+			</style>
 			<PageWrapper
 				title="Upload your Documents"
 				desc="Upload your business documents to continue"
 				page="2">
 				<form onSubmit={handleSubmit} onFocus={handleFormFocus}>
-					<Container>
+					<Container className="upload-docs">
 						<Row>
-							<Col xs={12} lg={6}>
-								<div className="form-group">
-									<label htmlFor="cacForm2" className="form-label fw-bold ">
-										CAC Form 2 / BN 1*
-									</label>
-									<input
+							<Col xs={12} lg={6} className="my-3">
+								<Form.Group controlId="cacForm2">
+									<InputGroup className="justify-content-between  ">
+										<Form.Label className="fw-bold ">CAC Form 2 / BN 1*</Form.Label>
+										<InputGroup.Text>
+											<img src={icon1} alt="icon" className=""></img>
+										</InputGroup.Text>
+									</InputGroup>
+									<Form.Control
 										name="cacForm2"
 										type="file"
 										id="cacForm2"
 										onChange={handleImageUpload}
 										accept=".jpeg, .png, .jpg"
-										className="form-control"
 										required
 									/>
-								</div>
+									<p className="fw-bold mt-2">File should not be more than 2mb</p>
+								</Form.Group>
 							</Col>
-							<Col xs={12} lg={6}>
-								<div className="form-group">
-									<label htmlFor="cacForm7" className="form-label fw-bold ">
-										CAC Form 7 / BN 2*
-									</label>
-									<input
-										name="cacForm7"
-										type="file"
-										id="cacForm7"
-										accept=".jpeg, .png, .jpg"
-										onChange={handleImageUpload}
-										className="form-control"
-										required
-									/>
-								</div>
-							</Col>
-							<Col xs={12} lg={6}>
-								<div className="form-group">
-									<label htmlFor="cacCertificate" className="form-label fw-bold ">
-										CAC Certificate
-									</label>
-									<input
+							<Col xs={12} lg={6} className="my-3">
+								<Form.Group controlId="cacCertificate">
+									<InputGroup className="justify-content-between">
+										<Form.Label className=" fw-bold ">CAC Certificate</Form.Label>
+										<InputGroup.Text>
+											<img src={icon1} alt="icon" className=""></img>
+										</InputGroup.Text>
+									</InputGroup>
+									<Form.Control
 										name="cacCertificate"
 										type="file"
 										id="cacCertificate"
@@ -116,9 +119,29 @@ const UploadDocs = () => {
 										className="form-control"
 										required
 									/>
-								</div>
+									<p className="fw-bold mt-2">File should not be more than 2mb</p>
+								</Form.Group>
 							</Col>
-							<Col xs={12} lg={6}>
+							<Col xs={12} lg={6} className="my-3">
+								<Form.Group controlId="cacForm7">
+									<InputGroup className="justify-content-between">
+										<Form.Label className=" fw-bold ">CAC Form 7 / BN 2*</Form.Label>
+										<InputGroup.Text>
+											<img src={icon1} alt="icon" className=""></img>
+										</InputGroup.Text>
+									</InputGroup>
+									<Form.Control
+										name="cacForm7"
+										type="file"
+										id="cacForm7"
+										accept=".jpeg, .png, .jpg"
+										onChange={handleImageUpload}
+										required
+									/>
+									<p className="fw-bold mt-2">File should not be more than 2mb</p>
+								</Form.Group>
+							</Col>
+							<Col xs={12} lg={6} className="d-flex align-items-end my-5">
 								<Buttons variant="purple" className=" w-100" type="submit" disabled={disabled}>
 									Add Business
 								</Buttons>
