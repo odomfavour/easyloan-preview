@@ -76,7 +76,7 @@ const UploadDocs = () => {
 				page="2">
 				<form onSubmit={handleSubmit}>
 					<Container className="upload-docs">
-						<Row>
+						<Row className="px-3">
 							<Col xs={12} lg={6} className="my-3">
 								<InputGroup className="justify-content-between  ">
 									<InputGroup.Text className="fw-bold px-0">CAC Form 2 / BN 1*</InputGroup.Text>
