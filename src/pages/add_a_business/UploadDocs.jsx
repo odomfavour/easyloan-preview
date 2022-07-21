@@ -54,7 +54,7 @@ const UploadDocs = () => {
 		setSuccessModal();
 	};
 
-	const message = ["Great Job!", <br />, "Your business has been successfully added"];
+	const message = ["Great Job!", <br key="0" />, "Your business has been successfully added"];
 
 	return (
 		<>

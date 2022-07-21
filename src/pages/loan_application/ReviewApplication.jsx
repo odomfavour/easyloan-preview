@@ -23,14 +23,17 @@ const ReviewApplication = () => {
 		navigate("/dashboard/user");
 	};
 
-	const message = ["Congratulations", <br />, "Your application has been sent successfully"];
+	const message = [
+		"Congratulations",
+		<br key="0" />,
+		"Your application has been sent successfully",
+	];
 
-  // const [productDetails, sesetProductDetails] = useState({});
-  // useEffect(() => {
-  //   const productDetails = JSON.parse(localStorage.getItem("productDetails"));
-  //   sesetProductDetails(productDetails);
-  // }, [])
-  
+	// const [productDetails, sesetProductDetails] = useState({});
+	// useEffect(() => {
+	//   const productDetails = JSON.parse(localStorage.getItem("productDetails"));
+	//   sesetProductDetails(productDetails);
+	// }, [])
 
 	return (
 		<>
@@ -46,10 +49,10 @@ const ReviewApplication = () => {
 			</style>
 			<PageWrapperV2>
 				<Container className="fw-bold d-flex flex-column px-4">
-          <Stack>
-            <h1 className="heading fw-bold mt-3">Loan Application</h1>
-            <p className="muted-text">Review your application</p>
-          </Stack>
+					<Stack>
+						<h1 className="heading fw-bold mt-3">Loan Application</h1>
+						<p className="muted-text">Review your application</p>
+					</Stack>
 					<Row className="align-self-center w-100 pt-4 pb-5">
 						<Col lg={4} className="m-auto">
 							<Row>
