@@ -15,17 +15,19 @@ const EasyloanModal = ({ btnsetter, iterateBtn, loanOffer }) => {
 
 	// get screen width 
 	const getWidth = () => {
-		const {innerWidth: width} = window
+		const { innerWidth: width } = window
 		return width
 	}
 	const [screenWidth, setScreenWidth] = useState(getWidth())
 	useEffect(() => {
 		const handleResize = () => {
-		setScreenWidth(getWidth());
+			setScreenWidth(getWidth());
 		}
 		window.addEventListener('resize', handleResize);
-		return () => window.removeEventListener('resize', handleResize);
-		return screenWidth
+		return () => {
+			window.removeEventListener('resize', handleResize);
+			return screenWidth
+		}
 	}, [])
 	const lefty = () => getWidth() < 583 ? '30px' : '-5px'
 
