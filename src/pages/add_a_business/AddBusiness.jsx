@@ -5,7 +5,7 @@ import PageWrapper from "../../layouts/add_ bussiness_page_wrapper/PageWrapper";
 import { Buttons } from "../../components/index";
 import { useNavigate } from "react-router-dom";
 
-const AddBussiness = () => {
+const AddBusiness = () => {
 	const [disabled, setDisabled] = useState(true);
 	const navigate = useNavigate();
 
@@ -32,9 +32,18 @@ const AddBussiness = () => {
 		});
 	};
 
+	const handleBusinessInfo = () => {
+		// get existing business info. If there's none, create an object
+		let existingData = JSON.parse(localStorage.getItem("businessInfo")) || {};
+		// Add new data to the object
+		existingData[`${Object.keys(existingData).length + 1}`] = form;
+		// save back to local storage
+		localStorage.setItem("businessInfo", JSON.stringify(existingData));
+	};
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		localStorage.setItem(`business ${form.regNumber}`, JSON.stringify(form));
+		handleBusinessInfo();
 		navigate("/upload-documents");
 	};
 
@@ -65,10 +74,7 @@ const AddBussiness = () => {
 
 			<PageWrapper title="Business Information" desc="Enter your company information" page="1">
 				<Container className="">
-					<Form
-						className=" pt-3 form"
-						onSubmit={handleSubmit}
-						onFocus={handleFormFocus}>
+					<Form className=" pt-3 form" onSubmit={handleSubmit} onFocus={handleFormFocus}>
 						<Stack gap={5} className="flex-lg-row form-content mb-md-5">
 							<Stack gap={4} className="px-3 px-md-4 py-4 pb-md-5 w-100 rounded bg-gray ">
 								<h2 className="heading-2 fw-bold">Business Details</h2>
@@ -247,4 +253,4 @@ const AddBussiness = () => {
 	);
 };
 
-export default AddBussiness;
+export default AddBusiness;

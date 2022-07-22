@@ -39,6 +39,7 @@ const UploadDocs = () => {
 			reader.readAsDataURL(file);
 		});
 	};
+
 	const handleImageUpload = (e) => {
 		const file = e.target.files[0];
 		getBase64(file).then((base64) => {
@@ -48,9 +49,22 @@ const UploadDocs = () => {
 			});
 		});
 	};
+
+	const addToStorage = () => {
+		// get existing business info.
+		let businessInfo = JSON.parse(localStorage.getItem("businessInfo"));
+		// get lates uploaded business info.
+		let latestBusinessInfo =
+			businessInfo[Object.keys(businessInfo).length];
+		// add CAC files to the object
+		latestBusinessInfo.cacDocumentsImgUrl = cacDocuments;
+		// save back to local storage
+		localStorage.setItem("businessInfo", JSON.stringify(businessInfo));
+	};
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		localStorage["CacDocumentsBase64"] = JSON.stringify(cacDocuments);
+		addToStorage();
 		setSuccessModal();
 	};
 
