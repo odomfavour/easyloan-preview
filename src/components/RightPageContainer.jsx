@@ -8,7 +8,9 @@ function GridComplexExample({ page, setPage }) {
 	const { isDesktop } = useDesktop();
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		setPage(page + 1);
+		if (!isDesktop) {
+			setPage(page + 1);
+		}
 	};
 	return (
 		<Form className="">

@@ -6,12 +6,22 @@ import { Container, Col, Row, Image, Stack, Form, InputGroup } from "react-boots
 import axios from "axios";
 import PageWrapperV2 from "../layouts/no_footer_layout/PageWrapperV2";
 import { Buttons } from "../components/index";
+import SuccessModal from "../components/successModal.jsx/SuccessModal";
 
 import googleIcon from "../assets/icons_google.svg";
 import reg from "../assets/Illust/illust_Register.svg";
 import NG from "../assets/twemoji_flag-nigeria.svg";
+import successScreen from "../assets/successScreen.svg";
 
 const Register = () => {
+	const [toggleModal, setToggleModal] = useState(false);
+	const [iterator, setIterator] = useState(false);
+
+	const setSuccessModal = () => {
+		setToggleModal(true);
+		setIterator(!iterator);
+	};
+
 	// let ans = true;
 	const [form, setForm] = useState({
 		name: "",
@@ -26,6 +36,13 @@ const Register = () => {
 	const [disabled, setDisabled] = useState(true);
 
 	const navigate = useNavigate();
+
+	const navigateToLogin = () => {
+		navigate("/login");
+	};
+	const navigateToHome = () => {
+		navigate("/");
+	};
 
 	const handleFormFocus = () => {
 		setDisabled(false);
@@ -85,7 +102,8 @@ const Register = () => {
 		localStorage.setItem("register", JSON.stringify(res.data));
 
 		if (res.status == "200") {
-			navigate("/login");
+			setSuccessModal();
+
 			// return <Navigate to="/dashboard" replace={true} />;
 		}
 
@@ -296,6 +314,16 @@ const Register = () => {
 							</Stack>
 						</Col>
 					</Row>
+					<SuccessModal
+						btnsetter={toggleModal}
+						iterateBtn={iterator}
+						imgs={successScreen}
+						btnOne={[true, "Login"]}
+						btnTwo={[true, "Go Home"]}
+						message="Registration Successful"
+						btnOneClick={navigateToLogin}
+						btnTwoClick={navigateToHome}
+					/>
 				</Container>
 			</PageWrapperV2>
 		</>
