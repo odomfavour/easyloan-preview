@@ -1,21 +1,28 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { Buttons } from "../components/index";
 import { Container, Col, Row, Form, Stack } from "react-bootstrap";
 import EasyloanModal from "./easyloanmodal/EasyloanModal";
 
-const LoanCalculator = ({ styles }) => {
+const LoanCalculator = ({ styles, prevPath }) => {
 	const [toggleModal, setToggleModal] = useState(false);
 	const [iterator, setIterator] = useState(false);
 	const [disabled, setDisabled] = useState(true);
-
 	const [form, setForm] = useState({
 		totalLPO: "",
 		repaymentPlan: "",
 		loanTenure: "",
 	});
 	const [interestRate, setInterestRate] = useState(10.5);
-
 	const [loanOffer, setLoanOffer] = useState({}); // result of the calculation to be displayed on the loan offer popup
+
+	const navigate = useNavigate();
+
+	const setEazyloanModal = () => {
+		setToggleModal(true);
+		setIterator(!iterator);
+	};
 
 	const handleFormFocus = () => {
 		setDisabled(false);
@@ -38,8 +45,7 @@ const LoanCalculator = ({ styles }) => {
 	const handleBtnClick = (e) => {
 		e.preventDefault();
 		calculateLoan();
-		setToggleModal(true);
-		setIterator(!iterator);
+		prevPath === "/upload-business-docs" ? navigate("/review-application") : setEazyloanModal();
 	};
 
 	function calculateLoan() {

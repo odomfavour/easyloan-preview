@@ -20,6 +20,7 @@ import {
 	AddBusiness,
 	UploadDocs,
 	ReviewApplication,
+	UploadDocuments,
 } from "./pages/Index";
 
 function App() {
@@ -33,7 +34,7 @@ function App() {
 				<Route path="/dashboard/user2" element={<UserHomeContent2 />} />
 				<Route path="/dashboard/user3" element={<UserHomeLoan />} />
 				<Route path="/dashboard/profile" element={<ProfilePage />} />
-        	</Route>
+			</Route>
 			<Route path="/register" element={<Register />} />
 			<Route path="/verify" element={<VerifyEmail />} />
 			<Route path="/login" element={<Login />} />
@@ -41,8 +42,11 @@ function App() {
 			<Route path="/About" element={<AboutUs />} />
 			<Route path="/detail" element={<PersonalDetails />} />
 			<Route path="/add-business" element={<AddBusiness />} />
+			{/*Uploading CAC documents for ADDING A BUSINESS */}
 			<Route path="/upload-documents" element={<UploadDocs />} />
 			<Route path="/review-application" element={<ReviewApplication />} />
+			{/*Uploading documents for LOAN APPLICATION */}
+			<Route path="/upload-business-docs" element={<UploadDocuments />} />
 		</Routes>
 	);
 }
