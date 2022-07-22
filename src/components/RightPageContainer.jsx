@@ -3,13 +3,18 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
+import { useNavigate } from "react-router-dom";
 import { useDesktop } from "../pages/DesktopContext";
-import styled, { css } from "styled-components";
 function GridComplexExample({ page, setPage }) {
 	const { isDesktop } = useDesktop();
+	const navigate = useNavigate();
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		setPage(page + 1);
+		if (!isDesktop) {
+			setPage(page + 1);
+		}
+		navigate("/dashboard/user");
 	};
 	return (
 		<Form className="">
@@ -113,8 +118,8 @@ function GridComplexExample({ page, setPage }) {
 	);
 }
 
-const Btn = styled.button`
-	background: transparent;
-	border-radius: 3px;
-`;
+// const Btn = styled.button`
+// 	background: transparent;
+// 	border-radius: 3px;
+// `;
 export default GridComplexExample;

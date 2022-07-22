@@ -5,7 +5,7 @@ import * as AiIcons from "react-icons/ai";
 import axios from "axios";
 import PageWrapperV2 from "../layouts/no_footer_layout/PageWrapperV2";
 import { Buttons } from "../components/index";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import googleIcon from "../assets/icons_google.svg";
 import loginIllustration from "../assets/Login.svg";
 
@@ -15,7 +15,7 @@ const Login = () => {
 		password: "",
 	});
 
-	const location = useLocation();
+	// const location = useLocation();
 	const navigate = useNavigate();
 
 	const handleChange = (e) => {
@@ -39,10 +39,10 @@ const Login = () => {
 
 			axios.post(`${baseURL}${LOGIN_URL}`, data).then((result) => {
 				console.log(result.data);
-				if (!result.data) {
+				if (result.data) {
 					// return <Navigate to="/dashboard" replace state={{ path: location.pathname }} />;
 					// return <Navigate to="/dashboard" replace state={{ path: location.pathname }} />;
-					navigate("/dashboard");
+					navigate("/detail");
 				}
 			});
 		} catch (error) {

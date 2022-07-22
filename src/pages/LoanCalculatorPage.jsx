@@ -1,9 +1,12 @@
 import React from "react";
+
 import { Container, Col, Row, Stack } from "react-bootstrap";
 import { LoanCalculator } from "../components/index";
 import PageWrapper from "../layouts/page_wrapper/PageWrapper";
 
 const LoanCalculatorPage = () => {
+  const prevPath = localStorage.getItem("prevPath");
+
 	return (
 		<>
 			<style type="text/css">
@@ -54,7 +57,7 @@ const LoanCalculatorPage = () => {
 							</Col>
 						</Row>
 					</Container>
-					<LoanCalculator styles="bg-light-gray px-0 form-spacing" />
+					<LoanCalculator styles="bg-light-gray px-0 form-spacing" prevPath={prevPath} />
 				</Stack>
 			</PageWrapper>
 		</>

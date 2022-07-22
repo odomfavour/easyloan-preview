@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import insertImg from "../assets/insert-img.png";
 import frame1 from "../assets/frame1.png";
-import frame2 from "../assets/frame2.png";
+// import frame2 from "../assets/frame2.png";
 import mobile from "../assets/mobile-pic.png";
 import { useDesktop } from "../pages/DesktopContext";
 import Form from "react-bootstrap/Form";
