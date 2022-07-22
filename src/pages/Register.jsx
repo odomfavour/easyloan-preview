@@ -4,7 +4,7 @@ import { Container, Col, Row, Image, Stack, Form, InputGroup } from "react-boots
 import axios from "axios";
 import PageWrapperV2 from "../layouts/no_footer_layout/PageWrapperV2";
 import { Buttons } from "../components/index";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 // import successScreen from '../assets/successScreen.svg'
 
 import googleIcon from "../assets/icons_google.svg";
@@ -13,9 +13,12 @@ import NG from "../assets/twemoji_flag-nigeria.svg";
 const baseURL = "https://eazyloan-backend.herokuapp.com";
 const REGISTER_URL = "/user/register";
 const user = "/user/auth/google";
+
 // import SuccessModal from "../components/successModal.jsx/SuccessModal";
 
 const Register = () => {
+	let ans = true;
+	const navigate = useNavigate();
 	const [form, setForm] = useState({
 		name: "",
 		phoneNo: "",
@@ -26,7 +29,6 @@ const Register = () => {
 		refCode: "",
 	});
 
-	const navigate = useNavigate();
 	const [showPassword, setShowPassword] = useState(false);
 
 	const handleClickShowPassword = () => {
@@ -34,18 +36,16 @@ const Register = () => {
 	};
 
 	const loginWithGoogle = async () => {
-		 window.location.href = "https://eazyloan-backend.herokuapp.com/user/auth/google";
+		window.location.href = "http://localhost:3000/user/auth/google";
 
-		try {
-			const response = await axios("https://eazyloan-backend.herokuapp.com/user/auth/google");
-
-			console.log(response);
-			//clear state and controlled inputs
-
-			
-		} catch (err) {
-			console.log(err);
-		}
+		// try {
+		// 	// const response = await axios("https://eazyloan-backend.herokuapp.com/user/auth/google");
+		// 	// const response = await axios("https://eazyloan-backend.herokuapp.com/user/auth/google");
+		// 	// console.log(response);
+		// 	//clear state and controlled inputs
+		// } catch (err) {
+		// 	console.log(err);
+		// }
 	};
 	const handleChange = (e) => {
 		let value = e.target.value;
@@ -68,7 +68,7 @@ const Register = () => {
 
 		const data = {
 			name: form.name,
-			phoneNo: form.phoneNo,
+			phone: form.phoneNo,
 			email: form.email,
 			password: form.password,
 			confirmPassword: form.confirmPassword,
@@ -76,11 +76,20 @@ const Register = () => {
 			refCode: form.refCode,
 		};
 
-		axios.post(`${baseURL}/${REGISTER_URL}`, data).then((result) => {
-			console.log(result.data);
-			if (result.data.Status == "Invalid") alert("Invalid User");
-			else navigate("/Dashboard");
-		});
+		let res = await axios.post(`${baseURL}${REGISTER_URL}`, data);
+
+		console.log(data);
+		localStorage.setItem("register", JSON.stringify(res.data));
+		if (res.data.status == "200") {
+			navigate("/dashboard");
+			// return <Navigate to="/dashboard" replace={true} />;
+		}
+
+		// let final = ((result) => {
+		// 	console.log(result.data);
+		// 	if (result.data.Status == "Invalid") console.log("Invalid User");
+		// 	else navigate("/dashboard");
+		// });
 	};
 
 	// const[toggleModal, setToggleModal] = useState(false)
@@ -232,7 +241,7 @@ const Register = () => {
 										</Stack>
 
 										<Stack className="heading-font " gap={2}>
-											<Buttons variant="purple" size="md" className="w-100" type="submit">
+											<Buttons variant="purple" size="md" className="w-100">
 												Register
 											</Buttons>
 											<p className="text-center m-0" style={{ color: "#121010" }}>
@@ -271,7 +280,6 @@ const Register = () => {
 										<Link to="" style={{ fontWeight: "bold", color: "#8A8989" }}>
 											Privacy Policy
 										</Link>
-										.
 									</p>
 									<i></i>
 								</Stack>

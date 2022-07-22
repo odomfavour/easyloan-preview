@@ -15,15 +15,17 @@ import "./Header.css";
 
 import styled from "styled-components";
 // import icon from "../assets/icons.png";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+
 const Header = () => {
 	const [nav, setNav] = useState(true);
 	let location = useLocation();
+	let navigate = useNavigate();
 	// eslint-disable-next-line no-unused-vars
 	return (
 		<Container
 			className={`${
-				location.pathname === "/" ? "py-4  heading-font flow" : "py-4 heading-font flow"
+				location.pathname === "/" ? "py-4  heading-font flow" : "py-3 heading-font flow"
 			}`}>
 			<Div>
 				<div className="logo">
@@ -72,15 +74,31 @@ const Header = () => {
 								</div>
 
 								<section className="mobile-links">
-									<Link to="/">Home</Link>
-									<Link to="/">About Us</Link>
-									<Link to="/">How it works</Link>
-									<Link to="/">Loan Calculator</Link>
-									<Link to="/">Help</Link>
+									<Link to="/" onClick={() => setNav(!nav)}>
+										Home
+									</Link>
+									<Link to="/about">About Us</Link>
+									<Link to="/how">How it works</Link>
+									<Link to="/loan-calculator">Loan Calculator</Link>
+									<Link to="/help">Help</Link>
 								</section>
 								<section className="mobile-btns">
-									<Button className="mobile-register">Register</Button>
-									<Button className="mobile-login">Login</Button>
+									<Button
+										className="mobile-register"
+										onClick={() => {
+											navigate("/register");
+											setNav(!nav);
+										}}>
+										Register
+									</Button>
+									<Button
+										className="mobile-login"
+										onClick={() => {
+											navigate("/login");
+											setNav(!nav);
+										}}>
+										Login
+									</Button>
 								</section>
 							</div>
 						</div>
@@ -101,9 +119,6 @@ const Header = () => {
 };
 
 const Div = styled.div`
-	.main-links {
-		overflow-x: hidden;
-	}
 	display: flex;
 	justify-content: space-between;
 	padding: 0 0.7rem;

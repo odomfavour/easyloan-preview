@@ -5,17 +5,18 @@ import * as AiIcons from "react-icons/ai";
 import axios from "axios";
 import PageWrapperV2 from "../layouts/no_footer_layout/PageWrapperV2";
 import { Buttons } from "../components/index";
-import { useNavigate } from "react-router-dom";
-
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import googleIcon from "../assets/icons_google.svg";
 import loginIllustration from "../assets/Login.svg";
 
 const Login = () => {
-	const navigate = useNavigate();
 	const [form, setForm] = useState({
 		email: "",
 		password: "",
 	});
+
+	const location = useLocation();
+	const navigate = useNavigate();
 
 	const handleChange = (e) => {
 		let value = e.target.value;
@@ -28,17 +29,25 @@ const Login = () => {
 
 	const handleBtnClick = (e) => {
 		e.preventDefault();
-		console.log("clicked");
 
-		const baseURL = "https://eazyloan-backend.herokuapp.com";
+		try {
+			const baseURL = "https://eazyloan-backend.herokuapp.com";
 
-		const LOGIN_URL = "/user/login";
+			const LOGIN_URL = "/user/login";
 
-		const data = { email: form.email, password: form.password };
-		axios.post(`${baseURL}${LOGIN_URL}`, data).then((result) => {
-			console.log(result.data);
-			if (result.data.status == "200") navigate("/");
-		});
+			const data = { email: form.email, password: form.password };
+
+			axios.post(`${baseURL}${LOGIN_URL}`, data).then((result) => {
+				console.log(result.data);
+				if (!result.data) {
+					// return <Navigate to="/dashboard" replace state={{ path: location.pathname }} />;
+					// return <Navigate to="/dashboard" replace state={{ path: location.pathname }} />;
+					navigate("/dashboard");
+				}
+			});
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	// toggle password visibility
@@ -56,6 +65,20 @@ const Login = () => {
 			return;
 		}
 		setPasswordType("password");
+	};
+
+	const loginWithGoogle = async () => {
+		// window.location.href = "https://eazyloan-backend.herokuapp.com/user/auth/google";
+
+		try {
+			// const response = await axios("https://eazyloan-backend.herokuapp.com/user/auth/google");
+			const response = await axios("http:localhost:3000/user/auth/google");
+
+			console.log(response);
+			//clear state and controlled inputs
+		} catch (err) {
+			console.log(err);
+		}
 	};
 
 	return (
@@ -139,7 +162,7 @@ const Login = () => {
 											variant="secondary"
 											size="md"
 											className="w-100 d-flex align-items-center justify-content-center "
-											onClick={handleBtnClick}
+											onClick={loginWithGoogle}
 											type="submit">
 											<img src={googleIcon} alt="Google icon" />
 											<span className="ms-2">Log In with Google</span>
@@ -150,7 +173,7 @@ const Login = () => {
 							<Stack>
 								<p>
 									Already have an account?
-									<Link to="" style={{ fontWeight: "bold", color: "#000" }}>
+									<Link to="/register" style={{ fontWeight: "bold", color: "#000" }}>
 										Register
 									</Link>
 								</p>
