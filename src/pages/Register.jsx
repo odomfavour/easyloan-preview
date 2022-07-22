@@ -1,7 +1,8 @@
 /* eslint eqeqeq: 0 */
-
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { signInWithPopup } from "firebase/auth";
+import { auth, provider } from "../firebase";
 import { Container, Col, Row, Image, Stack, Form, InputGroup } from "react-bootstrap";
 import axios from "axios";
 import PageWrapperV2 from "../layouts/no_footer_layout/PageWrapperV2";
@@ -52,18 +53,31 @@ const Register = () => {
 		setShowPassword(!showPassword);
 	};
 
-	const loginWithGoogle = async () => {
-		window.location.href = "http://localhost:3000/user/auth/google";
+	// const loginWithGoogle = async () => {
+	// 	window.location.href = "http://localhost:3000/user/auth/google";
 
-		// try {
-		// 	// const response = await axios("https://eazyloan-backend.herokuapp.com/user/auth/google");
-		// 	// const response = await axios("https://eazyloan-backend.herokuapp.com/user/auth/google");
-		// 	// console.log(response);
-		// 	//clear state and controlled inputs
-		// } catch (err) {
-		// 	console.log(err);
-		// }
+	// 	// try {
+	// 	// 	// const response = await axios("https://eazyloan-backend.herokuapp.com/user/auth/google");
+	// 	// 	// const response = await axios("https://eazyloan-backend.herokuapp.com/user/auth/google");
+	// 	// 	// console.log(response);
+	// 	// 	//clear state and controlled inputs
+	// 	// } catch (err) {
+	// 	// 	console.log(err);
+	// 	// }
+	// };
+
+	const registerWithGoogle = (e) => {
+		e.preventDefault();
+		signInWithPopup(auth, provider)
+			.then((res) => {
+				console.log(res);
+				navigate("/login");
+			})
+			.catch((error) => {
+				console.log(error);
+			});
 	};
+
 	const handleChange = (e) => {
 		let value = e.target.value;
 
@@ -285,7 +299,7 @@ const Register = () => {
 												<span
 													className="ms-2"
 													style={{ color: "#B1B0B0" }}
-													onClick={loginWithGoogle}>
+													onClick={registerWithGoogle}>
 													Register with Google
 												</span>
 											</Buttons>
