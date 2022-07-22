@@ -6,4 +6,9 @@ import VerifyEmail from "./VerifyEmail";
 import Login from "./Login";
 import PersonalDetails from "./PersonalDetails";
 import HowItWorks from "./HowItWorks";
-export { LandingPage, LoanCalculatorPage, Faqs, Register, VerifyEmail, Login, PersonalDetails, HowItWorks };
+import AboutUs from "./AboutUs";
+import AddBusiness from "./add_a_business/AddBusiness";
+import UploadDocs from "./add_a_business/UploadDocs";
+import ReviewApplication from "./loan_application/ReviewApplication";
+
+export { LandingPage, LoanCalculatorPage, Faqs, Register, VerifyEmail, Login, PersonalDetails, HowItWorks, AboutUs, AddBusiness, UploadDocs, ReviewApplication };

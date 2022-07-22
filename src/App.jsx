@@ -5,6 +5,9 @@ import styled from "styled-components";
 
 import UserDashboard from "./components/UserDashboard";
 import UserHome from "./pages/UserHome";
+import UserHomeContent2 from "./components/UserHomeContent2";
+import UserHomeLoan from "./components/UserHomeLoan";
+import ProfilePage from "./pages/ProfilePage";
 import {
 	LandingPage,
 	LoanCalculatorPage,
@@ -14,6 +17,7 @@ import {
 	Login,
 	PersonalDetails,
 	HowItWorks,
+	AboutUs,
 } from "./pages/Index";
 
 function App() {
@@ -29,6 +33,7 @@ function App() {
 			<Route path="/verify" element={<VerifyEmail />} />
 			<Route path="/login" element={<Login />} />
 			<Route path="/how" element={<HowItWorks />} />
+			<Route path="/About" element={<AboutUs />} />
 			<Route path="/detail" element={<PersonalDetails />} />
 			<Route
 				path="*"

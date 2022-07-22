@@ -25,11 +25,10 @@ const HowItWorks = () => {
             <div>
                 <Image src={howToUse} alt='how to use' className='  pt-3 w-100'/>
             </div>
-            <Row className='py-5 w-100 w-md-50'>
-                <Col className='d-flex flex-column justify-content-center align-items-center'>
-                    <h1 className="heading-font px-0  text-center" style={{ fontSize: "3rem" }}>
-                        Get your products
-                        to your store in 5 easy steps
+            <Row className='py-5 w-100 w-md-50 justify-content-center'>
+                <Col md={8} className='d-flex flex-column justify-content-center align-items-center'>
+                    <h1  className="heading-font  text-center" style={{ fontSize: "3rem" }}>
+                        Get your products to your store in 5 easy steps
                     </h1>
                 </Col>
             </Row>
@@ -38,6 +37,7 @@ const HowItWorks = () => {
                 sub='Register  with Eazyloan by filling in your details to get started. Your personal and business details are safe. Refer to our privacy policy for more information.'
                 imgs={HIWSession1}
                 contStart='left'
+                btnStyle='w-25'
                 btnOne= {[true, 'Register']}
                 btnTwo= {[true, 'Log in']}
             />
@@ -46,6 +46,7 @@ const HowItWorks = () => {
                 sub='After registering and successfully verifying your details, apply for a loan  by providing details on the product type, category, LPOs, manufacturers detaills and other details. '
                 imgs={HIWSession2}
                 contStart='right'
+                btnStyle='w-25'
                 btnOne= {[true, 'Go to form']}
                 btnTwo= {[false, null]}
             />
@@ -54,6 +55,7 @@ const HowItWorks = () => {
                 sub='Next, upload all necessary business documents and then submit your application for approval. Approval takes 24 to 72 business hours.'
                 imgs={HIWSession3}
                 contStart='left'
+                btnStyle='w-25'
                 btnOne= {[false, null]}
                 btnTwo= {[false, null]}
             />
@@ -62,6 +64,7 @@ const HowItWorks = () => {
                 sub='After your loan has been reviewed and approved, you will be notified and given offers from our various financial partners.  You can choose the offer that suits you and accept it.'
                 imgs={HIWSession4}
                 contStart='right'
+                btnStyle='w-25'
                 btnOne= {[false, null]}
                 btnTwo= {[false, null]}
             />
@@ -70,6 +73,7 @@ const HowItWorks = () => {
                 sub='Your products will  be delivered to you.'
                 imgs={HIWSession5}
                 contStart='left'
+                btnStyle='w-25'
                 btnOne= {[false, null]}
                 btnTwo= {[false, null]}
             />
