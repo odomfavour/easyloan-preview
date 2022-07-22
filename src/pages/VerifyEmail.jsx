@@ -1,12 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col, Container, Form, Image, Row, Stack } from "react-bootstrap";
 
 import PageWrapperV2 from "../layouts/no_footer_layout/PageWrapperV2";
 import { Buttons } from "../components/index";
+import SuccessModal from "../components/successModal.jsx/SuccessModal";
 
 import img from "../assets/Illust/illust_verify_email.svg";
+import successScreen from "../assets/successScreen.svg";
+import { useNavigate } from "react-router-dom";
 
 const VerifyEmail = () => {
+	const navigate = useNavigate();
+	const [disabled, setDisabled] = useState(true);
+
+	const [toggleModal, setToggleModal] = useState(false);
+	const [iterator, setIterator] = useState(false);
+
+	const setSuccessModal = () => {
+		setToggleModal(true);
+		setIterator(!iterator);
+	};
+
+	const handleFormFocus = () => {
+		setDisabled(false);
+	};
+
+	const handleVerifyEmail = (e) => {
+		e.preventDefault();
+		setSuccessModal();
+	};
+
+	const navigateToLogin = () => {
+		navigate("/login");
+	};
+	const navigateToHome = () => {
+		navigate("/");
+	};
+
 	return (
 		<>
 			<style>
@@ -49,28 +79,39 @@ const VerifyEmail = () => {
 									<Image src={img} alt="Confirmed" className="img-fluid" />
 								</Col>
 								<Col className="">
-									<Form className="form p-lg-4">
+									<Form className="form p-lg-4" onFocus={handleFormFocus}>
 										<Stack gap={2} className="gap-lg-5">
 											<p className="m-0 d-lg-none fw-bold">Verification Code</p>
 											<Stack gap={3} direction="horizontal" className="px-lg-5 mx-lg-5 ">
-												<Form.Group controlId="inputOne" className="w-100">
-													<Form.Control type="text" name="inputOne" autoComplete="new-password" placeholder="Enter Verification Code" />
+												<Form.Group controlId="inputOne" className="w-100 d-lg-none">
+													<Form.Control
+														type="text"
+														name="inputOne"
+														autoComplete="new-password"
+														placeholder="Enter Verification Code"
+													/>
 												</Form.Group>
 												<Form.Group controlId="inputOne" className="d-none d-lg-block">
 													<Form.Control type="text" name="inputOne" autoComplete="new-password" />
 												</Form.Group>
-												<Form.Group controlId="inputOne" className="d-none d-lg-block">
+												<Form.Group controlId="inputTwo" className="d-none d-lg-block">
 													<Form.Control type="text" name="inputTwo" autoComplete="new-password" />
 												</Form.Group>
-												<Form.Group controlId="inputOne" className="d-none d-lg-block">
+												<Form.Group controlId="inputThree" className="d-none d-lg-block">
 													<Form.Control type="text" name="inputThree" autoComplete="new-password" />
 												</Form.Group>
-												<Form.Group controlId="inputOne" className="d-none d-lg-block">
+												<Form.Group controlId="inputFour" className="d-none d-lg-block">
 													<Form.Control type="text" name="inputFour" autoComplete="new-password" />
 												</Form.Group>
 											</Stack>
 											<Stack className="flex-column-reverse flex-lg-column gap-3">
-												<Buttons variant="purple" size="md" className="w-100 py-2" type="button">
+												<Buttons
+													variant="purple"
+													size="md"
+													className="w-100 py-2"
+													type="button"
+													onClick={handleVerifyEmail}
+													disabled={disabled}>
 													Verify Email
 												</Buttons>
 												<Stack direction="horizontal" className="justify-content-between">
@@ -83,6 +124,16 @@ const VerifyEmail = () => {
 								</Col>
 							</Row>
 						</Col>
+						<SuccessModal
+							btnsetter={toggleModal}
+							iterateBtn={iterator}
+							imgs={successScreen}
+							btnOne={[true, "Login"]}
+							btnTwo={[true, "Go Home"]}
+							message="Email Successfully verified"
+							btnOneClick={navigateToLogin}
+							btnTwoClick={navigateToHome}
+						/>
 					</Row>
 				</Container>
 			</PageWrapperV2>

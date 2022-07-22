@@ -13,12 +13,30 @@ const EasyloanModal = ({ btnsetter, iterateBtn, loanOffer }) => {
 	// eslint-disable-next-line no-unused-vars
 	const handleShow = () => setShow(true);
 
+	// get screen width 
+	const getWidth = () => {
+		const { innerWidth: width } = window
+		return width
+	}
+	const [screenWidth, setScreenWidth] = useState(getWidth())
+	useEffect(() => {
+		const handleResize = () => {
+			setScreenWidth(getWidth());
+		}
+		window.addEventListener('resize', handleResize);
+		return () => {
+			window.removeEventListener('resize', handleResize);
+			return screenWidth
+		}
+	}, [])
+	const lefty = () => getWidth() < 583 ? '30px' : '-5px'
+
 	return (
 		<>
 			<Modal show={show} onHide={handleClose} className="bg-transparent pt-5">
 				<div
 					className=" position-absolute bg-transparent d-flex border-0 align-items-end mb-4"
-					style={{ top: "-40px", right: "-5px" }}>
+					style={{ top: "-50px", right: `${lefty()}` }}>
 					<div
 						className=" btn-close bg-light border-0 fs-5 rounded-circle p-2 fw-bold text-secondary"
 						style={{ marginRight: "-28px" }}

@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Container, Col, Row, Image, Stack, Form, InputGroup } from "react-bootstrap";
 
 import PageWrapperV2 from "../layouts/no_footer_layout/PageWrapperV2";
 import { Buttons } from "../components/index";
-// import successScreen from '../assets/successScreen.svg'
 
 import googleIcon from "../assets/icons_google.svg";
 import reg from "../assets/Illust/illust_Register.svg";
 import NG from "../assets/twemoji_flag-nigeria.svg";
-// import SuccessModal from "../components/successModal.jsx/SuccessModal";
 
 const Register = () => {
 	const [form, setForm] = useState({
@@ -21,8 +19,14 @@ const Register = () => {
 		rememberMe: false,
 		refCode: "",
 	});
-
 	const [showPassword, setShowPassword] = useState(false);
+	const [disabled, setDisabled] = useState(true);
+
+	const navigate = useNavigate();
+
+	const handleFormFocus = () => {
+		setDisabled(false);
+	};
 
 	const handleClickShowPassword = () => {
 		setShowPassword(!showPassword);
@@ -45,15 +49,8 @@ const Register = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		// console.log("clicked", form);
+		navigate("/verify");
 	};
-
-	// const[toggleModal, setToggleModal] = useState(false)
-	// const[iterator, setIterator] = useState(false)
-	// const setSuccessModal = () => {
-	// 	setToggleModal(true)
-	// 	setIterator(!iterator)
-	// }
 
 	return (
 		<>
@@ -96,7 +93,10 @@ const Register = () => {
 										Create an account to get started
 									</p>
 								</div>
-								<Form className=" px-4 pt-3 pb-4 bg-gray form" onSubmit={handleSubmit}>
+								<Form
+									className=" px-4 pt-3 pb-4 bg-gray form"
+									onSubmit={handleSubmit}
+									onFocus={handleFormFocus}>
 									<Stack gap={5}>
 										<Stack gap={4}>
 											<Form.Group controlId="name">
@@ -107,6 +107,7 @@ const Register = () => {
 													value={form.name}
 													onChange={handleChange}
 													placeholder="Enter your fullname"
+													required
 												/>
 											</Form.Group>
 
@@ -122,6 +123,7 @@ const Register = () => {
 														value={form.phoneNo}
 														onChange={handleChange}
 														placeholder="+234"
+														required
 													/>
 												</InputGroup>
 											</Form.Group>
@@ -134,6 +136,7 @@ const Register = () => {
 													value={form.email}
 													onChange={handleChange}
 													placeholder="Enter email address"
+													required
 												/>
 											</Form.Group>
 
@@ -147,6 +150,7 @@ const Register = () => {
 														onChange={handleChange}
 														placeholder="Enter password"
 														className="border-end-0"
+														required
 													/>
 													<InputGroup.Text
 														className={`bi ${showPassword ? "bi-eye-slash" : "bi-eye"} `}
@@ -168,6 +172,7 @@ const Register = () => {
 															onChange={handleChange}
 															placeholder="Confirm password"
 															className="border-end-0"
+															required
 														/>
 														<InputGroup.Text
 															className={`bi ${showPassword ? "bi-eye-slash" : "bi-eye"} `}
@@ -197,7 +202,12 @@ const Register = () => {
 										</Stack>
 
 										<Stack className="heading-font " gap={2}>
-											<Buttons variant="purple" size="md" className="w-100" type="submit">
+											<Buttons
+												variant="purple"
+												size="md"
+												className="w-100"
+												type="submit"
+												disabled={disabled}>
 												Register
 											</Buttons>
 											<p className="text-center m-0" style={{ color: "#121010" }}>

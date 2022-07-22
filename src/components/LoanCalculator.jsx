@@ -6,6 +6,7 @@ import EasyloanModal from "./easyloanmodal/EasyloanModal";
 const LoanCalculator = ({ styles }) => {
 	const [toggleModal, setToggleModal] = useState(false);
 	const [iterator, setIterator] = useState(false);
+	const [disabled, setDisabled] = useState(true);
 
 	const [form, setForm] = useState({
 		totalLPO: "",
@@ -15,6 +16,10 @@ const LoanCalculator = ({ styles }) => {
 	const [interestRate, setInterestRate] = useState(10.5);
 
 	const [loanOffer, setLoanOffer] = useState({}); // result of the calculation to be displayed on the loan offer popup
+
+	const handleFormFocus = () => {
+		setDisabled(false);
+	};
 
 	let rangeValues = [null, null, 10.5, 12, 18];
 	const handleInterestChange = (e) => {
@@ -149,6 +154,9 @@ const LoanCalculator = ({ styles }) => {
           .fs-0{
             font-size: 0.5rem;
           }
+          .form{
+            border-radius: 16px;
+          }
 
           // Input Range
           .form-range{}
@@ -167,6 +175,14 @@ const LoanCalculator = ({ styles }) => {
 
           .form-range::-moz-range-thumb:active {
             background-color: var(--purple);
+          }
+
+          .form-select::placeholder{
+            color: #d0d0d0 !important;
+          }
+
+          .form-select::-webkit-input-placeholder {
+            color: #d0d0d0 !important;
           }
 
 
@@ -194,30 +210,34 @@ const LoanCalculator = ({ styles }) => {
         `}
 			</style>
 
-			<Container className="pb-5 pt-md-4 px-0">
-				<Row className="d-flex align-items-center justify-content-center px-4 px-md-5 form-wrap">
-					<Form className={`rounded col col-lg-4 px-md-5 pt-4 pb-3 ${styles} box-shadow form`}>
+			<Container className="pb-5 pb-md-0 pt-md-4 px-0">
+				<Row className="d-flex align-items-center justify-content-center px-4 px-md-0 form-wrap">
+					<Form
+						onFocus={handleFormFocus}
+						className={` col col-lg-4 px-md-5 pt-4 pb-3 ${styles} box-shadow form`}>
 						<Stack>
 							<Form.Group controlId="totalLPO">
-								<Form.Label>Total LPO Amount</Form.Label>
+								<Form.Label className="fw-bold">Total LPO Amount</Form.Label>
 								<Form.Control
 									type="text"
 									name="totalLPO"
 									value={form.totalLPO}
 									onChange={handleChange}
 									placeholder="N100,000"
+									required
 								/>
 							</Form.Group>
 
 							<Form.Group controlId="repaymentPlan">
-								<Form.Label>Repayment Plan</Form.Label>
+								<Form.Label className="fw-bold">Repayment Plan</Form.Label>
 								<Form.Select
 									name="repaymentPlan"
 									value={form.repaymentPlan}
 									onChange={handleChange}
 									aria-label="Repayment Option"
-									className="">
-									<option value="Select your repayment plan" className="d-none">
+									placeholder="Select Repayment Option"
+									required>
+									<option value="Select your repayment plan" className="d-none option1">
 										Select your repayment plan
 									</option>
 									<option value="One-off">One-off</option>
@@ -227,12 +247,13 @@ const LoanCalculator = ({ styles }) => {
 							</Form.Group>
 
 							<Form.Group controlId="loanTenure">
-								<Form.Label>Duration/Tenure (Loan)</Form.Label>
+								<Form.Label className="fw-bold">Duration/Tenure (Loan)</Form.Label>
 								<Form.Select
 									aria-label="Repayment Option"
 									name="loanTenure"
 									value={form.loanTenure}
-									onChange={handleChange}>
+									onChange={handleChange}
+									required>
 									<option value="Select your repayment duration" className="d-none">
 										Select your repayment duration
 									</option>
@@ -244,7 +265,7 @@ const LoanCalculator = ({ styles }) => {
 							</Form.Group>
 
 							<Form.Group controlId="interestRate">
-								<Form.Label>Interest Rate</Form.Label>
+								<Form.Label className="fw-bold">Interest Rate</Form.Label>
 								<Form.Range
 									name="interestRate"
 									min={0}
@@ -252,7 +273,9 @@ const LoanCalculator = ({ styles }) => {
 									step={1}
 									onChange={handleInterestChange}
 								/>
-								<Container className="d-grid text-end ps-5 pe-3" style={{ fontSize: "8px" }}>
+								<Container
+									className="d-grid text-end ps-5 pe-3 fw-bold"
+									style={{ color: "#000", fontSize: "1rem" }}>
 									<Row>
 										<Col className="p-0"></Col>
 										<Col className="p-0 ">10.5%</Col>
@@ -262,7 +285,7 @@ const LoanCalculator = ({ styles }) => {
 								</Container>
 							</Form.Group>
 
-							<p className="text-center fs-0">
+							<p className="fw-bold">
 								Please note that your terms are subjected to change after review by our Financiers
 							</p>
 
@@ -271,7 +294,8 @@ const LoanCalculator = ({ styles }) => {
 								size="md"
 								className="w-100 mb-3 py-2"
 								onClick={handleBtnClick}
-								type="submit">
+								type="submit"
+								disabled={disabled}>
 								Calculate
 							</Buttons>
 							<EasyloanModal btnsetter={toggleModal} iterateBtn={iterator} loanOffer={loanOffer} />
