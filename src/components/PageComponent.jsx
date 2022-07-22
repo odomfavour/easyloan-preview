@@ -6,7 +6,7 @@ const PageComponent = () => {
 			<Col></Col>
 			<Col md={6} className="mb-4">
 				<h2>Let’s get you started</h2>
-				<p>Set up you easyloan account</p>
+				<p>Set up your easyloan account</p>
 			</Col>
 		</Row>
 	);

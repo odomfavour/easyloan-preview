@@ -11,7 +11,7 @@ export default function UserDashboardWrapper({ children }) {
     <>
       <div>
         <div className="d-none d-lg-block">
-          <div className="dashboard position-fixed top-0 start-0 side-height">
+          <div className="dashboard position-fixed top-0 start-0 side-height menu-margin ">
             <SidebarMenu/>
           </div>
         </div>

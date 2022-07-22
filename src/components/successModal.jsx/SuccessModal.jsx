@@ -3,7 +3,16 @@ import { useState, useEffect } from "react";
 import { Image, Modal } from "react-bootstrap";
 import Buttons from "../../components/Buttons";
 
-const SuccessModal = ({ btnsetter, imgs, iterateBtn, btnOne, btnTwo, message, btnOneClick, btnTwoClick }) => {
+const SuccessModal = ({
+	btnsetter,
+	imgs,
+	iterateBtn,
+	btnOne,
+	btnTwo,
+	message,
+	btnOneClick,
+	btnTwoClick,
+}) => {
 	const [show, setShow] = useState(false);
 
 	useEffect(() => {
@@ -20,10 +29,10 @@ const SuccessModal = ({ btnsetter, imgs, iterateBtn, btnOne, btnTwo, message, bt
 						className="justify-content-center border-bottom-0"
 						closeButton></Modal.Header>
 					<Modal.Body className="d-flex justify-content-center">
-						<div>
+						<div className="d-flex flex-column">
 							<Image src={imgs} alt="success screen image" />
-							<p className="mt-3">{message}</p>
-							<div className="d-flex justify-content-center flex-column">
+							<p className="mt-3 text-center">{message}</p>
+							<div className="d-flex flex-column">
 								{btnOne[0] && (
 									<Buttons variant="purple" className="w-100 my-3" onClick={btnOneClick}>
 										{btnOne[1]}
