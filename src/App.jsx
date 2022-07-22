@@ -4,6 +4,9 @@ import "./index.css";
 
 import UserDashboard from "./components/UserDashboard";
 import UserHome from "./pages/UserHome";
+import UserHomeContent2 from "./components/UserHomeContent2";
+import UserHomeLoan from "./components/UserHomeLoan";
+import ProfilePage from "./pages/ProfilePage";
 import {
 	LandingPage,
 	LoanCalculatorPage,
@@ -27,7 +30,10 @@ function App() {
 			<Route path="/faqs" element={<Faqs />} />
 			<Route path="/dashboard" element={<UserDashboard />}>
 				<Route path="/dashboard/user" element={<UserHome />} />
-			</Route>
+				<Route path="/dashboard/user2" element={<UserHomeContent2 />} />
+				<Route path="/dashboard/user3" element={<UserHomeLoan />} />
+				<Route path="/dashboard/profile" element={<ProfilePage />} />
+        	</Route>
 			<Route path="/register" element={<Register />} />
 			<Route path="/verify" element={<VerifyEmail />} />
 			<Route path="/login" element={<Login />} />
