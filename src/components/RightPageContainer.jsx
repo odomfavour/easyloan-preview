@@ -3,14 +3,18 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
+import { useNavigate } from "react-router-dom";
 import { useDesktop } from "../pages/DesktopContext";
 function GridComplexExample({ page, setPage }) {
 	const { isDesktop } = useDesktop();
+	const navigate = useNavigate();
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (!isDesktop) {
 			setPage(page + 1);
 		}
+		navigate("/dashboard/user");
 	};
 	return (
 		<Form className="">
