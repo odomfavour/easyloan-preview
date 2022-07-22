@@ -4,7 +4,6 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import { useDesktop } from "../pages/DesktopContext";
-import styled, { css } from "styled-components";
 function GridComplexExample({ page, setPage }) {
 	const { isDesktop } = useDesktop();
 	const handleSubmit = (e) => {
@@ -113,8 +112,8 @@ function GridComplexExample({ page, setPage }) {
 	);
 }
 
-const Btn = styled.button`
-	background: transparent;
-	border-radius: 3px;
-`;
+// const Btn = styled.button`
+// 	background: transparent;
+// 	border-radius: 3px;
+// `;
 export default GridComplexExample;

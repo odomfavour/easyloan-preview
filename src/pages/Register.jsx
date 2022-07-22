@@ -1,3 +1,5 @@
+/* eslint eqeqeq: 0 */
+
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Container, Col, Row, Image, Stack, Form, InputGroup } from "react-bootstrap";
@@ -10,7 +12,7 @@ import reg from "../assets/Illust/illust_Register.svg";
 import NG from "../assets/twemoji_flag-nigeria.svg";
 
 const Register = () => {
-	let ans = true;
+	// let ans = true;
 	const [form, setForm] = useState({
 		name: "",
 		phoneNo: "",
@@ -81,8 +83,9 @@ const Register = () => {
 
 		console.log(data);
 		localStorage.setItem("register", JSON.stringify(res.data));
-		if (res.data.status == "200") {
-			navigate("/dashboard");
+
+		if (res.status == "200") {
+			navigate("/login");
 			// return <Navigate to="/dashboard" replace={true} />;
 		}
 

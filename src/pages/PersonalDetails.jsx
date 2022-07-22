@@ -5,13 +5,10 @@ import PageComponent from "../components/PageComponent";
 import LeftPageContainer from "../components/LeftPageContainer";
 import RightPageContainer from "../components/RightPageContainer";
 import { useDesktop } from "./DesktopContext";
-import { useNavigate } from "react-router-dom";
 
 const PersonalDetails = () => {
 	const { isDesktop } = useDesktop();
 	const [page, setPage] = useState(0);
-
-	const navigate = useNavigate();
 
 	const conditionalComponent = () => {
 		switch (page) {
