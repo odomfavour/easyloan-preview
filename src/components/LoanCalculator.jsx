@@ -46,6 +46,7 @@ const LoanCalculator = ({ styles, prevPath }) => {
 		e.preventDefault();
 		calculateLoan();
 		prevPath === "/upload-business-docs" ? navigate("/review-application") : setEazyloanModal();
+		localStorage.removeItem("prevPath");
 	};
 
 	function calculateLoan() {
