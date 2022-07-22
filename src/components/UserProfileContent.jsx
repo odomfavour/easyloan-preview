@@ -1,12 +1,10 @@
 import React from 'react';
-import SearchBar from "../components/SearchBar";
 import { Button, Row, Col, Card } from "react-bootstrap";
 import img from "../assets/img.jpg";
 
 const UserProfileContent = () => {
   return (
     <div>
-        <SearchBar />
         <div className='profile-pading mb-3'>
             <Row className="ms-0 me-0">
                 <Col xs={12} md={6} className="">

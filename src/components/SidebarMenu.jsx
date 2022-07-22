@@ -25,7 +25,7 @@ import {
             <Nav.Link as={Link} to={"/dashboard/user"}>
                 <div className='user-btn pt-2'><ColumnsGap className="mx-4" /> Home</div>
             </Nav.Link>
-            <Nav.Link as={Link} to="">
+            <Nav.Link as={Link} to={"/dashboard/profile"}>
                 <Person className="mx-4" /> Profile
             </Nav.Link>
           <Nav.Link as={Link} to="">

@@ -6,7 +6,7 @@ import UserDashboard from "./components/UserDashboard";
 import UserHome from "./pages/UserHome";
 import UserHomeContent2 from "./components/UserHomeContent2";
 import UserHomeLoan from "./components/UserHomeLoan";
-import UserProfileContent from "./components/UserProfileContent";
+import ProfilePage from "./pages/ProfilePage";
 import {
 	LandingPage,
 	LoanCalculatorPage,
@@ -32,7 +32,7 @@ function App() {
 				<Route path="/dashboard/user" element={<UserHome />} />
 				<Route path="/dashboard/user2" element={<UserHomeContent2 />} />
 				<Route path="/dashboard/user3" element={<UserHomeLoan />} />
-				<Route path="/dashboard/profile" element={<UserProfileContent />} />
+				<Route path="/dashboard/profile" element={<ProfilePage />} />
         	</Route>
 			<Route path="/register" element={<Register />} />
 			<Route path="/verify" element={<VerifyEmail />} />
