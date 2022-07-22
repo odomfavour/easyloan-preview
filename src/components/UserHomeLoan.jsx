@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Row, Col, Card, Table } from "react-bootstrap";
+import { Button, Row, Col, Card  } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import calc from "../assets/calculator.svg";
