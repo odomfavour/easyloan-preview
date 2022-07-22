@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import "./index.css";
+import styled from "styled-components";
 
 import UserDashboard from "./components/UserDashboard";
 import UserHome from "./pages/UserHome";
@@ -47,8 +48,25 @@ function App() {
 			<Route path="/review-application" element={<ReviewApplication />} />
 			{/*Uploading documents for LOAN APPLICATION */}
 			<Route path="/upload-business-docs" element={<UploadDocuments />} />
+			<Route
+				path="*"
+				element={
+					<Div>
+						<h1> Sorry Page Not Found</h1>
+					</Div>
+				}
+			/>
 		</Routes>
 	);
 }
 
+const Div = styled.div`
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 40px;
+	font-weight: 700;
+`;
 export default App;

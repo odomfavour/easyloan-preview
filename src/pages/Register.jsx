@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Container, Col, Row, Image, Stack, Form, InputGroup } from "react-bootstrap";
-
+import axios from "axios";
 import PageWrapperV2 from "../layouts/no_footer_layout/PageWrapperV2";
 import { Buttons } from "../components/index";
 
@@ -10,6 +10,7 @@ import reg from "../assets/Illust/illust_Register.svg";
 import NG from "../assets/twemoji_flag-nigeria.svg";
 
 const Register = () => {
+	let ans = true;
 	const [form, setForm] = useState({
 		name: "",
 		phoneNo: "",
@@ -32,6 +33,18 @@ const Register = () => {
 		setShowPassword(!showPassword);
 	};
 
+	const loginWithGoogle = async () => {
+		window.location.href = "http://localhost:3000/user/auth/google";
+
+		// try {
+		// 	// const response = await axios("https://eazyloan-backend.herokuapp.com/user/auth/google");
+		// 	// const response = await axios("https://eazyloan-backend.herokuapp.com/user/auth/google");
+		// 	// console.log(response);
+		// 	//clear state and controlled inputs
+		// } catch (err) {
+		// 	console.log(err);
+		// }
+	};
 	const handleChange = (e) => {
 		let value = e.target.value;
 
@@ -47,9 +60,37 @@ const Register = () => {
 		setForm({ ...form, [e.target.name]: value });
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		navigate("/verify");
+		// console.log("clicked", form);
+
+		const data = {
+			name: form.name,
+			phone: form.phoneNo,
+			email: form.email,
+			password: form.password,
+			confirmPassword: form.confirmPassword,
+			rememberMe: form.rememberMe,
+			refCode: form.refCode,
+		};
+
+		const baseURL = "https://eazyloan-backend.herokuapp.com";
+
+		const REGISTER_URL = "/user/register";
+		let res = await axios.post(`${baseURL}${REGISTER_URL}`, data);
+
+		console.log(data);
+		localStorage.setItem("register", JSON.stringify(res.data));
+		if (res.data.status == "200") {
+			navigate("/dashboard");
+			// return <Navigate to="/dashboard" replace={true} />;
+		}
+
+		// let final = ((result) => {
+		// 	console.log(result.data);
+		// 	if (result.data.Status == "Invalid") console.log("Invalid User");
+		// 	else navigate("/dashboard");
+		// });
 	};
 
 	return (
@@ -220,7 +261,10 @@ const Register = () => {
 												className="w-100 d-flex align-items-center justify-content-center "
 												type="button">
 												<img src={googleIcon} alt="Google icon" />
-												<span className="ms-2" style={{ color: "#B1B0B0" }}>
+												<span
+													className="ms-2"
+													style={{ color: "#B1B0B0" }}
+													onClick={loginWithGoogle}>
 													Register with Google
 												</span>
 											</Buttons>
@@ -230,7 +274,7 @@ const Register = () => {
 								<Stack className="text-center">
 									<p style={{ color: "#8A8989" }}>
 										Already have an account?{" "}
-										<Link to="" style={{ fontWeight: "bold", color: "#121010" }}>
+										<Link to="/login" style={{ fontWeight: "bold", color: "#121010" }}>
 											Log in
 										</Link>
 									</p>
@@ -243,7 +287,6 @@ const Register = () => {
 										<Link to="" style={{ fontWeight: "bold", color: "#8A8989" }}>
 											Privacy Policy
 										</Link>
-										.
 									</p>
 									<i></i>
 								</Stack>
