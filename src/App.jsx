@@ -14,7 +14,7 @@ import {
 	PersonalDetails,
 	HowItWorks,
 	AboutUs,
-	AddBussiness,
+	AddBusiness,
 	UploadDocs,
 	ReviewApplication,
 } from "./pages/Index";
@@ -34,7 +34,7 @@ function App() {
 			<Route path="/how" element={<HowItWorks />} />
 			<Route path="/About" element={<AboutUs />} />
 			<Route path="/detail" element={<PersonalDetails />} />
-			<Route path="/add-bussiness" element={<AddBussiness />} />
+			<Route path="/add-business" element={<AddBusiness />} />
 			<Route path="/upload-documents" element={<UploadDocs />} />
 			<Route path="/review-application" element={<ReviewApplication />} />
 		</Routes>

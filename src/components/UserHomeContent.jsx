@@ -9,6 +9,10 @@ import pen from "../assets/pen.svg";
 
 
 const UserHomeContent = () => {
+  // Get business information and CAC documents from the local storage
+	const businessInfo = JSON.parse(localStorage.getItem("businessInfo"));
+	console.log("Business Information: ", businessInfo);
+
   return (
     <div>
         <div className='py-5 px-3 user-dash-color user-dashboard-content d-flex justify-content-between'>
@@ -38,7 +42,7 @@ const UserHomeContent = () => {
                     <p className='fw-bold user-dash-color user-small-font '>Your Business</p>
                     <p className='py-3'>You have not added any business. 
                         Add a business now to continue.</p>
-                    <Button className='shadow-none user-btn-bg2 '>Add a business</Button>
+                    <Button className='shadow-none user-btn-bg2 ' as={Link} to={"/add-business"}>Add a business</Button>
                 </div>
             </Col>
         </Row>
