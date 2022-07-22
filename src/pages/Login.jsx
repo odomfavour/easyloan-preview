@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { signInWithPopup } from "firebase/auth";
+import { auth, provider } from "../firebase";
 import { Container, Col, Row, Image, Stack, Form } from "react-bootstrap";
 import * as AiIcons from "react-icons/ai";
 import axios from "axios";
@@ -15,8 +17,22 @@ const Login = () => {
 		password: "",
 	});
 
-	// const location = useLocation();
 	const navigate = useNavigate();
+
+	const loginWithGoogle = (e) => {
+		e.preventDefault();
+		signInWithPopup(auth, provider)
+			.then((res) => {
+				const { displayName: name, email, address, photoURL, accessToken } = res.user;
+				const user = { name, email, address, photoURL, accessToken };
+				localStorage.setItem("user", JSON.stringify(user));
+				navigate("/detail");
+			})
+			.catch((error) => {
+				console.log(error.code, error.message);
+				alert(error.message);
+			});
+	};
 
 	const handleChange = (e) => {
 		let value = e.target.value;
@@ -38,10 +54,10 @@ const Login = () => {
 			const data = { email: form.email, password: form.password };
 
 			axios.post(`${baseURL}${LOGIN_URL}`, data).then((result) => {
-				console.log(result.data);
 				if (result.data) {
 					// return <Navigate to="/dashboard" replace state={{ path: location.pathname }} />;
 					// return <Navigate to="/dashboard" replace state={{ path: location.pathname }} />;
+					localStorage.setItem("user", JSON.stringify(result.data));
 					navigate("/detail");
 				}
 			});
@@ -67,19 +83,19 @@ const Login = () => {
 		setPasswordType("password");
 	};
 
-	const loginWithGoogle = async () => {
-		// window.location.href = "https://eazyloan-backend.herokuapp.com/user/auth/google";
+	// const loginWithGoogle = async () => {
+	// 	// window.location.href = "https://eazyloan-backend.herokuapp.com/user/auth/google";
 
-		try {
-			// const response = await axios("https://eazyloan-backend.herokuapp.com/user/auth/google");
-			const response = await axios("http:localhost:3000/user/auth/google");
+	// 	try {
+	// 		// const response = await axios("https://eazyloan-backend.herokuapp.com/user/auth/google");
+	// 		const response = await axios("http:localhost:3000/user/auth/google");
 
-			console.log(response);
-			//clear state and controlled inputs
-		} catch (err) {
-			console.log(err);
-		}
-	};
+	// 		console.log(response);
+	// 		//clear state and controlled inputs
+	// 	} catch (err) {
+	// 		console.log(err);
+	// 	}
+	// };
 
 	return (
 		<PageWrapperV2>
@@ -172,7 +188,7 @@ const Login = () => {
 							</Form>
 							<Stack>
 								<p>
-									Already have an account?
+									Don't have an account?
 									<Link to="/register" style={{ fontWeight: "bold", color: "#000" }}>
 										Register
 									</Link>

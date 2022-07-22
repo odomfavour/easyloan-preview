@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -6,6 +7,7 @@ import Row from "react-bootstrap/Row";
 import { useNavigate } from "react-router-dom";
 import { useDesktop } from "../pages/DesktopContext";
 function GridComplexExample({ page, setPage }) {
+	const [user, setUser] = useState({});
 	const { isDesktop } = useDesktop();
 	const navigate = useNavigate();
 
@@ -16,6 +18,11 @@ function GridComplexExample({ page, setPage }) {
 		}
 		navigate("/dashboard/user");
 	};
+
+	useEffect(() => {
+		setUser(JSON.parse(localStorage.getItem("user")));
+	}, [user]);
+
 	return (
 		<Form className="">
 			<span>STEP 1 of 2</span>
@@ -23,7 +30,7 @@ function GridComplexExample({ page, setPage }) {
 				<Row className="mb-3">
 					<Form.Group as={Col} controlId="formGridFirstName">
 						<Form.Label>Full name</Form.Label>
-						<Form.Control type="text" placeholder="Enter first name" />
+						<Form.Control type="text" placeholder="Enter first name" defaultValue={user.name} />
 					</Form.Group>
 				</Row>
 				<Row className="mb-3">
