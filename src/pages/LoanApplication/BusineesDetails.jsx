@@ -26,7 +26,8 @@ const BusineesDetails = () => {
 		accNo: "",
 		bankName: "",
 	});
-
+    
+// eslint-disable-next-line 
     const [cacDocuments, setCacDocuments] = useState({
 		imgFile: "",
         });
