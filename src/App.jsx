@@ -20,6 +20,8 @@ import {
 	AboutUs,
 	AddBusiness,
 	UploadDocs,
+	LoanApplication,
+	BusinessDetails,
 	ReviewApplication,
 	UploadDocuments,
 } from "./pages/Index";
@@ -36,6 +38,8 @@ function App() {
 				<Route path="/dashboard/user3" element={<UserHomeLoan />} />
 				<Route path="/dashboard/profile" element={<ProfilePage />} />
 			</Route>
+			<Route path="/application" element={<LoanApplication/>}/>
+			<Route path="/businessDetails" element={<BusinessDetails/>}/>
 			<Route path="/register" element={<Register />} />
 			<Route path="/verify" element={<VerifyEmail />} />
 			<Route path="/login" element={<Login />} />

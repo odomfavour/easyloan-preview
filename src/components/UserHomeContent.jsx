@@ -19,7 +19,9 @@ const UserHomeContent = () => {
             <div>
                 <h2 className='user-name-font'>Hello Lydia Salami,</h2>
             </div>
-            <Button className='user-btn-bg shadow-none'>Apply for Loan</Button>
+            <Link to='/application'>
+                <Button className='user-btn-bg shadow-none'>Apply for Loan</Button>
+            </Link>
         </div>
         <Row className=' px-3 width-100'>
             <Col sm={12} md={6} className="mb-3 overflow-width">
