@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Container, Col, Row, Image, Stack } from "react-bootstrap";
 
 import PageWrapperV2 from "../../layouts/no_footer_layout/PageWrapperV2";
@@ -71,10 +71,9 @@ const LoanApplication = () => {
                                     >
                                         Continue
                                     </Buttons>
-                                    <Buttons variant="outline-secondary" size='md' className='w-100 rounded' >
+                                    <Buttons variant="outline-secondary" size='md' className='w-100 rounded' as={Link} to={"/add-business"}>
                                         Add Business
                                     </Buttons>
-                                    
                                 </Stack>
                             </Stack>
                         </Stack>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 
-const Buttons = ({ children, variant, className, onClick, type, disabled }) => {
+const Buttons = ({ children, variant, className, onClick, type, disabled, as, to }) => {
 	return (
 		<>
 			<style type="text/css">
@@ -22,7 +22,7 @@ const Buttons = ({ children, variant, className, onClick, type, disabled }) => {
         }
       `}
 			</style>
-			<Button variant={variant} className={className} onClick={onClick} type={type} disabled={disabled} >
+			<Button variant={variant} className={className} onClick={onClick} type={type} disabled={disabled} as={as} to={to} >
 				{children}
 			</Button>
 		</>
