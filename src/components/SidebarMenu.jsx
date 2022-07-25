@@ -28,7 +28,7 @@ import {
             <Nav.Link as={Link} to={"/dashboard/profile"}>
                 <Person className="mx-4" /> Profile
             </Nav.Link>
-          <Nav.Link as={Link} to="">
+          <Nav.Link as={Link} to={"/dashboard/status"}>
             <Check2Square className="mx-4" /> Loan Status
           </Nav.Link>
           <Nav.Link as={Link} to="">
