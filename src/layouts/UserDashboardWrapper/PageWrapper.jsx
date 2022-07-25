@@ -1,7 +1,7 @@
 import React from "react";
-import { Bell, ChevronDown } from "react-bootstrap-icons";
-import img from "../../assets/img.jpg";
-import { Container, Form, InputGroup, Navbar } from "react-bootstrap";
+// import { Bell, ChevronDown } from "react-bootstrap-icons";
+// import img from "../../assets/img.jpg";
+// import { Container, Form, InputGroup, Navbar } from "react-bootstrap";
 import { Footer, SearchBar } from "../../components/index";
 import { useDesktop } from "../../pages/DesktopContext";
 

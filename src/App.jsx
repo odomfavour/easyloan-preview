@@ -22,6 +22,7 @@ import {
 	UploadDocuments,
 	UserHome,
 	ProfilePage,
+  ContactPage,
 } from "./pages/Index";
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
 			<Route path="/review-application" element={<ReviewApplication />} />
 			{/*Uploading documents for LOAN APPLICATION */}
 			<Route path="/upload-business-docs" element={<UploadDocuments />} />
+      <Route path="/contact" element={<ContactPage />} />
 			<Route
 				path="*"
 				element={

@@ -7,6 +7,7 @@ import LoanCard from "./LoanCard";
 import LaonHistoryTable from "../../components/LoanHistoryTable";
 
 const LoanStatus = () => {
+	// eslint-disable-next-line no-unused-vars
 	const [loanStatus, setLoanStatus] = useState("Awaiting");
 
 	return (
