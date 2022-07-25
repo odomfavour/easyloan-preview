@@ -9,7 +9,10 @@ import HowItWorks from "./HowItWorks";
 import AboutUs from "./AboutUs";
 import AddBusiness from "./add_a_business/AddBusiness";
 import UploadDocs from "./add_a_business/UploadDocs";
+import LoanApplication from "./LoanApplication/LoanApplication";
+import BusinessDetails from "./LoanApplication/BusineesDetails";
 import ReviewApplication from "./loan_application/ReviewApplication";
 import UploadDocuments from "./loan_application/UploadDocuments";
 
-export { LandingPage, LoanCalculatorPage, Faqs, Register, VerifyEmail, Login, PersonalDetails, HowItWorks, AboutUs, AddBusiness, UploadDocs, ReviewApplication, UploadDocuments };
+
+export { LandingPage, LoanCalculatorPage, Faqs, Register, VerifyEmail, Login, PersonalDetails, HowItWorks, AboutUs, AddBusiness, UploadDocs, LoanApplication, BusinessDetails,ReviewApplication, UploadDocuments };
