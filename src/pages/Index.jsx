@@ -13,6 +13,7 @@ import LoanApplication from "./LoanApplication/LoanApplication";
 import BusinessDetails from "./LoanApplication/BusineesDetails";
 import ReviewApplication from "./LoanApplication/ReviewApplication";
 import UploadDocuments from "./LoanApplication/UploadDocuments";
+import UserHome from "./UserHome";
+import ProfilePage from "./ProfilePage";
 
-
-export { LandingPage, LoanCalculatorPage, Faqs, Register, VerifyEmail, Login, PersonalDetails, HowItWorks, AboutUs, AddBusiness, UploadDocs, LoanApplication, BusinessDetails,ReviewApplication, UploadDocuments };
+export { LandingPage, LoanCalculatorPage, Faqs, Register, VerifyEmail, Login, PersonalDetails, HowItWorks, AboutUs, AddBusiness, UploadDocs, LoanApplication, BusinessDetails,ReviewApplication, UploadDocuments, UserHome, ProfilePage };
