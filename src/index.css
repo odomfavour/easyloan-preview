@@ -223,15 +223,15 @@ a:link {
 /* Sidebar Starts Here */
 .menu {
 	background-color: #ae2bff;
-	width: 290px;
+	width: 260px;
 }
 
 .menu .flex-column .nav-link {
 	display: flex;
 	align-items: center;
-	color: rgb(255, 255, 255);
-	font-size: 18px;
-	padding: 20px 0;
+	color: #FDFDFD;
+	font-size: 13px;
+	padding: 5px 0;
 	margin: 0 35px;
 }
 
@@ -259,19 +259,18 @@ a:link {
 	overflow: hidden;
 }
 
-.user-btn {
-	background-color: #fdfdfd;
+/* .user-btn {
 	color: #ae2bff;
 	border-radius: 5px;
 	border: none;
 	width: 200px;
 	height: 45px;
-}
+} */
 
 @media screen and (min-width: 992px) {
 	.main-content,
 	.layout-outlet {
-		margin-left: 290px;
+		margin-left: 260px;
 	}
 }
 
