@@ -24,9 +24,16 @@ const LoanCard = ({ loanStatus, id, dateApplied, dateIssued, paymentDate, amount
         }
         .loan-card{
           background-color: var(--gray-light);
+          // max-width: 32rem;
         }
         .loan-card .card-body{
           background-color: #fff;
+        }
+
+        @media (max-width: 991.98px) {
+          .loan-card{
+            max-width: 100%;
+          }
         }
 
         @media (max-width: 575.98px){
@@ -40,15 +47,15 @@ const LoanCard = ({ loanStatus, id, dateApplied, dateIssued, paymentDate, amount
         }
 			`}</style>
 
-			<Container className="loan-card fw-bold p-md-5 mb-md-5">
+			<Container className="loan-card fw-bold p-md-5 px-lg-4 pb-lg-3 pt-lg-0 mb-md-5 mb-lg-0">
 				<Row className="d-flex justify-content-between align-items-center mb-3 top">
-					<Col className="px-0">
+					<Col className="px-0 px-lg-2 ">
 						<h1 className="heading fw-bold m-0">Your Loan</h1>
 					</Col>
-					<Col className="d-flex justify-content-end ">
+					<Col className="d-flex justify-content-end p-lg-0">
 						<Buttons
 							variant={loanStatus}
-							className="fw-bold"
+							className="fw-bold "
 							style={{ borderRadius: "8px" }}
 							type="button">{`${loanStatus} ${
 							loanStatus === "Awaiting" ? "Approval" : ""
@@ -56,13 +63,13 @@ const LoanCard = ({ loanStatus, id, dateApplied, dateIssued, paymentDate, amount
 					</Col>
 				</Row>
 				<Row className="pe-2 card-body">
-					<Col className="rounded ">
+					<Col className="rounded px-lg-0">
 						<Stack>
 							<p>LPO ID: {id}</p>
 							<p>Date applied: {dateApplied}</p>
 							<p>Date Issued: {dateIssued}</p>
 							<p>Next Repayment Date: {paymentDate}</p>
-							<p className="fw-bold text-end heading amt">{amount}</p>
+							<p className="fw-bold text-end mb-lg-0 heading amt">{amount}</p>
 						</Stack>
 					</Col>
 				</Row>

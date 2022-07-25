@@ -19,19 +19,32 @@ const LoanStatus = () => {
           .loan-status .rounded{
             border-radius: 8px !important;
           }
+          .loan-status .card-group{
+            overflow-y: scroll;
+            // height: 60vh;
+            width: 43%;
+            gap: 1.5rem;
+          }
+
+          @media (max-width: 991.98px) {
+            .loan-status .card-group{
+              width: 100%;
+              overflow: hidden;
+              gap: 3rem;
+            }
+          }
 
           @media (max-width: 575.98px){
             .loan-status .card-group{
               overflow-y: scroll;
-              height: 60vh;
-              padding-bottom: 6.5rem;
+              // height: 99vh;
             }
           }
         `}
 			</style>
 			<PageWrapper>
-				<Container className="px-0 pb-5 loan-status">
-					<Stack gap={5} className="px-4 card-group d-md-block">
+				<Container fluid className="px-0 pb-2 loan-status">
+					<Stack className="px-4 card-group d-md-block d-lg-flex">
 						<LoanCard
 							loanStatus={"Disbursed"}
 							id={"22222222222"}
@@ -49,8 +62,8 @@ const LoanStatus = () => {
 							amount={"N102,500"}
 						/>
 					</Stack>
-					<Row className="py-5 py-md-0 px-md-4">
-						<Col className="my-4 bg-gray px-4 p-md-5 mx-md-2 rounded">
+					<Row className="py-5 py-md-0 pt-lg-4 px-md-4 px-lg-0">
+						<Col className="my-4 mb-lg-0 bg-gray px-4 p-md-5 mx-md-2 rounded">
 							<LaonHistoryTable />
 						</Col>
 					</Row>
