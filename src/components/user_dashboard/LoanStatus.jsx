@@ -22,8 +22,11 @@ const LoanStatus = () => {
           .loan-status .card-group{
             overflow-y: scroll;
             // height: 60vh;
-            width: 43%;
+            width: 50%;
             gap: 1.5rem;
+          }
+          .loan-status{
+            padding-top: 2.5rem;
           }
 
           @media (max-width: 991.98px) {
@@ -43,8 +46,8 @@ const LoanStatus = () => {
         `}
 			</style>
 			<PageWrapper>
-				<Container fluid className="px-0 pb-2 loan-status">
-					<Stack className="px-4 card-group d-md-block d-lg-flex">
+				<Container fluid className="px-0 pb-2  loan-status">
+					<Stack className="px-4 px-lg-3 card-group d-md-block d-lg-flex">
 						<LoanCard
 							loanStatus={"Disbursed"}
 							id={"22222222222"}

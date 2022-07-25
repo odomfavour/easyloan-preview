@@ -2,7 +2,7 @@ import React from "react";
 import { Bell, ChevronDown } from "react-bootstrap-icons";
 import img from "../../assets/img.jpg";
 import { Container, Form, InputGroup, Navbar } from "react-bootstrap";
-import Footer from "../../components/Footer";
+import { Footer, SearchBar } from "../../components/index";
 import { useDesktop } from "../../pages/DesktopContext";
 
 const PageWrapper = ({ children }) => {
@@ -25,8 +25,10 @@ const PageWrapper = ({ children }) => {
         }
         `}
 			</style>
+			<SearchBar placeholder="Search" data="" />
+
 			<div>
-				<Navbar className="user-searchbar p-4">
+				{/* <Navbar className="user-searchbar p-4">
 					<Container fluid className="px-0">
 						<Navbar.Brand href="#" className="w-100 m-0">
 							<Form className="d-flex ">
@@ -54,7 +56,7 @@ const PageWrapper = ({ children }) => {
 							</div>
 						</Form>
 					</Container>
-				</Navbar>
+				</Navbar> */}
 				{children}
 			</div>
 			{!isDesktop && <Footer />}
