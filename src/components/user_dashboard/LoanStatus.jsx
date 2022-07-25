@@ -11,20 +11,27 @@ const LoanStatus = () => {
 
 	return (
 		<>
-			<style>
+			<style type="text/css">
 				{`
           .gray{
             background-color: rgba(145, 36, 212, 0.03);
           }
-          .card-group{
-            height: 60vh;
-            padding-bottom: 6.5rem;
+          .loan-status .rounded{
+            border-radius: 8px !important;
+          }
+
+          @media (max-width: 575.98px){
+            .loan-status .card-group{
+              overflow-y: scroll;
+              height: 60vh;
+              padding-bottom: 6.5rem;
+            }
           }
         `}
 			</style>
 			<PageWrapper>
-				<Container className="px-0 pb-5">
-					<Stack gap={5} className="overflow-auto px-4 card-group">
+				<Container className="px-0 pb-5 loan-status">
+					<Stack gap={5} className="px-4 card-group d-md-block">
 						<LoanCard
 							loanStatus={"Disbursed"}
 							id={"22222222222"}
@@ -32,7 +39,6 @@ const LoanStatus = () => {
 							dateIssued={"Monday, June 27, 2022"}
 							paymentDate={"Wednesday July 27, 2022"}
 							amount={"N102,500"}
-							styles="bg-light-gray "
 						/>
 						<LoanCard
 							loanStatus={loanStatus}
@@ -41,11 +47,10 @@ const LoanStatus = () => {
 							dateIssued={"Monday, June 27, 2022"}
 							paymentDate={"Wednesday July 27, 2022"}
 							amount={"N102,500"}
-							styles="gray "
 						/>
 					</Stack>
-					<Row className="py-5">
-						<Col className="my-4 bg-gray px-4">
+					<Row className="py-5 py-md-0 px-md-4">
+						<Col className="my-4 bg-gray px-4 p-md-5 mx-md-2 rounded">
 							<LaonHistoryTable />
 						</Col>
 					</Row>

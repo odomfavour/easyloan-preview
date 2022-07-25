@@ -1,10 +1,13 @@
 import React from "react";
-import { Search, Bell, ChevronDown } from "react-bootstrap-icons";
+import { Bell, ChevronDown } from "react-bootstrap-icons";
 import img from "../../assets/img.jpg";
 import { Container, Form, InputGroup, Navbar } from "react-bootstrap";
 import Footer from "../../components/Footer";
+import { useDesktop } from "../../pages/DesktopContext";
 
 const PageWrapper = ({ children }) => {
+	const { isDesktop } = useDesktop();
+
 	return (
 		<>
 			<style>
@@ -54,7 +57,7 @@ const PageWrapper = ({ children }) => {
 				</Navbar>
 				{children}
 			</div>
-			<Footer />
+			{!isDesktop && <Footer />}
 		</>
 	);
 };
