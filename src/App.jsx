@@ -3,9 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import "./index.css";
 import styled from "styled-components";
 
-import UserDashboard from "./components/UserDashboard";
-import UserHome from "./pages/UserHome";
-import ProfilePage from "./pages/ProfilePage";
+import { LoanStatus, UserDashboard} from "./components/index";
 import {
 	LandingPage,
 	LoanCalculatorPage,
@@ -22,6 +20,9 @@ import {
 	BusinessDetails,
 	ReviewApplication,
 	UploadDocuments,
+	UserHome,
+	ProfilePage,
+  ContactPage,
 } from "./pages/Index";
 
 function App() {
@@ -33,9 +34,10 @@ function App() {
 			<Route path="/dashboard" element={<UserDashboard />}>
 				<Route path="/dashboard/user" element={<UserHome />} />
 				<Route path="/dashboard/profile" element={<ProfilePage />} />
+				<Route path="/dashboard/status" element={<LoanStatus />} />
 			</Route>
-			<Route path="/application" element={<LoanApplication/>}/>
-			<Route path="/businessDetails" element={<BusinessDetails/>}/>
+			<Route path="/application" element={<LoanApplication />} />
+			<Route path="/businessDetails" element={<BusinessDetails />} />
 			<Route path="/register" element={<Register />} />
 			<Route path="/verify" element={<VerifyEmail />} />
 			<Route path="/login" element={<Login />} />
@@ -48,6 +50,7 @@ function App() {
 			<Route path="/review-application" element={<ReviewApplication />} />
 			{/*Uploading documents for LOAN APPLICATION */}
 			<Route path="/upload-business-docs" element={<UploadDocuments />} />
+      <Route path="/contact" element={<ContactPage />} />
 			<Route
 				path="*"
 				element={
