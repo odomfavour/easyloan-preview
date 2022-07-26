@@ -7,6 +7,7 @@ import UserDashboard from "./components/UserDashboard";
 import UserHome from "./pages/UserHome";
 import UserHomeLoan from "./components/UserHomeLoan";
 import ProfilePage from "./pages/ProfilePage";
+import SideBar from "./components/SideBar"
 import {
 	LandingPage,
 	LoanCalculatorPage,
@@ -50,6 +51,7 @@ function App() {
 			<Route path="/review-application" element={<ReviewApplication />} />
 			{/*Uploading documents for LOAN APPLICATION */}
 			<Route path="/upload-business-docs" element={<UploadDocuments />} />
+			<Route path="/sidebar" element={<SideBar />} />
 			<Route
 				path="*"
 				element={

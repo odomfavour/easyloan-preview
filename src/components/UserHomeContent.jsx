@@ -8,10 +8,12 @@ import profile from "../assets/edit_profile.svg";
 import pen from "../assets/pen.svg";
 
 
+
 const UserHomeContent = () => {
-  // Get business information and CAC documents from the local storage
-	// const businessInfo = JSON.parse(localStorage.getItem("businessInfo"));
-	// console.log("Business Information: ", businessInfo);
+    const [user, setUser] = useState({});
+    useEffect(() => {
+		setUser(JSON.parse(localStorage.getItem("user")));
+	}, [user]);
 
     const [show, setShow] = useState(false);
     const [isBusinessAdded, setIsBusinessAdded] = useState(false);
@@ -34,7 +36,7 @@ const UserHomeContent = () => {
     <div >
         <div className='my-5 bg-gray py-3 px-3 user-dash-color user-dashboard-content d-flex justify-content-between'>
             <div>
-                <h2 className='user-name-font'>Hello Lydia Salami,</h2>
+                <h2 className='user-name-font'>{user.name},</h2>
             </div>
             <Link to='/application'>
                 <Button className='user-btn-bg shadow-none'>Apply for Loan</Button>
@@ -74,7 +76,7 @@ const UserHomeContent = () => {
                         Add a business now to continue.</p>
                     )}
                     <div>
-                        <Link to="/add-bussiness">
+                        <Link to="/add-business">
                             <Button className='shadow-none user-btn-bg2 '>Add a business</Button>
                         </Link>
                     </div>
