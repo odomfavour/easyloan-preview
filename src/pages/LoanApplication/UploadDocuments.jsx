@@ -19,6 +19,13 @@ const UploadDocuments = () => {
 		businessSalesRecord: "",
 		utilityBill: "",
 	});
+	const [fileNames, setFileNames] = useState({
+		businessBankStatement: "Click here to upload",
+		personalBankStatement: "Click here to upload",
+		distributionAgreement: "Click here to upload",
+		businessSalesRecord: "Click here to upload",
+		utilityBill: "Click here to upload",
+	});
 
 	// convert images to base64 and store in local storage
 	const getBase64 = (file) => {
@@ -37,6 +44,11 @@ const UploadDocuments = () => {
 				...loanApplicationDocuments,
 				[e.target.name]: base64,
 			});
+		});
+    let fileName = file.name;
+		setFileNames({
+			...fileNames,
+			[e.target.name]: fileName,
 		});
 	};
 
@@ -105,7 +117,7 @@ const UploadDocuments = () => {
 												fill="#AE2BFF"
 											/>
 										</svg>
-										<p className="fw-bold my-2">Click here to upload</p>
+										<p className="fw-bold my-2">{fileNames.businessBankStatement}</p>
 										<p className="muted-text m-0">PNG/JPEG</p>
 									</div>
 									<input
@@ -144,7 +156,7 @@ const UploadDocuments = () => {
 												fill="#AE2BFF"
 											/>
 										</svg>
-										<p className="my-2">Click here to upload</p>
+										<p className="my-2 fw-bold">{fileNames.businessSalesRecord}</p>
 										<p className="muted-text m-0">PNG/JPEG</p>
 									</div>
 									<input
@@ -185,7 +197,7 @@ const UploadDocuments = () => {
 												fill="#AE2BFF"
 											/>
 										</svg>
-										<p className="my-2">Click here to upload</p>
+										<p className="my-2 fw-bold">{fileNames.personalBankStatement}</p>
 										<p className="muted-text m-0">PNG/JPEG</p>
 									</div>
 									<input
@@ -224,7 +236,7 @@ const UploadDocuments = () => {
 												fill="#AE2BFF"
 											/>
 										</svg>
-										<p className="my-2">Click here to upload</p>
+										<p className="my-2 fw-bold">{fileNames.utilityBill}</p>
 										<p className="muted-text m-0">PNG/JPEG</p>
 									</div>
 									<input
@@ -263,7 +275,7 @@ const UploadDocuments = () => {
 												fill="#AE2BFF"
 											/>
 										</svg>
-										<p className="my-2">Click here to upload</p>
+										<p className="my-2 fw-bold">{fileNames.distributionAgreement}</p>
 										<p className="muted-text m-0">PNG/JPEG</p>
 									</div>
 									<input

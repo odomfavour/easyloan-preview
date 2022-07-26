@@ -17,6 +17,11 @@ const UploadDocs = () => {
 		cacForm7: "",
 		cacCertificate: "",
 	});
+	const [fileNames, setFileNames] = useState({
+		cacForm2: "Click here to upload a clear picture of CAC Form 2 / BN 1",
+		cacForm7: "Click here to upload a clear picture of CAC Form 7 / BN 2",
+		cacCertificate: "Click here to upload a clear picture of CAC Certificate",
+	});
 
 	const [toggleModal, setToggleModal] = useState(false);
 	const [iterator, setIterator] = useState(false);
@@ -48,14 +53,18 @@ const UploadDocs = () => {
 				[e.target.name]: base64,
 			});
 		});
+		let fileName = file.name;
+		setFileNames({
+			...fileNames,
+			[e.target.name]: fileName,
+		});
 	};
 
 	const addToStorage = () => {
 		// get existing business info.
 		let businessInfo = JSON.parse(localStorage.getItem("businessInfo"));
 		// get lates uploaded business info.
-		let latestBusinessInfo =
-			businessInfo[Object.keys(businessInfo).length];
+		let latestBusinessInfo = businessInfo[Object.keys(businessInfo).length];
 		// add CAC files to the object
 		latestBusinessInfo.cacDocumentsImgUrl = cacDocuments;
 		// save back to local storage
@@ -67,6 +76,12 @@ const UploadDocs = () => {
 		addToStorage();
 		setSuccessModal();
 	};
+
+	// document.querySelector('.custom-file-input').addEventListener('change', function (e) {
+	//   var name = document.getElementById("customFileInput").files[0].name;
+	//   var nextSibling = e.target.nextElementSibling
+	//   nextSibling.innerText = name
+	// })
 
 	const message = ["Great Job!", <br key="0" />, "Your business has been successfully added"];
 
@@ -115,7 +130,7 @@ const UploadDocs = () => {
 											/>
 										</svg>
 										<p className="fw-bold my-2">
-											Click here to upload a clear picture of CAC Form 2 / BN 1
+											{fileNames.cacForm2}
 										</p>
 										<p className="muted-text m-0">PNG/JPEG</p>
 									</div>
@@ -156,7 +171,7 @@ const UploadDocs = () => {
 											/>
 										</svg>
 										<p className="fw-bold my-2">
-											Click here to upload a clear picture of CAC Certificate
+											{fileNames.cacCertificate}
 										</p>
 										<p className="muted-text m-0">PNG/JPEG</p>
 									</div>
@@ -197,7 +212,7 @@ const UploadDocs = () => {
 											/>
 										</svg>
 										<p className="fw-bold my-2">
-											Click here to upload a clear picture of CAC Form 7 / BN 2
+											{fileNames.cacForm7}
 										</p>
 										<p className="muted-text m-0">PNG/JPEG</p>
 									</div>

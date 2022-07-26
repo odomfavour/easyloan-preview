@@ -132,6 +132,11 @@ const Register = () => {
 		<>
 			<style type="text/css">
 				{`
+          .img-wrap{
+            height: 85vh;
+            position: sticky;
+            top: 5rem;
+          }
           @media (max-width: 575.98px){
             body{
               font-size: 14px;
@@ -141,6 +146,11 @@ const Register = () => {
             }
             .form{
               background-color: #fdfdfd;
+            }
+            .img-wrap{
+              height: initial;
+              position: static;
+              top: initial;
             }
           }
         `}
@@ -158,8 +168,11 @@ const Register = () => {
 								</div>
 							</Col>
 						</Row>
-						<Col xs={9} lg={5}>
-							<Image src={reg} alt="lady registering" className="w-100 mb-5"></Image>
+						<Col xs={9} lg={5} className="d-lg-flex align-self-lg-start img-wrap">
+							<Image
+								src={reg}
+								alt="lady registering"
+								className="w-100 mb-5 align-self-lg-center "></Image>
 						</Col>
 						<Col lg={5}>
 							<Stack gap={5}>
