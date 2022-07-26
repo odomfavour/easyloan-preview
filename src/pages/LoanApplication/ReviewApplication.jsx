@@ -92,7 +92,7 @@ const ReviewApplication = () => {
 								btnsetter={toggleModal}
 								iterateBtn={iterator}
 								imgs={successScreen}
-								btnOne={[true, "Go to Dashboard"]}
+								btnOne={[true, "Go to Dashboard/user"]}
 								btnTwo={[false, ""]}
 								message={message}
 								btnOneClick={navigateToDashboard}
