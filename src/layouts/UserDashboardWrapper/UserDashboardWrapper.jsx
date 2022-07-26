@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { List } from "react-bootstrap-icons";
 import SidebarMenu from "../../components/SidebarMenu";
-// import SideBar from "../../components/SideBar";
 
 export default function UserDashboardWrapper({ children }) {
   const [show, setShow] = useState(false);

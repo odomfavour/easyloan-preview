@@ -5,9 +5,7 @@ import styled from "styled-components";
 
 import UserDashboard from "./components/UserDashboard";
 import UserHome from "./pages/UserHome";
-import UserHomeLoan from "./components/UserHomeLoan";
 import ProfilePage from "./pages/ProfilePage";
-import SideBar from "./components/SideBar"
 import {
 	LandingPage,
 	LoanCalculatorPage,
@@ -34,7 +32,6 @@ function App() {
 			<Route path="/faqs" element={<Faqs />} />
 			<Route path="/dashboard" element={<UserDashboard />}>
 				<Route path="/dashboard/user" element={<UserHome />} />
-				<Route path="/dashboard/user3" element={<UserHomeLoan />} />
 				<Route path="/dashboard/profile" element={<ProfilePage />} />
 			</Route>
 			<Route path="/application" element={<LoanApplication/>}/>
@@ -51,7 +48,6 @@ function App() {
 			<Route path="/review-application" element={<ReviewApplication />} />
 			{/*Uploading documents for LOAN APPLICATION */}
 			<Route path="/upload-business-docs" element={<UploadDocuments />} />
-			<Route path="/sidebar" element={<SideBar />} />
 			<Route
 				path="*"
 				element={

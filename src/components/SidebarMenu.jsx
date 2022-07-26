@@ -15,8 +15,6 @@ import {
 
   const SidebarMenu = () => {
     
-    
-    
     return (
       <div className="menu pb-5 ">
         <div className="text-center pt-5 pb-4">
