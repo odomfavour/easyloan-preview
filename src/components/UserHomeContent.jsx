@@ -15,6 +15,7 @@ const UserHomeContent = () => {
 		setUser(JSON.parse(localStorage.getItem("user")));
 	}, [user]);
 
+    //eslint-disable-next-line
     const [show, setShow] = useState(false);
     const [isBusinessAdded, setIsBusinessAdded] = useState(false);
     const [businessInfo, setBusinessInfo] = useState({});
