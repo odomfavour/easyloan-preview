@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import "./index.css";
 import styled from "styled-components";
 
-import { LoanStatus, UserDashboard, UserHomeContent2, UserHomeLoan } from "./components/index";
+import { LoanStatus, UserDashboard} from "./components/index";
 import {
 	LandingPage,
 	LoanCalculatorPage,
@@ -33,8 +33,6 @@ function App() {
 			<Route path="/faqs" element={<Faqs />} />
 			<Route path="/dashboard" element={<UserDashboard />}>
 				<Route path="/dashboard/user" element={<UserHome />} />
-				<Route path="/dashboard/user2" element={<UserHomeContent2 />} />
-				<Route path="/dashboard/user3" element={<UserHomeLoan />} />
 				<Route path="/dashboard/profile" element={<ProfilePage />} />
 				<Route path="/dashboard/status" element={<LoanStatus />} />
 			</Route>
