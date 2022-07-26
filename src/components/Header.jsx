@@ -55,8 +55,8 @@ const Header = () => {
 									Loan Calculator
 								</Link>
 								<NavDropdown title="help" menuVariant="light" className="drop-down me-4 px-1">
-									<NavDropdown.Item href="#action/3.1">FAQ</NavDropdown.Item>
-									<NavDropdown.Item href="#action/3.2">Contact</NavDropdown.Item>
+									<NavDropdown.Item as={Link} to={"/faqs"}>FAQ</NavDropdown.Item>
+									<NavDropdown.Item as={Link} to={"/contact"}>Contact</NavDropdown.Item>
 									<NavDropdown.Item href="#action/3.3">Privacy Policy </NavDropdown.Item>
 									<NavDropdown.Item href="#action/3.3">Term of Use </NavDropdown.Item>
 								</NavDropdown>

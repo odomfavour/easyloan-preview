@@ -14,7 +14,7 @@ const DesktopProvider = ({ children }) => {
 	});
 	return (
 		<>
-			<DesktopContext.Provider value={{ isDesktop }}>{children}</DesktopContext.Provider>;
+			<DesktopContext.Provider value={{ isDesktop }}>{children}</DesktopContext.Provider>
 		</>
 	);
 };

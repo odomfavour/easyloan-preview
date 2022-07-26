@@ -91,6 +91,11 @@ html {
 	background-color: #fff !important;
 	cursor: pointer;
 }
+.btn.disabled, .btn:disabled, fieldset:disabled{
+  background-color: #E5E5E5 !important;
+  color: #B1B0B0;
+  opacity: 1 !important;
+}
 
 /* Links */
 a:link {
