@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Button, Row, Col, Card } from "react-bootstrap";
-import img from "../assets/img.jpg";
+// import img from "../assets/img.jpg";
 
 const UserProfileContent = () => {
+    const [user, setUser] = useState({});
+    useEffect(() => {
+		setUser(JSON.parse(localStorage.getItem("user")));
+	}, []);
   return (
     <div>
         <div className='profile-pading mb-3'>
@@ -11,11 +15,11 @@ const UserProfileContent = () => {
                     <div className='user-name-font user-profile-font fw-bold mb-2'>Personal Profile</div>
                     <div className='bg-gray p-3 profile-section-one'>
                         <div className="d-flex justify-content-between">
-                            <img src={img} alt="img" className="profile-img "/>
+                            <img src={user.photoURL} alt="img" className="profile-img "/>
                             <div className=''><Button >Edit Profile</Button></div>
                         </div>
                         <div>
-                            <div className="pt-3 profile-mid-font fw-bold">Lydia Salami</div>
+                            <div className="pt-3 profile-mid-font fw-bold">{user.name}</div>
                             <div className="py-2 profile-small-font" >Business Owner</div>
                             <div className="profile-small-font">2, Favour Street, Osapa, Lagos</div>
                             <div className="py-2 profile-small-font">lydia@lyd&ste.com</div>

@@ -40,7 +40,7 @@ function App() {
 				<Route path="/dashboard/settings" element={<Settings />} />
 			</Route>
 			<Route path="/application" element={<LoanApplication />} />
-			<Route path="/businessDetails" element={<BusinessDetails />} />
+			<Route path="/businessDetails/:indx" element={<BusinessDetails />} />
 			<Route path="/register" element={<Register />} />
 			<Route path="/verify" element={<VerifyEmail />} />
 			<Route path="/login" element={<Login />} />
