@@ -91,10 +91,12 @@ html {
 	background-color: #fff !important;
 	cursor: pointer;
 }
-.btn.disabled, .btn:disabled, fieldset:disabled{
-  background-color: #E5E5E5 !important;
-  color: #B1B0B0;
-  opacity: 1 !important;
+.btn.disabled,
+.btn:disabled,
+fieldset:disabled {
+	background-color: #e5e5e5 !important;
+	color: #b1b0b0;
+	opacity: 1 !important;
 }
 
 /* Links */
@@ -234,16 +236,16 @@ a:link {
 .menu .flex-column .nav-link {
 	display: flex;
 	align-items: center;
-	color: #FDFDFD;
+	color: #fdfdfd;
 	font-size: 14px;
 	padding: 5px 0;
 	margin: 0 35px;
 }
 
-.menu .flex-column .nav-link:hover{
-  background-color: #FDFDFD;
-  color: #ae2bff;
-  transition: all 0.5s;
+.menu .flex-column .nav-link:hover {
+	background-color: #fdfdfd;
+	color: #ae2bff;
+	transition: all 0.5s;
 }
 .dashboard {
 	overflow-y: scroll;
@@ -270,12 +272,12 @@ a:link {
 }
 
 .side-btn {
-  background-color: #ae2bff;
-  color: #FDFDFD;
-  border-radius: 5px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  width: 180px;
+	background-color: #ae2bff;
+	color: #fdfdfd;
+	border-radius: 5px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	width: 180px;
 }
 
 @media screen and (min-width: 992px) {
@@ -611,6 +613,11 @@ a:link {
 	height: 250px;
 	border-radius: 50%;
 	background: none;
+}
+
+.fixed_body {
+	overflow: hidden;
+	block-size: 100%;
 }
 
 .profile-section-one .btn-primary,
