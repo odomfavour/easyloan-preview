@@ -16,5 +16,6 @@ import UploadDocuments from "./LoanApplication/UploadDocuments";
 import UserHome from "./UserHome";
 import ProfilePage from "./ProfilePage";
 import ContactPage from "./ContactPage";
+import DashboardContactPage from "./DashboardContactPage";
 
-export { LandingPage, LoanCalculatorPage, Faqs, Register, VerifyEmail, Login, PersonalDetails, HowItWorks, AboutUs, AddBusiness, UploadDocs, LoanApplication, BusinessDetails,ReviewApplication, UploadDocuments, UserHome, ProfilePage, ContactPage };
+export { LandingPage, LoanCalculatorPage, Faqs, Register, VerifyEmail, Login, PersonalDetails, HowItWorks, AboutUs, AddBusiness, UploadDocs, LoanApplication, BusinessDetails,ReviewApplication, UploadDocuments, UserHome, ProfilePage, ContactPage, DashboardContactPage };

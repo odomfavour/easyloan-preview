@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import { Col, Container, Row, Stack, Form, InputGroup, Image } from "react-bootstrap";
 import { Buttons } from "../index";
 import map from "../../assets/map.svg";
+import { ContactContext } from "../../pages/ContactContext";
 
 const Contact = () => {
+	const { isDashboard } = useContext(ContactContext);
 	const [disabled, setDisabled] = useState(true);
 	const [message, setMessage] = useState({
 		name: "",
@@ -76,6 +79,9 @@ const Contact = () => {
             .contact #h2{
               text-align: center;
             }
+            .btn-wrap{
+              width: 100%;
+            }
           }
 
 					@media (max-width: 575.98px){
@@ -96,10 +102,13 @@ const Contact = () => {
 				`}
 			</style>
 
-			<Container  className="m-0 p-0 contact">
-				<Row className="gap-2 flex-column-reverse flex-lg-row ">
+			<Container className="m-0 p-0 contact">
+				<Row
+					className={`gap-2 flex-column-reverse ${
+						isDashboard ? "flex-lg-row-reverse" : "flex-lg-row"
+					}`}>
 					<Col
-						lg={5}
+						lg={isDashboard ? 4 : 5}
 						className="d-flex flex-column bg-light-gray rounded px-lg-4 pb-4 mb-lg-5 pt-lg-3 gap-2 gap-lg-4 "
 						id="info">
 						<Row>
@@ -126,7 +135,7 @@ const Contact = () => {
 								</svg>
 								<p className="m-0">+234-80000000 &nbsp; +234-80000000</p>
 							</Stack>
-							<Stack gap={3} direction="horizontal" className="col-md-5">
+							<Stack gap={3} direction="horizontal" className="col-md-5 col-lg-12">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									width="16"
@@ -150,7 +159,10 @@ const Contact = () => {
 								</svg>
 								<p className="m-0">Lagos, Nigeria</p>
 							</Stack>
-							<Stack gap={3} direction="horizontal" className="d-md-none d-lg-flex">
+							<Stack
+								gap={isDashboard ? 5 : 3}
+								direction="horizontal"
+								className="d-md-none d-lg-flex">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									width="16"
@@ -180,12 +192,23 @@ const Contact = () => {
 								</svg>
 							</Stack>
 						</Row>
-						<Row className="d-md-none d-lg-flex  px-3">
-							<p style={{ color: "var(--purple)" }} className="m-0 p-0 fw-bold">
-								Find us
-							</p>
-							<Image src={map} alt="map" className="img-fluid rounded p-0" />
-						</Row>
+						{!isDashboard && (
+							<Row className="d-md-none d-lg-flex  px-3">
+								<p style={{ color: "var(--purple)" }} className="m-0 p-0 fw-bold">
+									Find us
+								</p>
+								<Image src={map} alt="map" className="img-fluid rounded p-0" />
+							</Row>
+						)}
+						{isDashboard && (
+							<Row>
+								<Col className=" d-md-flex justify-content-center align-items-center d-lg-block mt-4 mt-lg-0 btn-wrap">
+									<Buttons variant="purple" className="px-5 fw-bold " as={Link} to={"/faqs"}>
+										See FAQ
+									</Buttons>
+								</Col>
+							</Row>
+						)}
 					</Col>
 
 					<Col className="d-flex pe-lg-0 mb-lg-5">

@@ -23,6 +23,7 @@ import {
 	UserHome,
 	ProfilePage,
   ContactPage,
+  DashboardContactPage,
 } from "./pages/Index";
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
 				<Route path="/dashboard/user" element={<UserHome />} />
 				<Route path="/dashboard/profile" element={<ProfilePage />} />
 				<Route path="/dashboard/status" element={<LoanStatus />} />
+				<Route path="/dashboard/contact" element={<DashboardContactPage />} />
 			</Route>
 			<Route path="/application" element={<LoanApplication />} />
 			<Route path="/businessDetails" element={<BusinessDetails />} />
