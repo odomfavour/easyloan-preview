@@ -13,14 +13,17 @@ const UserHomeContent = () => {
     const [user, setUser] = useState({});
     useEffect(() => {
 		setUser(JSON.parse(localStorage.getItem("user")));
-	}, [user]);
+	}, []);
 
     const [isBusinessAdded, setIsBusinessAdded] = useState(false);
     const [businessInfo, setBusinessInfo] = useState({});
+    
 
     const getBusinessInfo = () => {
         const data = JSON.parse(localStorage.getItem("businessInfo"));
         setBusinessInfo(data);
+        // businessInfo.push(data);
+        // console.log(businessInfo)
     }
   
     useEffect(() => {
@@ -29,7 +32,7 @@ const UserHomeContent = () => {
         if (businessInfo) {
         setIsBusinessAdded(true);
         }
-    }, [businessInfo]);
+    }, []);
 
   return (
     <div >
@@ -60,12 +63,19 @@ const UserHomeContent = () => {
             <Col sm={12} md={6} className=" overflow-width">
                 <div className='bg-gray px-4 pt-5 user-dashboard-content3' style={{height: "300px"}}>
                     <p className='fw-bold user-dash-color user-small-font '>Your Business</p>
-                    {isBusinessAdded && (
+                    {isBusinessAdded && ( 
                       <>
                     <div className='mb-3 d-flex justify-content-between user-business'>
                         <div className='p-3'>
-                          <div className='user-biz-font2 mb-1'>{businessInfo.businessName}</div>
-                          <div className='user-biz-font'>Credit Score: 0</div>
+                        {/* {businessInfo.map((business, index) => {
+                            const item = Object.values(business);
+                            console.log({item});
+                            console.log(businessInfo);
+                            return(
+                          <div className='user-biz-font2 mb-1' key={index}>{business.businessName}</div>
+                        )})} */}
+                            <div className='user-biz-font2 mb-1'>{businessInfo[1].businessName}</div>
+                            <div className='user-biz-font'>Credit Score: 0</div>
                         </div>
                         <button className='shadow-none border-1 rounded my-4 me-3 user-btn-bg7 px-3' >Edit</button>
                     </div>
