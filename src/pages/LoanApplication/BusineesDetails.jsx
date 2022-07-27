@@ -1,15 +1,27 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Container, Col, Row, Modal, Form, Stack } from "react-bootstrap";
 
 import PageWrapperV2 from "../../layouts/no_footer_layout/PageWrapperV2";
 import { Buttons } from "../../components/index";
 
 import * as AiIcons from "react-icons/ai";
+import { CloudSlash } from "react-bootstrap-icons";
 
 const BusineesDetails = () => {
+	// fetch data 
+	const getBusiness = JSON.parse(localStorage.getItem('businessInfo'))
+	const businessInfos = Object.values(getBusiness)
+	const businessNames = []
+	businessInfos.map(businessInfo => {
+		businessNames.push(businessInfo.businessName)
+	}); 
+
+	let {indx} = useParams()
+	const [busIndx, setBusIndx] = useState(indx)
+
 	const [appllicationModal, setApplicationModal] = useState(false);
-	const [modalValue, setModalValue] = useState("Select your business");
+	const [modalValue, setModalValue] = useState(businessInfos[indx].businessName);
 	const handleLoanModal = () => {
 		setApplicationModal(!appllicationModal);
 	};
@@ -68,6 +80,18 @@ const BusineesDetails = () => {
 	};
 	// modal end
 
+	 
+
+	const handleDropClick = (busName, i) => {
+        setModalValue(busName)
+        setBusIndx(i)
+    }
+
+	const currentUser = businessInfos[busIndx]
+
+
+	console.log(currentUser)
+
 	return (
 		<div>
 			<PageWrapperV2>
@@ -96,32 +120,10 @@ const BusineesDetails = () => {
 										<div
 											className="w-100 position-absolute d-flex flex-column border px-4 py-2 bg-white rounded text-secondary  align-items-start d-flex justify-content-start"
 											style={{ top: "110%", zIndex: "10" }}>
-											<p
-												className="mb-0 my-4 w-100 "
-												onClick={() => setModalValue("Lyd & Ste Ltd")}>
-												Lyd & Ste Ltd
-											</p>
-											<p
-												className="mb-0 my-4 w-100"
-												onClick={() => setModalValue("Brendan House of Shoes")}>
-												Brendan House of Shoes
-											</p>
-											<p
-												className="mb-0 my-4 w-100"
-												onClick={() => setModalValue("Eat More Limited")}>
-												Eat More Limited
-											</p>
-											<p className="mb-0 my-4 w-100" onClick={() => setModalValue("Laden Mall")}>
-												Laden Mall
-											</p>
-											<p
-												className="mb-0 my-4 w-100"
-												onClick={() => setModalValue("Bade Accessories")}>
-												Bade Accessories
-											</p>
-											<p className="mb-0 my-4 w-100" onClick={() => setModalValue("Others")}>
-												Others
-											</p>
+												 {businessNames.map((busName, i) => (
+                                                  <p className="mb-0  my-4 w-100 "  key={i} onClick={()=>handleDropClick(busName, i)}>{busName}</p>
+                                                ))}
+                                          
 										</div>
 									)}
 								</div>
@@ -130,18 +132,18 @@ const BusineesDetails = () => {
 									style={{ width: "auto !important" }}>
 									<li className="py-3 d-flex justify-content-between align-items-center w-100">
 										<p className="mb-0">{modalValue}</p>
-										<Buttons variant="outline-purple" size="lg" className="w-25  rounded">
+										<Buttons variant="outline-purple" onClick={handleLoanModal} size="lg" className="w-25  rounded">
 											Edit
 										</Buttons>
 									</li>
-									<li className="mb-0 py-3 list-group">Email: info@lyd&ste.com</li>
-									<li className="mb-0 py-3 list-group">Phone No: 08022222222</li>
-									<li className="mb-0 py-3 list-group">RC Number: RC 22222222</li>
-									<li className="mb-0 py-3 list-group">Business Category: Food and Agriculture</li>
-									<li className="mb-0 py-3 list-group">Business Address: 12, Favourite Street.</li>
-									<li className="mb-0 py-3 list-group">Nearest Bustop: Lekki Phase 1.</li>
-									<li className="mb-0 py-3 list-group">LGA: Eti-Osa</li>
-									<li className="mb-0 py-3 list-group">State: Lagos </li>
+									<li className="mb-0 py-3 list-group">Email: {currentUser.businessEmail}</li>
+									<li className="mb-0 py-3 list-group">Phone No: {currentUser.phone}</li>
+									<li className="mb-0 py-3 list-group">RC Number: {currentUser.regNumber}</li>
+									<li className="mb-0 py-3 list-group">Business Category: {currentUser.category}</li>
+									<li className="mb-0 py-3 list-group">Business Address: {currentUser.street}</li>
+									<li className="mb-0 py-3 list-group">Nearest Bustop: {currentUser.busStop}</li>
+									<li className="mb-0 py-3 list-group">LGA: {currentUser.lga}</li>
+									<li className="mb-0 py-3 list-group">State: {currentUser.state} </li>
 								</ul>
 							</Col>
 							<Col className="ps-md-4 pt-4" sm={12} lg={6}>
@@ -171,25 +173,25 @@ const BusineesDetails = () => {
 										<li className="py-3 d-flex justify-content-between align-items-center w-100">
 											<p className="mb-0">Local Purchase Order</p>
 											<Buttons variant="purple" size="md" className="w-25 h-25 rounded">
-												Uploaded
+												Upload
 											</Buttons>
 										</li>
 										<li className="py-3 d-flex justify-content-between align-items-center w-100">
 											<p className="mb-0">Distribution Agreement</p>
 											<Buttons variant="purple" size="md" className="w-25 h-25 rounded">
-												Uploaded
+												Upload
 											</Buttons>
 										</li>
 										<li className="py-3 d-flex justify-content-between align-items-center w-100">
 											<p className="mb-0">Business Sales Records</p>
 											<Buttons variant="purple" size="md" className="w-25 h-25 rounded">
-												Uploaded
+												Upload
 											</Buttons>
 										</li>
 										<li className="py-3 d-flex justify-content-between align-items-center w-100">
 											<p className="mb-0">Business Bank Statement</p>
 											<Buttons variant="purple" size="md" className="w-25 h-25 rounded">
-												Uploaded
+												Upload
 											</Buttons>
 										</li>
 									</ul>
