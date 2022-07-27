@@ -6,7 +6,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { DesktopProvider } from "./pages/DesktopContext";
-import { ContactContextProvider } from "./pages/ContactContext";
+import { ContactContextProvider } from "./context/contactContext";
 import { AppProvider } from "./context/context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

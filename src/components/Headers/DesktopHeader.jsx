@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../../assets/Logo.svg";
 import back from "../../assets/back.svg";
 import { Desktop, Button, Cspan } from "./header.styles";
-import { NavLink, useNavigate, useLocation } from "react-router-dom";
+import { NavLink, useNavigate, useLocation, Link } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
@@ -35,8 +35,8 @@ const DesktopHeader = () => {
 						<NavLink to="/help" activeClassName="active">
 							<Nav>
 								<NavDropdown id="nav-dropdown-dark-example" title="Help" menuVariant="light">
-									<NavDropdown.Item href="#action/3.1">FAQ</NavDropdown.Item>
-									<NavDropdown.Item href="#action/3.2">Contact</NavDropdown.Item>
+									<NavDropdown.Item as={Link} to={"/faqs"}>FAQ</NavDropdown.Item>
+									<NavDropdown.Item as={Link} to={"/contact"}>Contact</NavDropdown.Item>
 									<NavDropdown.Item href="#action/3.3">Privacy Policy </NavDropdown.Item>
 									<NavDropdown.Item href="#action/3.3">Term of Use </NavDropdown.Item>
 								</NavDropdown>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Container, Stack } from "react-bootstrap";
 import PageWrapper from "../layouts/UserDashboardWrapper/PageWrapper";
 import { Buttons, Contact } from "../components/index";
-import { ContactContext } from "../pages/ContactContext";
+import { ContactContext } from "../context/contactContext";
 
 const DashboardContactPage = () => {
 	const { setIsDashboard } = useContext(ContactContext);

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Col, Container, Row, Stack, Form, InputGroup, Image } from "react-bootstrap";
 import { Buttons } from "../index";
 import map from "../../assets/map.svg";
-import { ContactContext } from "../../pages/ContactContext";
+import { ContactContext } from "../../context/contactContext";
 
 const Contact = () => {
 	const { isDashboard } = useContext(ContactContext);

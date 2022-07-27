@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import PageWrapper from "../layouts/page_wrapper/PageWrapper";
 import { Col, Container, Row, Stack, Image } from "react-bootstrap";
 import { useDesktop } from "../pages/DesktopContext";
-import { ContactContext } from "../pages/ContactContext";
+import { ContactContext } from "../context/contactContext";
 import { Contact } from "../components/index";
 import map from "../assets/map2.svg";
 
