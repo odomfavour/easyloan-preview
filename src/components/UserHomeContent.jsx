@@ -15,8 +15,6 @@ const UserHomeContent = () => {
 		setUser(JSON.parse(localStorage.getItem("user")));
 	}, [user]);
 
-    //eslint-disable-next-line
-    const [show, setShow] = useState(false);
     const [isBusinessAdded, setIsBusinessAdded] = useState(false);
     const [businessInfo, setBusinessInfo] = useState({});
 
@@ -62,7 +60,7 @@ const UserHomeContent = () => {
             <Col sm={12} md={6} className=" overflow-width">
                 <div className='bg-gray px-4 pt-5 user-dashboard-content3' style={{height: "300px"}}>
                     <p className='fw-bold user-dash-color user-small-font '>Your Business</p>
-                    {isBusinessAdded && show ?(
+                    {isBusinessAdded && (
                       <>
                     <div className='mb-3 d-flex justify-content-between user-business'>
                         <div className='p-3'>
@@ -72,7 +70,8 @@ const UserHomeContent = () => {
                         <button className='shadow-none border-1 rounded my-4 me-3 user-btn-bg7 px-3' >Edit</button>
                     </div>
                       </>
-                    ) : (
+                    )} 
+                    {!isBusinessAdded && (
                       <p className='py-3'>You have not added any business. 
                         Add a business now to continue.</p>
                     )}
