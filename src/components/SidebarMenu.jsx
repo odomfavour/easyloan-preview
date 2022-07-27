@@ -52,7 +52,7 @@ const SidebarMenu = () => {
 						Help
 					</div>
 				</Nav.Link>
-				<Nav.Link as={Link} to="" className="side-btn mb-3">
+				<Nav.Link as={Link} to="/dashboard/settings" className="side-btn mb-3">
 					<div className="border-0 ">
 						<Gear className="mx-4" />
 						Settings
