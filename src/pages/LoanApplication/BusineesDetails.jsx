@@ -6,7 +6,6 @@ import PageWrapperV2 from "../../layouts/no_footer_layout/PageWrapperV2";
 import { Buttons } from "../../components/index";
 
 import * as AiIcons from "react-icons/ai";
-import { CloudSlash } from "react-bootstrap-icons";
 
 const BusineesDetails = () => {
 	// fetch data 
@@ -14,7 +13,7 @@ const BusineesDetails = () => {
 	const businessInfos = Object.values(getBusiness)
 	const businessNames = []
 	businessInfos.map(businessInfo => {
-		businessNames.push(businessInfo.businessName)
+		return businessNames.push(businessInfo.businessName)
 	}); 
 
 	let {indx} = useParams()
@@ -39,9 +38,9 @@ const BusineesDetails = () => {
 	});
 
 	// eslint-disable-next-line
-	const [cacDocuments, setCacDocuments] = useState({
-		imgFile: "",
-	});
+	// const [cacDocuments, setCacDocuments] = useState({
+	// 	imgFile: "",
+	// });
 
 	const handleChange = (e) => {
 		let value = e.target.value;
