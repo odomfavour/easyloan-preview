@@ -13,11 +13,10 @@ const LoanApplication = () => {
     // state of the continue button 
 
     //get information from the localstorage 
-    const getBusiness = JSON.parse(localStorage.getItem('businessInfo')) || 'empty'
-    var businessInfos = 'empty'
+    const getBusiness = JSON.parse(localStorage.getItem('user')) 
+    var businessInfos = getBusiness.business || 'empty'
     const businessNames = []
-    if (getBusiness !== 'empty') {
-        businessInfos = Object.values(getBusiness)
+    if (businessInfos !== 'empty') {
         businessInfos.map(businessInfo => {
            return businessNames.push(businessInfo.businessName)
         });  
@@ -25,7 +24,7 @@ const LoanApplication = () => {
 
    
 
-   console.log(businessNames)
+//    console.log(businessNames)
     //map through the information got from the local storage and set an array for the business names
 
     
