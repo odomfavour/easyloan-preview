@@ -6,14 +6,11 @@ import calc from "../assets/calculator.svg";
 import stak from "../assets/view_loan.svg";
 import profile from "../assets/edit_profile.svg";
 import pen from "../assets/pen.svg";
-
+import { useAppContext } from "../context/context";
 
 
 const UserHomeContent = () => {
-    const [user, setUser] = useState({});
-    useEffect(() => {
-		setUser(JSON.parse(localStorage.getItem("user")));
-	}, []);
+  const { user } = useAppContext();
 
     const [isBusinessAdded, setIsBusinessAdded] = useState(false);
     const [businessInfo, setBusinessInfo] = useState([]);

@@ -24,13 +24,12 @@ const Login = () => {
 		signInWithPopup(auth, provider)
 			.then((res) => {
 				const { displayName: name, email, address, photoURL, accessToken } = res.user;
-				const user = { name, email, address, photoURL, accessToken };
-				localStorage.setItem("user", JSON.stringify(user));
-				navigate("/detail");
+				// setUser({ name, email, address, photoURL, accessToken });
+				localStorage.setItem("user", JSON.stringify({ name, email, address, photoURL, accessToken }));
+				navigate("/dashboard/user");
 			})
 			.catch((error) => {
 				console.log(error.code, error.message);
-				alert(error.message);
 			});
 	};
 
@@ -58,7 +57,7 @@ const Login = () => {
 					// return <Navigate to="/dashboard" replace state={{ path: location.pathname }} />;
 					// return <Navigate to="/dashboard" replace state={{ path: location.pathname }} />;
 					localStorage.setItem("user", JSON.stringify(result.data));
-					navigate("/detail");
+					navigate("/dashboard/user");
 				}
 			});
 		} catch (error) {
