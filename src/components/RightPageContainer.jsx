@@ -1,13 +1,24 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import axios from "axios";
+import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import { useNavigate } from "react-router-dom";
 import { useDesktop } from "../pages/DesktopContext";
+import { states, socials } from "../utils";
 function GridComplexExample({ page, setPage }) {
-	const [user, setUser] = useState({});
+	const [user, setUser] = useState({
+		name: "",
+		phone: "",
+		street: "",
+		busStop: "",
+		state: "",
+		social: "",
+	});
+
+	console.log(user);
 	const { isDesktop } = useDesktop();
 	const navigate = useNavigate();
 
@@ -16,13 +27,37 @@ function GridComplexExample({ page, setPage }) {
 		if (!isDesktop) {
 			setPage(page + 1);
 		}
-		navigate("/dashboard/user");
+
+		try {
+			const baseURL = "https://eazyloan-backend.herokuapp.com";
+
+			const BUSINESS_URL = "/bus";
+
+			const data = user;
+
+			axios.post(`${baseURL}${BUSINESS_URL}`, data).then((result) => {
+				if (result.data) {
+					localStorage.setItem("userdata", JSON.stringify(result.data));
+
+					navigate("/dashboard/user");
+					setUser("");
+				}
+			});
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
-	useEffect(() => {
-		setUser(JSON.parse(localStorage.getItem("user")));
-	}, [user]);
+	// useEffect(() => {
+	// 	setUser(JSON.parse(localStorage.getItem("user")));
+	// }, [user]);
 
+	const handleChange = (e) => {
+		setUser({
+			...user,
+			[e.target.name]: e.target.value,
+		});
+	};
 	return (
 		<Form className="">
 			<span>STEP 1 of 2</span>
@@ -30,33 +65,61 @@ function GridComplexExample({ page, setPage }) {
 				<Row className="mb-3">
 					<Form.Group as={Col} controlId="formGridFirstName">
 						<Form.Label>Full name</Form.Label>
-						<Form.Control type="text" placeholder="Enter first name" defaultValue={user.name} />
+						<Form.Control
+							type="text"
+							placeholder="Enter first name"
+							value={user.name}
+							name="name"
+							onChange={handleChange}
+						/>
 					</Form.Group>
 				</Row>
 				<Row className="mb-3">
 					<Form.Group as={Col} controlId="formPhoneNo">
 						<Form.Label>Mobile number</Form.Label>
-						<Form.Control type="number" placeholder="+234 |" />
+						<Form.Control
+							type="number"
+							placeholder="+234 |"
+							value={user.phone}
+							name="phone"
+							onChange={handleChange}
+						/>
 					</Form.Group>
 				</Row>
 
 				<Form.Group className="mb-3" controlId="formGridAddress1">
 					<Form.Label>Residential Address</Form.Label>
-					<Form.Control placeholder="1234 Main St" />
+					<Form.Control
+						placeholder="1234 Main St"
+						value={user.street}
+						name="street"
+						onChange={handleChange}
+					/>
 				</Form.Group>
 
 				<Form.Group className="mb-3" controlId="formGridAddress1">
 					<Form.Label>Nearest Bus-stop</Form.Label>
-					<Form.Control placeholder="1234 Main St" />
+					<Form.Control
+						placeholder="1234 Main St"
+						value={user.busStop}
+						name="busStop"
+						onChange={handleChange}
+					/>
 				</Form.Group>
 
 				<Form.Group as={Col} controlId="formGridCity" className="mb-3">
 					<Form.Label>State of residence</Form.Label>
-					<Form.Select defaultValue="Select state">
+					<Form.Select
+						defaultValue="Select state"
+						name="state"
+						value={user.state}
+						onChange={handleChange}>
 						<option>Select State</option>
-						<option>Lagos</option>
-						<option>Abuja</option>
-						<option>Anambra</option>
+						{states.map((option) => (
+							<option key={option} value={option}>
+								{option}
+							</option>
+						))}
 					</Form.Select>
 				</Form.Group>
 
@@ -72,11 +135,17 @@ function GridComplexExample({ page, setPage }) {
 
 				<Form.Group as={Col} controlId="formGridCity" className="mb-3">
 					<Form.Label>How did you hear about us?</Form.Label>
-					<Form.Select defaultValue="Select how did you heard about us">
+					<Form.Select
+						defaultValue="Select how did you heard about us"
+						name="social"
+						value={user.social}
+						onChange={handleChange}>
 						<option>Select how did you heard about us</option>
-						<option>Lagos</option>
-						<option>Abuja</option>
-						<option>Anambra</option>
+						{socials.map((item) => (
+							<option key={item} value={item}>
+								{item}
+							</option>
+						))}
 					</Form.Select>
 				</Form.Group>
 				<Form.Group as={Col} controlId="formGridButton" className="mb-3">
@@ -125,8 +194,4 @@ function GridComplexExample({ page, setPage }) {
 	);
 }
 
-// const Btn = styled.button`
-// 	background: transparent;
-// 	border-radius: 3px;
-// `;
 export default GridComplexExample;
