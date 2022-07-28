@@ -10,18 +10,62 @@ import * as AiIcons from 'react-icons/ai'
 
 
 const LoanApplication = () => {
-   const [appllicationModal, setApplicationModal] = useState(false);
-   const [modalValue, setModalValue] = useState('Select your business')
-   const handleLoanModal = () => {
-        setApplicationModal(!appllicationModal)
-   }
+    // state of the continue button 
 
-   const setmodalBtnColor =() => modalValue === 'Select your business' ? 'w-100 bg-secondary text-dark disabled':'w-100'
+    //get information from the localstorage 
+    const getBusiness = JSON.parse(localStorage.getItem('businessInfo')) || 'empty'
+    var businessInfos = 'empty'
+    const businessNames = []
+    if (getBusiness !== 'empty') {
+        businessInfos = Object.values(getBusiness)
+        businessInfos.map(businessInfo => {
+           return businessNames.push(businessInfo.businessName)
+        });  
+    }
+
+   
+
+   console.log(businessNames)
+    //map through the information got from the local storage and set an array for the business names
+
+    
+
+    const isdropEmpty = () => getBusiness !== 'empty' ? 'Select your business': 'No business added'
+
+    // set value for the drop down
+    const [indx, setIndx] = useState(false)
+    const [appllicationModal, setApplicationModal] = useState(false);
+    const [modalValue, setModalValue] = useState(isdropEmpty)
+    const handleLoanModal = () => {
+        setApplicationModal(!appllicationModal)
+    }
+
+    const handleDropClick = (busName, i) => {
+        setModalValue(busName)
+        setIndx(i)
+    }
+    
+
+
+   const setmodalBtnColor =() => {
+        if(modalValue === 'Select your business'){
+            let x= 'w-100 bg-secondary text-dark disabled'
+            return x
+        }else if(modalValue === 'No business added') {
+            let x= 'w-100 bg-secondary text-dark disabled'
+            return x
+        }else{
+            let x= 'w-100'
+            return x
+            }
+         
+    }
    
     const navigate = useNavigate();
+    
 
     const handleClick = () => {
-        navigate('/businessDetails')
+        navigate(`/businessDetails/${indx}`)
     }
 
   return (
@@ -52,12 +96,10 @@ const LoanApplication = () => {
                                     {
                                         appllicationModal && (
                                             <div className="w-100 position-absolute d-flex flex-column border px-4 py-2 bg-white rounded text-secondary  align-items-start d-flex justify-content-start" style={{'top': '110%', 'zIndex':'10'}}>
-                                                <p className="mb-0 my-4 w-100 " onClick={()=>setModalValue('Lyd & Ste Ltd')}>Lyd & Ste Ltd</p>
-                                                <p className="mb-0 my-4 w-100" onClick={()=>setModalValue('Brendan House of Shoes')}>Brendan House of Shoes</p>
-                                                <p className="mb-0 my-4 w-100" onClick={()=>setModalValue('Eat More Limited')}>Eat More Limited</p>
-                                                <p className="mb-0 my-4 w-100" onClick={()=>setModalValue('Laden Mall')}>Laden Mall</p>
-                                                <p className="mb-0 my-4 w-100" onClick={()=>setModalValue('Bade Accessories')}>Bade Accessories</p>
-                                                <p className="mb-0 my-4 w-100" onClick={()=>setModalValue('Others')}>Others</p>
+                                                {businessNames.map((busName, i) => (
+                                                  <p className="mb-0  my-4 w-100 "  key={i} onClick={()=>handleDropClick(busName, i)}>{busName}</p>
+                                                ))}
+                                               
                                             </div>
                                         )
                                     }
