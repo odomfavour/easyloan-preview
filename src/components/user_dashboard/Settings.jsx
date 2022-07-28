@@ -1,7 +1,7 @@
 import React from "react";
 import PageWrapper from "../../layouts/UserDashboardWrapper/PageWrapper";
-import { Container, Stack } from "react-bootstrap";
-import Buttons from "../../components/Buttons";
+// import { Container, Stack } from "react-bootstrap";
+// import Buttons from "../../components/Buttons";
 
 const Settings = () => {
 	return (
@@ -18,9 +18,9 @@ const Settings = () => {
         `}
 			</style>
 			<PageWrapper>
-				<Stack>
+				{/* <Stack> */}
 					<h2>Settings</h2>
-				</Stack>
+				{/* </Stack> */}
 			</PageWrapper>
 		</>
 	);

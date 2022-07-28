@@ -4,20 +4,12 @@ import { Stack, Form, Container } from "react-bootstrap";
 import PageWrapper from "../../layouts/add_ bussiness_page_wrapper/PageWrapper";
 import { Buttons } from "../../components/index";
 import { useNavigate } from "react-router-dom";
+import { useAppContext } from "../../context/context";
 
 const AddBusiness = () => {
+  const { bizForm, setBizForm } = useAppContext();
 	const [disabled, setDisabled] = useState(true);
 	const navigate = useNavigate();
-
-	const [form, setForm] = useState({
-		businessName: "",
-		businessEmail: "",
-		regNumber: "",
-		bvn: "",
-		phone: "",
-		category: false,
-		size: "",
-	});
 
 	const handleFormFocus = () => {
 		setDisabled(false);
@@ -26,24 +18,26 @@ const AddBusiness = () => {
 	const handleChange = (e) => {
 		let value = e.target.value;
 
-		setForm({
-			...form,
+		setBizForm({
+			...bizForm,
 			[e.target.name]: value,
 		});
 	};
 
-	const handleBusinessInfo = () => {
-		// get existing business info. If there's none, create an object
-		let existingData = JSON.parse(localStorage.getItem("businessInfo")) || {};
-		// Add new data to the object
-		existingData[`${Object.keys(existingData).length + 1}`] = form;
-		// save back to local storage
-		localStorage.setItem("businessInfo", JSON.stringify(existingData));
-	};
+	// const handleBusinessInfo = () => {
+	// 	// get existing user data
+	// 	let data = JSON.parse(localStorage.getItem("user"));
+	// 	// Add new data to the object
+	// 	data.business ? data.business.push(form) : (data.business = [form]);
+	// 	// save back to local storage
+	// 	localStorage.setItem("user", JSON.stringify(data));
+
+	// };
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		handleBusinessInfo();
+		// handleBusinessInfo();
+
 		navigate("/upload-documents");
 	};
 
@@ -83,7 +77,7 @@ const AddBusiness = () => {
 									<Form.Control
 										type="text"
 										name="businessName"
-										value={form.businessName}
+										value={bizForm.businessName}
 										onChange={handleChange}
 										placeholder="Enter Business Name"
 										required
@@ -95,7 +89,7 @@ const AddBusiness = () => {
 									<Form.Control
 										type="email"
 										name="businessEmail"
-										value={form.businessEmail}
+										value={bizForm.businessEmail}
 										onChange={handleChange}
 										placeholder="lydia@lyd&ste.com"
 										required
@@ -107,7 +101,7 @@ const AddBusiness = () => {
 									<Form.Control
 										type="text"
 										name="regNumber"
-										value={form.regNumber}
+										value={bizForm.regNumber}
 										onChange={handleChange}
 										placeholder="RC 2222222"
 										required
@@ -120,7 +114,7 @@ const AddBusiness = () => {
 										<Form.Control
 											type="text"
 											name="bvn"
-											value={form.bvn}
+											value={bizForm.bvn}
 											onChange={handleChange}
 											placeholder="22222222222222222"
 											required
@@ -132,7 +126,7 @@ const AddBusiness = () => {
 										<Form.Control
 											type="text"
 											name="phone"
-											value={form.phone}
+											value={bizForm.phone}
 											onChange={handleChange}
 											placeholder="0802222222222"
 											required
@@ -146,7 +140,7 @@ const AddBusiness = () => {
 										<Form.Select
 											aria-label="Business Category"
 											name="category"
-											value={form.category}
+											value={bizForm.category}
 											onChange={handleChange}
 											required>
 											<option className="d-none">Select business category</option>
@@ -171,7 +165,7 @@ const AddBusiness = () => {
 											required
 											aria-label="Business Size"
 											name="size"
-											value={form.size}
+											value={bizForm.size}
 											onChange={handleChange}>
 											<option className="d-none"></option>
 											<option value="Small">Small</option>
@@ -191,7 +185,7 @@ const AddBusiness = () => {
 									<Form.Control
 										type="text"
 										name="street"
-										value={form.street}
+										value={bizForm.street}
 										onChange={handleChange}
 										placeholder="12, Favourite Street"
 										required
@@ -203,7 +197,7 @@ const AddBusiness = () => {
 									<Form.Control
 										type="text"
 										name="busStop"
-										value={form.busStop}
+										value={bizForm.busStop}
 										onChange={handleChange}
 										placeholder="Lekki Phase 1"
 									/>
@@ -214,7 +208,7 @@ const AddBusiness = () => {
 									<Form.Control
 										type="text"
 										name="lga"
-										value={form.lga}
+										value={bizForm.lga}
 										onChange={handleChange}
 										placeholder="Eti Osa"
 										required
@@ -226,7 +220,7 @@ const AddBusiness = () => {
 									<Form.Control
 										type="text"
 										name="state"
-										value={form.state}
+										value={bizForm.state}
 										onChange={handleChange}
 										placeholder="Lagos"
 										required

@@ -8,7 +8,7 @@ import { useDesktop } from "../pages/DesktopContext";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
-import { AiOutlineSecurityScan } from "react-icons/ai";
+// import { AiOutlineSecurityScan } from "react-icons/ai";
 
 const LeftPageContainer = ({ page, setPage }) => {
 	const baseURL = "https://eazyloan-backend.herokuapp.com";
