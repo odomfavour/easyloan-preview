@@ -16,13 +16,14 @@ const UserHomeContent = () => {
 	}, []);
 
     const [isBusinessAdded, setIsBusinessAdded] = useState(false);
-    const [businessInfo, setBusinessInfo] = useState({});
+    const [businessInfo, setBusinessInfo] = useState([]);
     
 
     const getBusinessInfo = () => {
         const data = JSON.parse(localStorage.getItem("businessInfo"));
-        setBusinessInfo(data);
-        // businessInfo.push(data);
+        // const businessInfo = Object.values(data);
+        // setBusinessInfo(data);
+        businessInfo.push(data);
         // console.log(businessInfo)
     }
   

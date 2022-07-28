@@ -3,10 +3,28 @@ import { Button, Row, Col, Card } from "react-bootstrap";
 // import img from "../assets/img.jpg";
 
 const UserProfileContent = () => {
+    const [count, setCount] = useState(0);
+    const [isBusinessAdded, setIsBusinessAdded] = useState(false);
+    const [businessInfo, setBusinessInfo] = useState({});
     const [user, setUser] = useState({});
+
     useEffect(() => {
 		setUser(JSON.parse(localStorage.getItem("user")));
 	}, []);
+
+    const getBusinessInfo = () => {
+        const data = JSON.parse(localStorage.getItem("businessInfo"));
+        setBusinessInfo(data);
+    }
+  
+    useEffect(() => {
+        getBusinessInfo();
+
+        if (businessInfo) {
+        setIsBusinessAdded(true);
+        setCount(count + 1);
+        }
+    }, []);
   return (
     <div>
         <div className='profile-pading mb-3'>
@@ -22,7 +40,7 @@ const UserProfileContent = () => {
                             <div className="pt-3 profile-mid-font fw-bold">{user.name}</div>
                             <div className="py-2 profile-small-font" >Business Owner</div>
                             <div className="profile-small-font">2, Favour Street, Osapa, Lagos</div>
-                            <div className="py-2 profile-small-font">lydia@lyd&ste.com</div>
+                            <div className="py-2 profile-small-font">{user.email}</div>
                             <div className="profile-small-font">+234 803 222 4567</div>
                             <div className="pt-4 pb-2 profile-small-font">Profile Completion</div>
                             <div className="profile-completion profile-small-font">100%</div>
@@ -34,7 +52,9 @@ const UserProfileContent = () => {
                     <div className="p-3 bg-gray profile-small-font">
                         <div>Total Loans Taken: 2</div>
                         <div>Closed Loans: 1 </div>
-                        <div>Total Businesses Added: 5</div>
+                        {isBusinessAdded && (
+                        <div>Total Businesses Added: {count}</div>
+                        )}
                     </div>
                 </Col>
                 <Col  xs={12} md={6} className="">
