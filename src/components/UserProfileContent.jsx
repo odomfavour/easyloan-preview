@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import { Button, Row, Col, Card } from "react-bootstrap";
+import ProfileProgressBar from "../components/ProfileProgressBar"
 // import img from "../assets/img.jpg";
 
 const UserProfileContent = () => {
     const [count, setCount] = useState(0);
     const [isBusinessAdded, setIsBusinessAdded] = useState(false);
-    const [businessInfo, setBusinessInfo] = useState({});
+    const [businessInfo, setBusinessInfo] = useState([]);
     const [user, setUser] = useState({});
 
     useEffect(() => {
@@ -14,7 +15,8 @@ const UserProfileContent = () => {
 
     const getBusinessInfo = () => {
         const data = JSON.parse(localStorage.getItem("businessInfo"));
-        setBusinessInfo(data);
+        const businessData = Object.values(data);
+        setBusinessInfo(businessData);
     }
   
     useEffect(() => {
@@ -46,6 +48,7 @@ const UserProfileContent = () => {
                             <div className="profile-completion profile-small-font">100%</div>
                             <div className='profile-completion-bg me-5 profile-small-font' 
                             style={{height: "5px"}}></div>
+                            <div className='mt-3'><ProfileProgressBar /></div>
                         </div>
                     </div>
                     <div className="py-3 fw-bold profile-mid-font ">Your Stats</div>
