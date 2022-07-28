@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import logo from "../../assets/Logo.svg";
 import hamburger from "../../assets/hamburg.svg";
 import close from "../../assets/close.svg";
@@ -8,6 +9,7 @@ import SplitButton from "react-bootstrap/SplitButton";
 import Dropdown from "react-bootstrap/Dropdown";
 
 const MobileHeader = () => {
+	const navigate = useNavigate();
 	const [mobile, setMobile] = useState(true);
 
 	const handleClick = () => {
@@ -26,11 +28,43 @@ const MobileHeader = () => {
 			body.style.height = "auto";
 		}
 	};
+
+	const loan = () => {
+		setMobile(false);
+		navigate("/loan-calculator");
+	};
+	const how = () => {
+		setMobile(false);
+		navigate("/how");
+	};
+	const register = () => {
+		setMobile(false);
+		navigate("/register");
+	};
+	const home = () => {
+		navigate("/");
+	};
+	const home2 = () => {
+		setMobile(false);
+		navigate("/");
+	};
+	const about = () => {
+		setMobile(false);
+		navigate("/about");
+	};
+	const login = () => {
+		setMobile(false);
+		navigate("/login");
+	};
 	return (
 		<>
 			<Container color={`${mobile ? "white" : "#ae2bff"}`}>
 				<Mobile className={mobile ? "ok" : "alter"}>
-					{mobile ? <img src={logo} alt="" width={50} /> : <img src={logo2} alt="" width={50} />}
+					{mobile ? (
+						<img src={logo} alt="" width={50} onClick={home} />
+					) : (
+						<img src={logo2} alt="" width={50} onClick={home} />
+					)}
 
 					{mobile ? (
 						<img src={hamburger} alt="" width={30} onClick={handleClick} />
@@ -41,10 +75,10 @@ const MobileHeader = () => {
 
 				{!mobile && (
 					<NavMenu>
-						<div>Home</div>
-						<div>About Us</div>
-						<div>How it works</div>
-						<div>Loan Calculator</div>
+						<div onClick={home2}>Home</div>
+						<div onClick={about}>About Us</div>
+						<div onClick={how}>How it works</div>
+						<div onClick={loan}>Loan Calculator</div>
 						<div style={{ background: "transparent", color: "white" }}>
 							{" "}
 							<SplitButton
@@ -59,8 +93,10 @@ const MobileHeader = () => {
 								<Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
 							</SplitButton>
 						</div>
-						<SecondButton primary>Register</SecondButton>
-						<SecondButton>Login</SecondButton>
+						<SecondButton primary onClick={register}>
+							Register
+						</SecondButton>
+						<SecondButton onClick={login}>Login</SecondButton>
 					</NavMenu>
 				)}
 			</Container>

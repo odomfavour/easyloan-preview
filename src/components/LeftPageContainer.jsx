@@ -1,40 +1,136 @@
 import styled from "styled-components";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import insertImg from "../assets/insert-img.png";
 import frame1 from "../assets/frame1.png";
 // import frame2 from "../assets/frame2.png";
-import mobile from "../assets/mobile-pic.png";
 import { useDesktop } from "../pages/DesktopContext";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+import axios from "axios";
+import { AiOutlineSecurityScan } from "react-icons/ai";
 
 const LeftPageContainer = ({ page, setPage }) => {
+	const baseURL = "https://eazyloan-backend.herokuapp.com";
+
+	const UPLOAD_IMG = "/upload/uploadImage";
+	const UPLOAD_DOC = "/bus/busUpload";
 	const { isDesktop } = useDesktop();
 
 	const [show, setShow] = useState(false);
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		setPage(page - 1);
+
+	const [img, setImg] = useState(insertImg);
+	const [upload, setUpload] = useState();
+	const [doc, setDoc] = useState();
+
+	const onImageChange = (e) => {
+		const [file] = e.target.files;
+		const uploads = e.target.files[0];
+		setImg(URL.createObjectURL(file));
+		setUpload(uploads);
 	};
 
+	const onFileChange = (e) => {
+		const file = e.target.files[0];
+		setDoc(file);
+		console.log(file);
+	};
+	useEffect(() => {
+		console.log(img);
+		console.log(doc);
+	});
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		setPage(page - 1);
+
+		const formData = new FormData();
+		formData.append("img", upload);
+		try {
+			const response = await axios({
+				method: "post",
+				url: `${baseURL}${UPLOAD_IMG}`,
+				data: formData,
+				headers: { "Content-Type": "multipart/form-data" },
+			});
+			console.log(response);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	console.log(img);
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
+	const uploadImage = async (e) => {
+		e.preventDefault();
+		console.log(img);
+		const formData = new FormData();
+		formData.append("img", img);
+		try {
+			const response = await axios({
+				method: "post",
+				url: `${baseURL}${UPLOAD_IMG}`,
+				data: formData,
+				headers: { "Content-Type": "multipart/form-data" },
+			});
+			console.log(response);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+	const fileSubmit = async (e) => {
+		e.preventDefault();
+
+		handleClose();
+
+		//other stuff
+
+		const formData = new FormData();
+		formData.append("selectedFile", doc);
+		try {
+			const response = await axios({
+				method: "post",
+				url: `${baseURL}${UPLOAD_DOC}`,
+				data: formData,
+				headers: { "Content-Type": "multipart/form-data" },
+			});
+
+			console.log(response);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	return (
 		<MainDiv>
 			<Row className="mb-4">
 				<Col>
 					{isDesktop ? (
-						<img src={insertImg} alt="" className=" profile d-flex justify-content-center" />
+						<div className="file">
+							<Image
+								src={img || insertImg}
+								alt=""
+								className=" profile d-flex justify-content-center"
+							/>
+
+							<input type="file" onChange={onImageChange} />
+						</div>
 					) : (
-						<img src={mobile} alt="" className="profile d-flex justify-content-center" />
+						<div className="file">
+							<Image
+								src={img || insertImg}
+								alt=""
+								className="profile d-flex justify-content-center"
+							/>
+							<input type="file" onChange={onImageChange} />
+						</div>
 					)}
 				</Col>
 			</Row>
 			<Row className="mb-3">
 				<Col>
 					{isDesktop && (
-						<span>
+						<span onClick={uploadImage}>
 							<Button className="w-75 d-flex justify-content-center profile">
 								Upload Profile Image
 							</Button>
@@ -42,7 +138,6 @@ const LeftPageContainer = ({ page, setPage }) => {
 					)}
 				</Col>
 			</Row>{" "}
-			<Form.Label>Upload Valid ID</Form.Label>
 			<Row className="mb-3">
 				<Col>
 					<span onClick={handleShow}>
@@ -77,6 +172,7 @@ const LeftPageContainer = ({ page, setPage }) => {
 
 						<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
 							<img src={frame1} alt="" className="w-100" />
+							<input type="file" onChange={onFileChange} />
 						</Form.Group>
 
 						<Button
@@ -87,19 +183,11 @@ const LeftPageContainer = ({ page, setPage }) => {
 								border: "0",
 								width: "100%",
 							}}
-							onClick={handleClose}>
+							onClick={fileSubmit}>
 							Upload
 						</Button>
 					</Form>
 				</Modal.Body>
-				{/* <Modal.Footer>
-					<Button variant="secondary" onClick={handleClose}>
-						Close
-					</Button>
-					<Button variant="primary" onClick={handleClose}>
-						Save Changes
-					</Button>
-				</Modal.Footer> */}
 			</Modal>
 		</MainDiv>
 	);
@@ -107,7 +195,10 @@ const LeftPageContainer = ({ page, setPage }) => {
 
 const MainDiv = styled.div`
 	max-width: 95vw;
-
+	.file {
+		display: flex;
+		flex-direction: column;
+	}
 	.profile {
 		width: 90%;
 		margin-inline: auto;
@@ -142,6 +233,9 @@ const MainDiv = styled.div`
 
 		color: #fdfdfd;
 	}
+`;
+const Image = styled.img`
+	border-radius: 50%;
 `;
 
 export default LeftPageContainer;
