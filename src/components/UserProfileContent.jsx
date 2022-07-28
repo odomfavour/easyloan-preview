@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { Button, Row, Col, Card } from "react-bootstrap";
-import ProfileProgressBar from "../components/ProfileProgressBar"
+// import ProfileProgressBar from "../components/ProfileProgressBar"
 import { Link } from "react-router-dom";
-// import img from "../assets/img.jpg";
 
 const UserProfileContent = () => {
     const [count, setCount] = useState(0);
@@ -53,7 +52,7 @@ const UserProfileContent = () => {
                             <div className="profile-completion profile-small-font">100%</div>
                             <div className='profile-completion-bg me-5 profile-small-font' 
                             style={{height: "5px"}}></div>
-                            <div className='mt-3'><ProfileProgressBar /></div>
+                            {/* <div className='mt-3'><ProfileProgressBar /></div> */}
                         </div>
                     </div>
                     <div className="py-3 fw-bold profile-mid-font ">Your Stats</div>
