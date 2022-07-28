@@ -5,12 +5,14 @@ import { Col, Container, Row, InputGroup } from "react-bootstrap";
 import PageWrapper from "../../layouts/add_ bussiness_page_wrapper/PageWrapper";
 import { Buttons } from "../../components";
 import SuccessModal from "../../components/successModal.jsx/SuccessModal";
+import { useAppContext } from "../../context/context";
 
 import successScreen from "../../assets/successScreen.svg";
 import icon1 from "../../assets/Vector_info.svg";
 
 const UploadDocs = () => {
 	const navigate = useNavigate();
+	const { bizForm, setBizForm } = useAppContext();
 
 	const [cacDocuments, setCacDocuments] = useState({
 		cacForm2: "",
@@ -61,14 +63,14 @@ const UploadDocs = () => {
 	};
 
 	const addToStorage = () => {
-		// get existing business info.
-		let businessInfo = JSON.parse(localStorage.getItem("businessInfo"));
-		// get lates uploaded business info.
-		let latestBusinessInfo = businessInfo[Object.keys(businessInfo).length];
-		// add CAC files to the object
-		latestBusinessInfo.cacDocumentsImgUrl = cacDocuments;
+		// get business data form
+		setBizForm({ ...bizForm, cacDocumentsImgUrl: cacDocuments });
+		// get existing user data from local storage
+		let data = JSON.parse(localStorage.getItem("user"));
+		// add new business data to the object
+		data.business ? data.business.push(bizForm) : (data.business = [bizForm]);
 		// save back to local storage
-		localStorage.setItem("businessInfo", JSON.stringify(businessInfo));
+		localStorage.setItem("user", JSON.stringify(data));
 	};
 
 	const handleSubmit = (e) => {
@@ -129,9 +131,7 @@ const UploadDocs = () => {
 												fill="#AE2BFF"
 											/>
 										</svg>
-										<p className="fw-bold my-2">
-											{fileNames.cacForm2}
-										</p>
+										<p className="fw-bold my-2">{fileNames.cacForm2}</p>
 										<p className="muted-text m-0">PNG/JPEG</p>
 									</div>
 									<input
@@ -170,9 +170,7 @@ const UploadDocs = () => {
 												fill="#AE2BFF"
 											/>
 										</svg>
-										<p className="fw-bold my-2">
-											{fileNames.cacCertificate}
-										</p>
+										<p className="fw-bold my-2">{fileNames.cacCertificate}</p>
 										<p className="muted-text m-0">PNG/JPEG</p>
 									</div>
 									<input
@@ -211,9 +209,7 @@ const UploadDocs = () => {
 												fill="#AE2BFF"
 											/>
 										</svg>
-										<p className="fw-bold my-2">
-											{fileNames.cacForm7}
-										</p>
+										<p className="fw-bold my-2">{fileNames.cacForm7}</p>
 										<p className="muted-text m-0">PNG/JPEG</p>
 									</div>
 									<input

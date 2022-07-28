@@ -67,7 +67,7 @@ export const SecondButton = styled(Button)`
 export const Desktop = styled.header`
 	display: flex;
 	justify-content: space-between;
-	max-width: 1200px;
+	max-width: 1400px;
 	margin-inline: auto;
 	padding: 40px;
 	align-items: center;

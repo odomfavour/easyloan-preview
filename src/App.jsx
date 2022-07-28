@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import "./index.css";
 import styled from "styled-components";
 
-import { LoanStatus, UserDashboard} from "./components/index";
+import { LoanStatus, UserDashboard, Settings } from "./components/index";
 import {
 	LandingPage,
 	LoanCalculatorPage,
@@ -22,7 +22,8 @@ import {
 	UploadDocuments,
 	UserHome,
 	ProfilePage,
-  ContactPage,
+	ContactPage,
+	DashboardContactPage,
 } from "./pages/Index";
 
 function App() {
@@ -35,6 +36,8 @@ function App() {
 				<Route path="/dashboard/user" element={<UserHome />} />
 				<Route path="/dashboard/profile" element={<ProfilePage />} />
 				<Route path="/dashboard/status" element={<LoanStatus />} />
+				<Route path="/dashboard/contact" element={<DashboardContactPage />} />
+				<Route path="/dashboard/settings" element={<Settings />} />
 			</Route>
 			<Route path="/application" element={<LoanApplication />} />
 			<Route path="/businessDetails/:indx" element={<BusinessDetails />} />
@@ -50,7 +53,7 @@ function App() {
 			<Route path="/review-application" element={<ReviewApplication />} />
 			{/*Uploading documents for LOAN APPLICATION */}
 			<Route path="/upload-business-docs" element={<UploadDocuments />} />
-      <Route path="/contact" element={<ContactPage />} />
+			<Route path="/contact" element={<ContactPage />} />
 			<Route
 				path="*"
 				element={

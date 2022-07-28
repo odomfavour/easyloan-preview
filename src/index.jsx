@@ -6,6 +6,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { DesktopProvider } from "./pages/DesktopContext";
+import { ContactContextProvider } from "./context/contactContext";
 import { AppProvider } from "./context/context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -14,9 +15,11 @@ root.render(
 	<React.StrictMode>
 		<BrowserRouter>
 			<DesktopProvider>
-				<AppProvider>
-					<App />
-				</AppProvider>
+				<ContactContextProvider>
+					<AppProvider>
+						<App />
+					</AppProvider>
+				</ContactContextProvider>
 			</DesktopProvider>
 		</BrowserRouter>
 	</React.StrictMode>,
