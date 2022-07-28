@@ -11,16 +11,15 @@ import * as AiIcons from 'react-icons/ai'
 
 const LoanApplication = () => {
     // state of the continue button 
-    const [conti, setConti] = useState('w-100 bg-secondary text-dark disabled');
 
     //get information from the localstorage 
     const getBusiness = JSON.parse(localStorage.getItem('businessInfo')) || 'empty'
     var businessInfos = 'empty'
     const businessNames = []
-    if (getBusiness != 'empty') {
+    if (getBusiness !== 'empty') {
         businessInfos = Object.values(getBusiness)
         businessInfos.map(businessInfo => {
-            businessNames.push(businessInfo.businessName)
+           return businessNames.push(businessInfo.businessName)
         });  
     }
 
@@ -31,7 +30,7 @@ const LoanApplication = () => {
 
     
 
-    const isdropEmpty = () => getBusiness != 'empty' ? 'Select your business': 'No business added'
+    const isdropEmpty = () => getBusiness !== 'empty' ? 'Select your business': 'No business added'
 
     // set value for the drop down
     const [indx, setIndx] = useState(false)
