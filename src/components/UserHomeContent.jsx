@@ -39,7 +39,7 @@ const UserHomeContent = () => {
     <div >
         <div className='my-5 bg-gray py-3 px-3 user-dash-color user-dashboard-content d-flex justify-content-between'>
             <div>
-                <h2 className='user-name-font'>{user.name},</h2>
+                <h2 className='user-name-font'>Hello {user.name},</h2>
             </div>
             <Link to='/application'>
                 <Button className='user-btn-bg shadow-none'>Apply for Loan</Button>
