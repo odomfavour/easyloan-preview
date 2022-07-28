@@ -20,11 +20,14 @@ const LeftPageContainer = ({ page, setPage }) => {
 	const [show, setShow] = useState(false);
 
 	const [img, setImg] = useState(insertImg);
+	const [upload, setUpload] = useState();
 	const [doc, setDoc] = useState();
 
 	const onImageChange = (e) => {
 		const [file] = e.target.files;
+		const uploads = e.target.files[0];
 		setImg(URL.createObjectURL(file));
+		setUpload(uploads);
 	};
 
 	const onFileChange = (e) => {
@@ -41,7 +44,7 @@ const LeftPageContainer = ({ page, setPage }) => {
 		setPage(page - 1);
 
 		const formData = new FormData();
-		formData.append("img", img);
+		formData.append("img", upload);
 		try {
 			const response = await axios({
 				method: "post",
