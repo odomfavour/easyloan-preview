@@ -13,6 +13,8 @@ const UserHomeContent = () => {
 	const { user } = useAppContext();
 	const [show, setShow] = useState(false);
 	const [isBusinessAdded, setIsBusinessAdded] = useState(false);
+	const loanApplied = JSON.parse(localStorage.getItem("user"));
+	
 
 	useEffect(() => {
 		if (user.business) {
@@ -52,6 +54,24 @@ const UserHomeContent = () => {
 			</>
 			<Row className=" px-3 width-100">
 				<Col sm={12} md={6} className="mb-3 overflow-width">
+					{ loanApplied.loanApplication !== "undefined" && (
+						<div className='bg-gray px-5 pt-5 user-dashboard-content6' style={{height: "300px"}}>
+						<Row>
+							<Col sm={6}><p className='fw-bold user-small-font user-dash-color'>Your Loan</p></Col>
+							<Col sm={6}>
+								<Button className='user-btn-bgd2 shadow-none border-0'>Awaiting Approval</Button>
+							</Col>
+						</Row>
+						<Row className='py-4'>
+							<div className='user-loan-status' 
+							style={{height: "80px", width: "493px"}}>
+								<div className='mt-3 mb-1 fw-bold'>LPO ID: {loanApplied.loanApplication[loanApplied.loanApplication.length - 1].orderID}</div>
+								<div>Date applied: 27/06/22</div>
+							</div>
+						</Row>
+					</div>
+					)}
+					{ loanApplied.loanApplication === "undefined" && (
 					<div className="bg-gray px-5 pt-5 user-dashboard-content2" style={{ height: "300px" }}>
 						<Row>
 							<Col sm={6}>
@@ -65,6 +85,7 @@ const UserHomeContent = () => {
 							<p>You have not taken a loan. Take a loan now to enjoy the experience.</p>
 						</Row>
 					</div>
+					)}
 				</Col>
 				<Col sm={12} md={6} className=" overflow-width">
 					<div className="bg-gray px-4 pt-5 user-dashboard-content3" style={{ height: "300px" }}>
@@ -127,7 +148,8 @@ const UserHomeContent = () => {
 					<Col>
 						<Card
 							className="user-card align-items-center text-center border-0 card-padding"
-							style={{ width: "12rem", height: "12rem" }}>
+							style={{ width: "12rem", height: "12rem" }}
+							as={Link} to={"/profile"}>
 							<Card.Img variant="top" src={profile} alt="icon" style={{ width: "2.5rem" }} />
 							<Card.Body>
 								<Card.Text>Edit Profile</Card.Text>
