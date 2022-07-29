@@ -11,8 +11,7 @@ import successScreen from "../../assets/successScreen.svg";
 
 const ReviewApplication = () => {
 	const navigate = useNavigate();
-	// eslint-disable-next-line
-	const { loanForm, setLoanForm, loanOffer } = useAppContext();
+	const { loanForm, user } = useAppContext();
 
 	const [toggleModal, setToggleModal] = useState(false);
 	const [iterator, setIterator] = useState(false);
@@ -72,21 +71,21 @@ const ReviewApplication = () => {
 								<Col className="bg-gray rounded box-shadow px-5 py-4 ">
 									<Stack>
 										<h2 className="heading-2 fw-bold mb-4">Product Details</h2>
-										<p>Business Name: Lyd & Ste Limited</p>
-										<p>Business Address: 12, Favourite Street, Osapa, Lekki Phase 1, Lagos</p>
-										<p>Business Email Address: info@lyd&ste.com</p>
-										<p>Business Registration Number: RC 345533</p>
-										<p>Product : 2,000 Packs of Paracetamol </p>
-										<p>Product Category Food & Drugs</p>
-										<p>Product Amount: 1,000,000</p>
-										<p>Management Fee (5%): 50, 000</p>
-										<p>Duration/Tenure (Loan): 2 Months</p>
-										<p>Total Loan Amount: N1,050,000</p>
-										<p>Down Payment: N315,000</p>
-										<p>Monthly Repayment: N380, 363</p>
-										<p>Interest Rate: 21%</p>
-										<p>Loan Approved: N737,625</p>
-										<p>Repayment Option: Monthly</p>
+										<p>Company: {loanForm.nameOfCompany}</p>
+										<p>Business Address: {`${user.business[0].street}, ${user.business[0].busStop}, ${user.business[0].lga}, ${user.business[0].state}`}</p>
+										<p>Business Email: {loanForm.companyEmail}</p>
+										<p>Business Registration Number: {user.business[0].regNumber}</p>
+										<p>Product: {loanForm.name} </p>
+										<p>Product Category: {loanForm.category}</p>
+										<p>Product Amount: {loanForm.totalLPO}</p>
+										<p>Management Fee: {loanForm.mgtFee}</p>
+										<p>Duration/Tenure (Loan): {loanForm.loanTenure} Months</p>
+										<p>Total Loan Amount: {`N${loanForm.totalLoanAmt}`}</p>
+										<p>Down Payment: {`N${loanForm.downPayment}`}</p>
+										<p>Monthly Repayment: {`N${loanForm.monthlyPayment}`}</p>
+										<p>Interest Rate: {`N${loanForm.interest}%`}</p>
+										<p>Loan Approved: {`N${loanForm.loanApproved}`}</p>
+										<p>Repayment Option: {loanForm.repaymentPlan}</p>
 									</Stack>
 								</Col>
 							</Row>
