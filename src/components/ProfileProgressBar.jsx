@@ -1,33 +1,55 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-// import React, { useState, useEffect } from 'react';
+import { useAppContext } from "../context/context";
 
-// let progressInterval = 60;
 
 function ProfileProgressBar() {
-  const now = 60;
-  return <ProgressBar now={now} label={`${now}%`} />;
+  const { user } = useAppContext();
+  const [progressInterval, setProgressInterval] = useState();
+
+  // console.log(user);
+  // const now = 80;
+
+  function Bar() {
+    let progress = 0;
+
+    if (
+      user.name !== ""
+    ){progress += 25}
+    if (
+      user.email !== ""
+    ){progress += 25}
+    if (
+      user.photoURL !== ""
+    ){progress += 25}
+    // if (
+    //   user.accessToken !== ""
+    // ){progress += 25}
+    setProgressInterval(progress);
+  }
+
+  useEffect(() => {
+    Bar();
+  })
+  return (
+    <>
+			<style type="text/css">
+				{`
+          .progress-bar{
+            background-color: #d9d9d9;
+            color: #121010;
+            text-align: right;
+          }
+          .progress {
+            height: 10px ;
+          }
+        `}
+      </style>
+    <ProgressBar now={progressInterval} label={`${progressInterval}%` } />
+  </>
+  );
   
-  // const [progress, setProgress] = useState(0);
-
-  // useEffect(() => {
-  //   progressInterval = setProgress(() => {
-  //     setProgress(prev => prev + 1)
-  //   }, 100);
-  // }, []);
-
-  // useEffect(() => {
-  //   if (progress >= 100) {
-  //     clearInterval(progressInterval);
-  //   };
-  // }, []);
-
-  // return(
-  //   <div className='progress profile-completion-bg ' style={{height: 10}}>
-  //     <div className='progress-bar ' role="progressbar" 
-  //     style={{width: "${progress}%"}}>{progress}%</div>
-  //   </div>
-  // )
+  
 }
 
 export default ProfileProgressBar;

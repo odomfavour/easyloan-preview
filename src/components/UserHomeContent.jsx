@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Button, Row, Col, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useAppContext } from "../context/context";
+import Alert from 'react-bootstrap/Alert';
 
 import calc from "../assets/calculator.svg";
 import stak from "../assets/view_loan.svg";
@@ -10,7 +11,7 @@ import pen from "../assets/pen.svg";
 
 const UserHomeContent = () => {
 	const { user } = useAppContext();
-
+	const [show, setShow] = useState(false);
 	const [isBusinessAdded, setIsBusinessAdded] = useState(false);
 
 	useEffect(() => {
@@ -19,16 +20,36 @@ const UserHomeContent = () => {
 		}
 	}, [user.business]);
 
+	if (show) {
+		return (
+		  <Alert variant="danger" onClose={() => setShow(false)} dismissible className="mx-5">
+			<Alert.Heading className="text-center">Oh snap! Add a Buisness to Apply!</Alert.Heading>
+		  </Alert>
+		);
+	  }
 	return (
 		<div>
+			<>
+			{!isBusinessAdded && (
 			<div className="my-5 bg-gray py-3 px-3 user-dash-color user-dashboard-content d-flex justify-content-between">
 				<div>
 					<h2 className="user-name-font">Hello {user.name},</h2>
 				</div>
+					<Button className="user-btn-bg shadow-none"
+					onClick = {() => setShow(true)}>Apply for Loan</Button>
+			</div>
+			)}
+			{isBusinessAdded && (
+			<div className="my-5 bg-gray py-3 px-3 user-dash-color user-dashboard-loan d-flex justify-content-between">
+				<div>
+					<h2 className="user-name-font">Hello {user.name},</h2>
+				</div>
 				<Link to="/application">
-					<Button className="user-btn-bg shadow-none">Apply for Loan</Button>
+					<Button className="user-btn-loan shadow-none">Apply for Loan</Button>
 				</Link>
 			</div>
+			)}
+			</>
 			<Row className=" px-3 width-100">
 				<Col sm={12} md={6} className="mb-3 overflow-width">
 					<div className="bg-gray px-5 pt-5 user-dashboard-content2" style={{ height: "300px" }}>
@@ -52,19 +73,14 @@ const UserHomeContent = () => {
 							<>
 								<div className="mb-3 d-flex justify-content-between user-business">
 									<div className="p-3">
-										{/* {businessInfo.slice(-1).map((business, index) => {
-                          return(
-                              <div className='user-biz-font2 mb-1' key={index}>{business.businessName}</div>
-                          )
-                      })} */}
-
 										<div className="user-biz-font2 mb-1">{user.business[user.business.length - 1].businessName}</div>
-
 										<div className="user-biz-font">Credit Score: 0</div>
 									</div>
-									<button className="shadow-none border-1 rounded my-4 me-3 user-btn-bg7 px-3">
-										Edit
-									</button>
+									<Link to="/profile">
+										<button className="shadow-none border-1 rounded my-4 me-3 user-btn-bg7 px-3">
+											View
+										</button>
+									</Link>
 								</div>
 							</>
 						)}

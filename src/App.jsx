@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import "./index.css";
 import styled from "styled-components";
+import UserHomeContent2 from "./components/UserHomeLoan";
 
 import { LoanStatus, UserDashboard, Settings } from "./components/index";
 import {
@@ -30,6 +31,7 @@ function App() {
 	return (
 		<Routes>
 			<Route path="/" element={<LandingPage />} />
+			<Route path="/dashboard/user3" element={<UserHomeContent2 />} />
 			<Route path="/loan-calculator" element={<LoanCalculatorPage />} />
 			<Route path="/faqs" element={<Faqs />} />
 			<Route path="/dashboard" element={<UserDashboard />}>
