@@ -1,5 +1,5 @@
 import React,{ useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams} from "react-router-dom";
 import { Container, Col, Row, Modal, Form, Stack } from "react-bootstrap";
 
 import PageWrapperV2 from "../../layouts/no_footer_layout/PageWrapperV2";
@@ -57,6 +57,8 @@ const BusineesDetails = () => {
 			...formOne,
 			[e.target.name]: value,
 		});
+
+		console.log(formOne)
 	};
 	const handleChangeTwo = (e) => {
 		let value = e.target.value;
@@ -130,20 +132,32 @@ const BusineesDetails = () => {
 		setShow(false)
 	};
 
-	const addToStorage = () => {
+	const store = () => {
 		// get all the forms
 		setLoanForm({ ...formOne, ...formTwo, lpo: lpoDocument  });
-		// save user data to local storage
-		localStorage.setItem("loanApplication", JSON.stringify(loanForm));
+
+		// get existing user data from local storage
+		let data = JSON.parse(localStorage.getItem("user"));
 		// add new business data to the object
-		
+		data.loanApplication ? data.loanApplication.push(loanForm) : (data.loanApplication = [loanForm]);
+		// save back to local storage
+		localStorage.setItem("user", JSON.stringify(data));
 	};
 
-
+	const [subb, setSubb] = useState(false)
 	const handleSubmitTwo = (e) => {
 		e.preventDefault();
-		addToStorage()
-		navigate('/upload-business-docs')
+		store();
+		
+		if (store){
+			setSubb(true)
+		}else{
+			setSubb(false)
+		}
+
+		if (subb === true) {
+			navigate('/upload-business-docs')
+		}
 	};
 
 
@@ -445,7 +459,7 @@ const BusineesDetails = () => {
 									</Row>
 
 									<Stack className="heading-font " gap={2}>
-										<Buttons variant="purple" size="md" className="w-100" type="submit">
+										<Buttons variant="purple" size="md" className="w-100" type="submit" >
 											Continue
 										</Buttons>
 									</Stack>
