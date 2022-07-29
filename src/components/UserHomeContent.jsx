@@ -152,7 +152,7 @@ const UserHomeContent = () => {
 							as={Link} to={"/profile"}>
 							<Card.Img variant="top" src={profile} alt="icon" style={{ width: "2.5rem" }} />
 							<Card.Body>
-								<Card.Text>Edit Profile</Card.Text>
+								<Card.Text className="text-dark">Edit Profile</Card.Text>
 							</Card.Body>
 						</Card>
 					</Col>
