@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Col, Container, Row, InputGroup } from "react-bootstrap";
+import { useAppContext } from "../../context/context";
 
 import PageWrapper from "../../layouts/add_ bussiness_page_wrapper/PageWrapper";
 import { Buttons } from "../../components";
@@ -8,6 +9,7 @@ import { Buttons } from "../../components";
 import icon1 from "../../assets/Vector_info.svg";
 
 const UploadDocuments = () => {
+	const { loanForm, setLoanForm } = useAppContext();
 	const navigate = useNavigate();
 	const location = useLocation();
 	const path = location.pathname;
@@ -45,27 +47,19 @@ const UploadDocuments = () => {
 				[e.target.name]: base64,
 			});
 		});
-    let fileName = file.name;
+		let fileName = file.name;
 		setFileNames({
 			...fileNames,
 			[e.target.name]: fileName,
 		});
 	};
 
-	// const addToStorage = () => {
-	// 	// get existing business info.
-	// 	let businessInfo = JSON.parse(localStorage.getItem("businessInfo"));
-	// 	// get lates uploaded business info.
-	// 	let latestBusinessInfo = businessInfo[Object.keys(businessInfo).length];
-	// 	// add CAC files to the object
-	// 	latestBusinessInfo.cacDocumentsImgUrl = cacDocuments;
-	// 	// save back to local storage
-	// 	localStorage.setItem("businessInfo", JSON.stringify(businessInfo));
-	// };
+	const addToStorage = () => {};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		// addToStorage();
+		// get loan form.
+		setLoanForm({ ...loanForm, businessDocumentsURL: loanApplicationDocuments });
 		localStorage.removeItem("prevPath");
 		localStorage.setItem("prevPath", path); // store the path so that the loan calculator page can access it
 		navigate("/loan-calculator");
