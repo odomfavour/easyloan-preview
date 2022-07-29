@@ -9,6 +9,7 @@ import { useAppContext } from "../../context/context";
 import * as AiIcons from "react-icons/ai";
 
 const BusineesDetails = () => {
+	// eslint-disable-next-line
 	const { loanForm, setLoanForm } = useAppContext();
 	const navigate = useNavigate();
 	// const [loanForm, setLoanForm] = useState("");

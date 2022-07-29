@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -18,7 +18,17 @@ function GridComplexExample({ page, setPage }) {
 		social: "",
 	});
 
-	console.log(user);
+	useEffect(() => {
+		const pDetails = JSON.parse(localStorage.getItem("pUser"));
+
+		if (pDetails) {
+			setUser(pDetails);
+		}
+	}, []);
+
+	useEffect(() => {
+		localStorage.setItem("pUser", JSON.stringify(user));
+	}, [user]);
 	const { isDesktop } = useDesktop();
 	const navigate = useNavigate();
 

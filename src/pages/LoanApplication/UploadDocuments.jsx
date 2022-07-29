@@ -53,7 +53,7 @@ const UploadDocuments = () => {
 			[e.target.name]: fileName,
 		});
 	};
-
+	// eslint-disable-next-line
 	const addToStorage = () => {};
 
 	const handleSubmit = (e) => {
