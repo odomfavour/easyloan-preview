@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import React,{ useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { Container, Col, Row, Modal, Form, Stack } from "react-bootstrap";
 
 import PageWrapperV2 from "../../layouts/no_footer_layout/PageWrapperV2";
@@ -8,9 +8,10 @@ import { Buttons } from "../../components/index";
 import * as AiIcons from "react-icons/ai";
 
 const BusineesDetails = () => {
-	// fetch data 
-	const getBusiness = JSON.parse(localStorage.getItem('businessInfo'))
-	const businessInfos = Object.values(getBusiness)
+	const navigate = useNavigate()
+	const [loanForm, setLoanForm] = useState('')
+	const getBusiness = JSON.parse(localStorage.getItem('user')) 
+	const businessInfos = getBusiness.business
 	const businessNames = []
 	businessInfos.map(businessInfo => {
 		return businessNames.push(businessInfo.businessName)
@@ -25,10 +26,13 @@ const BusineesDetails = () => {
 		setApplicationModal(!appllicationModal);
 	};
 
-	const [form, setForm] = useState({
+	const [formOne, setFormOne] = useState({
 		name: "",
 		category: "",
 		orderID: "",
+	});
+
+	const [formTwo, setFormTwo] = useState({
 		nameOfCompany: "",
 		companyEmail: "",
 		phoneNumber: "",
@@ -41,26 +45,55 @@ const BusineesDetails = () => {
 	// const [cacDocuments, setCacDocuments] = useState({
 	// 	imgFile: "",
 	// });
+	const [lpoDocument, setLpoDocument] = useState({
+		LPO: ''
+	})
+	const [fileNames, setFileNames] = useState("Click here to upload a clear picture of LPO");
 
-	const handleChange = (e) => {
+	const handleChangeOne = (e) => {
 		let value = e.target.value;
 
-		setForm({
-			...form,
+		setFormOne({
+			...formOne,
+			[e.target.name]: value,
+		});
+	};
+	const handleChangeTwo = (e) => {
+		let value = e.target.value;
+
+		setFormTwo({
+			...formTwo,
 			[e.target.name]: value,
 		});
 	};
 
-	const handleSubmitOne = (e) => {
-		console.log(form);
+
+	// convert images to base64 and store in local storage
+	const getBase64 = (file) => {
+		return new Promise((resolve, reject) => {
+			const reader = new FileReader();
+			reader.onload = () => resolve(reader.result);
+			reader.onerror = (error) => reject(error);
+			reader.readAsDataURL(file);
+		});
 	};
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		console.log(form);
-	};
+	const handleImageUpload = (e) => {
+		const file = e.target.files[0];
+		getBase64(file).then((base64) => {
+			// console.log(base64)
+			setLpoDocument({
+				...lpoDocument,
+				[e.target.name]: base64,
+			});
+		}).catch((err)=> {
+			console.log(err)
+		});
+		let fileName = file.name;
+		setFileNames(fileName)
 
-	const handleImageUpload = (e) => {};
+		console.log(e.target.name)
+	};
 
 	//  modalOne
 	const [show, setShow] = useState(false);
@@ -73,10 +106,7 @@ const BusineesDetails = () => {
 	const handleCloseTwo = () => {
 		setShowTwo(false);
 	};
-	const handleShowTwo = () => {
-		setShowTwo(true);
-		setShow(false);
-	};
+	
 	// modal end
 
 	 
@@ -89,7 +119,33 @@ const BusineesDetails = () => {
 	const currentUser = businessInfos[busIndx]
 
 
-	console.log(currentUser)
+	// console.log(currentUser)
+	
+	
+	
+	const handleSubmitOne = (e) => {
+		e.preventDefault()
+		console.log(formOne);
+		setShowTwo(true)
+		setShow(false)
+	};
+
+	const addToStorage = () => {
+		// get all the forms
+		setLoanForm({ ...formOne, ...formTwo, lpo: lpoDocument  });
+		// save user data to local storage
+		localStorage.setItem("loanApplication", JSON.stringify(loanForm));
+		// add new business data to the object
+		
+	};
+
+
+	const handleSubmitTwo = (e) => {
+		e.preventDefault();
+		addToStorage()
+		navigate('/upload-business-docs')
+	};
+
 
 	return (
 		<div>
@@ -215,8 +271,8 @@ const BusineesDetails = () => {
 											<Form.Control
 												type="text"
 												name="name"
-												value={form.name}
-												onChange={handleChange}
+												value={formOne.name}
+												onChange={handleChangeOne}
 												placeholder="Enter Product Name"
 												required
 											/>
@@ -227,8 +283,8 @@ const BusineesDetails = () => {
 											<Form.Control
 												type="text"
 												name="category"
-												value={form.category}
-												onChange={handleChange}
+												value={formOne.category}
+												onChange={handleChangeOne}
 												placeholder="Select your business"
 												required
 											/>
@@ -238,20 +294,20 @@ const BusineesDetails = () => {
 											<Form.Control
 												type="number"
 												name="orderID"
-												value={form.orderID}
-												onChange={handleChange}
+												value={formOne.orderID}
+												onChange={handleChangeOne}
 												placeholder="849484929992"
 												required
 											/>
 										</Form.Group>
 									</Stack>
-									<div>
+									<Col  className="my-3">
 										<div className="d-flex justify-content-between">
 											<Form.Label>Upload Local Purchase Order</Form.Label>
 											<AiIcons.AiOutlineInfoCircle />
 										</div>
 										<label
-											htmlFor="cacForm2"
+											htmlFor="LPO"
 											className="d-flex flex-column justify-content-center w-100 bg-light-gray rounded border py-3"
 											style={{ cursor: "pointer" }}>
 											<div className="d-flex flex-column justify-content-center align-items-center ">
@@ -267,22 +323,22 @@ const BusineesDetails = () => {
 													/>
 												</svg>
 												<p className="fw-bold my-2">
-													Click here to upload a clear picture of CAC Form 2 / BN 1
+													{fileNames}
 												</p>
 												<p className="muted-text m-0">PNG/JPEG</p>
 											</div>
 											<input
 												className="d-none"
-												id="imgFile"
-												name="imgFile"
+												id="LPO"
+												name="LPO"
 												type="file"
-												accept=".jpeg, .png, .jpg"
 												onChange={handleImageUpload}
+												accept=".jpeg, .png, .jpg"
 												required
 											/>
 										</label>
-										<div>File should not be more than 2mb</div>
-									</div>
+										<p className="fw-bold mt-2">File should not be more than 2mb</p>
+									</Col>
 
 									<Stack className="heading-font " gap={2}>
 										<Buttons
@@ -290,7 +346,7 @@ const BusineesDetails = () => {
 											size="md"
 											className="w-100"
 											type="submit"
-											onClick={handleShowTwo}>
+										>
 											Continue
 										</Buttons>
 									</Stack>
@@ -301,7 +357,7 @@ const BusineesDetails = () => {
 					{/* modalTwo */}
 					<Modal show={showTwo} onHide={handleCloseTwo} size="lg">
 						<Modal.Body>
-							<Form onSubmit={handleSubmit}>
+							<Form onSubmit={handleSubmitTwo}>
 								<Stack gap={5} className="px-3">
 									<Row className=" px-4 pt-3 pb-4 bg-gray form d-flex flex-wrap">
 										<Col sm={12} lg={6}>
@@ -314,8 +370,8 @@ const BusineesDetails = () => {
 													<Form.Control
 														type="text"
 														name="nameOfCompany"
-														value={form.nameOfCompany}
-														onChange={handleChange}
+														value={formTwo.nameOfCompany}
+														onChange={handleChangeTwo}
 														placeholder="Enter Product Name"
 														required
 													/>
@@ -326,8 +382,8 @@ const BusineesDetails = () => {
 													<Form.Control
 														type="email"
 														name="companyEmail"
-														value={form.companyEmail}
-														onChange={handleChange}
+														value={formTwo.companyEmail}
+														onChange={handleChangeTwo}
 														placeholder="Select your business"
 														required
 													/>
@@ -337,8 +393,8 @@ const BusineesDetails = () => {
 													<Form.Control
 														type="text"
 														name="phoneNumber"
-														value={form.phoneNumber}
-														onChange={handleChange}
+														value={formTwo.phoneNumber}
+														onChange={handleChangeTwo}
 														placeholder="849484929992"
 														required
 													/>
@@ -355,8 +411,8 @@ const BusineesDetails = () => {
 													<Form.Control
 														type="text"
 														name="account"
-														value={form.account}
-														onChange={handleChange}
+														value={formTwo.account}
+														onChange={handleChangeTwo}
 														placeholder="Enter Product Name"
 														required
 													/>
@@ -367,8 +423,8 @@ const BusineesDetails = () => {
 													<Form.Control
 														type="text"
 														name="accNo"
-														value={form.accNo}
-														onChange={handleChange}
+														value={formTwo.accNo}
+														onChange={handleChangeTwo}
 														placeholder="Select your business"
 														required
 													/>
@@ -378,8 +434,8 @@ const BusineesDetails = () => {
 													<Form.Control
 														type="text"
 														name="bankName"
-														value={form.bankName}
-														onChange={handleChange}
+														value={formTwo.bankName}
+														onChange={handleChangeTwo}
 														placeholder="849484929992"
 														required
 													/>
@@ -389,7 +445,7 @@ const BusineesDetails = () => {
 									</Row>
 
 									<Stack className="heading-font " gap={2}>
-										<Buttons variant="purple" size="md" className="w-100" type="submit" as={Link} to={"/upload-business-docs"}>
+										<Buttons variant="purple" size="md" className="w-100" type="submit">
 											Continue
 										</Buttons>
 									</Stack>
