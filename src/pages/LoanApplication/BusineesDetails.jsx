@@ -1,5 +1,5 @@
 import React,{ useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Container, Col, Row, Modal, Form, Stack } from "react-bootstrap";
 
 import PageWrapperV2 from "../../layouts/no_footer_layout/PageWrapperV2";
@@ -8,9 +8,8 @@ import { Buttons } from "../../components/index";
 import * as AiIcons from "react-icons/ai";
 
 const BusineesDetails = () => {
-	// console.log(data)
-	// fetch data 
-	// const geBusiness = JSON.parse(localStorage.getItem('user')) || 'empty'
+	const navigate = useNavigate()
+	const [loanForm, setLoanForm] = useState('')
 	const getBusiness = JSON.parse(localStorage.getItem('user')) 
 	const businessInfos = getBusiness.business
 	const businessNames = []
@@ -49,9 +48,7 @@ const BusineesDetails = () => {
 	const [lpoDocument, setLpoDocument] = useState({
 		LPO: ''
 	})
-	const [fileNames, setFileNames] = useState({
-		LPO: "Click here to upload a clear picture of LPO",
-	});
+	const [fileNames, setFileNames] = useState("Click here to upload a clear picture of LPO");
 
 	const handleChangeOne = (e) => {
 		let value = e.target.value;
@@ -70,17 +67,6 @@ const BusineesDetails = () => {
 		});
 	};
 
-	const handleSubmitOne = (e) => {
-		e.preventDefault()
-		console.log(formOne);
-		setShowTwo(true)
-		setShow(false)
-	};
-
-	const handleSubmitTwo = (e) => {
-		e.preventDefault();
-		console.log(formTwo);
-	};
 
 	// convert images to base64 and store in local storage
 	const getBase64 = (file) => {
@@ -95,16 +81,18 @@ const BusineesDetails = () => {
 	const handleImageUpload = (e) => {
 		const file = e.target.files[0];
 		getBase64(file).then((base64) => {
+			// console.log(base64)
 			setLpoDocument({
 				...lpoDocument,
 				[e.target.name]: base64,
 			});
+		}).catch((err)=> {
+			console.log(err)
 		});
 		let fileName = file.name;
-		setFileNames({
-			...fileNames,
-			[e.target.name]: fileName,
-		});
+		setFileNames(fileName)
+
+		console.log(e.target.name)
 	};
 
 	//  modalOne
@@ -133,6 +121,31 @@ const BusineesDetails = () => {
 
 	// console.log(currentUser)
 	
+	
+	
+	const handleSubmitOne = (e) => {
+		e.preventDefault()
+		console.log(formOne);
+		setShowTwo(true)
+		setShow(false)
+	};
+
+	const addToStorage = () => {
+		// get all the forms
+		setLoanForm({ ...formOne, ...formTwo, lpo: lpoDocument  });
+		// save user data to local storage
+		localStorage.setItem("loanApplication", JSON.stringify(loanForm));
+		// add new business data to the object
+		
+	};
+
+
+	const handleSubmitTwo = (e) => {
+		e.preventDefault();
+		addToStorage()
+		navigate('/upload-business-docs')
+	};
+
 
 	return (
 		<div>
@@ -294,7 +307,7 @@ const BusineesDetails = () => {
 											<AiIcons.AiOutlineInfoCircle />
 										</div>
 										<label
-											htmlFor="cacForm2"
+											htmlFor="LPO"
 											className="d-flex flex-column justify-content-center w-100 bg-light-gray rounded border py-3"
 											style={{ cursor: "pointer" }}>
 											<div className="d-flex flex-column justify-content-center align-items-center ">
@@ -310,14 +323,14 @@ const BusineesDetails = () => {
 													/>
 												</svg>
 												<p className="fw-bold my-2">
-													{fileNames.LPO}
+													{fileNames}
 												</p>
 												<p className="muted-text m-0">PNG/JPEG</p>
 											</div>
 											<input
 												className="d-none"
-												id="cacForm2"
-												name="cacForm2"
+												id="LPO"
+												name="LPO"
 												type="file"
 												onChange={handleImageUpload}
 												accept=".jpeg, .png, .jpg"
@@ -432,7 +445,7 @@ const BusineesDetails = () => {
 									</Row>
 
 									<Stack className="heading-font " gap={2}>
-										<Buttons variant="purple" size="md" className="w-100" type="submit" as={Link} to={"/upload-business-docs"}>
+										<Buttons variant="purple" size="md" className="w-100" type="submit">
 											Continue
 										</Buttons>
 									</Stack>
