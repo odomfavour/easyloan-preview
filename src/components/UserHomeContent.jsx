@@ -171,9 +171,11 @@ const UserHomeContent = () => {
 			<div className="bg-gray user-dashboard-content5 mt-5 px-4 pt-4">
 				<div className="d-flex justify-content-between">
 					<p className="user-small-font user-dash-color">Loan History</p>
-					<Button className="user-btn-bg5 shadow-none " style={{ width: "120px" }}>
-						View All
-					</Button>
+					<Link to={"/dashboard/status"}>
+						<Button className="user-btn-bg5 shadow-none " style={{ width: "120px" }}>
+							View All
+						</Button>
+					</Link>
 				</div>
 				<div className="mt-5">
 					<p>You have not taken a loan. Take a loan now to enjoy the experience.</p>
