@@ -71,11 +71,11 @@ const ReviewApplication = () => {
 								<Col className="bg-gray rounded box-shadow px-5 py-4 ">
 									<Stack>
 										<h2 className="heading-2 fw-bold mb-4">Product Details</h2>
-										<p>{loanForm.nameOfCompany}</p>
-										<p>{`${user.business[0].street} "," ${user.business[0].busStop} "," ${user.business[0].lga} "," ${user.business[0].state}`}</p>
-										<p>{loanForm.companyEmail}</p>
+										<p>Company: {loanForm.nameOfCompany}</p>
+										<p>Business Address: {`${user.business[0].street}, ${user.business[0].busStop}, ${user.business[0].lga}, ${user.business[0].state}`}</p>
+										<p>Business Email: {loanForm.companyEmail}</p>
 										<p>Business Registration Number: {user.business[0].regNumber}</p>
-										<p>Product : {loanForm.name} </p>
+										<p>Product: {loanForm.name} </p>
 										<p>Product Category: {loanForm.category}</p>
 										<p>Product Amount: {loanForm.totalLPO}</p>
 										<p>Management Fee: {loanForm.mgtFee}</p>
