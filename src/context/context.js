@@ -25,6 +25,8 @@ const AppProvider = ({ children }) => {
 		setUser(data);
 	}, [data]);
 
+	
+
 	const inputs = {
 		state,
 		setState,
