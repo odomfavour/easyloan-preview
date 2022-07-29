@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Search, Bell, ChevronDown } from "react-bootstrap-icons";
-import img from "../assets/img.jpg";
 import {Container,Form, Navbar } from 'react-bootstrap';
+import avatar from "../assets/avatar.svg";
 
 
 const SearchBar = ({ placeholder, data }) => {
@@ -28,7 +28,7 @@ const SearchBar = ({ placeholder, data }) => {
         <Form className="d-flex">
             <div className='d-none d-sm-block'><Bell /></div>
             <div className="user-img-icon bg-secondary ms-4 me-1 "><img 
-            src={user.photoURL} alt="img" className="user-img-icon"/></div>
+            src={user.photoURL || avatar} alt="img" className="user-img-icon"/></div>
             <div className='d-none d-sm-block'><ChevronDown /></div>
           </Form>
       </Container>
