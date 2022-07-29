@@ -350,6 +350,10 @@ a:link {
 	.user-searchbar .navbar-brand {
 		width: 180px;
 	}
+
+	.search-icon {
+		left: 180px;
+	}
 }
 /* Searchbar Ends here */
 
@@ -376,6 +380,13 @@ a:link {
 	border-color: #e5e5e5;
 }
 
+.user-dashboard-loan .user-btn-loan{
+	background-color: #AE2BFF !important;
+}
+.user-dashboard-loan .btn-primary {
+	color: #fdfdfd;
+	border-color: #AE2BFF;
+}
 .user-dash-box-bg {
 	background-color: rgba(145, 36, 212, 0.03);
 }
@@ -413,6 +424,10 @@ a:link {
 	border-color: #ae2bff;
 }
 
+.user-dashboard-loan .btn-primary:hover{
+	background-color: #3a0e55 !important;
+	color: #fdfdfd;
+}
 .user-dashboard-content2 .btn-primary:hover {
 	background-color: #b1b0b0 !important;
 	color: #fff;
@@ -634,14 +649,6 @@ a:link {
 	background-color: #fdfdfd;
 }
 
-.profile-completion-bg {
-	background-color: #d9d9d9;
-}
-
-.profile-completion {
-	margin-left: 380px;
-}
-
 .profile-small-font {
 	font-size: 14px;
 	color: #121010;
@@ -669,10 +676,6 @@ a:link {
 		height: 150px;
 	}
 
-	.profile-completion {
-		margin-left: 180px;
-	}
-
 	.profile-mid-font {
 		font-size: 15px;
 	}
@@ -682,10 +685,6 @@ a:link {
 	.profile-img {
 		width: 200px;
 		height: 200px;
-	}
-
-	.profile-completion {
-		margin-left: 190px;
 	}
 
 	.profile-mid-font {
@@ -698,10 +697,6 @@ a:link {
 }
 
 @media (max-width: 450px) {
-	.profile-completion {
-		margin-left: 240px;
-	}
-
 	.biz-profile-pad {
 		margin-top: 25px;
 	}
@@ -715,20 +710,10 @@ a:link {
 	}
 }
 
-@media (max-width: 380px) {
-	.profile-completion {
-		margin-left: 190px;
-	}
-}
-
 @media (max-width: 325px) {
 	.profile-img {
 		width: 150px;
 		height: 150px;
-	}
-
-	.profile-completion {
-		margin-left: 140px;
 	}
 }
 /* User dasboard Profile Ends here */
