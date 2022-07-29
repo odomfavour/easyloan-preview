@@ -26,7 +26,7 @@ const Login = () => {
 				const { displayName: name, email, address, photoURL, accessToken } = res.user;
 				// setUser({ name, email, address, photoURL, accessToken });
 				localStorage.setItem("user", JSON.stringify({ name, email, address, photoURL, accessToken }));
-				navigate("/dashboard/user");
+				navigate("/detail");
 			})
 			.catch((error) => {
 				console.log(error.code, error.message);
@@ -57,7 +57,7 @@ const Login = () => {
 					// return <Navigate to="/dashboard" replace state={{ path: location.pathname }} />;
 					// return <Navigate to="/dashboard" replace state={{ path: location.pathname }} />;
 					localStorage.setItem("user", JSON.stringify(result.data));
-					navigate("/dashboard/user");
+					navigate("/detail");
 				}
 			});
 		} catch (error) {
