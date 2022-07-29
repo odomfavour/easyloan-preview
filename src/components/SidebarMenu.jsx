@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+// eslint-disable-next-line
 import { Nav, Modal, Image } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import Buttons from "./Buttons";
