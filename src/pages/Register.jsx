@@ -137,6 +137,13 @@ const Register = () => {
             position: sticky;
             top: 5rem;
           }
+          @media (max-width: 991.98px){
+            .img-wrap{
+              height: initial;
+              position: static;
+              top: initial;
+            }
+          }
           @media (max-width: 575.98px){
             body{
               font-size: 14px;
@@ -147,11 +154,7 @@ const Register = () => {
             .form{
               background-color: #fdfdfd;
             }
-            .img-wrap{
-              height: initial;
-              position: static;
-              top: initial;
-            }
+
           }
         `}
 			</style>

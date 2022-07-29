@@ -22,6 +22,11 @@ function GridComplexExample({ page, setPage }) {
 	const { isDesktop } = useDesktop();
 	const navigate = useNavigate();
 
+  const navigateToDashboard = (e) => {
+    e.preventDefault();
+    navigate("/dashboard/user");
+  }
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (!isDesktop) {
@@ -168,7 +173,7 @@ function GridComplexExample({ page, setPage }) {
 								borderRadius: "8px ",
 								color: "white",
 							}}
-							onClick={handleSubmit}>
+							onClick={navigateToDashboard}>
 							Skip
 						</Button>
 					) : (
@@ -184,7 +189,7 @@ function GridComplexExample({ page, setPage }) {
 
 								/* primary color/700 */
 							}}
-							onClick={handleSubmit}>
+							onClick={navigateToDashboard}>
 							Skip
 						</Button>
 					)}

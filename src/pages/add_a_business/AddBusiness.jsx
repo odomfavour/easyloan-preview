@@ -204,7 +204,7 @@ const AddBusiness = () => {
 								</Form.Group>
 
 								<Form.Group controlId="lga">
-									<Form.Label className="fw-bold">Nearest Bus Stop</Form.Label>
+									<Form.Label className="fw-bold">LGA</Form.Label>
 									<Form.Control
 										type="text"
 										name="lga"

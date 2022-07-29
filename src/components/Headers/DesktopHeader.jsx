@@ -20,19 +20,19 @@ const DesktopHeader = () => {
 					<img src={logo} alt="" onClick={() => navigate("/")} />
 
 					<div>
-						<NavLink to="/" activeClassName="active">
+						<NavLink to="/" activeclassname="active">
 							Home
 						</NavLink>
-						<NavLink to="/about" activeClassName="active">
+						<NavLink to="/about" activeclassname="active">
 							About Us
 						</NavLink>
-						<NavLink to="/how" activeClassName="active">
+						<NavLink to="/how" activeclassname="active">
 							How it works
 						</NavLink>
-						<NavLink to="/loan-calculator" activeClassName="active">
+						<NavLink to="/loan-calculator" activeclassname="active">
 							Loan Calculator
 						</NavLink>
-						<NavLink to="/help" activeClassName="active">
+						{/* <NavLink to="/help" activeclassname="active"> */}
 							<Nav>
 								<NavDropdown id="nav-dropdown-dark-example" title="Help" menuVariant="light">
 									<NavDropdown.Item as={Link} to={"/faqs"}>FAQ</NavDropdown.Item>
@@ -41,7 +41,7 @@ const DesktopHeader = () => {
 									<NavDropdown.Item href="#action/3.3">Term of Use </NavDropdown.Item>
 								</NavDropdown>
 							</Nav>
-						</NavLink>
+						{/* </NavLink> */}
 					</div>
 					<section>
 						<Button primary onClick={() => navigate("/register")}>
