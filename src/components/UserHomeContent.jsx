@@ -13,8 +13,7 @@ const UserHomeContent = () => {
 	const { user } = useAppContext();
 	const [show, setShow] = useState(false);
 	const [isBusinessAdded, setIsBusinessAdded] = useState(false);
-	// eslint-disable-next-line no-unused-vars
-	//const [loanStatus, setLoanStatus] = useState("Awaiting");
+	
 	const [isLoanApplied, setIsLoanApplied] = useState(false);
 
 	useEffect(() => {
