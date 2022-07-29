@@ -19,7 +19,7 @@ const AppProvider = ({ children }) => {
 		category: false,
 		size: "",
 	});
-	const [loanForm, setLoanForm] = useState({});
+	const [loanForm, setLoanForm] = useState([]);
   const [loanOffer, setLoanOffer] = useState({}); // result of the calculation to be displayed on the loan offer popup
 
 	useEffect(() => {
