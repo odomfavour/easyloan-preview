@@ -5,11 +5,13 @@ import { Col, Container, Row, Stack } from "react-bootstrap";
 import PageWrapperV2 from "../../layouts/no_footer_layout/PageWrapperV2";
 import { Buttons } from "../../components";
 import SuccessModal from "../../components/successModal.jsx/SuccessModal";
+import { useAppContext } from "../../context/context";
 
 import successScreen from "../../assets/successScreen.svg";
 
 const ReviewApplication = () => {
 	const navigate = useNavigate();
+	const { loanForm, setLoanForm, loanOffer } = useAppContext();
 
 	const [toggleModal, setToggleModal] = useState(false);
 	const [iterator, setIterator] = useState(false);
@@ -23,17 +25,27 @@ const ReviewApplication = () => {
 		navigate("/dashboard/user");
 	};
 
+	const addToStorage = () => {
+		// get existing user data from local storage
+		let data = JSON.parse(localStorage.getItem("user"));
+		// add new business data to the object
+		data.loanApplication
+			? data.loanApplication.push(loanForm)
+			: (data.loanApplication = [loanForm]);
+		// save back to local storage
+		localStorage.setItem("user", JSON.stringify(data));
+	};
+
+	const handleSubmit = () => {
+		addToStorage();
+		setSuccessModal();
+	};
+
 	const message = [
 		"Congratulations",
 		<br key="0" />,
 		"Your application has been sent successfully",
 	];
-
-	// const [productDetails, sesetProductDetails] = useState({});
-	// useEffect(() => {
-	//   const productDetails = JSON.parse(localStorage.getItem("productDetails"));
-	//   sesetProductDetails(productDetails);
-	// }, [])
 
 	return (
 		<>
@@ -83,7 +95,7 @@ const ReviewApplication = () => {
 										variant="purple"
 										className="mt-4 w-100"
 										type="submit"
-										onClick={setSuccessModal}>
+										onClick={handleSubmit}>
 										Submit Application
 									</Buttons>
 								</Col>
