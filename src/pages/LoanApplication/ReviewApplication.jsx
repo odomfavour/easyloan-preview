@@ -11,6 +11,7 @@ import successScreen from "../../assets/successScreen.svg";
 
 const ReviewApplication = () => {
 	const navigate = useNavigate();
+	// eslint-disable-next-line
 	const { loanForm, setLoanForm, loanOffer } = useAppContext();
 
 	const [toggleModal, setToggleModal] = useState(false);
