@@ -1,24 +1,26 @@
-import React,{ useState } from "react";
-import { useNavigate, useParams} from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { Container, Col, Row, Modal, Form, Stack } from "react-bootstrap";
 
 import PageWrapperV2 from "../../layouts/no_footer_layout/PageWrapperV2";
 import { Buttons } from "../../components/index";
+import { useAppContext } from "../../context/context";
 
 import * as AiIcons from "react-icons/ai";
 
 const BusineesDetails = () => {
-	const navigate = useNavigate()
-	const [loanForm, setLoanForm] = useState('')
-	const getBusiness = JSON.parse(localStorage.getItem('user')) 
-	const businessInfos = getBusiness.business
-	const businessNames = []
-	businessInfos.map(businessInfo => {
-		return businessNames.push(businessInfo.businessName)
-	}); 
+	const { loanForm, setLoanForm } = useAppContext();
+	const navigate = useNavigate();
+	// const [loanForm, setLoanForm] = useState("");
+	const getBusiness = JSON.parse(localStorage.getItem("user"));
+	const businessInfos = getBusiness.business;
+	const businessNames = [];
+	businessInfos.map((businessInfo) => {
+		return businessNames.push(businessInfo.businessName);
+	});
 
-	let {indx} = useParams()
-	const [busIndx, setBusIndx] = useState(indx)
+	let { indx } = useParams();
+	const [busIndx, setBusIndx] = useState(indx);
 
 	const [appllicationModal, setApplicationModal] = useState(false);
 	const [modalValue, setModalValue] = useState(businessInfos[indx].businessName);
@@ -46,8 +48,8 @@ const BusineesDetails = () => {
 	// 	imgFile: "",
 	// });
 	const [lpoDocument, setLpoDocument] = useState({
-		LPO: ''
-	})
+		LPO: "",
+	});
 	const [fileNames, setFileNames] = useState("Click here to upload a clear picture of LPO");
 
 	const handleChangeOne = (e) => {
@@ -58,7 +60,7 @@ const BusineesDetails = () => {
 			[e.target.name]: value,
 		});
 
-		console.log(formOne)
+		console.log(formOne);
 	};
 	const handleChangeTwo = (e) => {
 		let value = e.target.value;
@@ -68,7 +70,6 @@ const BusineesDetails = () => {
 			[e.target.name]: value,
 		});
 	};
-
 
 	// convert images to base64 and store in local storage
 	const getBase64 = (file) => {
@@ -82,19 +83,21 @@ const BusineesDetails = () => {
 
 	const handleImageUpload = (e) => {
 		const file = e.target.files[0];
-		getBase64(file).then((base64) => {
-			// console.log(base64)
-			setLpoDocument({
-				...lpoDocument,
-				[e.target.name]: base64,
+		getBase64(file)
+			.then((base64) => {
+				// console.log(base64)
+				setLpoDocument({
+					...lpoDocument,
+					[e.target.name]: base64,
+				});
+			})
+			.catch((err) => {
+				console.log(err);
 			});
-		}).catch((err)=> {
-			console.log(err)
-		});
 		let fileName = file.name;
-		setFileNames(fileName)
+		setFileNames(fileName);
 
-		console.log(e.target.name)
+		console.log(e.target.name);
 	};
 
 	//  modalOne
@@ -108,58 +111,54 @@ const BusineesDetails = () => {
 	const handleCloseTwo = () => {
 		setShowTwo(false);
 	};
-	
+
 	// modal end
 
-	 
-
 	const handleDropClick = (busName, i) => {
-        setModalValue(busName)
-        setBusIndx(i)
-    }
+		setModalValue(busName);
+		setBusIndx(i);
+	};
 
-	const currentUser = businessInfos[busIndx]
-
+	const currentUser = businessInfos[busIndx];
 
 	// console.log(currentUser)
-	
-	
-	
+
 	const handleSubmitOne = (e) => {
-		e.preventDefault()
+		e.preventDefault();
 		console.log(formOne);
-		setShowTwo(true)
-		setShow(false)
+		setShowTwo(true);
+		setShow(false);
 	};
 
 	const store = () => {
 		// get all the forms
-		setLoanForm({ ...formOne, ...formTwo, lpo: lpoDocument  });
+		setLoanForm({ ...formOne, ...formTwo, lpo: lpoDocument });
 
-		// get existing user data from local storage
-		let data = JSON.parse(localStorage.getItem("user"));
-		// add new business data to the object
-		data.loanApplication ? data.loanApplication.push(loanForm) : (data.loanApplication = [loanForm]);
-		// save back to local storage
-		localStorage.setItem("user", JSON.stringify(data));
+		// // get existing user data from local storage
+		// let data = JSON.parse(localStorage.getItem("user"));
+		// // add new business data to the object
+		// data.loanApplication
+		// 	? data.loanApplication.push(loanForm)
+		// 	: (data.loanApplication = [loanForm]);
+		// // save back to local storage
+		// localStorage.setItem("user", JSON.stringify(data));
 	};
 
-	const [subb, setSubb] = useState(false)
+	const [subb, setSubb] = useState(false);
 	const handleSubmitTwo = (e) => {
 		e.preventDefault();
 		store();
-		
-		if (store){
-			setSubb(true)
-		}else{
-			setSubb(false)
+
+		if (store) {
+			setSubb(true);
+		} else {
+			setSubb(false);
 		}
 
 		if (subb === true) {
-			navigate('/upload-business-docs')
+			navigate("/upload-business-docs");
 		}
 	};
-
 
 	return (
 		<div>
@@ -189,10 +188,14 @@ const BusineesDetails = () => {
 										<div
 											className="w-100 position-absolute d-flex flex-column border px-4 py-2 bg-white rounded text-secondary  align-items-start d-flex justify-content-start"
 											style={{ top: "110%", zIndex: "10" }}>
-												 {businessNames.map((busName, i) => (
-                                                  <p className="mb-0  my-4 w-100 "  key={i} onClick={()=>handleDropClick(busName, i)}>{busName}</p>
-                                                ))}
-                                          
+											{businessNames.map((busName, i) => (
+												<p
+													className="mb-0  my-4 w-100 "
+													key={i}
+													onClick={() => handleDropClick(busName, i)}>
+													{busName}
+												</p>
+											))}
 										</div>
 									)}
 								</div>
@@ -201,14 +204,20 @@ const BusineesDetails = () => {
 									style={{ width: "auto !important" }}>
 									<li className="py-3 d-flex justify-content-between align-items-center w-100">
 										<p className="mb-0">{modalValue}</p>
-										<Buttons variant="outline-purple" onClick={handleLoanModal} size="lg" className="w-25  rounded">
+										<Buttons
+											variant="outline-purple"
+											onClick={handleLoanModal}
+											size="lg"
+											className="w-25  rounded">
 											Edit
 										</Buttons>
 									</li>
 									<li className="mb-0 py-3 list-group">Email: {currentUser.businessEmail}</li>
 									<li className="mb-0 py-3 list-group">Phone No: {currentUser.phone}</li>
 									<li className="mb-0 py-3 list-group">RC Number: {currentUser.regNumber}</li>
-									<li className="mb-0 py-3 list-group">Business Category: {currentUser.category}</li>
+									<li className="mb-0 py-3 list-group">
+										Business Category: {currentUser.category}
+									</li>
 									<li className="mb-0 py-3 list-group">Business Address: {currentUser.street}</li>
 									<li className="mb-0 py-3 list-group">Nearest Bustop: {currentUser.busStop}</li>
 									<li className="mb-0 py-3 list-group">LGA: {currentUser.lga}</li>
@@ -315,7 +324,7 @@ const BusineesDetails = () => {
 											/>
 										</Form.Group>
 									</Stack>
-									<Col  className="my-3">
+									<Col className="my-3">
 										<div className="d-flex justify-content-between">
 											<Form.Label>Upload Local Purchase Order</Form.Label>
 											<AiIcons.AiOutlineInfoCircle />
@@ -336,9 +345,7 @@ const BusineesDetails = () => {
 														fill="#AE2BFF"
 													/>
 												</svg>
-												<p className="fw-bold my-2">
-													{fileNames}
-												</p>
+												<p className="fw-bold my-2">{fileNames}</p>
 												<p className="muted-text m-0">PNG/JPEG</p>
 											</div>
 											<input
@@ -355,12 +362,7 @@ const BusineesDetails = () => {
 									</Col>
 
 									<Stack className="heading-font " gap={2}>
-										<Buttons
-											variant="purple"
-											size="md"
-											className="w-100"
-											type="submit"
-										>
+										<Buttons variant="purple" size="md" className="w-100" type="submit">
 											Continue
 										</Buttons>
 									</Stack>
@@ -459,7 +461,7 @@ const BusineesDetails = () => {
 									</Row>
 
 									<Stack className="heading-font " gap={2}>
-										<Buttons variant="purple" size="md" className="w-100" type="submit" >
+										<Buttons variant="purple" size="md" className="w-100" type="submit">
 											Continue
 										</Buttons>
 									</Stack>

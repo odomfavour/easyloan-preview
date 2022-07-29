@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Buttons } from "../components/index";
 import { Container, Col, Row, Form, Stack } from "react-bootstrap";
 import EasyloanModal from "./easyloanmodal/EasyloanModal";
+import { useAppContext } from "../context/context";
 
 const LoanCalculator = ({ styles, prevPath }) => {
 	const [toggleModal, setToggleModal] = useState(false);
@@ -15,9 +16,9 @@ const LoanCalculator = ({ styles, prevPath }) => {
 		loanTenure: "",
 	});
 	const [interestRate, setInterestRate] = useState(10.5);
-	const [loanOffer, setLoanOffer] = useState({}); // result of the calculation to be displayed on the loan offer popup
 
 	const navigate = useNavigate();
+	const { loanOffer, setLoanOffer, loanForm, setLoanForm } = useAppContext();
 
 	const setEazyloanModal = () => {
 		setToggleModal(true);
@@ -45,8 +46,12 @@ const LoanCalculator = ({ styles, prevPath }) => {
 	const handleBtnClick = (e) => {
 		e.preventDefault();
 		calculateLoan();
-		prevPath === "/upload-business-docs" ? navigate("/review-application") : setEazyloanModal();
-		localStorage.removeItem("prevPath");
+		if (prevPath === "/upload-business-docs") {
+			navigate("/review-application");
+		} else {
+			setEazyloanModal();
+			localStorage.removeItem("prevPath");
+		}
 	};
 
 	function calculateLoan() {
@@ -149,6 +154,21 @@ const LoanCalculator = ({ styles, prevPath }) => {
 			monthlyPayment: repaymentAmount,
 			repaymentPlan: repaymentPlan,
 		});
+
+		if (prevPath === "/upload-business-docs") {
+      setLoanForm({
+        ...loanForm,
+        totalLPO: totalLPO,
+        mgtFee: mgtFee,
+        totalLoanAmt: totalLoanAmt,
+        loanTenure: loanTenure,
+        interest: monthlyInterestRate,
+        loanApproved: loanApproved,
+        downPayment: downPayment,
+        monthlyPayment: repaymentAmount,
+        repaymentPlan: repaymentPlan,
+      });
+    }
 	}
 
 	return (
