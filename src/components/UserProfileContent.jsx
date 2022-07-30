@@ -62,22 +62,22 @@ const UserProfileContent = () => {
                         {isBusinessAdded && ( 
                         <>
                         {user.business.map((business, index) => {
-                                    return(
-                            <Card className='mb-2 border-0 me-3' key={index}>
-                                <Card.Body>
-                                    <div className='d-flex justify-content-between'>
-                                        <div className="pt-1 profile-mid-font fw-bold">{business.businessName}</div>
-                                        <Button variant="primary">Edit</Button>
-                                    </div>
-                                    <div className="profile-small-font">{business.street}</div>
-                                    <div className="py-1 profile-small-font">{business.businessEmail}</div>
-                                    <div className="profile-small-font">{business.phone}</div>
-                                </Card.Body>
-                            </Card>
+                            return(
+                                <Card className='mb-2 border-0 me-3' key={index}>
+                                    <Card.Body>
+                                        <div className='d-flex justify-content-between'>
+                                            <div className="pt-1 profile-mid-font fw-bold">{business.businessName}</div>
+                                            <Button variant="primary">Edit</Button>
+                                        </div>
+                                        <div className="profile-small-font">{business.street}</div>
+                                        <div className="py-1 profile-small-font">{business.businessEmail}</div>
+                                        <div className="profile-small-font">{business.phone}</div>
+                                    </Card.Body>
+                                </Card>
                             )
-                            })}
-                            </>
-                            )}
+                        })}
+                        </>
+                        )}
                         </div>
                         <div>
                             <Link to="/add-business">
