@@ -11,8 +11,7 @@ import successScreen from "../../assets/successScreen.svg";
 
 const ReviewApplication = () => {
 	const navigate = useNavigate();
-	// eslint-disable-next-line
-	const { loanForm, setLoanForm, loanOffer } = useAppContext();
+	const { loanForm } = useAppContext();
 
 	const [toggleModal, setToggleModal] = useState(false);
 	const [iterator, setIterator] = useState(false);
@@ -72,21 +71,21 @@ const ReviewApplication = () => {
 								<Col className="bg-gray rounded box-shadow px-5 py-4 ">
 									<Stack>
 										<h2 className="heading-2 fw-bold mb-4">Product Details</h2>
-										<p>Business Name: Lyd & Ste Limited</p>
-										<p>Business Address: 12, Favourite Street, Osapa, Lekki Phase 1, Lagos</p>
-										<p>Business Email Address: info@lyd&ste.com</p>
-										<p>Business Registration Number: RC 345533</p>
-										<p>Product : 2,000 Packs of Paracetamol </p>
-										<p>Product Category Food & Drugs</p>
-										<p>Product Amount: 1,000,000</p>
-										<p>Management Fee (5%): 50, 000</p>
-										<p>Duration/Tenure (Loan): 2 Months</p>
-										<p>Total Loan Amount: N1,050,000</p>
-										<p>Down Payment: N315,000</p>
-										<p>Monthly Repayment: N380, 363</p>
-										<p>Interest Rate: 21%</p>
-										<p>Loan Approved: N737,625</p>
-										<p>Repayment Option: Monthly</p>
+										<p>Company: {loanForm.nameOfCompany}</p>
+										<p>Business Address: {`${loanForm.business.street}, ${loanForm.business.busStop}, ${loanForm.business.lga}, ${loanForm.business.state}`}</p>
+										<p>Business Email: {loanForm.business.businessEmail}</p>
+										<p>Business Registration Number: {loanForm.business.regNumber}</p>
+										<p>Product: {loanForm.name} </p>
+										<p>Product Category: {loanForm.category}</p>
+										<p>Product Amount: {`N${new Intl.NumberFormat().format(loanForm.totalLPO)}`}</p>
+										<p>Management Fee{loanForm.mgtFeeRate}: {`N${new Intl.NumberFormat().format(loanForm.mgtFee)}`}</p>
+										<p>Duration/Tenure (Loan): {loanForm.loanTenure} Months</p>
+										<p>Total Loan Amount: {`N${new Intl.NumberFormat().format(loanForm.totalLoanAmt)}`}</p>
+										<p>Down Payment: {`N${new Intl.NumberFormat().format(loanForm.downPayment)}`}</p>
+										<p>{loanForm.repaymentPlan} Repayment: {`N${new Intl.NumberFormat().format(loanForm.monthlyPayment)}`}</p>
+										<p>Interest Rate: {`${loanForm.interest}%`}</p>
+										<p>Loan Approved: {`N${new Intl.NumberFormat().format(loanForm.loanApproved)}`}</p>
+										<p>Repayment Option: {loanForm.repaymentPlan}</p>
 									</Stack>
 								</Col>
 							</Row>

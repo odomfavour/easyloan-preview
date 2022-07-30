@@ -8,19 +8,26 @@ import calc from "../assets/calculator.svg";
 import stak from "../assets/view_loan.svg";
 import profile from "../assets/edit_profile.svg";
 import pen from "../assets/pen.svg";
+import LaonHistoryTable from "../components/LoanHistoryTable";
 
 const UserHomeContent = () => {
 	const { user } = useAppContext();
 	const [show, setShow] = useState(false);
 	const [isBusinessAdded, setIsBusinessAdded] = useState(false);
-	const loanApplied = JSON.parse(localStorage.getItem("user"));
 	
+	const [isLoanApplied, setIsLoanApplied] = useState(false);
 
 	useEffect(() => {
 		if (user.business) {
 			setIsBusinessAdded(true);
 		}
 	}, [user.business]);
+
+	useEffect(() => {
+		if (user.loanApplication) {
+			setIsLoanApplied(true);
+		}
+	}, [user.loanApplication]);
 
 	if (show) {
 		return (
@@ -54,7 +61,8 @@ const UserHomeContent = () => {
 			</>
 			<Row className=" px-3 width-100">
 				<Col sm={12} md={6} className="mb-3 overflow-width">
-					{ loanApplied.loanApplication !== "undefined" && (
+					{ isLoanApplied && (
+						<>
 						<div className='bg-gray px-5 pt-5 user-dashboard-content6' style={{height: "300px"}}>
 						<Row>
 							<Col sm={6}><p className='fw-bold user-small-font user-dash-color'>Your Loan</p></Col>
@@ -65,13 +73,14 @@ const UserHomeContent = () => {
 						<Row className='py-4'>
 							<div className='user-loan-status' 
 							style={{height: "80px", width: "493px"}}>
-								<div className='mt-3 mb-1 fw-bold'>LPO ID: {loanApplied.loanApplication[loanApplied.loanApplication.length - 1].orderID}</div>
-								<div>Date applied: 29/07/22</div>
+								<div className='mt-3 mb-1 fw-bold'>LPO ID: {user.loanApplication[user.loanApplication.length - 1].orderID}</div>
+								<div>Date applied: {user.loanApplication[user.loanApplication.length - 1].date}</div>
 							</div>
 						</Row>
 					</div>
-					)}
-					{ loanApplied.loanApplication === "undefined" && (
+							</>
+					) }
+					{ !isLoanApplied && (
 					<div className="bg-gray px-5 pt-5 user-dashboard-content2" style={{ height: "300px" }}>
 						<Row>
 							<Col sm={6}>
@@ -85,7 +94,7 @@ const UserHomeContent = () => {
 							<p>You have not taken a loan. Take a loan now to enjoy the experience.</p>
 						</Row>
 					</div>
-					)}
+					 )} 
 				</Col>
 				<Col sm={12} md={6} className=" overflow-width">
 					<div className="bg-gray px-4 pt-5 user-dashboard-content3" style={{ height: "300px" }}>
@@ -177,8 +186,9 @@ const UserHomeContent = () => {
 						</Button>
 					</Link>
 				</div>
-				<div className="mt-5">
-					<p>You have not taken a loan. Take a loan now to enjoy the experience.</p>
+				<div className="">
+					{/* <p>You have not taken a loan. Take a loan now to enjoy the experience.</p> */}
+          <LaonHistoryTable />
 				</div>
 			</div>
 		</div>
