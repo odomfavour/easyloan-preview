@@ -11,7 +11,7 @@ import successScreen from "../../assets/successScreen.svg";
 
 const ReviewApplication = () => {
 	const navigate = useNavigate();
-	const { loanForm, user } = useAppContext();
+	const { loanForm } = useAppContext();
 
 	const [toggleModal, setToggleModal] = useState(false);
 	const [iterator, setIterator] = useState(false);
@@ -72,19 +72,19 @@ const ReviewApplication = () => {
 									<Stack>
 										<h2 className="heading-2 fw-bold mb-4">Product Details</h2>
 										<p>Company: {loanForm.nameOfCompany}</p>
-										{/* <p>Business Address: {`${user.business[0].street}, ${user.business[0].busStop}, ${user.business[0].lga}, ${user.business[0].state}`}</p> */}
-										<p>Business Email: {loanForm.companyEmail}</p>
-										{/* <p>Business Registration Number: {user.business[0].regNumber}</p> */}
-										{/* <p>Product: {loanForm.name} </p> */}
+										<p>Business Address: {`${loanForm.business.street}, ${loanForm.business.busStop}, ${loanForm.business.lga}, ${loanForm.business.state}`}</p>
+										<p>Business Email: {loanForm.business.businessEmail}</p>
+										<p>Business Registration Number: {loanForm.business.regNumber}</p>
+										<p>Product: {loanForm.name} </p>
 										<p>Product Category: {loanForm.category}</p>
-										<p>Product Amount: {loanForm.totalLPO}</p>
-										<p>Management Fee: {loanForm.mgtFee}</p>
+										<p>Product Amount: {`N${new Intl.NumberFormat().format(loanForm.totalLPO)}`}</p>
+										<p>Management Fee{loanForm.mgtFeeRate}: {`N${new Intl.NumberFormat().format(loanForm.mgtFee)}`}</p>
 										<p>Duration/Tenure (Loan): {loanForm.loanTenure} Months</p>
-										<p>Total Loan Amount: {`N${loanForm.totalLoanAmt}`}</p>
-										<p>Down Payment: {`N${loanForm.downPayment}`}</p>
-										<p>Monthly Repayment: {`N${loanForm.monthlyPayment}`}</p>
-										<p>Interest Rate: {`N${loanForm.interest}%`}</p>
-										<p>Loan Approved: {`N${loanForm.loanApproved}`}</p>
+										<p>Total Loan Amount: {`N${new Intl.NumberFormat().format(loanForm.totalLoanAmt)}`}</p>
+										<p>Down Payment: {`N${new Intl.NumberFormat().format(loanForm.downPayment)}`}</p>
+										<p>{loanForm.repaymentPlan} Repayment: {`N${new Intl.NumberFormat().format(loanForm.monthlyPayment)}`}</p>
+										<p>Interest Rate: {`${loanForm.interest}%`}</p>
+										<p>Loan Approved: {`N${new Intl.NumberFormat().format(loanForm.loanApproved)}`}</p>
 										<p>Repayment Option: {loanForm.repaymentPlan}</p>
 									</Stack>
 								</Col>

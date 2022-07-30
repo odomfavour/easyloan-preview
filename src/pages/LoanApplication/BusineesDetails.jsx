@@ -133,7 +133,7 @@ const BusineesDetails = () => {
 
 	const store = () => {
 		// get all the forms
-		setLoanForm({ ...formOne, ...formTwo, lpo: lpoDocument });
+		setLoanForm({ ...formOne, ...formTwo, lpo: lpoDocument, business: currentUser });
 
 		// // get existing user data from local storage
 		// let data = JSON.parse(localStorage.getItem("user"));

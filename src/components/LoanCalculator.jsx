@@ -59,7 +59,13 @@ const LoanCalculator = ({ styles, prevPath }) => {
 		totalLPO = Number(totalLPO);
 		loanTenure = Number(loanTenure.split(" ")[0]);
 
-		let mgtFee,
+		let date,
+			dueDate,
+			monthlyDueDate,
+			weeklyDueDate,
+			oneOffDate,
+			mgtFee,
+			mgtFeeRate,
 			totalLoanAmt,
 			loanApproved,
 			downPayment,
@@ -69,15 +75,26 @@ const LoanCalculator = ({ styles, prevPath }) => {
 			weeklyPayment,
 			repaymentAmount;
 
+		const dateObj = new Date();
+		date = new Date().toDateString();
+		monthlyDueDate = new Date(dateObj.setMonth(dateObj.getMonth() + 1)).toDateString();
+		let w = new Date(dateObj.setDate(dateObj.getDate() + 7));
+		weeklyDueDate = new Date(w.setMonth(w.getMonth() - 1)).toDateString();
+		oneOffDate = new Date(dateObj.setMonth(dateObj.getMonth() + loanTenure - 1)).toDateString();
+		console.log(weeklyDueDate);
+
 		// MANAGEMENT FEE
 		// if LPO amount is less than 1,000,000, MF = 10% of LPO
 		// if LPO amount is >= 1,000,000 and < 10,000,000, MF = 5%
 		// if LPO amount is >= 10,000,000, MF = 500,000
 		if (totalLPO < 1000000) {
+			mgtFeeRate = "(10%)";
 			mgtFee = (10 / 100) * totalLPO;
 		} else if (totalLPO >= 1000000 && totalLPO < 10000000) {
+			mgtFeeRate = "(5%)";
 			mgtFee = (5 / 100) * totalLPO;
 		} else if (totalLPO >= 10000000) {
+			mgtFeeRate = null;
 			mgtFee = 500000;
 		}
 
@@ -124,14 +141,17 @@ const LoanCalculator = ({ styles, prevPath }) => {
 		switch (repaymentPlan) {
 			case "Monthly":
 				repaymentAmount = Math.round(monthlyPayment);
+				dueDate = monthlyDueDate;
 				break;
 
 			case "Weekly":
 				repaymentAmount = Math.round(weeklyPayment);
+				dueDate = weeklyDueDate;
 				break;
 
 			case "One-off":
 				repaymentAmount = loanApproved;
+				dueDate = oneOffDate;
 				break;
 
 			default:
@@ -146,6 +166,7 @@ const LoanCalculator = ({ styles, prevPath }) => {
 			...loanOffer,
 			totalLPO: totalLPO,
 			mgtFee: mgtFee,
+			mgtFeeRate: mgtFeeRate,
 			totalLoanAmt: totalLoanAmt,
 			loanTenure: loanTenure,
 			interest: monthlyInterestRate,
@@ -156,19 +177,21 @@ const LoanCalculator = ({ styles, prevPath }) => {
 		});
 
 		if (prevPath === "/upload-business-docs") {
-      setLoanForm({
-        ...loanForm,
-        totalLPO: totalLPO,
-        mgtFee: mgtFee,
-        totalLoanAmt: totalLoanAmt,
-        loanTenure: loanTenure,
-        interest: monthlyInterestRate,
-        loanApproved: loanApproved,
-        downPayment: downPayment,
-        monthlyPayment: repaymentAmount,
-        repaymentPlan: repaymentPlan,
-      });
-    }
+			setLoanForm({
+				...loanForm,
+				date: date,
+				dueDate: dueDate,
+				totalLPO: totalLPO,
+				mgtFee: mgtFee,
+				totalLoanAmt: totalLoanAmt,
+				loanTenure: loanTenure,
+				interest: monthlyInterestRate,
+				loanApproved: loanApproved,
+				downPayment: downPayment,
+				monthlyPayment: repaymentAmount,
+				repaymentPlan: repaymentPlan,
+			});
+		}
 	}
 
 	return (
