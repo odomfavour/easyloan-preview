@@ -9,7 +9,7 @@ import { useAppContext } from "../../context/context";
 
 const LoanStatus = () => {
 	// eslint-disable-next-line no-unused-vars
-	const [loanStatus, setLoanStatus] = useState("Awaiting");
+	const [loanStatus, setLoanStatus] = useState("Disbursed");
 	const { user } = useAppContext();
 
 	const [isLoanApplied, setIsLoanApplied] = useState(false);
@@ -69,10 +69,10 @@ const LoanStatus = () => {
 												<LoanCard
 													loanStatus={loanStatus}
 													id={loan.orderID}
-													dateApplied={"Friday, July 29, 2022"}
-													dateIssued={"Friday, July 29, 2022"}
-													paymentDate={"Tuesday, August 30, 2022"}
-													amount={loan.loanApproved}
+													dateApplied={loan.date}
+													dateIssued={loan.date}
+													paymentDate={loan.dueDate}
+													amount={`N${new Intl.NumberFormat().format(loan.loanApproved)}`}
 												/>
 											</Container>
 										),

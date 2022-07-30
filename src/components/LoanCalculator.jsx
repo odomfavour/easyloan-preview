@@ -59,7 +59,12 @@ const LoanCalculator = ({ styles, prevPath }) => {
 		totalLPO = Number(totalLPO);
 		loanTenure = Number(loanTenure.split(" ")[0]);
 
-		let mgtFee,
+		let date,
+			dueDate,
+			monthlyDueDate,
+			weeklyDueDate,
+			oneOffDate,
+			mgtFee,
 			mgtFeeRate,
 			totalLoanAmt,
 			loanApproved,
@@ -69,6 +74,14 @@ const LoanCalculator = ({ styles, prevPath }) => {
 			monthlyPayment,
 			weeklyPayment,
 			repaymentAmount;
+
+		const dateObj = new Date();
+		date = new Date().toDateString();
+		monthlyDueDate = new Date(dateObj.setMonth(dateObj.getMonth() + 1)).toDateString();
+		let w = new Date(dateObj.setDate(dateObj.getDate() + 7));
+		weeklyDueDate = new Date(w.setMonth(w.getMonth() - 1)).toDateString();
+		oneOffDate = new Date(dateObj.setMonth(dateObj.getMonth() + loanTenure - 1)).toDateString();
+		console.log(weeklyDueDate);
 
 		// MANAGEMENT FEE
 		// if LPO amount is less than 1,000,000, MF = 10% of LPO
@@ -128,14 +141,17 @@ const LoanCalculator = ({ styles, prevPath }) => {
 		switch (repaymentPlan) {
 			case "Monthly":
 				repaymentAmount = Math.round(monthlyPayment);
+				dueDate = monthlyDueDate;
 				break;
 
 			case "Weekly":
 				repaymentAmount = Math.round(weeklyPayment);
+				dueDate = weeklyDueDate;
 				break;
 
 			case "One-off":
 				repaymentAmount = loanApproved;
+				dueDate = oneOffDate;
 				break;
 
 			default:
@@ -163,6 +179,8 @@ const LoanCalculator = ({ styles, prevPath }) => {
 		if (prevPath === "/upload-business-docs") {
 			setLoanForm({
 				...loanForm,
+				date: date,
+				dueDate: dueDate,
 				totalLPO: totalLPO,
 				mgtFee: mgtFee,
 				totalLoanAmt: totalLoanAmt,
