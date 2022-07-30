@@ -14,7 +14,6 @@ const UserHomeContent = () => {
 	const { user } = useAppContext();
 	const [show, setShow] = useState(false);
 	const [isBusinessAdded, setIsBusinessAdded] = useState(false);
-	
 	const [isLoanApplied, setIsLoanApplied] = useState(false);
 
 	useEffect(() => {
@@ -186,10 +185,20 @@ const UserHomeContent = () => {
 						</Button>
 					</Link>
 				</div>
-				<div className="">
-					{/* <p>You have not taken a loan. Take a loan now to enjoy the experience.</p> */}
-          <LaonHistoryTable />
-				</div>
+				{ isLoanApplied && (
+					<>
+					<div className="">
+						<LaonHistoryTable />
+					</div>
+					</>
+				)}
+				{ !isLoanApplied && (
+					<>
+					<div className="">
+						<p>You have not taken a loan. Take a loan now to enjoy the experience.</p>
+					</div>
+					</>
+				)}
 			</div>
 		</div>
 	);
