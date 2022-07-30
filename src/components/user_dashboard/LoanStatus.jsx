@@ -31,8 +31,9 @@ const LoanStatus = () => {
             border-radius: 8px !important;
           }
           .loan-status .card-group{
+            flex-direction: row;
             overflow-y: scroll;
-            // height: 60vh;
+            height: 60vh;
             width: 50%;
             gap: 1.5rem;
           }
@@ -61,17 +62,21 @@ const LoanStatus = () => {
 					<Stack className="px-4 px-lg-3 card-group d-md-block d-lg-flex">
 						{isLoanApplied ? (
 							<>
-								{user.loanApplication.map((loan) => (
-                  loan.orderID  && (
-									<LoanCard
-										loanStatus={loanStatus}
-										id={loan.orderID}
-										dateApplied={"Friday, July 29, 2022"}
-										dateIssued={"Friday, July 29, 2022"}
-										paymentDate={"Tuesday, August 30, 2022"}
-										amount={loan.loanApproved}
-									/>)
-								))}
+								{user.loanApplication.map(
+									(loan, index) =>
+										loan.orderID && (
+											<Container key={index}>
+												<LoanCard
+													loanStatus={loanStatus}
+													id={loan.orderID}
+													dateApplied={"Friday, July 29, 2022"}
+													dateIssued={"Friday, July 29, 2022"}
+													paymentDate={"Tuesday, August 30, 2022"}
+													amount={loan.loanApproved}
+												/>
+											</Container>
+										),
+								)}
 							</>
 						) : (
 							<></>

@@ -60,6 +60,7 @@ const LoanCalculator = ({ styles, prevPath }) => {
 		loanTenure = Number(loanTenure.split(" ")[0]);
 
 		let mgtFee,
+			mgtFeeRate,
 			totalLoanAmt,
 			loanApproved,
 			downPayment,
@@ -74,10 +75,13 @@ const LoanCalculator = ({ styles, prevPath }) => {
 		// if LPO amount is >= 1,000,000 and < 10,000,000, MF = 5%
 		// if LPO amount is >= 10,000,000, MF = 500,000
 		if (totalLPO < 1000000) {
+			mgtFeeRate = "(10%)";
 			mgtFee = (10 / 100) * totalLPO;
 		} else if (totalLPO >= 1000000 && totalLPO < 10000000) {
+			mgtFeeRate = "(5%)";
 			mgtFee = (5 / 100) * totalLPO;
 		} else if (totalLPO >= 10000000) {
+			mgtFeeRate = null;
 			mgtFee = 500000;
 		}
 
@@ -146,6 +150,7 @@ const LoanCalculator = ({ styles, prevPath }) => {
 			...loanOffer,
 			totalLPO: totalLPO,
 			mgtFee: mgtFee,
+			mgtFeeRate: mgtFeeRate,
 			totalLoanAmt: totalLoanAmt,
 			loanTenure: loanTenure,
 			interest: monthlyInterestRate,
@@ -156,19 +161,19 @@ const LoanCalculator = ({ styles, prevPath }) => {
 		});
 
 		if (prevPath === "/upload-business-docs") {
-      setLoanForm({
-        ...loanForm,
-        totalLPO: totalLPO,
-        mgtFee: mgtFee,
-        totalLoanAmt: totalLoanAmt,
-        loanTenure: loanTenure,
-        interest: monthlyInterestRate,
-        loanApproved: loanApproved,
-        downPayment: downPayment,
-        monthlyPayment: repaymentAmount,
-        repaymentPlan: repaymentPlan,
-      });
-    }
+			setLoanForm({
+				...loanForm,
+				totalLPO: totalLPO,
+				mgtFee: mgtFee,
+				totalLoanAmt: totalLoanAmt,
+				loanTenure: loanTenure,
+				interest: monthlyInterestRate,
+				loanApproved: loanApproved,
+				downPayment: downPayment,
+				monthlyPayment: repaymentAmount,
+				repaymentPlan: repaymentPlan,
+			});
+		}
 	}
 
 	return (

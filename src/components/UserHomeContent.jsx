@@ -65,7 +65,7 @@ const UserHomeContent = () => {
 						<Row className='py-4'>
 							<div className='user-loan-status' 
 							style={{height: "80px", width: "493px"}}>
-								<div className='mt-3 mb-1 fw-bold'>LPO ID: {loanApplied.loanApplication[loanApplied.loanApplication.length - 1].orderID}</div>
+								{/* <div className='mt-3 mb-1 fw-bold'>LPO ID: {loanApplied.loanApplication[loanApplied.loanApplication.length - 1].orderID}</div> */}
 								<div>Date applied: 29/07/22</div>
 							</div>
 						</Row>
