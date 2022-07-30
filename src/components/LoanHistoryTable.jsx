@@ -1,25 +1,40 @@
-import React from "react";
-import Table from 'react-bootstrap/Table';
+import React, { useState, useEffect } from "react";
+import Table from "react-bootstrap/Table";
+import { useAppContext } from "../context/context";
 
 const LaonHistoryTable = () => {
-  return (
-    <Table responsive>
-      <tbody>
-        <tr>
-            <td>2000 packs of Lonart Drugs </td>
-            <td>Jan 2022 - May 2022 </td>
-            <td>#520,000</td>
-            <td>Closed</td>
-        </tr>
-        <tr>
-            <td>2000 packs of Lonart Drugs </td>
-            <td>Jan 2022 - May 2022 </td>
-            <td>#520,000</td>
-            <td>Closed</td>
-        </tr>
-      </tbody>
-    </Table>
-  );
-}
+	const { user } = useAppContext();
+	const [isLoanApplied, setIsLoanApplied] = useState(false);
+
+	useEffect(() => {
+		if (user.loanApplication) {
+			setIsLoanApplied(true);
+		}
+	}, [user.loanApplication]);
+
+	return (
+		<>
+			{isLoanApplied ? (
+				<Table responsive>
+					<tbody>
+						{user.loanApplication.map(
+							(loan, index) =>
+								loan.orderID && (
+									<tr key={index}>
+										<td>{loan.name}</td>
+										<td>Jul 2022 - Aug 2022 </td>
+										<td>{`N${new Intl.NumberFormat().format(loan.totalLoanAmt)}`}</td>
+										<td>Open</td>
+									</tr>
+								),
+						)}
+					</tbody>
+				</Table>
+			) : (
+				<div>No loans applied for...</div>
+			)}
+		</>
+	);
+};
 
 export default LaonHistoryTable;

@@ -8,6 +8,7 @@ import calc from "../assets/calculator.svg";
 import stak from "../assets/view_loan.svg";
 import profile from "../assets/edit_profile.svg";
 import pen from "../assets/pen.svg";
+import LaonHistoryTable from "../components/LoanHistoryTable";
 
 const UserHomeContent = () => {
 	const { user } = useAppContext();
@@ -183,8 +184,9 @@ const UserHomeContent = () => {
 						View All
 					</Button>
 				</div>
-				<div className="mt-5">
-					<p>You have not taken a loan. Take a loan now to enjoy the experience.</p>
+				<div className="">
+					{/* <p>You have not taken a loan. Take a loan now to enjoy the experience.</p> */}
+          <LaonHistoryTable />
 				</div>
 			</div>
 		</div>
