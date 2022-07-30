@@ -62,22 +62,25 @@ const UserHomeContent = () => {
 				<Col sm={12} md={6} className="mb-3 overflow-width">
 					{ isLoanApplied && (
 						<>
-						<div className='bg-gray px-5 pt-5 user-dashboard-content6' style={{height: "300px"}}>
-						<Row>
-							<Col sm={6}><p className='fw-bold user-small-font user-dash-color'>Your Loan</p></Col>
-							<Col sm={6}>
-								<Button className='user-btn-bgd2 shadow-none border-0'>Awaiting Approval</Button>
-							</Col>
-						</Row>
-						<Row className='py-4'>
-							<div className='user-loan-status' 
-							style={{height: "80px", width: "493px"}}>
-								<div className='mt-3 mb-1 fw-bold'>LPO ID: {user.loanApplication[user.loanApplication.length - 1].orderID}</div>
-								<div>Date applied: {user.loanApplication[user.loanApplication.length - 1].date}</div>
-							</div>
-						</Row>
-					</div>
-							</>
+							<div className='bg-gray px-5 pt-5 user-dashboard-content8' style={{height: "300px"}}>
+                    <Row>
+                        <Col sm={6}><p className='fw-bold user-small-font user-dash-color'>Your Loan</p></Col>
+                        <Col sm={6}>
+                            <Button className='px-3 user-btn-margin user-btn-bgd8 shadow-none border-0'
+                            >Disbursed</Button>
+                        </Col>
+                    </Row>
+                    <Row className='py-3'>
+                        <div className='user-loan-status'>
+                            <div className='mt-2 mb-1 fw-bold'>LPO ID: {user.loanApplication[user.loanApplication.length - 1].orderID}</div>
+                            <div>Date applied: {user.loanApplication[user.loanApplication.length - 1].date}</div>
+                            <div className='my-1'>Date issued: {user.loanApplication[user.loanApplication.length - 1].date}</div>
+                            <div>Next Repayment Date: {user.loanApplication[user.loanApplication.length - 1].dueDate}</div>
+                            <div className='fw-bold user-current-loan user-name-font'>{user.loanApplication[user.loanApplication.length - 1].loanApproved}</div>
+                        </div>
+                    </Row>
+                </div>
+						</>
 					) }
 					{ !isLoanApplied && (
 					<div className="bg-gray px-5 pt-5 user-dashboard-content2" style={{ height: "300px" }}>
@@ -187,14 +190,14 @@ const UserHomeContent = () => {
 				</div>
 				{ isLoanApplied && (
 					<>
-					<div className="">
+					<div>
 						<LaonHistoryTable />
 					</div>
 					</>
 				)}
 				{ !isLoanApplied && (
 					<>
-					<div className="">
+					<div >
 						<p>You have not taken a loan. Take a loan now to enjoy the experience.</p>
 					</div>
 					</>
