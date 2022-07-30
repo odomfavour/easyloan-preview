@@ -271,14 +271,14 @@ a:link {
 	overflow: hidden;
 }
 
-.side-btn {
+/* .side-btn {
 	background-color: #ae2bff;
 	color: #fdfdfd;
 	border-radius: 5px;
 	padding-top: 8px;
 	padding-bottom: 8px;
 	width: 180px;
-}
+} */
 
 @media screen and (min-width: 992px) {
 	.main-content,

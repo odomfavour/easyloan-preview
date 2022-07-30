@@ -74,6 +74,19 @@ const SidebarMenu = () => {
 	};
 
 	return (
+		<>
+			<style type="text/css">
+				{`
+					.side-btn {
+						background-color: #ae2bff;
+						color: #fdfdfd;
+						border-radius: 5px;
+						padding-top: 8px;
+						padding-bottom: 8px;
+						width: 180px;
+					}
+				`}
+			</style>
 		<div className="menu pb-5 ">
 			<div className="text-center pt-5 pb-4">
 				<div>
@@ -132,6 +145,7 @@ const SidebarMenu = () => {
 			</Nav>
 			<LogoutModal btnsetter={toggleModal} iterateBtn={iterator} handleLogOut={handleLogOut} />
 		</div>
+		</>
 	);
 };
 export default SidebarMenu;
