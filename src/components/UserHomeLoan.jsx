@@ -22,7 +22,7 @@ const UserHomeLoan = () => {
         </div>
         <Row className=' px-3 width-100'>
             <Col sm={12} md={6} className="mb-3 overflow-width">
-                <div className='bg-gray px-5 pt-5 user-dashboard-content8' style={{height: "300px"}}>
+            <div className='bg-gray px-5 pt-5 user-dashboard-content8' style={{height: "300px"}}>
                     <Row>
                         <Col sm={6}><p className='fw-bold user-small-font user-dash-color'>Your Loan</p></Col>
                         <Col sm={6}>

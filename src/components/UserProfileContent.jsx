@@ -8,8 +8,10 @@ import avatar from "../assets/avatar.svg";
 const UserProfileContent = () => {
     const { user } = useAppContext();
     const [count, setCount] = useState(0);
+    const [countLoan, setCountLoan] = useState(0);
 
 	const [isBusinessAdded, setIsBusinessAdded] = useState(false);
+    const [isLoanApplied, setIsLoanApplied] = useState(false);
 
 	useEffect(() => {
 		if (user.business) {
@@ -17,6 +19,13 @@ const UserProfileContent = () => {
             setCount(count+1 );
 		}
 	}, [user.business]);
+
+	useEffect(() => {
+		if (user.loanApplication) {
+			setIsLoanApplied(true);
+            setCountLoan(countLoan+1 );
+		}
+	}, [user.loanApplication]);
 
   return (
     <div>
@@ -45,8 +54,15 @@ const UserProfileContent = () => {
                     </div>
                     <div className="py-3 fw-bold profile-mid-font ">Your Stats</div>
                     <div className="p-3 bg-gray profile-small-font">
-                        <div>Total Loans Taken: 2</div>
-                        <div>Closed Loans: 1 </div>
+                        <div>Total Loans Taken: {isLoanApplied ? (
+							<>
+                            {countLoan}
+                            </>
+                            ) : (
+							<></>
+						)}
+                            </div>
+                        <div>Closed Loans: 0 </div>
                         {isBusinessAdded && (
                         <div>Total Businesses Added: {count}</div>
                         )}
