@@ -5,10 +5,10 @@ import avatar from "../assets/avatar.svg";
 
 
 const SearchBar = ({ placeholder, data }) => {
-  const [user, setUser] = useState({});
+  const [pUser, setPUser] = useState({});
 
     useEffect(() => {
-		setUser(JSON.parse(localStorage.getItem("user")));
+		setPUser(JSON.parse(localStorage.getItem("pUser")));
 	}, []);
       return (
     <Navbar className='user-dasboard-bg user-searchbar '  >
@@ -28,7 +28,7 @@ const SearchBar = ({ placeholder, data }) => {
         <Form className="d-flex">
             <div className='d-none d-sm-block'><Bell /></div>
             <div className="user-img-icon bg-secondary ms-4 me-1 "><img 
-            src={user.photoURL || avatar} alt="img" className="user-img-icon"/></div>
+            src={pUser.photoURL || avatar} alt="img" className="user-img-icon"/></div>
             <div className='d-none d-sm-block'><ChevronDown /></div>
           </Form>
       </Container>

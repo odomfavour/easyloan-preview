@@ -12,6 +12,11 @@ const UserProfileContent = () => {
 
 	const [isBusinessAdded, setIsBusinessAdded] = useState(false);
     const [isLoanApplied, setIsLoanApplied] = useState(false);
+    const [pUser, setPUser] = useState({});
+
+    useEffect(() => {
+		setPUser(JSON.parse(localStorage.getItem("pUser")));
+	}, []);
 
 	useEffect(() => {
 		if (user.business) {
@@ -35,7 +40,7 @@ const UserProfileContent = () => {
                     <div className='user-name-font user-profile-font fw-bold mb-2'>Personal Profile</div>
                     <div className='bg-gray p-3 profile-section-one'>
                         <div className="d-flex justify-content-between">
-                            <img src={user.photoURL || avatar} alt="img" className="profile-img "/>
+                            <img src={pUser.photoURL || avatar} alt="img" className="profile-img "/>
                             <div className=''>
                                 <Link to="/detail">
                                     <Button >Edit Profile</Button>
@@ -43,11 +48,11 @@ const UserProfileContent = () => {
                             </div>
                         </div>
                         <div>
-                            <div className="pt-3 profile-mid-font fw-bold">{user.name}</div>
+                            <div className="pt-3 profile-mid-font fw-bold">{pUser.name}</div>
                             <div className="py-2 profile-small-font" >Business Owner</div>
-                            <div className="profile-small-font">{user.street}</div>
-                            <div className="py-2 profile-small-font">{user.email}</div>
-                            <div className="profile-small-font">{user.phone}</div>
+                            <div className="profile-small-font">{pUser.street}</div>
+                            <div className="py-2 profile-small-font">{pUser.email}</div>
+                            <div className="profile-small-font">{pUser.phone}</div>
                             <div className="pt-4 pb-2 profile-small-font">Profile Completion</div>
                             <div className='mt-3'><ProfileProgressBar /></div>
                         </div>
