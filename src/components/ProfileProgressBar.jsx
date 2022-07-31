@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import { useAppContext } from "../context/context";
 
 
 function ProfileProgressBar() {
-  const { user } = useAppContext();
   const [progressInterval, setProgressInterval] = useState();
+  const [pUser, setPUser] = useState({});
+
+    useEffect(() => {
+		setPUser(JSON.parse(localStorage.getItem("pUser")));
+	}, []);
 
   // console.log(user);
   // const now = 80;
@@ -14,17 +17,17 @@ function ProfileProgressBar() {
     let progress = 0;
 
     if (
-      user.name !== ""
+      pUser.name !== ""
     ){progress += 25}
     if (
-      user.email !== ""
+      pUser.Phone !== ""
     ){progress += 25}
     if (
-      user.photoURL !== ""
+      pUser.photoURL !== ""
     ){progress += 25}
-    // if (
-    //   user.accessToken !== ""
-    // ){progress += 25}
+    if (
+      pUser.street !== ""
+    ){progress += 25}
     setProgressInterval(progress);
   }
 
