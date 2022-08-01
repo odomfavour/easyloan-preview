@@ -22,7 +22,7 @@ const LaonHistoryTable = () => {
 								loan.orderID && (
 									<tr key={index}>
 										<td>{loan.name}</td>
-										<td>Jul 2022 - Aug 2022 </td>
+										<td>Aug 2022 - Sept 2022 </td>
 										<td>{`N${new Intl.NumberFormat().format(loan.totalLoanAmt)}`}</td>
 										<td>Open</td>
 									</tr>
