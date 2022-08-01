@@ -7,6 +7,7 @@ import { useAppContext } from "../context/context";
 
 const SearchBar = ({ placeholder, data }) => {
   const { user } = useAppContext();
+  // eslint-disable-next-line 
   const [pUser, setPUser] = useState({});
 
     useEffect(() => {
