@@ -40,7 +40,7 @@ const UserProfileContent = () => {
                     <div className='user-name-font user-profile-font fw-bold mb-2'>Personal Profile</div>
                     <div className='bg-gray p-3 profile-section-one'>
                         <div className="d-flex justify-content-between">
-                            <img src={pUser.photoURL || avatar} alt="img" className="profile-img "/>
+                            <img src={user.photoURL || avatar} alt="img" className="profile-img "/>
                             <div className=''>
                                 <Link to="/detail">
                                     <Button >Edit Profile</Button>

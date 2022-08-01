@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Search, Bell, ChevronDown } from "react-bootstrap-icons";
 import {Container,Form, Navbar } from 'react-bootstrap';
 import avatar from "../assets/avatar.svg";
+import { useAppContext } from "../context/context";
 
 
 const SearchBar = ({ placeholder, data }) => {
+  const { user } = useAppContext();
   const [pUser, setPUser] = useState({});
 
     useEffect(() => {
@@ -28,7 +30,7 @@ const SearchBar = ({ placeholder, data }) => {
         <Form className="d-flex">
             <div className='d-none d-sm-block'><Bell /></div>
             <div className="user-img-icon bg-secondary ms-4 me-1 "><img 
-            src={pUser.photoURL || avatar} alt="img" className="user-img-icon"/></div>
+            src={user.photoURL || avatar} alt="img" className="user-img-icon"/></div>
             <div className='d-none d-sm-block'><ChevronDown /></div>
           </Form>
       </Container>
