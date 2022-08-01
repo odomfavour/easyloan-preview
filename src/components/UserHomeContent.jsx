@@ -15,7 +15,13 @@ const UserHomeContent = () => {
 	const [show, setShow] = useState(false);
 	const [isBusinessAdded, setIsBusinessAdded] = useState(false);
 	const [isLoanApplied, setIsLoanApplied] = useState(false);
+	const [countLoan, setCountLoan] = useState(0);
 
+	const [pUser, setPUser] = useState({});
+    useEffect(() => {
+		setPUser(JSON.parse(localStorage.getItem("pUser")));
+	}, []);
+	
 	useEffect(() => {
 		if (user.business) {
 			setIsBusinessAdded(true);
@@ -25,6 +31,7 @@ const UserHomeContent = () => {
 	useEffect(() => {
 		if (user.loanApplication) {
 			setIsLoanApplied(true);
+			setCountLoan(countLoan+1)
 		}
 	}, [user.loanApplication]);
 
@@ -41,7 +48,7 @@ const UserHomeContent = () => {
 			{!isBusinessAdded && (
 			<div className="my-5 bg-gray py-3 px-3 user-dash-color user-dashboard-content d-flex justify-content-between">
 				<div>
-					<h2 className="user-name-font">Hello {user.name},</h2>
+					<h2 className="user-name-font">Hello {pUser.name},</h2>
 				</div>
 					<Button className="user-btn-bg shadow-none"
 					onClick = {() => setShow(true)}>Apply for Loan</Button>
@@ -50,7 +57,7 @@ const UserHomeContent = () => {
 			{isBusinessAdded && (
 			<div className="my-5 bg-gray py-3 px-3 user-dash-color user-dashboard-loan d-flex justify-content-between">
 				<div>
-					<h2 className="user-name-font">Hello {user.name},</h2>
+					<h2 className="user-name-font">Hello {pUser.name},</h2>
 				</div>
 				<Link to="/application">
 					<Button className="user-btn-loan shadow-none">Apply for Loan</Button>
@@ -106,7 +113,7 @@ const UserHomeContent = () => {
 								<div className="mb-3 d-flex justify-content-between user-business">
 									<div className="p-3">
 										<div className="user-biz-font2 mb-1">{user.business[user.business.length - 1].businessName}</div>
-										<div className="user-biz-font">Credit Score: 0</div>
+										<div className="user-biz-font">Credit Score: {countLoan}</div>
 									</div>
 									<Link to="/profile">
 										<button className="shadow-none border-1 rounded my-4 me-3 user-btn-bg7 px-3">
