@@ -219,7 +219,7 @@ const MainDiv = styled.div`
 	.btn {
 		background: #ae2bff;
 		border-radius: 8px;
-		font-family: "Gilmer Bold";
+		font-family: "GilmerRegular";
 		font-style: normal;
 		font-weight: 700;
 		font-size: 16px;
