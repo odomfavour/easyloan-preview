@@ -83,7 +83,7 @@ const UserHomeContent = () => {
                             <div>Date applied: {user.loanApplication[user.loanApplication.length - 1].date}</div>
                             <div className='my-1'>Date issued: {user.loanApplication[user.loanApplication.length - 1].date}</div>
                             <div>Next Repayment Date: {user.loanApplication[user.loanApplication.length - 1].dueDate}</div>
-                            <div className='fw-bold user-current-loan user-name-font'>{user.loanApplication[user.loanApplication.length - 1].loanApproved}</div>
+                            <div className='fw-bold user-current-loan user-name-font'>{`N${new Intl.NumberFormat().format(user.loanApplication[user.loanApplication.length - 1].loanApproved)}`}</div>
                         </div>
                     </Row>
                 </div>

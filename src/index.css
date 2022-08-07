@@ -359,7 +359,8 @@ a:link {
 
 /* User dasboard Content starts here */
 .user-name-font {
-	font: "Gilmer Bold";
+	font-family: "GilmerRegular";
+  font-weight: 700;
 }
 .width-100 {
 	width: 100%;

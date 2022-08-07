@@ -77,9 +77,8 @@ export const Desktop = styled.header`
 		justify-content: space-between;
 		align-items: center;
 		a {
-			font-family: "Gilmer Bold";
 			font-style: normal;
-			font-weight: 400;
+			font-weight: 700;
 			font-size: 16px;
 			line-height: 24px;
 			/* identical to box height, or 150% */
